@@ -13,7 +13,7 @@ Net-6533
 
 
 function Gelihast_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("Gelihast_Net", 4000, 0)
+	pUnit:RegisterEvent("Gelihast_Net", 7000, 0)
 end
  
 function Gelihast_Net(pUnit, Event)

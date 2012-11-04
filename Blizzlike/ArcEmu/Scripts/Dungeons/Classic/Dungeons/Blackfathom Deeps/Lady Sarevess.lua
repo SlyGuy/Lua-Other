@@ -18,9 +18,9 @@ Slow-246
 function LadySarevess_OnCombat(pUnit, event)
 	pUnit:SendChatMessage(12, 0, "You should not be here! Slay them!")
 	pUnit:PlaySoundToSet(5801)
-	pUnit:RegisterEvent("LadySarevess_ForkedLightning", 5000, 0)
-	pUnit:RegisterEvent("LadySarevess_Shoot", 1, 0)
-	pUnit:RegisterEvent("LadySarevess_Slow", 1000, 0)
+	pUnit:RegisterEvent("LadySarevess_ForkedLightning", 7000, 0)
+	pUnit:RegisterEvent("LadySarevess_Shoot", 14000, 0)
+	pUnit:RegisterEvent("LadySarevess_Slow", 21000, 0)
 end
 
 function LadySarevess_ForkedLightning(pUnit, Event)

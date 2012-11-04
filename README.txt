@@ -17,8 +17,6 @@ you are using a particular service on or through this web site, you will be subj
 or guidelines applicable to those services and they shall be incorporated by reference into these
 Terms of Use.
 
-
-
 2. Our Service
 **************
 Our web site and services provided to you on and through our web site on an AS IS basis.You
@@ -28,23 +26,17 @@ or delete the data you provide, whether temporarily or permanently. We shall hav
 or liability for the timeliness, deletion, failure to store, inaccuracy, or improper delivery of
 any data or information.
 
-
-
 3. Your Responsibilities and Registration Obligations
 *****************************************************
 In order to use this web site, you must register on our site, and agree to provide truthful information
 when requested. When registering, you explicitly
 agree to our Terms of Use and as may be modified by us from time to time and available here.
 
-
-
 4. Registration and Password
 ****************************
 You are responsible to maintain the confidentiality of your password and shall be responsible for
 all uses via your registration and/or login, whether authorized or unauthorized by you. You agree
 to immediately notify us of any unauthorized use or your registration, user account or password.
-
-
 
 5. Your Conduct
 ****************
@@ -72,8 +64,6 @@ to conceal or misrepresent the origin of any Content provided by you;
 that would involve junk mail, spam, chain letters, pyramid schemes, or any other form of unauthorized
 advertising without our prior written consent;
 
-
-
 6. Submission of Content on this Web Site
 *****************************************
 By providing any Content to our web site:
@@ -90,9 +80,6 @@ this Section 7; . you acknowledge and agree that we shall have the
 right (but not obligation), in our sole discretion, to refuse to
 publish or to remove or block access to any Content you provide at any
 time and for any reason, with or without notice. 
-
-
- 
 
 9. LIMITATION OF LIABILITY
 *************************** 

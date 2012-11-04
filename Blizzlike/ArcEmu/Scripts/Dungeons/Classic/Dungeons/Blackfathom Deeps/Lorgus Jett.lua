@@ -12,8 +12,8 @@ Lightning Bolt-12167
 ]]--
 
 function LorgusJett_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("LorgusJett_LightningBolt", 5000, 0)
-	pUnit:RegisterEvent("LorgusJett_LightningShield", 15000, 0)
+	pUnit:RegisterEvent("LorgusJett_LightningBolt", 7000, 0)
+	pUnit:RegisterEvent("LorgusJett_LightningShield", 14000, 0)
 end
  
 function LorgusJett_LightningBolt(pUnit, Event)

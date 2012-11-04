@@ -12,8 +12,8 @@ Poison Cloud-3815
 ]]--
 
 function Akumai_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("Akumai_FrenziedRage", 5000, 0)
-	pUnit:RegisterEvent("Akumai_PoisonCloud", 20000, 0)
+	pUnit:RegisterEvent("Akumai_FrenziedRage", 7000, 0)
+	pUnit:RegisterEvent("Akumai_PoisonCloud", 14000, 0)
 end
  
 function Akumai_FrenziedRage(pUnit, Event)

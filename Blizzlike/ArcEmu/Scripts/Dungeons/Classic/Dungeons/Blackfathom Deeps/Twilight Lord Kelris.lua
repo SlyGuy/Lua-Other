@@ -17,8 +17,8 @@ Sleep-8399
 function TwilightLordKelris_OnCombat(pUnit, event)
 	pUnit:SendChatMessage(12, 0, "Who dares disturb my meditation?!")
 	pUnit:PlaySoundToSet(5802)
-	pUnit:RegisterEvent("TwilightLordKelris_MindBlast", 10000, 0)
-	pUnit:RegisterEvent("TwilightLordKelris_Sleep", 20000, 0)
+	pUnit:RegisterEvent("TwilightLordKelris_MindBlast", 7000, 0)
+	pUnit:RegisterEvent("TwilightLordKelris_Sleep", 14000, 0)
 end
  
 function TwilightLordKelris_MindBlast(pUnit, Event)

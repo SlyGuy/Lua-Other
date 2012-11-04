@@ -11,7 +11,7 @@ Trample-5568
 ]]--
 
 function Ghamoora_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("Ghamoora_spell", 10000, 0)
+	pUnit:RegisterEvent("Ghamoora_spell", 14000, 0)
 end
  
 function Ghamoora_spell(pUnit, Event)

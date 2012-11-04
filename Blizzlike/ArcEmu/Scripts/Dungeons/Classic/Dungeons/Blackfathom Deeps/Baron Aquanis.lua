@@ -12,8 +12,8 @@ Frostbolt-15043
 ]]--
 
 function BaronAquanis_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("BaronAquanis_FrostNova", 15000, 0)
-	pUnit:RegisterEvent("BaronAquanis_Frostbolt", 10000, 0)
+	pUnit:RegisterEvent("BaronAquanis_FrostNova", 7000, 0)
+	pUnit:RegisterEvent("BaronAquanis_Frostbolt", 14000, 0)
 end
  
 function BaronAquanis_FrostNova(pUnit, Event)

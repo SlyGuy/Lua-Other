@@ -1,64 +1,32 @@
 This people get a thanks from me (zdroid9770) who made some of the stuff in this WinRar.
-Ofcourse some of it is by me.
+Of course some of it is by me.
 
-
------------------------------------------------------------------------------------------
------------------------------BIG-THANKS-TO-THESE-PEOPLE----------------------------------
------------------------------------------------------------------------------------------
-- zdroid9770										-
-- Zarkmania.ucoz.com									-
-- Zark											-
-- Zuel											-
-- Zoila (aka Method)									-
-- Mangos										-
-- Rochet2										-
-- Eatos											-
-- Trinitycore										-
-- Jeutie										-
-- Arcemu										-
-- Skyfire										-
-- QQRofl										-
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
-
-
-
-
------------------------------------------------------------------------------------------
--------------------Thank-these-people-for-files-in-this-rar-folder-----------------------
------------------------------------------------------------------------------------------
-- Myerz											-
-- Skreem										-
-- slade1000										-
-- eMaTriKs										-
-- Coreyduffel										-
-- Rasmuz										-
-- M@R!O											-
-- kadava										-
-- fast_elf										-
-- bonedeath6										-
-- LordJedi										-
-- Bobmaster										-	- 											- 
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
-
-
-
-
------------------------------------------------------------------------------------------
---------------------------------Some Comments-:------------------------------------------
------------------------------------------------------------------------------------------
-Twilight Event!!!									-
-The included sql was created by Chrisx84 using Treetree's Atree Dawn 4.2.2 repack.	-
-The sql only deletes the event and spawned npc's from the event.			-
-If you would like to add to it to completely remove the event from the database then 	-
-please release it as a update.								-
-You might need to change the table name if your going to use this on other core 	-
-databases other then the SkyFire database.						-
------------------------------------------------------------------------------------------
-											-
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------
+--BIG-THANKS-TO-THESE-PEOPLE--
+- zdroid9770				--
+- Zarkmania.ucoz.com		--
+- Zark						--
+- Zuel						--
+- Zoila (aka Method)		--
+- Mangos					--
+- Rochet2					--
+- Eatos						--
+- Trinitycore				--
+- Jeutie					--
+- Arcemu					--
+- Skyfire					--
+- QQRofl					--
+------------------------------
+--Thank-these-people----------
+- Myerz						--
+- Skreem					--
+- slade1000					--
+- eMaTriKs					--
+- Coreyduffel				--
+- Rasmuz					--
+- M@R!O						--
+- kadava					--
+- fast_elf					--
+- bonedeath6				--
+- LordJedi					--
+- Bobmaster					--
+------------------------------
