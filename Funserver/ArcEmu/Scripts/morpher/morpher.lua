@@ -162,6 +162,47 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 	if(intid == 35) then
 		player:SetModel()
 	end
+	if(intid == 88) then
+		Unit:GossipCreateMenu(65, player, 0)
+		Unit:GossipMenuAddItem(3,"Half Size", 90, 0)
+		Unit:GossipMenuAddItem(3,"0.6", 91, 0)
+		Unit:GossipMenuAddItem(3,"0.7", 92, 0)
+		Unit:GossipMenuAddItem(3,"0.8", 93, 0)
+		Unit:GossipMenuAddItem(3,"0.9", 94, 0)
+		Unit:GossipMenuAddItem(3,"Normal", 95, 0)
+		Unit:GossipMenuAddItem(3,"1", 96, 0)
+		Unit:GossipMenuAddItem(3,"2", 97, 0)
+		Unit:GossipMenuAddItem(3,"3", 98, 0)
+		Unit:GossipMenuAddItem(3,"4", 99, 0)
+		Unit:GossipSendMenu(player)
+	end
+	if(intid == 91) then
+			player:SetScale(0.5)
+		end
+		if(intid == 92) then
+			player:SetScale(0.6)
+		end
+		if(intid == 93) then
+			player:SetScale(0.7)
+		end
+		if(intid == 94) then
+			player:SetScale(0.8)
+		end
+		if(intid == 95) then
+			player:SetScale(0.9)
+		end
+		if(intid == 96) then
+			player:SetScale(1)
+		end
+		if(intid == 97) then
+			player:SetScale(2)
+		end
+		if(intid == 98) then
+			player:SetScale(3)
+		end
+		if(intid == 99) then
+			player:SetScale(4)
+		end
 end
 
 RegisterUnitGossipEvent(91000, 1, "Morpher_Gossip")
