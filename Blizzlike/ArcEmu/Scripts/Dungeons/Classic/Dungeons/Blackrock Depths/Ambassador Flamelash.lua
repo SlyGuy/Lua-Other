@@ -2,7 +2,7 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
 ----Quotes
@@ -15,20 +15,20 @@ Immune to Stun.
 ]]--
 
 function AFL_OnCombat(pUnit, Event)
-	pUnit:SendChatMessage(12, 0, "Your reign of terror ends now! Face your doom mortals!")
-	pUnit:RegisterEvent("AFL_BurningSpirit", 1000, 0) --Time could be wrong
+	pUnit:SendChatMessage(14, 0, "Your reign of terror ends now! Face your doom mortals!")
+	pUnit:RegisterEvent("BurningSpirit", 7000, 0)
 end
 
-function AFL_BurningSpirit(pUnit, Event)
+function BurningSpirit(pUnit, Event)
 	pUnit:CastSpell(14744)
 end
 
 function AFL_OnLeaveCombat(pUnit, Event)
-        pUnit:RemoveEvents()
+    pUnit:RemoveEvents()
 end
 
 function AFL_OnDeath(pUnit, Event)
-        pUnit:RemoveEvents()
+    pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(9156, 1, "AFL_OnCombat")

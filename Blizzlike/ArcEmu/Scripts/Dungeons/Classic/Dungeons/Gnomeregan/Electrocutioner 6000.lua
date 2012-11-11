@@ -2,7 +2,7 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
 ----Quotes
@@ -14,17 +14,17 @@ Shock-11084
 ]]--
 
 function Electrocutioner_6000_OnCombat(pUnit, Event)
-	pUnit:SendChatMessage (12, 0, "Electric justice!")
-	pUnit:RegisterEvent("Chain_Bolt", 15000, 0)
-	pUnit:RegisterEvent("Megavolt", 30000, 0)
-	pUnit:RegisterEvent("Shock", 50000, 0)
+	pUnit:SendChatMessage(14, 0, "Electric justice!")
+	pUnit:RegisterEvent("Chain_Bolt", 7000, 0)
+	pUnit:RegisterEvent("Megavolt", 14000, 0)
+	pUnit:RegisterEvent("Shock", 21000, 0)
 end
 
 function Chain_Bolt(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(11085)
 end
 
-function Megavolt(pUnit)
+function Megavolt(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(11082)
 end
 
@@ -32,11 +32,11 @@ function Shock(pUnit, Event)
 	pUnit:CastSpellOnTarget(11084)
 end
 
-function Electrocutioner_6000_OnLeaveCombat(pUnit)
+function Electrocutioner_6000_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function Electrocutioner_6000_OnDied(pUnit)
+function Electrocutioner_6000_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 

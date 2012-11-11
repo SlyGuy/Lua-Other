@@ -19,7 +19,7 @@ local emberseer_lightning = 16078
 local door1 = 175244
 local door2 = 175153
 
-function Pyroguard_Event(Unit, event)
+function Pyroguard_Event(Unit, Event)
         local go =  Unit:GetGameObjectNearestCoords(114.407143, -258.893585, 91.548134, door2)
 		if (go ~= nil) then
             go:SetUInt32Value(GAMEOBJECT_FLAGS, GAMEOBJECT_UNCLICKABLE)
@@ -51,7 +51,7 @@ function Pyroguard_Event(Unit, event)
     end
 end
 
-function Altar_Activate(Unit,event,pMisc) 
+function Altar_Activate(Unit, Event, pMisc) 
         local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
         local args = getvars(pyro)
         table.insert(args.plrs, pMisc)
@@ -71,17 +71,17 @@ function Altar_Activate(Unit,event,pMisc)
             pyro:RemoveAura(encaged_pyro)
         end
     end
-    Unit:RemoveFromWorld() -- removes altar so that players cannot retry this event w/o resetting instance
+    Unit:RemoveFromWorld()
     pMisc:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, 0)
     pMisc:SetUInt32Value(UNIT_CHANNEL_SPELL, 0)
 end
 
-function blackhandwarlock_oncombat(Unit,event)
+function blackhandwarlock_oncombat(Unit, Event)
     Unit:SetUInt32Value(UNIT_FIELD_FLAGS, 0)
     Unit:RegisterEvent("blackhandwarlock_spells", 10000, 1)
 end
 
-function blackhandwarlock_spells(Unit,evnet)
+function blackhandwarlock_spells(Unit, Event)
         local rand = math.random(1,2)
         local tank = Unit:GetMainTank()
     if (Unit:GetCurrentSpellId() ~= nil) then
@@ -97,7 +97,7 @@ function blackhandwarlock_spells(Unit,evnet)
     end
 end
 
-function blackhandwarlock_ondeath(Unit,event)
+function blackhandwarlock_ondeath(Unit, Event)
         Unit:RemoveEvents()
         local args = getvars(Unit)
         for k,v in pairs(args.warlocks) do
@@ -114,19 +114,19 @@ function blackhandwarlock_ondeath(Unit,event)
     end
 end
 
-function PyroGuard_Engaged(Unit,event)
+function PyroGuard_Engaged(Unit, Event)
     Unit:CastSpell(emberseer_lightning)
     Unit:SetFloatValue(OBJECT_FIELD_SCALE_X, (Unit:GetFloatValue(OBJECT_FIELD_SCALE_X))+1)
     Unit:WipeThreatList()
     Unit:RegisterEvent("PyroGuard_Complete", 20000, 1)
 end
 
-function PyroGuard_Complete(Unit,event)
+function PyroGuard_Complete(Unit, Event)
     Unit:CastSpell(emberseer_complete)
     Unit:RegisterEvent("PyroGuard_Attack", 3000, 1)
 end
 
-function PyroGuard_Attack(Unit,event)
+function PyroGuard_Attack(Unit, Event)
     Unit:RemoveEvents()
     Unit:SetUInt32Value(UNIT_FIELD_FLAGS, 0)
     Unit:WipeThreatList()
@@ -135,10 +135,10 @@ function PyroGuard_Attack(Unit,event)
     Unit:RegisterEvent("PyroGuard_Spells", 5000, 1)
 end
 
-function PyroGuard_OnWipe(Unit,event)
+function PyroGuard_OnWipe(Unit, Event)
     Unit:RemoveEvents()
     local args = getvars(Unit)
-    for k,v in pairs(args.warlocks) do -- To remove warlocks making this event impossible to do w/o resetting
+    for k,v in pairs(args.warlocks) do
 		if (v ~= nil) then
 			v:RemoveFromWorld()
 		end
@@ -146,12 +146,12 @@ function PyroGuard_OnWipe(Unit,event)
     Unit:Despawn(0,0)
 end
 
-function PyroGuard_Spells(Unit,event)
+function PyroGuard_Spells(Unit, Event)
     local plr = Unit:GetRandomPlayer(0)
     local rand = math.random(1,2)
     if (plr ~= nil) then
         if (rand == 1) then
-            Unit:FullCastSpell(16079)--Fire Nova
+            Unit:FullCastSpell(16079)
         elseif (rand == 2) then
             Unit:FullCastSpellOnTarget(16536, plr)
         end
@@ -159,9 +159,9 @@ function PyroGuard_Spells(Unit,event)
     Unit:RegisterEvent("PyroGuard_Spells", 10000, 1)
 end
 
-function PyroGuard_Death(Unit,event)
+function PyroGuard_Death(Unit, Event)
     local go =  Unit:GetGameObjectNearestCoords(114.407143, -258.893585,91.548134, door2)
-    Unit:SpawnCreature(16082, 158.484741, -412.313080, 110.862953, Unit:GetO(), 14, 0)-- used later in Rend black hand event.
+    Unit:SpawnCreature(16082, 158.484741, -412.313080, 110.862953, Unit:GetO(), 14, 0)
     if go ~= nil then
         go:SetUInt32Value(GAMEOBJECT_STATE, 0)
     end

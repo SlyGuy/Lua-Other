@@ -2,7 +2,7 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
 ----Quotes
@@ -16,22 +16,22 @@ Slow-246
 ]]--
 
 function LadySarevess_OnCombat(pUnit, event)
-	pUnit:SendChatMessage(12, 0, "You should not be here! Slay them!")
+	pUnit:SendChatMessage(14, 0, "You should not be here! Slay them!")
 	pUnit:PlaySoundToSet(5801)
-	pUnit:RegisterEvent("LadySarevess_ForkedLightning", 7000, 0)
-	pUnit:RegisterEvent("LadySarevess_Shoot", 14000, 0)
-	pUnit:RegisterEvent("LadySarevess_Slow", 21000, 0)
+	pUnit:RegisterEvent("ForkedLightning", 7000, 0)
+	pUnit:RegisterEvent("Shoot", 14000, 0)
+	pUnit:RegisterEvent("Slow", 21000, 0)
 end
 
-function LadySarevess_ForkedLightning(pUnit, Event)
+function ForkedLightning(pUnit, Event)
 	pUnit:CastSpell(8435) 
 end
 
-function LadySarevess_Shoot(pUnit, Event)
+function Shoot(pUnit, Event)
  	pUnit:FullCastSpellOnTarget(6660, pUnit:GetRandomPlayer(0))
 end
 
-function LadySarevess_Slow(pUnit, Event)
+function Slow(pUnit, Event)
   	pUnit:FullCastSpellOnTarget(246, pUnit:GetRandomPlayer(0))
 end
 

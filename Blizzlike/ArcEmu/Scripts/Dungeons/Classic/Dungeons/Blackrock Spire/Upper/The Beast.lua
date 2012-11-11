@@ -5,7 +5,6 @@
 --                     Copyright (c) zdroid9770                  --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Berserker Charge-16636
 Fire Blast-16144
@@ -17,17 +16,13 @@ Terrifying Roar-14100
 ]]--
 
 function Beast_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("Beast_Spells", 100, 0)
-end
-
-function Beast_Spells(pUnit, Event)
-	pUnit:RegisterEvent("Berserker_Charge", 1000, 0)
-	pUnit:RegisterEvent("Fire_Blast", 2000, 0)
-	pUnit:RegisterEvent("Fireball", 3000, 0)
-	pUnit:RegisterEvent("Flamebreak", 4000, 0)
-	pUnit:RegisterEvent("Immolate", 5000, 0)
-	pUnit:RegisterEvent("Summon_Player", 6000, 0)
-	pUnit:RegisterEvent("Terrifying_Roar", 7000, 0)
+	pUnit:RegisterEvent("Berserker_Charge", 7000, 0)
+	pUnit:RegisterEvent("Fire_Blast", 14000, 0)
+	pUnit:RegisterEvent("Fireball", 21000, 0)
+	pUnit:RegisterEvent("Flamebreak", 28000, 0)
+	pUnit:RegisterEvent("Immolate", 35000, 0)
+	pUnit:RegisterEvent("Summon_Player", 42000, 0)
+	pUnit:RegisterEvent("Terrifying_Roar", 49000, 0)
 end
 
 function Berserker_Charge(pUnit, Event)

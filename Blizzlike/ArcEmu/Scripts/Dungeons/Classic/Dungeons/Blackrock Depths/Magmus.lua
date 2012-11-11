@@ -2,7 +2,7 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
 ----Quotes
@@ -13,25 +13,25 @@ War Stomp-15593
 ]]--
 
 function Magmus_OnCombat(pUnit, event)
-		pUnit:SendChatMessage(12, 0, "Emperor Thaurissan does not wish to be disturbed! Turn back now or face your doom, weak mortals!")
-        pUnit:RegisterEvent("Magmus_FieryBurst", 5000, 0)
-        pUnit:RegisterEvent("Magmus_WarStomp", 10000, 0)
+	pUnit:SendChatMessage(14, 0, "Emperor Thaurissan does not wish to be disturbed! Turn back now or face your doom, weak mortals!")
+    pUnit:RegisterEvent("FieryBurst", 7000, 0)
+    pUnit:RegisterEvent("WarStomp", 14000, 0)
 end
  
-function Magmus_FieryBurst(pUnit, Event)
-        pUnit:FullCastSpellOnTarget(15668)
+function FieryBurst(pUnit, Event)
+    pUnit:FullCastSpellOnTarget(15668)
 end
  
-function Magmus_WarStomp(pUnit, Event)
-        pUnit:CastSpell(15593)
+function WarStomp(pUnit, Event)
+    pUnit:CastSpell(15593)
 end
  
 function Magmus_OnLeaveCombat(pUnit, event)
-        pUnit:RemoveEvents()
+    pUnit:RemoveEvents()
 end
  
 function Magmus_OnDeath(pUnit, event)
-        pUnit:RemoveEvents()
+    pUnit:RemoveEvents()
 end
  
 RegisterUnitEvent(9938, 1, "Magmus_OnCombat")

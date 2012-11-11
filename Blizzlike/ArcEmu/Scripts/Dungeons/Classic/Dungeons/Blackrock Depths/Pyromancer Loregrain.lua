@@ -2,10 +2,9 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Fire Ward-15041
 Flame Shock-15616
@@ -14,25 +13,25 @@ Scorching Totem-15038
 ]]--
 
 function PMLG_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("PMLG_SearingTotems", 5000, 0)
-	pUnit:RegisterEvent("PMLG_FireWard", 25000, 0)
-	pUnit:RegisterEvent("PMLG_MoltenBlast", 30000, 0)
-	pUnit:RegisterEvent("PMLG_FlameShock", 50000, 0)
+	pUnit:RegisterEvent("SearingTotems", 7000, 0)
+	pUnit:RegisterEvent("FireWard", 14000, 0)
+	pUnit:RegisterEvent("MoltenBlast", 21000, 0)
+	pUnit:RegisterEvent("FlameShock", 28000, 0)
 end
  
-function PMLG_SearingTotems(pUnit, Event)
+function SearingTotems(pUnit, Event)
 	pUnit:FullCastSpell(15038)
 end
  
-function PMLG_FireWard(pUnit, Event)
+function FireWard(pUnit, Event)
 	pUnit:FullCastSpell(15041)
 end
 
-function PMLG_MoltenBlast(pUnit, Event)
+function MoltenBlast(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(15095)
 end
 
-function PMLG_FlameShock(Unit, Event)
+function FlameShock(Unit, Event)
 	pUnit:CastSpellOnTarget(15616)
 end
  

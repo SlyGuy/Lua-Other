@@ -37,19 +37,19 @@ function Darkmaster_OnCombat(Unit, Event)
 end
 
 function Darkmaster_Arcane(Unit, Event)
-	ArcaneTarget=Unit:GetRandomPlayer()
+local ArcaneTarget = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(ARCANEMISSILES, ArcaneTarget)
 	Unit:RegisterEvent("Darkmaster_ArcaneSecond", 8000, 0)
 end
 
 function Darkmaster_ArcaneSecond(Unit, Event)
-	ArcaneTarget=Unit:GetRandomPlayer()
+local ArcaneTarget = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(ARCANEMISSILES, ArcaneTarget)
 end
 
 function Darkmaster_Shadowshield(Unit, Event)
+local arcane_timer = 14000+math.random(1, 14000)
 	Unit:CastSpell(SHADOWSHIELD)
-	arcane_timer=14000+math.random(1, 14000)
 	Unit:RegisterEvent("Darkmaster_ShadowshieldSecond", arcane_timer, 0)
 end
 
@@ -58,23 +58,23 @@ function Darkmaster_ShadowshieldSecond(Unit, Event)
 end
 
 function Darkmaster_Curse(Unit, Event)
-	CurseTarget=Unit:GetRandomPlayer()
+local CurseTarget = Unit:GetRandomPlayer()
+local curse_timer = 15000+math.random(1, 12000)
 	Unit:FullCastSpellOnTarget(CURSE, CurseTarget)
-	curse_timer=15000+math.random(1, 12000)
 	Unit:RegisterEvent("Darkmaster_CurseSecond", curse_timer, 0)
 end
 
 function Darkmaster_CurseSecond(Unit, Event)
-	CurseTarget=Unit:GetRandomPlayer()
+local CurseTarget = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(CURSE, CurseTarget)
 end
 
 function Darkmaster_Teleport(Unit, Event)
+local target = Unit:GetRandomPlayer()
+local rand = math.random(1,6)
 		Unit:ClearThreatList()
-		target=Unit:GetRandomPlayer()
 		Unit:ChangeTarget(target)
-		target:SendBroadcastMessage("You are now the target of"..Unit:GetName().."!") -- not blizzlike but nice ;)
-		rand = math.random(1,6)
+		target:SendBroadcastMessage("You are now the target of"..Unit:GetName().."!")
 	if (rand == 1) then
 		Unit:SpawnCreature(16119,254.2325,0.3417,84.8407,0,10000)
 		Unit:SpawnCreature(16119,257.7133,4.0226,84.8407,0,10000)
@@ -113,14 +113,10 @@ function Darkmaster_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function Darkmaster_OnKilledTarget(Unit, Event)
-end
-
 function Darkmaster_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(1853, 1, "Darkmaster_OnCombat")
 RegisterUnitEvent(1853, 2, "Darkmaster_OnLeaveCombat")
-RegisterUnitEvent(1853, 3, "Darkmaster_OnKilledTarget")
 RegisterUnitEvent(1853, 4, "Darkmaster_OnDied")

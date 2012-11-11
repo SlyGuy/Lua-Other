@@ -41,7 +41,7 @@ local MainTank = pUnit:GetMainTank()
 end
 
 function Rhankzor_OnCombat(pUnit)
-    pUnit:SendChatMessage(12,0,"VanCleef pay big for your heads!")
+    pUnit:SendChatMessage(12, 0, "VanCleef pay big for your heads!")
 	pUnit:PlaySoundToSet(5774)
 	pUnit:RegisterEvent("Rhankzor_Slam", math.random(10000,13000), 0)
 end
@@ -101,8 +101,8 @@ local RandomPlayer = pUnit:GetRandomPlayer(0)
 end
 
 function SneedShreeder_OnCombat(pUnit)
-    pUnit:RegisterEvent("SneedShreeder_DistractingPain", math.random(20000,30000), 0)
-	pUnit:RegisterEvent("SneedShreeder_Fear", math.random(12000,18000), 0)
+    pUnit:RegisterEvent("SneedShreeder_DistractingPain", math.random(20000, 30000), 0)
+	pUnit:RegisterEvent("SneedShreeder_Fear", math.random(12000, 18000), 0)
 end
 
 function SneedShreeder_LeaveCombat(pUnit)

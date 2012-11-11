@@ -17,7 +17,19 @@
 
 local check = 0
 
-function Lai_ShadowBolt(pUnit, event)        -- got no name yet
+function Lai_OnEnterCombat(pUnit, event)    -- main mob function on entercomba
+    pUnit:RegisterEvent("Lai_ShadowBolt", 18000, 0)        --
+    pUnit:RegisterEvent("Lai_Nethervapor", 13000, 0)       --
+    pUnit:RegisterEvent("Lai_Fear", 9000, 0)               --  test values
+    pUnit:RegisterEvent("Lai_Nova", 23000, 0)              --
+    pUnit:RegisterEvent("Lai_EventSummon", 1500, 1)        --
+    if (check == 0) then
+		pUnit:RegisterEvent("Lai_EventPhase2Check", 1500,0)
+    else
+    end
+end
+
+function Lai_ShadowBolt(pUnit, event)
 local plr = pUnit:GetRandomPlayer(0)
     if plr then
 		pUnit:FullCastSpellOnTarget(29317, plr)
@@ -72,16 +84,10 @@ local health = pUnit:GetHealthPct()
     end
 end
 
-function Lai_OnEnterCombat(pUnit, event)    -- main mob function on entercomba
-    pUnit:RegisterEvent("Lai_ShadowBolt", 18000, 0)        --
-    pUnit:RegisterEvent("Lai_Nethervapor", 13000, 0)       --
-    pUnit:RegisterEvent("Lai_Fear", 9000, 0)               --  test values
-    pUnit:RegisterEvent("Lai_Nova", 23000, 0)              --
-    pUnit:RegisterEvent("Lai_EventSummon", 1500, 1)        --
-    if (check == 0) then
-		pUnit:RegisterEvent("Lai_EventPhase2Check", 1500,0)
-    else
-    end
+function LaiHlp_OnEnterCombat(pUnit, event)
+    pUnit:SendChatMessage(12,0,"Master!! I'll assist you!")
+    pUnit:RegisterEvent("LaiHlp_Infuse", 30000, 0)
+    pUnit:RegisterEvent("LaiHlp_Heal", 10000, 0)
 end
 
 function LaiHlp_Infuse(pUnit, event)
@@ -92,12 +98,6 @@ end
 function LaiHlp_Heal(pUnit, event)
 local heal = pUnit:GetRandomFriend()
     pUnit:FullCastSpellOnTarget(23954, heal)
-end
-
-function LaiHlp_OnEnterCombat(pUnit, event)
-    pUnit:SendChatMessage(12,0,"Master!! I'll assist you!")
-    pUnit:RegisterEvent("LaiHlp_Infuse", 30000, 0)
-    pUnit:RegisterEvent("LaiHlp_Heal", 10000, 0)
 end
 
 function Lai_OnWipe(pUnit, Event)

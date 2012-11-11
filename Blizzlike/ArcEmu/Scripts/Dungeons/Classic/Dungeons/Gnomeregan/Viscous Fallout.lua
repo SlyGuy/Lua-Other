@@ -15,28 +15,28 @@
    Version 1
 ========================================]]--
 
-function Radioactive_VF_OnCombat(pUnit, event, miscpUnit, misc)
-	pUnit:RegisterEvent("Corrosive_Ooze",10000,0)
-	pUnit:RegisterEvent("Radiation_Cloud",20000,0)
+function Radioactive_VF_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Corrosive_Ooze", 7000, 0)
+	pUnit:RegisterEvent("Radiation_Cloud", 14000, 0)
 end
 
-function Corrosive_Ooze(pUnit, event, miscpUnit, misc)
+function Corrosive_Ooze(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(9459, pUnit:GetClosestPlayer(1))
 end
 
-function Radiation_Cloud(pUnit, event, miscpUnit, misc)
+function Radiation_Cloud(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(10341, pUnit:GetClosestPlayer(1))
 end
 
-function Radioactive_VF_saw_blade(pUnit)
+function Radioactive_VF_saw_blade(pUnit, Event)
 	pUnit:FullCastSpell(35318)
 end
 
-function Radioactive_VF_OnLeaveCombat(pUnit)
+function Radioactive_VF_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function Radioactive_VF_OnDied(pUnit)
+function Radioactive_VF_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 

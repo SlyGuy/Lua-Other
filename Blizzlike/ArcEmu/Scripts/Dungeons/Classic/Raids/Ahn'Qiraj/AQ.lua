@@ -17,7 +17,7 @@
 ========================================]]--
 
 --Anubisath Defender by Project eXa
-function Defender_ExplodeTwo(pUnit, event) --Fix for broken spell.
+function Defender_ExplodeTwo(pUnit, event)
 	pUnit:CastSpell(25699)
 end
 
@@ -114,7 +114,7 @@ RegisterUnitEvent(15277, 4, "Defender_OnDied")
 
 --Anubisath Sentinel by Project eXa
 
-function Sentinel_OnCombat(Unit, event)
+function Sentinel_OnCombat(Unit, Event)
 local CoinFlip = math.random(1, 9)
 	if (CoinFlip == 1) then
 		Unit:CastSpell(28747)
@@ -147,7 +147,7 @@ local CoinFlip = math.random(1, 9)
 	Unit:RegisterEvent("DeathCheck",1000,0)
 end
 
-function DeathCheck(Unit, event)
+function DeathCheck(Unit, Event)
 	if (Mending == 2) then
 		Unit:CastSpell(28747)
 		Mending = 1
@@ -205,7 +205,7 @@ function DeathCheck(Unit, event)
 	end
 end
 
-function Sentinel_OnDeath(Unit, event)
+function Sentinel_OnDeath(Unit, Event)
 	if(Mending == 1) then
 		Mending = 2
 	elseif (KnockAway == 1) then
@@ -228,7 +228,7 @@ function Sentinel_OnDeath(Unit, event)
 	Unit:RemoveEvents()
 end
 
-function Sentinel_OnLeaveCombat(Unit)
+function Sentinel_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
@@ -237,67 +237,67 @@ RegisterUnitEvent(15264, 2, "Sentinel_OnLeaveCombat")
 RegisterUnitEvent(15264, 4, "Sentinel_OnDeath")
 
 --Anubisath Warder by Project eXa
-function Warder_Root(Unit, event)
+function Warder_Root(Unit, Event)
 local RootTimer = math.random(15000, 30000)
 	Unit:CastSpell(20699)
 	Unit:RegisterEvent("Warder_Root2", RootTimer, 1)
 end
 
-function Warder_Root2(Unit, event)
+function Warder_Root2(Unit, Event)
 local RootTimer = math.random(15000, 30000)
 	Unit:CastSpell(20699)
 	Unit:RegisterEvent("Warder_Root", RootTimer, 1)
 end
 
-function Warder_Fear(Unit, event)
+function Warder_Fear(Unit, Event)
 local FearTimer = math.random(15000, 30000)
 	Unit:CastSpell(30584)
 	Unit:RegisterEvent("Warder_Fear2", FearTimer, 1)
 end
 
-function Warder_Fear2(Unit, event)
+function Warder_Fear2(Unit, Event)
 local FearTimer = math.random(15000, 30000)
 	Unit:CastSpell(30584)
 	Unit:RegisterEvent("Warder_Fear", FearTimer, 1)
 end
 
-function Warder_Cloud(Unit, event)
+function Warder_Cloud(Unit, Event)
 local CloudTimer = math.random(12000, 25000)
 	Unit:FullCastSpell(26072)
 	Unit:RegisterEvent("Warder_Cloud2", CloudTimer, 1)
 end
 
-function Warder_Cloud2(Unit, event)
+function Warder_Cloud2(Unit, Event)
 local CloudTimer = math.random(12000, 25000)
 	Unit:FullCastSpell(26072)
 	Unit:RegisterEvent("Warder_Cloud", CloudTimer, 1)
 end
 
-function Warder_Silence(Unit, event)
+function Warder_Silence(Unit, Event)
 local SilenceTimer = math.random(12000, 25000)
 	Unit:FullCastSpell(12528)
 	Unit:RegisterEvent("Warder_Silence2", SilenceTimer, 1)
 end
 
-function Warder_Silence2(Unit, event)
+function Warder_Silence2(Unit, Event)
 local SilenceTimer = math.random(12000, 25000)
 	Unit:FullCastSpell(12528)
 	Unit:RegisterEvent("Warder_Silence", SilenceTimer, 1)
 end
 
-function Warder_Nova(Unit, event)
+function Warder_Nova(Unit, Event)
 local NovaTimer = math.random(25000, 45000)
 	Unit:CastSpell(18432)
 	Unit:RegisterEvent("Warder_Nova2", NovaTimer, 1)
 end
 
-function Warder_Nova2(Unit, event)
+function Warder_Nova2(Unit, Event)
 local NovaTimer = math.random(25000, 45000)
 	Unit:CastSpell(18432)
 	Unit:RegisterEvent("Warder_Nova", NovaTimer, 1)
 end
 
-function Warder_OnCombat(Unit, event)
+function Warder_OnCombat(Unit, Event)
 local RootOrFear = math.random(1, 2)
 local DustOrSilence = math.random(1, 2)
 	if (RootOrFear == 1) then
@@ -322,11 +322,11 @@ local DustOrSilence = math.random(1, 2)
 	Unit:RegisterEvent("Warder_Nova", NovaTimer, 1)
 end
 
-function Warder_OnLeaveCombat(Unit)
+function Warder_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function Warder_OnDied(Unit)
+function Warder_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
@@ -353,18 +353,18 @@ local b = pUnit:GetMaxHealth() /(10);
 	end
 end
 
-function Nullifier_OnCombat(Unit, event) --There isnt a :SetManaPct() function.
+function Nullifier_OnCombat(Unit, Event) --There isnt a :SetManaPct() function.
 	Unit:SetMana(0)
 	Unit:SetMaxMana(50000)
 	Unit:RegisterEvent("Nullifier_Siphon",2000,0)
 	Unit:RegisterEvent("Nullifier_ShockBlast",1000,0)
 end
 
-function Nullifier_OnLeaveCombat(Unit)
+function Nullifier_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function Nullifier_OnDied(Unit)
+function Nullifier_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
@@ -391,18 +391,18 @@ function Eradicator_ShockBlast(pUnit, event)
 	end
 end
 
-function Eradicator_OnCombat(Unit, event) --There isnt a :SetManaPct() function.
+function Eradicator_OnCombat(Unit, Event) --There isnt a :SetManaPct() function.
 	Unit:SetMana(0)
 	Unit:SetMaxMana(24000)
 	Unit:RegisterEvent("Eradicator_Siphon",2000,0)
 	Unit:RegisterEvent("Eradicator_ShockBlast",1000,0)
 end
 
-function Eradicator_OnLeaveCombat(Unit)
+function Eradicator_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function Eradicator_OnDied(Unit)
+function Eradicator_OnDied(Unit, Event)
 local ex = Unit:GetX()
 local ey = Unit:GetY()
 local ez = Unit:GetZ()
@@ -531,7 +531,7 @@ Emperor Vek'lor yells: Only flesh and bone. Mortals are such easy prey...
 Emperor Vek'lor yells: There will be pain...
 Emperor Vek'lor yells: You will not escape death!]]--
 
-function Brothers_Berserk(Unit)
+function Brothers_Berserk(Unit, Event)
 	Unit:CastSpell(45078)
 end
 
@@ -544,40 +544,32 @@ function Veknilash_Unbalancing(pUnit, event)
 end
 
 
-function Veknilash_OnCombat(Unit, event)
+function Veknilash_OnCombat(Unit, Event)
 local Veknilash = Unit
-	--Define Boss as a Unit, set max health to 2 mil and set first NewHp for shared hp calculations
 	Unit:SetMaxHealth(2000000)
 	NNewHp=2000000
-	--Start the registers
 	Veknilash:RegisterEvent("SharedHealth",1500,0)
 	Veknilash:RegisterEvent("Brothers_Berserk",900000,0)
 end
 
-function Veklor_OnCombat(Unit, event)
+function Veklor_OnCombat(Unit, Event)
 local Veklor = Unit
-	--Define Boss as a Unit, set max health to 2 mil and set first NewHp for shared hp calculations
 	Unit:SetMaxHealth(20000000)
 	LNewHp=2000000
-	--Start the registers
 	Veklor:RegisterEvent("SharedHealth",1000,0)
 	Veklor:RegisterEvent("Brothers_Berserk",900000,0)
 end
 
-function SharedHealth(Unit, event)
-	--Get each of their health
+function SharedHealth(Unit, Event)
 	NilashHealth = Veknilash:GetHealth()
 	LorHealth = Veklor:GetHealth()
 	Veklor:SendChatMessage(11,0,LorHealth)
-	--Figure out how much Dmg was taken since last check.
 	NDmgTaken = NNewHp - NilashHealth
 	LDmgTaken = LNewHp - LorHealth
 	Veklor:SendChatMessage(11,0,NDmgTaken)
-	--Share the Dmg between the brothers
 	NNewHp = NilashHealth - LDmgTaken
 	LNewHp = LorHealth - NDmgTaken
 	Veklinash:SendChatMessage(11,0,NNewHp)
-	--Set the health
 	Veknilash:SetHealth(NNewHp)
 	Veklor:SetHealth(LNewHp)
 end

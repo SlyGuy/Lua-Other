@@ -5,7 +5,6 @@
 --                     Copyright (c) zdroid9770                  --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Cleave-15284
 Conflagration-16805
@@ -15,15 +14,11 @@ Rage-16789
 ]]--
 
 function Drakkisath_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("Drakkisath_Spells", 100, 0)
-end
-
-function Drakkisath_Spells(pUnit, Event)
-	pUnit:RegisterEvent("Cleave", 1000, 0)
-	pUnit:RegisterEvent("Conflagration", 2000, 0)
-	pUnit:RegisterEvent("Flamestrike", 3000, 0)
-	pUnit:RegisterEvent("Pierce_Armor", 4000, 0)
-	pUnit:RegisterEvent("Rage", 5000, 0)
+	pUnit:RegisterEvent("Cleave", 7000, 0)
+	pUnit:RegisterEvent("Conflagration", 14000, 0)
+	pUnit:RegisterEvent("Flamestrike", 21000, 0)
+	pUnit:RegisterEvent("Pierce_Armor", 28000, 0)
+	pUnit:RegisterEvent("Rage", 35000, 0)
 end
 
 function Cleave(pUnit, Event)
@@ -51,7 +46,7 @@ function Drakkisath_OnLeaveCombat(pUnit, Event)
 end
 
 function Drakkisath_OnDeath(pUnit, Event)
-	pUnit:removeEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(10584, 1, "Drakkisath_OnCombat")

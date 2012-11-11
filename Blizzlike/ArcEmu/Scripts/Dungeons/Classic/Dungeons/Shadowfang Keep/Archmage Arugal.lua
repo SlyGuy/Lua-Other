@@ -15,16 +15,22 @@
    Original Code by DARKI
    Version 1
 ========================================]]--
--- % Complete: 100%
+-- % Complete: %
 -- Comments: Only ChatMessages
+--[[ Spells
+http://www.wowhead.com/?spell=7588
+http://www.wowhead.com/?spell=7803
+http://www.wowhead.com/?spell=7621
+
+
+--Transforms player into a worgen
+Unit:SendChatMessage(14, 0, "Release your rage!")
+]]--
 
 -- [[ Functions ]] --
 function Arugal_OnCombat(Unit, Event)
-local random = math.random(1,2)
-	if(random == 1) then
-		Unit:SendChatMessage("Who dares interfere with the Sons of Arugal?")
-	elseif(random == 2) then
-		Unit:SendChatMessage("You too, shall serve!")
+		--Unit:SendChatMessage(14, 0, "Who dares interfere with the Sons of Arugal?") --Send when Fenrus the Devourer dies
+		Unit:SendChatMessage(14, 0, "You too, shall serve!")
 	end
 end
 
@@ -33,7 +39,7 @@ function Arugal_OnLeaveCombat(Unit, Event)
 end
 
 function Arugal_OnKilledTarget(Unit, Event)
-    Unit:SendChatMessage("Another falls!")
+    Unit:SendChatMessage(14, 0, "Another falls!")
 end
 
 function Arugal_OnDied(Unit, Event)

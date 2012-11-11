@@ -28,22 +28,22 @@ function Scarlet_Tracking_Hound_Spawn(pUnit, Event)
 end
 
 function HoundmasterLoksey_Enrage(pUnit)
-    if pUnit:GetHealthPct() <= 25 then
+    if (pUnit:GetHealthPct() <= 25) then
 		pUnit:RemoveEvents()
 		pUnit:FullCastSpell(28747)
 	end
 end
 
 function HoundmasterLoksey_OnCombat(Unit)
-	Unit:SendChatMessage(12,0,"Release the hounds!")
+	Unit:SendChatMessage(12, 0, "Release the hounds!")
 	Unit:PlaySoundToSet(5841)
-	Unit:RegisterEvent("Hound_Cleave",math.random(15000,30000),0)
-	Unit:RegisterEvent("HoundmasterLoksey_Enrage",1000,0)
+	Unit:RegisterEvent("Hound_Cleave", math.random(15000, 30000), 0)
+	Unit:RegisterEvent("HoundmasterLoksey_Enrage", 1000, 0)
 	Unit:RegisterEvent("Hound_Cleave", 70000, 10)
 	Unit:RegisterEvent("Hound_Claw", 60000, 10)
 	Unit:RegisterEvent("Hound_Bash", 100000, 10)
 	Unit:RegisterEvent("Hound_Roar", 100000, 10)
-	Unit:RegisterEvent("Scarlet_Tracking_Hound_Spawn",1000,0)
+	Unit:RegisterEvent("Scarlet_Tracking_Hound_Spawn", 1000, 0)
 end
 
 function HoundmasterLoksey_LeaveCombat(pUnit)

@@ -2,7 +2,7 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
 ----Quotes
@@ -18,16 +18,16 @@ Avatar of Flame-15636
 Hand of Thaurissan-17492
 ]]--
 function EDT_OnCombat(pUnit, Event)
-	pUnit:SendChatMessage(12, 0, "I will crush you into little tiny pieces!")
-	pUnit:RegisterEvent("EDT_AvatarofFlame", 1000, 0) --Time could be wrong
-	pUnit:RegisterEvent("EDT_HandOfThaurissan", 5000, 0) --Time could be wrong
+	pUnit:SendChatMessage(14, 0, "I will crush you into little tiny pieces!")
+	pUnit:RegisterEvent("AvatarofFlame", 7000, 0)
+	pUnit:RegisterEvent("HandOfThaurissan", 14000, 0)
 end
 
-function EDT_AvatarofFlame(pUnit,Event)
+function AvatarofFlame(pUnit,Event)
 	pUnit:CastSpell(15636)
 end
 
-function EDT_HandOfThaurissan(pUnit, Event)
+function HandOfThaurissan(pUnit, Event)
 	pUnit:CastSpell(17492)
 end
 
@@ -39,24 +39,24 @@ What he say to start aggro: Come to aid the Throne!
 
 What he say after aggro (killing Shadowforge Senate): Thank you for clearing out those foolish senators. Now prepare to meet your doom at the hands of Ragnaros' most powerful servant.
 They were just getting in the way anyways.
+pUnit:SendChatMessage(14, 0, "They were just getting in the way anyways.")
 
 --]]
 
 function EDT_OnKilledTarget(pUnit, Event)
 local npcsay = math.random(1, 3)
 	if(npcsay == 1) then
-		pUnit:SendChatMessage(12, 0, "Hail to the King, baby!")
+		pUnit:SendChatMessage(14, 0, "Hail to the King, baby!")
 	end
 	if(npcsay == 2) then
-		pUnit:SendChatMessage(12, 0, "Is that the best you can do? Do you really expect that you could defeat someone as awe inspiring as me?")
+		pUnit:SendChatMessage(14, 0, "Is that the best you can do? Do you really expect that you could defeat someone as awe inspiring as me?")
 	end
 	if(npcsay == 3) then
-		pUnit:SendChatMessage(12, 0, "Your efforts are utterly pointless, fools! You will never be able to defeat me!")
+		pUnit:SendChatMessage(14, 0, "Your efforts are utterly pointless, fools! You will never be able to defeat me!")
 	end
 end
 
 function EDT_OnLeaveCombat(pUnit, Event)
-	pUnit:SendChatMessage(12, 0, "They were just getting in the way anyways.")
 	pUnit:RemoveEvents()
 end
 

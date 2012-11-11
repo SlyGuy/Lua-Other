@@ -24,22 +24,22 @@ local CLEAVE = 15584
 local FRENZY = 28371
 
 function Doctor_OnCombat(Unit, Event)
-	pUnit:SendChatMessage(11, 0, "The doctor is in!")
-	rend = 8000+math.random(1, 2000)
-	cleave = 9000+math.random(1, 1000)
-	frenzy = math.random(1, 8000)
+local rend = 8000+math.random(1, 2000)
+local cleave = 9000+math.random(1, 1000)
+local frenzy = math.random(1, 8000)
+	pUnit:SendChatMessage(12, 0, "The doctor is in!")
 	Unit:RegisterEvent("Doctor_Rend", rend, 0)
 	Unit:RegisterEvent("Doctor_Cleave", cleave, 0)
 	Unit:RegisterEvent("Doctor_Frenzy", frenzy, 0)
 end
 
 function Doctor_Rend(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(REND, RandomPlayer)
 end
 
 function Doctor_Cleave(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(CLEAVE, RandomPlayer)
 end
 

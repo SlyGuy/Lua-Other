@@ -25,9 +25,9 @@ local SILENCE = 15487
 local FEAR = 6215
 
 function Barov_OnCombat(Unit, Event)
-	cursetimer = 18000+math.random(1, 12000)
-	shocktimer = 9000+math.random(1, 3000)
-	silencetimer = 5000+math.random(1, 9000)
+local cursetimer = 18000+math.random(1, 12000)
+local shocktimer = 9000+math.random(1, 3000)
+local silencetimer = 5000+math.random(1, 9000)
 	Unit:RegisterEvent("Barov_Curse", cursetimer, 0)
 	Unit:RegisterEvent("Barov_Shock", shocktimer, 0)
 	Unit:RegisterEvent("Barov_Silence", silencetimer, 0)
@@ -35,22 +35,22 @@ function Barov_OnCombat(Unit, Event)
 end 
 
 function Barov_Curse(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(CURSEOFAGONY, RandomPlayer)
 end
 
 function Barov_Shock(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(SHADOWSHOCK, RandomPlayer)
 end
 
 function Barov_Silence(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer(7) -- Random Not Maintank
+local RandomPlayer = Unit:GetRandomPlayer(7)
 	Unit:FullCastSpellOnTarget(SILENCE, RandomPlayer)
 end
 
 function Barov_Fear(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(FEAR, RandomPlayer)
 end
 
@@ -60,7 +60,7 @@ end
 
 function Barov_OnDied(Unit, Event)
 	Unit:RemoveEvents()
-	Unit:SpawnCreature(1853, 180.73, -9.43856, 75.507, 0, 0) -- Spawning Darkmaster Gandling
+	Unit:SpawnCreature(1853, 180.73, -9.43856, 75.507, 0, 0)
 end 
 
 RegisterUnitEvent(10502, 1, "Barov_OnCombat")

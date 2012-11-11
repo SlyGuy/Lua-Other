@@ -15,24 +15,24 @@
    Version 1
 ========================================]]--
 
-function Radioactive_mg_OnCombat(pUnit, event, miscpUnit, misc)
-	pUnit:RegisterEvent("Dazed",1000,0)
-	pUnit:RegisterEvent("Electrified_Net",15000,0)
+function Radioactive_mg_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Dazed", 7000, 0)
+	pUnit:RegisterEvent("Electrified_Net", 14000, 0)
 end
 
-function Dazed(pUnit, event, miscpUnit, misc)
-	pUnit:CastSpellOnTarget(1604,pUnit:GetClosestPlayer(1))
+function Dazed(pUnit, Event)
+	pUnit:CastSpellOnTarget(1604, pUnit:GetClosestPlayer(1))
 end
 
-function Electrified_Net(pUnit, event, miscpUnit, misc)
+function Electrified_Net(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(11820, pUnit:GetClosestPlayer(1))
 end
 
-function Radioactive_mg_OnLeaveCombat(pUnit)
+function Radioactive_mg_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function Radioactive_mg_OnDied(pUnit)
+function Radioactive_mg_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 

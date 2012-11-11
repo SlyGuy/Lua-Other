@@ -2,21 +2,19 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Blessing of Blackfathom (the altar behind him)
 Net-6533
 ]]--
 
-
 function Gelihast_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("Gelihast_Net", 7000, 0)
+	pUnit:RegisterEvent("Net", 7000, 0)
 end
  
-function Gelihast_Net(pUnit, Event)
+function Net(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(6533, pUnit:GetRandomPlayer(0))
 end
  

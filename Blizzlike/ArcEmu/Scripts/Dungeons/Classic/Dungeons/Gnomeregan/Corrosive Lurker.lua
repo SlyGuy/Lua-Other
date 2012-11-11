@@ -2,34 +2,33 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Corrosive Ooze-9459
 ]]--
 
-function corrosive_lurker_OnCombat(pUnit, event, miscpUnit, misc)
-	pUnit:RegisterEvent("Dazed", 25000, 0)
-	pUnit:RegisterEvent("Corrosive_Ooze", 50000, 0)
+function corrosive_lurker_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Dazed", 7000, 0)
+	pUnit:RegisterEvent("Corrosive_Ooze", 14000, 0)
 end
 
-function Dazed(pUnit, event, miscpUnit, misc)
-	pUnit:FullCastSpellOnTarget(1604, pUnit:GetClosestPlayer()) -- Dazed
+function Dazed(pUnit, Event)
+	pUnit:FullCastSpellOnTarget(1604, pUnit:GetClosestPlayer())
 end
 
-function Corrosive_Ooze(pUnit, event, miscpUnit, misc)
-	pUnit:FullCastSpellOnTarget(9459, pUnit:GetClosestPlayer()) -- Corrosive Ooze
+function Corrosive_Ooze(pUnit, Event)
+	pUnit:FullCastSpellOnTarget(9459, pUnit:GetClosestPlayer())
 end
 
-function corrosive_lurker_OnLeaveCombat(pUnit)
+function corrosive_lurker_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function corrosive_lurker_OnDied(pUnit)
-	pUnit:CastSpell(10341)-- Radiation cloud
-	pUnit:CastSpell(11638)-- Radiation Poisoning
+function corrosive_lurker_OnDied(pUnit, Event)
+	pUnit:CastSpell(10341)
+	pUnit:CastSpell(11638)
 	pUnit:RemoveEvents()
 end
 

@@ -35,7 +35,7 @@ function Venoxis_HolyFire(pUnit, event)
 end
 
 function Venoxis_Serpent(pUnit, event)
-     local serpenttarget=pUnit:GetRandomPlayer(0);
+     local serpenttarget = pUnit:GetRandomPlayer(0);
      pUnit:SpawnCreature(14884, serpenttarget:GetX(), serpenttarget:GetY(), serpenttarget:GetZ(), serpenttarget:GetO(), 14, 0)
 end
 
@@ -58,7 +58,7 @@ function Venoxis_VenomSpit(pUnit, event)
 end
 
 function Venoxis_Phasetwo(pUnit, event)
-     if pUnit:GetHealthPct() < 51 then
+     if (pUnit:GetHealthPct() < 51) then
 	     pUnit:RemoveEvents()
 	     pUnit:SendChatMessage(14, 0, "Let the coils of hate unfurl!")
 	     pUnit:SetModel(9134)
@@ -80,7 +80,7 @@ end
 RegisterUnitEvent(14507, 1, "Venoxis_OnEnterCombat")
 
 function Venoxis_OnWipe(pUnit, event)
-     if pUnit:IsAlive() == true then
+     if (pUnit:IsAlive() == true) then
 	     pUnit:SetModel(15217)
 	     pUnit:RemoveEvents()
      else

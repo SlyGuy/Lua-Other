@@ -22,19 +22,19 @@ local SHADOWBOLTVOLLEY = 20741
 local BONESHIELD = 27688
 
 function Kormok_OnCombat(Unit, Event)
-	shadow = 10000+math.random(1, 5000)
-	bone = 2000+math.random(1, 43000)
+local shadow = 10000+math.random(1, 5000)
+local bone = 2000+math.random(1, 43000)
 	Unit:RegisterEvent("Kormok_Shadow", shadow, 0)
 	Unit:RegisterEvent("Kormok_Bone", bone, 0)
 end
 
 function Kormok_Shadow(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(SHADOWBOLTVOLLEY, RandomPlayer)
 end
 
 function Kormok_Bone(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(BONESHIELD, RandomPlayer)
 end
 

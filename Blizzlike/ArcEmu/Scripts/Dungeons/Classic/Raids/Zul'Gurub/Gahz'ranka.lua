@@ -15,35 +15,28 @@
    Version 1
 ========================================]]--
 
-function Gahz_Frostbreath(pUnit, event)
-     print "Gahz_Frostbreath initiated..."
-     pUnit:FullCastSpell(16099)
-     pUnit:RegisterEvent("Gahz_Frostbreath", math.random(22000, 26000), 1)
+function Gahz_OnEnterCombat(pUnit, Event)
+    pUnit:RegisterEvent("Gahz_Frostbreath", math.random(16000, 20000), 1)
+    pUnit:RegisterEvent("Gahz_Slam", 25000, 0)
 end
 
-function Gahz_Slam(pUnit, event)
-     print "Gahz_Slam initiated..."
-     pUnit:FullCastSpell(24326)
+function Gahz_Frostbreath(pUnit, Event)
+    pUnit:FullCastSpell(16099)
+    pUnit:RegisterEvent("Gahz_Frostbreath", math.random(22000, 26000), 1)
 end
 
-function Gahz_OnEnterCombat(pUnit, event)
-     print "Gahz_Aggro initiated..."
-     pUnit:RegisterEvent("Gahz_Frostbreath", math.random(16000, 20000), 1)
-     pUnit:RegisterEvent("Gahz_Slam", 25000, 0)
+function Gahz_Slam(pUnit, Event)
+    pUnit:FullCastSpell(24326)
+end
+
+function Gahz_OnWipe(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+function Gahz_OnDie(pUnit, Event)
+    pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(15114, 1, "Gahz_OnEnterCombat")
-
-function Gahz_OnWipe(pUnit, event)
-     print "Gahz_Wipe initiated..."
-     pUnit:RemoveEvents()
-end
-
 RegisterUnitEvent(15114, 2, "Gahz_OnWipe")
-
-function Gahz_OnDie(pUnit, event)
-     print "Gahz_Dies initiated..."
-     pUnit:RemoveEvents()
-end
-
 RegisterUnitEvent(15114, 4, "Gahz_OnDie")

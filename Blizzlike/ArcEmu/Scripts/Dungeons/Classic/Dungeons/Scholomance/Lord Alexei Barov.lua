@@ -23,19 +23,19 @@ local IMMOLATE = 20294
 local VEILOFSHADOW = 17820
 
 function Lord_OnCombat(Unit, Event)
-	immolate = 7000+math.random(1, 5000)
-	shadow = 15000+math.random(1, 5000)
+local immolate = 7000+math.random(1, 5000)
+local shadow = 15000+math.random(1, 5000)
 	Unit:RegisterEvent("Lord_Immolate", immolate, 0)
 	Unit:RegisterEvent("Lord_Shadow", shadow, 0)
 end
 
 function Lord_Immolate(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(IMMOLATE, RandomPlayer)
 end
 
 function Lord_Shadow(Unit, Event)
-	RandomPlayer = Unit:GetRandomPlayer()
+local RandomPlayer = Unit:GetRandomPlayer()
 	Unit:FullCastSpellOnTarget(VEILOFSHADOW, RandomPlayer)
 end
 

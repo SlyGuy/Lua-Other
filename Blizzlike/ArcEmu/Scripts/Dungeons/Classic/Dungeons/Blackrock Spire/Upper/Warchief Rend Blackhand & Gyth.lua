@@ -11,16 +11,15 @@ local rend_mounts = 16167
 local summon_rend = 16328
 local nefarius = 10162
 local door = 175185
-local trigger = 16082 -- random trigger I found, since Lua doesn't support serverhooks(YET), this will have to do.
+local trigger = 16082
 local whelp = 10442
 local dragonspawn = 10447
 local blackhand_veteran =  10681
----------------------------------------------------------------------
 
-function Trigger_OnSpawn(Unit,event)
+function Trigger_OnSpawn(Unit, Event)
 	local gythe = Unit:GetCreatureNearestCoords(177.466003, -419.792999, 110.472000, gyth)
 	if (gythe ~= nil) then
-		gythe:RemoveFromWorld() -- noticed in NCDB, gyth is already spawned.
+		gythe:RemoveFromWorld()
 	end
 	Unit:SetCombatCapable(1)
 	Unit:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE)
@@ -29,12 +28,12 @@ function Trigger_OnSpawn(Unit,event)
 	Unit:RegisterAIUpdateEvent(5000)
 end
 
-function Trigger_AIUpdate(Unit,event)
+function Trigger_AIUpdate(Unit, Event)
 	if (Unit:HasInRangePlayers() ~= false) then
 		local tbl = Unit:GetInRangePlayers()
 		local o = Unit:GetO()
 		for k,v in pairs(tbl) do
-			if (o >= v:GetO()) then -- the current O for trigger is set to be the highest in that level. If a player is lower, it means he has landed on the platform
+			if (o >= v:GetO()) then
 				local rend = Unit:SpawnCreature(rend_blackhand, 156.610214, -444.813477, 121.976494, Unit:GetO(), 14, 0)
 				if (rend ~= nil) then
 					rend:SetCombatCapable(1)
@@ -46,7 +45,7 @@ function Trigger_AIUpdate(Unit,event)
 					nef:SetCombatCapable(1)
 					nef:Root()
 					nef:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_2)
-					nef:AttackReaction(v, 1, 0); -- we pass the event holder to nefarius.
+					nef:AttackReaction(v, 1, 0);
 				end
 			break
 			end
@@ -60,16 +59,13 @@ end
 RegisterUnitEvent(trigger, 18, "Trigger_OnSpawn")
 RegisterUnitEvent(trigger, 21, "Trigger_AIUpdate")
 
---=========================================================================================
-
-function Rend_Blackhand_EventStart(Unit,event)
+function Rend_Blackhand_EventStart(Unit, Event)
 	Unit:SendChatMessage(14, 0, "Let not even a drop of their blood remain upon the arena floor, my children. Feast on their souls!")
 	Unit:RegisterAIUpdateEvent(1000)
-	--We begin the waves. 7 total.
 	setvars(Unit, {wavecount = 0, spawns = {}})
 end
 
-function args_spawns(Unit,event)
+function args_spawns(Unit, Event)
 	local args = getvars(Unit)
 	local no = table.getn(args.spawns)
 	if (no ~= nil and no == 0 and args.wavecount <= 7) then
@@ -100,7 +96,7 @@ function args_spawns(Unit,event)
 		if (gate ~= nil) then
 			gate:SetUInt32Value(GAMEOBJECT_STATE, 0)
 		end
-		RegisterUnitEvent("Rend_GateShut", 3000, 1)-- shut door after few secs
+		RegisterUnitEvent("Rend_GateShut", 3000, 1)
 	else
 		Unit:SendChatMessage(14, 0, "THIS CANNOT BE!!! Rend, deal with these insects.")
 		Unit:SpawnCreature(gyth, 214.0556244, -396.057404, 111.105141, Unit:GetO(), 14, 0)
@@ -112,11 +108,11 @@ function args_spawns(Unit,event)
 		if (rend ~= nil) then
 			rend:RemoveFromWorld()
 		end
-		RegisterUnitEvent("Rend_GateShut", 5000, 1)-- shut door after few secs
+		RegisterUnitEvent("Rend_GateShut", 5000, 1)
 	end
 end
 
-function Rend_GateShut(Unit,event)
+function Rend_GateShut(Unit, Event)
 	local gate = Unit:GetGameObjectNearestCoords(193.743774, -416.726807, 110.892677, door)
 	if (gate ~= nil) then
 		gate:SetUInt32Value(GAMEOBJECT_STATE, 1)
@@ -125,8 +121,6 @@ end
 
 RegisterUnitEvent(nefarius, 1, "Rend_Blackhand_EventStart")
 RegisterUnitEvent(nefarius, 21, "args_spawns")
-
---==================================================================
 
 function TrashWaveWp(Unit,event)
 	if (Unit:GetEntry() == dragonspawn or blackhand_veteran) then
@@ -139,7 +133,7 @@ end
 
 function Rend_TrashDied(Unit,event)
 	local args = getvars(Unit)
-	for k,v in pairs(args.spawns) do -- This should remove the particular unit that died.
+	for k,v in pairs(args.spawns) do
 		if (v == Unit) then
 			table.remove(args.spawns, k)
 		end
@@ -153,14 +147,12 @@ RegisterUnitEvent(dragonspawn, 18, "TrashWaveWp")
 RegisterUnitEvent(blackhand_veteran, 4, "Rend_TrashDied")
 RegisterUnitEvent(blackhand_veteran, 18, "TrashWaveWp")
 
---===================================================================
-
 function Gyth_Engaged(Unit,event)
 	local nef = Unit:GetCreatureNearestCoords(163.167999, -444.165009, 122.058998, nefarius)
 	if (nef ~= nil) then
 		nef:SendChatMessage(14, 0, "The Warchief shall make quick work of you, mortals. Prepare yourselves!")
 	end
-	Unit:CastSpell(16167)-- To transform itself to look like hes mounted.
+	Unit:CastSpell(16167)
 	Unit:CreateWaypoint(203.378326, -417.762177, 110.907867, 0, 768, 0)
 	Unit:ModifyFlySpeed(12)
 end
@@ -177,8 +169,8 @@ end
 
 function Gyth_AIUpdate(Unit,event)
 	if (Unit:GetHealthPct() <= 20) then
-		Unit:RemoveAura(16167)--Remove mounted aura
-		Unit:FullCastSpell(16328)-- Summon Rend
+		Unit:RemoveAura(16167)
+		Unit:FullCastSpell(16328)
 	end
 end
 
@@ -186,5 +178,3 @@ RegisterUnitEvent(gyth, 18, "Gyth_Engaged")
 RegisterUnitEvent(gyth, 19, "Gyth_OnReachWp")
 RegisterUnitEvent(gyth, 1, "Gyth_OnCombat")
 RegisterUnitEvent(gyth, 21, "Gyth_AIUpdate")
-
---===============================================================================]]	

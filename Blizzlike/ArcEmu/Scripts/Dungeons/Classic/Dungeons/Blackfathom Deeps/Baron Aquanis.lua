@@ -2,25 +2,24 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Frost Nova-15531
 Frostbolt-15043
 ]]--
 
 function BaronAquanis_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("BaronAquanis_FrostNova", 7000, 0)
-	pUnit:RegisterEvent("BaronAquanis_Frostbolt", 14000, 0)
+	pUnit:RegisterEvent("FrostNova", 7000, 0)
+	pUnit:RegisterEvent("Frostbolt", 14000, 0)
 end
  
-function BaronAquanis_FrostNova(pUnit, Event)
+function FrostNova(pUnit, Event)
 	pUnit:CastSpell(15531)
 end
  
-function BaronAquanis_Frostbolt(pUnit, Event)
+function Frostbolt(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(15043, pUnit:GetRandomPlayer(0))
 end
  

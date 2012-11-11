@@ -17,12 +17,11 @@ redistributing and/or using this software. Thank you.
 -- SPIDER DISPLAY 15226
 -- NORMAL DISPLAY 15220
 
-
-
 function HPMarli_OnCombat(Unit,event)
 	Unit:RegisterEvent("HPMarli_SummonSpiders", 200, 4)
 	Unit:RegisterEvent("HPMarli_Normal",1000, 1)
 end
+
 function HPMarli_Normal(Unit,event)
 	Unit:SetModel(15220)
 	Unit:RemoveEvents()
@@ -31,6 +30,7 @@ function HPMarli_Normal(Unit,event)
 	Unit:RegisterEvent("HPMarli_DrainLife", 24000, 0)
 	Unit:RegisterEvent("HPMarli_SpiderForm", 60000, 1)
 end
+
 function HPMarli_PoisonVolley(Unit,event)
 	Unit:FullCastSpell(24099)
 end
@@ -40,7 +40,7 @@ function HPMarli_DrainLife(Unit,event)
 	if plr ~= nil then
 		Unit:StopMovement(7000)
 		Unit:FullCastSpellOnTarget(24300, plr)
-        end
+    end
 end
 
 function HPMarli_SummonSpiders(Unit,event)
@@ -48,19 +48,21 @@ function HPMarli_SummonSpiders(Unit,event)
 end
 
 function HPMarli_OnWipe(Unit,event)
-	if Unit:IsAlive() == true then
+	if (Unit:IsAlive() == true) then
         Unit:RemoveEvents()
         Unit:SetModel(15220)
-        else
+    else
         Unit:RemoveEvents()
-        end
+    end
 end
+
 function HPMarli_OnDied(Unit,event)
 	Unit:RemoveEvents()
 end
+
 function HPMarli_SpiderForm(Unit,event)
 	Unit:RemoveEvents()
-	Unit:SetModel(15226)-- Change display to Spiderform.
+	Unit:SetModel(15226)
 	Unit:RegisterEvent("HPMarli_AOESilence", 100, 1)
 	Unit:RegisterEvent("HPMarli_Web",18000, 0)
 	Unit:RegisterEvent("HPMarli_SummonSpiders",27000, 0)
@@ -69,26 +71,26 @@ function HPMarli_SpiderForm(Unit,event)
 end
 
 function HPMarli_MovingCheck(Unit, event)
-     Unit:WipeThreatList()
-     Unit:SetCombatTargetingCapable(0)
-     Unit:ModifyRunSpeed(8)
-     Unit:ChangeTarget(Unit:GetClosestPlayer())
+    Unit:WipeThreatList()
+    Unit:SetCombatTargetingCapable(0)
+    Unit:ModifyRunSpeed(8)
+    Unit:ChangeTarget(Unit:GetClosestPlayer())
 end
 
 function HPMarli_ChargeCheck(Unit,event)
-	local tbl=Unit:GetInRangePlayers()
-        for k,v in pairs(tbl) do
-                if Unit:GetDistance(v) >= 8 then
-                players={}
-                table.insert(players, v)
-                local player=math.random(1, table.getn(players))
-		        Unit:FullCastSpellOnTarget(22911, players[player])-- Charge if main tank is too far away.
-                Unit:SetCombatTargetingCapable(1)
-                Unit:ModifyRunSpeed(200)
-                Unit:MoveTo(v:GetX(), v:GetY(), v:GetZ(), v:GetO())
-                Unit:RegisterEvent("HPMarli_MovingCheck", 500, 1)
-                end
+local tbl=Unit:GetInRangePlayers()
+    for k,v in pairs(tbl) do
+        if Unit:GetDistance(v) >= 8 then
+            players={}
+            table.insert(players, v)
+            local player=math.random(1, table.getn(players))
+		    Unit:FullCastSpellOnTarget(22911, players[player])-- Charge if main tank is too far away.
+            Unit:SetCombatTargetingCapable(1)
+            Unit:ModifyRunSpeed(200)
+            Unit:MoveTo(v:GetX(), v:GetY(), v:GetZ(), v:GetO())
+            Unit:RegisterEvent("HPMarli_MovingCheck", 500, 1)
         end
+    end
 end
 
 
@@ -100,6 +102,7 @@ function HPMarli_Web(Unit,event)
 		end
 	end
 end
+
 function HPMarli_AOESilence(Unit,event)
 	local tbl = Unit:GetInRangePlayers()
 	for k,v in pairs(tbl) do
@@ -107,22 +110,21 @@ function HPMarli_AOESilence(Unit,event)
 	end
 end
 
-RegisterUnitEvent(14510,1,"HPMarli_OnCombat")
-RegisterUnitEvent(14510,2,"HPMarli_OnWipe")
-RegisterUnitEvent(14510,4,"HPMarli_OnDied")
+RegisterUnitEvent(14510, 1, "HPMarli_OnCombat")
+RegisterUnitEvent(14510, 2, "HPMarli_OnWipe")
+RegisterUnitEvent(14510, 4, "HPMarli_OnDied")
 
 --[[
 	SPIDERs AI
 	]]
 
-
 function Spider_OnWipe(Unit, event)
-     Unit:RemoveEvents()
-     Unit:Despawn(100, 0)
+    Unit:RemoveEvents()
+    Unit:Despawn(100, 0)
 end
 
 function HPMarli_SpiderGrow(Unit,event)
-        Unit:DisableRespawn(1)
+    Unit:DisableRespawn(1)
 	local tbl = Unit:GetInRangeFriends()
 	for k,v in pairs(tbl) do
 		if v:GetEntry() == 14510 then

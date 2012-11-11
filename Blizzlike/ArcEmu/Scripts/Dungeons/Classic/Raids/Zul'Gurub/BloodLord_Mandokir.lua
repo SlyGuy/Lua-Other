@@ -15,13 +15,13 @@ redistributing and/or using this software. Thank you.
 --.worldport 309 -12211.674805 -1960.163208 132.326385
 math.randomseed(os.time())
 
-function VileBranch_SpeakerOnDeath(Unit,event)
-	local BLord = Unit:GetCreatureNearestCoords(-12167.799805,-1927.250000,153.830002,11382)
+function VileBranch_SpeakerOnDeath(Unit, Event)
+	local BLord = Unit:GetCreatureNearestCoords(-12167.799805, -1927.250000, 153.830002, 11382)
 	BLord:SetCombatTargetingCapable(1)
 	BLord:SetCombatCapable(1)
 	BLord:ModifyRunSpeed(12)
 	BLord:CreateCustomWaypointMap()
-	BLord:CreateWaypoint(Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO(),0,256,0)
+	BLord:CreateWaypoint(Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), 0, 256, 0)
 	BLord:MoveToWaypoint(1)
 end
 
@@ -36,21 +36,21 @@ function BloodLord_OnReachWp(Unit,event,pMisc)
 	Unit:SetCombatCapable(0)
 	Unit:DestroyCustomWaypointMap()
 end
-function BloodLord_OnCombat(Unit,event)
+function BloodLord_OnCombat(Unit, Event)
 	setvars(Unit,{plr = nil,deadplayers = {},chainedspirits={}})
 	local args = getvars(Unit)
-	Unit:SpawnCreature(15117,-12187.145508,-1962.733521,130.386520,0,35,0)
-	Unit:SpawnCreature(15117,-12183.099609,-1968.462646,131.284744,0,35,0)
-	Unit:SpawnCreature(15117,-12187.258789,-1974.669434,132.690292,0,35,0)
-	Unit:SpawnCreature(15117,-12225.333008,-1975.840942,132.770447,0,35,0)
-	Unit:SpawnCreature(15117,-12234.751953,-1938.407837,130.343292,0,35,0)
-	Unit:SpawnCreature(15117,-12238.809570,-1929.147339,130.378067,0,35,0)
-	Unit:SpawnCreature(15117,-12218.891602,-1930.268677,131.753494,0,35,0)
-	Unit:SpawnCreature(14988,Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO(),Unit:GetUInt32Value(UNIT_FIELD_FACTIONTEMPLATE),0)
+	Unit:SpawnCreature(15117, -12187.145508, -1962.733521, 130.386520, 0, 35, 0)
+	Unit:SpawnCreature(15117, -12183.099609, -1968.462646, 131.284744, 0, 35, 0)
+	Unit:SpawnCreature(15117, -12187.258789, -1974.669434, 132.690292, 0, 35, 0)
+	Unit:SpawnCreature(15117, -12225.333008, -1975.840942, 132.770447, 0, 35, 0)
+	Unit:SpawnCreature(15117, -12234.751953, -1938.407837, 130.343292, 0, 35, 0)
+	Unit:SpawnCreature(15117, -12238.809570, -1929.147339, 130.378067, 0, 35, 0)
+	Unit:SpawnCreature(15117, -12218.891602, -1930.268677, 131.753494, 0, 35, 0)
+	Unit:SpawnCreature(14988, Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), Unit:GetUInt32Value(UNIT_FIELD_FACTIONTEMPLATE), 0)
 	local tbl = Unit:GetInRangeFriends()
 	for k,v in pairs(tbl) do
 		if v:GetEntry() == 15117 then
-			table.insert(args.chainedspirits,v)
+			table.insert(args.chainedspirits, v)
 			print(v)
 		end
 	end
@@ -60,27 +60,27 @@ function BloodLord_OnCombat(Unit,event)
 	Unit:RegisterEvent("BloodLord_Charge", 20000, 1)
 	Unit:RegisterEvent("BloodLord_Watch", 30000, 1)
 end
-function BloodLord_OnWipe(Unit,event)
+function BloodLord_OnWipe(Unit, Event)
 	Unit:RemoveEvents()
 	Unit:ReturnToSpawnPoint()
 	local args = getvars(Unit)
 	for k,v in pairs(args.chainedspirits) do
-		v:RemoveFromWorld() -- Despawn spirits after a wipe
+		v:RemoveFromWorld()
 	end
 	local tbl = Unit:GetInRangeFriends()
 	for k,v in pairs(tbl) do
 		if v:GetEntry() ==15117 then
-			v:RemoveFromWorld() -- Just incase  during a wipe there are spirits that have been removed from table coz they are going to rez.
+			v:RemoveFromWorld()
 		end
 	end
 		
 end
-function BloordLord_OnKilledTarget(Unit,event,pMisc)
+function BloordLord_OnKilledTarget(Unit, Event, pMisc)
 	local args = getvars(Unit)
 	table.insert(args.deadplayers,pMisc)
 	Unit:RegisterEvent("BloodLord_Ding",500, 1)
 end
-function BloodLord_OnDeath(Unit,event)
+function BloodLord_OnDeath(Unit, Event)
 	Unit:RemoveEvents()
 	local args = getvars(Unit)
 	for k,v in pairs (args.chainedspirits) do
@@ -91,7 +91,7 @@ end
 	HOOKED EVENTS END
 	]]
 	
-function BloodLord_Ding(Unit,event)
+function BloodLord_Ding(Unit, Event)
 	local args = getvars(Unit)
 	if table.getn(args.deadplayers) == 3 then
 		Unit:FullCastSpell(24312)
@@ -100,42 +100,42 @@ function BloodLord_Ding(Unit,event)
 		end
 	end
 end
-function BloodLord_MTCheck(Unit,event)
+function BloodLord_MTCheck(Unit, Event)
 	local tank = Unit:GetMainTank()
-	if Unit:GetDistance(tank) >= 100 then
+	if (Unit:GetDistance(tank) >= 100) then
 		tank:Teleport(Unit:GetMapId(),Unit:GetX()-10,Unit:GetY()-1,Unit:GetZ())
 	end
 end
 
-function BloodLord_Whirlwind(Unit,event)
-	print "whirlwind"
+function BloodLord_Whirlwind(Unit, Event)
 	local plr = Unit:GetMainTank()
-	if Unit:GetDistance(plr) <= 50 then
+	if (Unit:GetDistance(plr) <= 50) then
 		Unit:FullCastSpell(13736)
 		Unit:RegisterEvent("BloodLord_Whirlwindtwo",2000, 1)
 	end
 end
-function BloodLord_Whirlwindtwo(Unit,event)
-	print "whirlwind 2"
+
+function BloodLord_Whirlwindtwo(Unit, Event)
 	Unit:FullCastSpell(15589)
 	Unit:RegisterEvent("BloodLord_Whirlwind", 10000,1)
 end
-function BloodLord_Fear(Unit,event)
-	print "Fear"
+
+function BloodLord_Fear(Unit, Event)
 	local closemelees =  {}
 	local tbl = Unit:GetInRangePlayers()
 	for k,v in pairs(tbl) do
-		if Unit:GetDistance(v) <= 50 then
-			table.insert(closemelees,v)
+		if (Unit:GetDistance(v) <= 50) then
+			table.insert(closemelees, v)
 		end
-		if table.getn(closemelees) >= 1 then
+		if (table.getn(closemelees) >= 1) then
 			Unit:FullCastSpell(38946)
 		end
 	end
 end
-function BloodLord_Cleave(Unit,event)
+
+function BloodLord_Cleave(Unit, Event)
 	local plr = Unit:GetMainTank()
-	if Unit:GetDistance(plr) <= 50 then
+	if (Unit:GetDistance(plr) <= 50) then
 		Unit:FullCastSpellOnTarget(16856,plr)
 		Unit:RegisterEvent("BloodLord_Cleave",15000, 1)
 	else
@@ -143,14 +143,14 @@ function BloodLord_Cleave(Unit,event)
 	end
 end
 
-function BloodLord_Charge(Unit,event)
+function BloodLord_Charge(Unit, Event)
 	local plr = Unit:GetRandomPlayer(0)
-	if Unit:GetDistance(plr) <= 100 then
+	if (Unit:GetDistance(plr) <= 100) then
 		local tank = Unit:GetMainTank()
-		if plr ~= nil and tank ~= nil and plr ~= tank then
-			if Unit:GetDistance(plr) <= 100 then
+		if ((plr ~= nil) and (tank ~= nil) and (plr ~= tank)) then
+			if (Unit:GetDistance(plr) <= 100) then
 				Unit:ModThreat(tank, 1)
-				Unit:FullCastSpellOnTarget(24408,plr)
+				Unit:FullCastSpellOnTarget(24408, plr)
 				Unit:SetNextTarget(plr)
 				Unit:RegisterEvent("BloodLord_Charge", 20000, 1)
 			end
@@ -159,7 +159,8 @@ function BloodLord_Charge(Unit,event)
 		plr:Teleport(Unit:GetMapId(),Unit:GetX(),Unit:GetZ())
 	end
 end
-function BloodLord_Watch(Unit,event)
+
+function BloodLord_Watch(Unit, Event)
 	local args = getvars(Unit)
 	Unit:RemoveEvents()
 	local pr = Unit:GetRandomPlayer(0)
@@ -169,9 +170,9 @@ function BloodLord_Watch(Unit,event)
 	Unit:SendChatMessage(16,0,Unit:GetName().." is watching "..pr:GetName().." very closely.")
 	Unit:RegisterEvent("BloodLord_Watch2",8000, 1)
 end
-function BloodLord_Watch2(Unit,event)
+function BloodLord_Watch2(Unit, Event)
 	local args = getvars(Unit)
-	if args.plr:IsPlayerAttacking() == true or args.plr:IsPlayerMoving() == true or args.plr:GetCurrentSpellId() ~= nil then
+	if (args.plr:IsPlayerAttacking() == true or args.plr:IsPlayerMoving() == true or args.plr:GetCurrentSpellId() ~= nil) then
 		Unit:FullCastSpellOnTarget(25821,args.plr)
 		Unit:SetNextTarget(args.plr)
 		setvars(Unit,{plr = nil})
@@ -192,22 +193,22 @@ RegisterUnitEvent(11382,19,"BloodLord_OnReachWp")
 	Ohgans AI
 	]]
 
-function Ohgan_OnCombat(Unit)
+function Ohgan_OnCombat(Unit, Event)
 	Unit:RegisterEvent("Ohgan_Spells",10000, 0)
 end
-function Ohgan_Spells(Unit)
+function Ohgan_Spells(Unit, Event)
 	local rand = math.random(1,2)
 	local tank = Unit:GetMainTank()
-	if rand == 1 and tank ~= nil then
+	if ((rand == 1) and (tank ~= nil)) then
 		Unit:FullCastSpellOnTarget(24317,tank)
-	elseif rand == 2  then 
+	elseif (rand == 2) then 
 		Unit:FullCastSpell(3391)
 	end
 end
-function Ohgan_OnDied(Unit)
+function Ohgan_OnDied(Unit, Event)
 	local tbl = Unit:GetInRangeFriends()
 	for k, v in pairs(tbl) do
-		if v:GetEntry() == 11382 then
+		if (v:GetEntry() == 11382) then
 			v:FullCastSpell(24318)
 		end
 		break
@@ -221,14 +222,14 @@ RegisterUnitEvent(14988, 4,"Ohgan_OnDied")
 	Spirits AI
 	]]
 
-function ChainedSpirit_OnSpawn(Unit,event)
+function ChainedSpirit_OnSpawn(Unit, Event)
 	Unit:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_2)
 	Unit:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE)
 	Unit:SetCombatMeleeCapable(1)
 	Unit:Root()
 	Unit:RegisterEvent("ChainedSpirit_PlrCheck",5000, 0)
 end
-function ChainedSpirit_PlrCheck(Unit,event)
+function ChainedSpirit_PlrCheck(Unit, Event)
 	local args = getvars(Unit)
 	for k,v in pairs(args.deadplayers) do
 		print(k,v)
@@ -248,7 +249,7 @@ function ChainedSpirit_PlrCheck(Unit,event)
 	end
 end
 
-function ChainedSpirits_OnReachWp(Unit,event,pMisc,waypoint)
+function ChainedSpirits_OnReachWp(Unit, Event, pMisc, waypoint)
 		Unit:DestroyCustomWaypointMap()
 		local plr = Unit:GetNextTarget()
 		Unit:PlaySpellVisual(plr,10880)

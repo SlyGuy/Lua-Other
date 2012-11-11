@@ -5,8 +5,7 @@
 --                     Copyright© zdroid9770					 --
 -------------------------------------------------------------------
 
-function KokkenTor_EnterCombat (Unit, event)
-    Unit:SendChatMessage(14, 0, "Deviants...")
+function KokkenTor_OnCombat (Unit, event)
     Unit:RegisterEvent("KokkenTor_Fallout", 1000, 1)
     Unit:RegisterEvent("KokkenTor_Doomthrust", 24000, 0) 
     Unit:RegisterEvent("KokkenTor_Armorslice", 20000, 0) 
@@ -27,8 +26,7 @@ end
 
 function KokkenTor_Phase2 (Unit, event)
     if (Unit:GetHealthPct() < 72) then
-        Unit:RemoveEvents()        
-        Unit:SendChatMessage(12, 0, "Bow before my Greatness!Proclaim yourselves among my faithful...and I may spare you")
+        Unit:RemoveEvents()
         Unit:RegisterEvent("KokkenTor_Demoncall", 10000, 0)
         Unit:RegisterEvent("KokkenTor_Lethal", 15000, 0)
         Unit:RegisterEvent("KokkenTor_Valiant", 17000, 0)
@@ -71,22 +69,20 @@ function KokkenTor_Terror (Unit, event)
 end
 
 function KokkenTor_Phase4 (Unit, event)
-    if Unit:GetHealthPct() < 20 then
+    if (Unit:GetHealthPct() < 20) then
         Unit:RemoveEvents()
-        Unit:SendChatMessage(12, 0, "So...You have chosen...Death!")
         Unit:CastSpell(39046)
     end
 end
 
-function KokkenTor_LeaveCombat (Unit, event)
+function KokkenTor_OnLeaveCombat (Unit, event)
     Unit:RemoveEvents()
 end
 
-function KokkenTor_Die (Unit, event)
-    Unit:RemoveEvents()
-    Unit:SendChatMessage(14, 0, "Pity you cannot understand the reality of your situation....")     
+function KokkenTor_OnDie (Unit, event)
+    Unit:RemoveEvents()   
 end
 
-RegisterUnitEvent(3886, 1, "KokkenTor_EnterCombat")
-RegisterUnitEvent(3886, 2, "KokkenTor_LeaveCombat")
-RegisterUnitEvent(3886, 4, "KokkenTor_Die")
+RegisterUnitEvent(3886, 1, "KokkenTor_OnCombat")
+RegisterUnitEvent(3886, 2, "KokkenTor_OnLeaveCombat")
+RegisterUnitEvent(3886, 4, "KokkenTor_OnDie")

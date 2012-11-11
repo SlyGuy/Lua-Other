@@ -15,9 +15,6 @@
    Original Code by DARKI
    Version 1
 ========================================]]--
---[[Actually SandTrap is bugged. It doesn't do any damage and stay tooooooo long. For about 2 minutes. Original one stays 2 seconds. 
-Oh, and it doesnt appear near the target but near the caster xX  (and yes, I tested all SandTrap spells) But I will include it anyways, just commented out. 
-Feel free to test it and tell me your ideas. I could spawn a dummy near the player that casts it and despawns? That'd actually be an idea!]]--
 
 local cleave = 0
 
@@ -31,7 +28,6 @@ function KuriCleave(Unit, event)
 		Unit:ClearThreatList()
 	else
 	end
-	--Mortal wound... 28467 should be the right one. Its not a real cleave but this one deals damage and afflicts the "Mortal Wound" debuff to the target
 	Unit:FullCastSpellOnTarget(28467, Unit:GetClosestPlayer())
 	cleave = cleave+1
 end

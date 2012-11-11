@@ -17,6 +17,15 @@ redistributing and/or using this software. Thank you.
 -- LUA++ staff, April 15, 2008. ]]
 math.randomseed(os.time())
 
+function MagistrateBarthilas_OnCombat(pUnit)
+	pUnit:SendChatMessage(12, 0, "Intruders at the Service Gate! Lord Rivendare must be warned!")
+    pUnit:RegisterEvent("MagistrateBarthilas_MightyBlow", math.random(23000,30000), 0)
+	pUnit:RegisterEvent("MagistrateBarthilas_DrainingBlow", math.random(10000,15000), 0)
+	pUnit:RegisterEvent("MagistrateBarthilas_CrowdPummel", math.random(13000,16000), 0)
+	pUnit:RegisterEvent("MagistrateBarthilas_Dazed", math.random(5000,8000), 0)
+	pUnit:RegisterEvent("MagistrateBarthilas_FuriousAnger", 45000, 0)
+end
+
 function MagistrateBarthilas_DrainingBlow(pUnit)
     if (pUnit:GetMainTank() ~= nil) then
 	    pUnit:FullCastSpellOnTarget(16793, pUnit:GetMainTank())
@@ -45,16 +54,7 @@ function MagistrateBarthilas_FuriousAnger(pUnit)
     pUnit:FullCastSpell(16791)
 end
 
-function MagistrateBarthilas_OnCombat(pUnit)
-	pUnit:SendChatMessage(12, 0, "Intruders at the Service Gate! Lord Rivendare must be warned!")
-    pUnit:RegisterEvent("MagistrateBarthilas_MightyBlow", math.random(23000,30000), 0)
-	pUnit:RegisterEvent("MagistrateBarthilas_DrainingBlow", math.random(10000,15000), 0)
-	pUnit:RegisterEvent("MagistrateBarthilas_CrowdPummel", math.random(13000,16000), 0)
-	pUnit:RegisterEvent("MagistrateBarthilas_Dazed", math.random(5000,8000), 0)
-	pUnit:RegisterEvent("MagistrateBarthilas_FuriousAnger", 45000, 0)
-end
-
-function MagistrateBarthilas_LeaveCombat(pUnit)
+function MagistrateBarthilas_OnLeaveCombat(pUnit)
     pUnit:RemoveEvents()
 end
 
@@ -64,5 +64,5 @@ function MagistrateBarthilas_OnDied(pUnit)
 end
 
 RegisterUnitEvent(10435,1,"MagistrateBarthilas_OnCombat")
-RegisterUnitEvent(10435,2,"MagistrateBarthilas_LeaveCombat")
+RegisterUnitEvent(10435,2,"MagistrateBarthilas_OnLeaveCombat")
 RegisterUnitEvent(10435,4,"MagistrateBarthilas_OnDied")

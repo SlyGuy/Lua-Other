@@ -14,7 +14,7 @@
    Original Code by DARKI
    Version 1
 ========================================]]--
--- % Complete: 100
+-- % Complete: %
 -- Comments:
 
 -- [[ Spells ]] --
@@ -27,28 +27,28 @@ local SUMMONSKELETONS = 17274
 
 function Baron_OnCombat(Unit, Event)
 	local say = math.random(1, 6)
-	if (say==1) then
+	if (say == 1) then
 		Unit:SendChatMessage(12, 0, "Invaders! Undoubtedly more henchmen Argentumd \ 195 \ 164mmerung. It is already one of them in my imprisonment. Pulls you out of my Dom \ 195 \ 164ne to \ 195 \ 188ck, executed before I leave!") -- blizzlike
 	end
-	if (say==2) then
+	if (say == 2) then
 		Unit:SendChatMessage(12, 0, "You're still here? Your stupidity is truly the \ 195 \ 188sant! The M \ 195 \ 164dchen the Argentumd \ 195 \ 164mmerung need not unn \ suffer 195 \ 182tig. Disappears immediately, and their lives will be spared!") -- blizzlike
 	end
-	if (say==3) then
+	if (say == 3) then
 		Unit:SendChatMessage(12, 0, "I shall take great pleasure in taking this poor wretch's life! It's not too late, she needn't suffer in vain. Turn back and her death shall be merciful!") -- German Translation is missing
 	end
-	if (say==4) then
+	if (say == 4) then
 		Unit:SendChatMessage(12, 0, "May this prisoner's death serve as a warning. None shall defy the Scourge and live!") -- German Translation is missing
 	end
-	if (say==5) then
+	if (say == 5) then
 		Unit:SendChatMessage(12, 0, "So you see fit to toy with the Lich King's creations? Ramstein, be sure to give the intruders a proper greeting.") -- German Translation is missing 
 	end
-	if (say==6) then
+	if (say == 6) then
 		Unit:SendChatMessage(12, 0, "Time to take matters into my own hands. Come. Enter my domain and challenge the might of the Scourge!") -- German Translation is missing
 	end
-	local shadowbolt = 5000+math.random(1,5000)
-	local cleave = 8000+math.random(1,4000)
-	local mortal = 12000+math.random(1,4000)
-	local raise = 30000+math.random(1,15000)
+	local shadowbolt = 5000+math.random(1, 5000)
+	local cleave = 8000+math.random(1, 4000)
+	local mortal = 12000+math.random(1, 4000)
+	local raise = 30000+math.random(1, 15000)
 	Unit:RegisterEvent("Baron_Shadowbolt", shadowbolt, 0)
 	Unit:RegisterEvent("Baron_Cleave", cleave, 0)
 	Unit:RegisterEvent("Baron_Mortalstrike", mortal, 0)
@@ -57,7 +57,7 @@ function Baron_OnCombat(Unit, Event)
 end
 
 function Baron_Shadowbolt(Unit, Event)
-	local shadow_chance = math.random(1,100)
+local shadow_chance = math.random(1,100)
 	if (shadow_chance < 70) then -- 70% Chance to cast
 		local RandomPlayer = Unit:GetRandomPlayer()
 		Unit:FullCastSpellOnTarget(SHADOWBOLT, RandomPlayer)
@@ -65,7 +65,7 @@ function Baron_Shadowbolt(Unit, Event)
 end
 
 function Baron_Cleave(Unit, Event)
-	local cleave_chance = math.random(1,100)
+local cleave_chance = math.random(1,100)
 	if (cleave_chance < 55) then -- 55% Chance to cast
 		local RandomPlayer = Unit:GetRandomPlayer()
 		Unit:FullCastSpellOnTarget(CLEAVE, RandomPlayer)
@@ -73,7 +73,7 @@ function Baron_Cleave(Unit, Event)
 end
 
 function Baron_Mortalstrike(Unit, Event)
-	local mortal_chance=math.random(1,100)
+local mortal_chance=math.random(1,100)
 	if (mortal_chance < 30) then -- 30% Chance to cast
 		local RandomPlayer = Unit:GetRandomPlayer()
 		Unit:FullCastSpellOnTarget(MORTALSTRIKE, RandomPlayer)

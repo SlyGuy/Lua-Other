@@ -8,33 +8,33 @@
 function Vishas_SWPain(pUnit)
     local target = pUnit:GetMainTank()
     if (target ~= nil) then
-		pUnit:FullCastSpellOnTarget(2767,target)
+		pUnit:FullCastSpellOnTarget(2767, target)
 	end
 end
 
 function Vishas_OnCombat(pUnit, event)
-    pUnit:SendChatMessage(13,0,"Tell me... tell me everything!")
+    pUnit:SendChatMessage(14, 0, "Tell me... tell me everything!")
 	pUnit:PlaySoundToSet(5847)
-	pUnit:RegisterEvent("Vishas_SWPain",math.random(5000,12000),0)
-	pUnit:RegisterEvent("Vishas_75",1000,0)
+	pUnit:RegisterEvent("Vishas_SWPain", math.random(5000, 12000), 0)
+	pUnit:RegisterEvent("Vishas_75", 1000, 0)
 end
 
 function Vishas_75(pUnit, event)
-	if pUnit:GetHealthPct() <75 then
+	if (pUnit:GetHealthPct() < 75) then
 	    pUnit:RemoveEvents()
-    	pUnit:SendChatMessage(13,0,"Naughty secrets!")
+    	pUnit:SendChatMessage(14, 0, "Naughty secrets!")
 		pUnit:PlaySoundToSet(5849)
-		pUnit:RegisterEvent("Vishas_SWPain",math.random(5000,12000),0)
-		pUnit:RegisterEvent("Vishas_25",1000,0)
+		pUnit:RegisterEvent("Vishas_SWPain", math.random(5000, 12000), 0)
+		pUnit:RegisterEvent("Vishas_25", 1000, 0)
 	end
 end
 
 function Vishas_25(pUnit, event)
-	if pUnit:GetHealthPct() <25 then
+	if (pUnit:GetHealthPct() < 25) then
 	    pUnit:RemoveEvents()
-	    pUnit:SendChatMessage(13,0,"I'll rip the secrets from your flesh!")
+	    pUnit:SendChatMessage(14, 0, "I'll rip the secrets from your flesh!")
 	    pUnit:PlaySoundToSet(5850)
-	    pUnit:RegisterEvent("Vishas_SWPain",math.random(5000,12000),0)
+	    pUnit:RegisterEvent("Vishas_SWPain", math.random(5000, 12000), 0)
     end
 end
  

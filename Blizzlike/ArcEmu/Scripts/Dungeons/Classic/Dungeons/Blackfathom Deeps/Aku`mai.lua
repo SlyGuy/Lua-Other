@@ -2,25 +2,24 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Frenzied Rage-3490
 Poison Cloud-3815
 ]]--
 
 function Akumai_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("Akumai_FrenziedRage", 7000, 0)
-	pUnit:RegisterEvent("Akumai_PoisonCloud", 14000, 0)
+	pUnit:RegisterEvent("FrenziedRage", 7000, 0)
+	pUnit:RegisterEvent("PoisonCloud", 14000, 0)
 end
  
-function Akumai_FrenziedRage(pUnit, Event)
+function FrenziedRage(pUnit, Event)
 	pUnit:CastSpell(3490)
 end
  
-function Akumai_PoisonCloud(pUnit, Event)
+function PoisonCloud(pUnit, Event)
 	pUnit:CastSpell(3815)
 end
  

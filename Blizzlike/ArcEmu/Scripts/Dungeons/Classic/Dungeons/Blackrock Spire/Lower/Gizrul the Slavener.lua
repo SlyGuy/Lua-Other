@@ -2,10 +2,9 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Fatal Bite-16495
 Frenzy-8269
@@ -13,9 +12,9 @@ Infected Bite-16128
 ]]--
 
 function Gizrul_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("Fatal_Bite", 1000, 0)
-	pUnit:RegisterEvent("Frenzy", 2000, 0)
-	pUnit:RegisterEvent("Infected_Bite", 3000, 0)
+	pUnit:RegisterEvent("Fatal_Bite", 7000, 0)
+	pUnit:RegisterEvent("Frenzy", 14000, 0)
+	pUnit:RegisterEvent("Infected_Bite", 21000, 0)
 end
 
 function Fatal_Bite(pUnit, Event)

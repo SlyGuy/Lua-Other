@@ -5,22 +5,22 @@
 --                     Copyright© zdroid9770					 --
 -------------------------------------------------------------------
 
-function Noxxion_OnCombat(pUnit, event)
+function Noxxion_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(16050, pUnit:GetRandomPlayer(0))
 	pUnit:RegisterEvent("Noxxionphase1", 1000, 0)
 	pUnit:RegisterEvent("NoxxionSpout", 6000, 0)
 end
 
-function Noxxionphase1(pUnit, event)
-	if pUnit:GetHealthPct() < 89 then
+function Noxxionphase1(pUnit, Event)
+	if (pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase3", 1000, 0)
 		pUnit:RegisterEvent("NoxxionSludgeNova", 5000, 0)
 	end
 end
 
-function Noxxionphase3(pUnit, event)
-	if pUnit:GetHealthPct() < 58 then
+function Noxxionphase3(pUnit, Event)
+	if (pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase4", 1000, 0)
 		x = pUnit:GetX()
@@ -32,8 +32,8 @@ function Noxxionphase3(pUnit, event)
 	end
 end
 
-function Noxxionphase4(pUnit, event)
-	if pUnit:GetHealthPct() < 45 then
+function Noxxionphase4(pUnit, Event)
+	if (pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase5", 1000, 0)
 		x = pUnit:GetX()
@@ -45,8 +45,8 @@ function Noxxionphase4(pUnit, event)
 	end
 end
 
-function Noxxionphase5(pUnit, event)
-	if pUnit:GetHealthPct() < 32 then
+function Noxxionphase5(pUnit, Event)
+	if (pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(30035)
 		pUnit:RegisterEvent("Noxxionphase6", 1000, 0)
@@ -59,8 +59,8 @@ function Noxxionphase5(pUnit, event)
 	end
 end
 
-function Noxxionphase6(pUnit, event)
-	if pUnit:GetHealthPct() < 5 then
+function Noxxionphase6(pUnit, Event)
+	if (pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("NoxxionSludgeNova", 5000, 0)
 		pUnit:CastSpell(41953)
@@ -69,19 +69,19 @@ function Noxxionphase6(pUnit, event)
 	end
 end
 
-function NoxxionSpout(pUnit, event)
+function NoxxionSpout(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(39207, pUnit:GetRandomPlayer(0))
 end
 
-function NoxxionSludgeNova(pUnit, event)
+function NoxxionSludgeNova(pUnit, Event)
 	pUnit:CastSpell(40103)
 end
 
-function NoxxionSwarm(pUnit, event)
+function NoxxionSwarm(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(24975, pUnit:GetRandomPlayer(0))
 end
 
-function Noxxion_OnDeath(pUnit, event)
+function Noxxion_OnDeath(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 

@@ -28,7 +28,7 @@ local KNOCKAWAY = 22893
 local WSTOMP = 16727
 
 function Ironaya_OnCombat(Unit, Event)
-local arcing = 3000+math.random(1,10000)
+local arcing = 3000+math.random(1, 10000)
 	Unit:SendChatMessage(12, 0, "Nobody steals the secrets of the Creator!") 
 	Unit:PlaySoundToSet(5851)	
 	Unit:RegisterEvent("Ironaya_Knockaway", 1000, 0)	
@@ -36,7 +36,7 @@ local arcing = 3000+math.random(1,10000)
 end
 
 function Ironaya_Knockaway(Unit, Event)
-	if(Unit:GetHealthPct() < 50 and knocked == 0) then
+	if((Unit:GetHealthPct() < 50) and (knocked == 0)) then
 		Target=Unit:GetRandomPlayer()
 		Unit:FullCastSpellOnTarget(KNOCKAWAY, Target)
 		local knocked = 1
@@ -48,7 +48,7 @@ function Ironaya_Arcing(Unit, Event)
 end
 
 function Ironaya_Wstomp(Unit, Event)	
-	if(Unit:GetHealthPct() < 25 and wstomp == 0) then
+	if((Unit:GetHealthPct() < 25) and (wstomp == 0)) then
 		Unit:CastSpell(WSTOMP)
 		local wstomp = 1
 	end

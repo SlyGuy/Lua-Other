@@ -28,9 +28,9 @@ function RammsteinTheGorger_Knockout(pUnit)
 end
 
 function RammsteinTheGorger_OnCombat(pUnit)
-	pUnit:SendChatMEssage(12, 0, "Ramstein the Gorger yells: Ramstein hunger for flesh!")
-    pUnit:RegisterEvent("RammsteinTheGorger_Trample",math.random(10000,13000),0)
-	pUnit:RegisterEvent("RammsteinTheGorger_Knockout",math.random(18000,23000),0)
+	pUnit:SendChatMEssage(12, 0, "Ramstein hunger for flesh!")
+    pUnit:RegisterEvent("RammsteinTheGorger_Trample", math.random(10000, 13000), 0)
+	pUnit:RegisterEvent("RammsteinTheGorger_Knockout", math.random(18000, 23000), 0)
 end
 
 function RammsteinTheGorger_LeaveCombat(pUnit)
@@ -38,8 +38,8 @@ function RammsteinTheGorger_LeaveCombat(pUnit)
 end
 
 function RammsteinTheGorger_OnDied(pUnit)
-	local RamDoor = pUnit:GetGameObjectNearestCoords(4033.708740,-3392.695068,119.738738,175405)
-	local RamDoor2 = pUnit:GetGameObjectNearestCoords(4032.716064,-3365.038330,115.056511,175796)
+local RamDoor = pUnit:GetGameObjectNearestCoords(4033.708740, -3392.695068, 119.738738, 175405)
+local RamDoor2 = pUnit:GetGameObjectNearestCoords(4032.716064, -3365.038330, 115.056511, 175796)
     pUnit:RemoveEvents()
 	RamDoor:ActivateGameObject()
 	RamDoor2:ActivateGameObject()

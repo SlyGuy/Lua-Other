@@ -17,10 +17,6 @@ redistributing and/or using this software. Thank you.
 -- SPIDER DISPLAY 15226
 -- NORMAL DISPLAY 15220
 
-RegisterUnitEvent(14510,1,"HPMarli_OnCombat")
-RegisterUnitEvent(14510,2,"HPMarli_OnWipe")
-RegisterUnitEvent(14510,4,"HPMarli_OnDied")
-
 function HPMarli_OnCombat(Unit,event)
 	Unit:RegisterEvent("HPMarli_SummonSpiders", 200, 4)
 	Unit:RegisterEvent("HPMarli_Normal",1000, 1)
@@ -112,8 +108,6 @@ end
 --[[
 	SPIDERs AI
 	]]
-RegisterUnitEvent(14880, 1, "HPMarli_SpiderGrow")
-RegisterUnitEvent(14880, 2, "Spider_OnWipe")
 
 function Spider_OnWipe(Unit, event)
      Unit:RemoveEvents()
@@ -137,3 +131,8 @@ function HPMarli_SpiderEnlarge(Unit,event)
 	Unit:SetFloatValue(OBJECT_FIELD_SCALE_X,(Unit:GetFloatValue(OBJECT_FIELD_SCALE_X))+0.1)
 end
 
+RegisterUnitEvent(14880, 1, "HPMarli_SpiderGrow")
+RegisterUnitEvent(14880, 2, "Spider_OnWipe")
+RegisterUnitEvent(14510,1,"HPMarli_OnCombat")
+RegisterUnitEvent(14510,2,"HPMarli_OnWipe")
+RegisterUnitEvent(14510,4,"HPMarli_OnDied")

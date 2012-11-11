@@ -2,10 +2,9 @@
 -- This script is created by zdroid9770; please do not edit this --
 -- script and claim it as your own, as of All rights are claimed --
 -- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
+--                     Copyright © zdroid9770					 --
 -------------------------------------------------------------------
 --[[
-----Quotes
 ----Spells-ID
 Drink Healing Potion-15504
 Hooked Net-15609
@@ -14,10 +13,10 @@ Stun Bomb-16497
 ]]--
 
 function Zigris_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("Drink_Healing_Potion", 1000, 0)
-	pUnit:RegisterEvent("Hooked_Net", 2000, 0)
-	pUnit:RegisterEvent("Shoot", 3000, 0)
-	pUnit:RegisterEvent("Stun_Bomb", 4000, 0)
+	pUnit:RegisterEvent("Drink_Healing_Potion", 7000, 0)
+	pUnit:RegisterEvent("Hooked_Net", 14000, 0)
+	pUnit:RegisterEvent("Shoot", 21000, 0)
+	pUnit:RegisterEvent("Stun_Bomb", 28000, 0)
 end
 
 function Drink_Healing_Potion(pUnit, Event)

@@ -15,24 +15,24 @@
    Version 1
 ========================================]]--
 
-function Radioactive_frostwalker_OnCombat(pUnit, event, miscpUnit, misc)
-	pUnit:RegisterEvent("Ice_Blast",10000,0)
-	pUnit:RegisterEvent("Ice_Nova",17000,0)
+function Radioactive_frostwalker_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Ice_Blast", 7000, 0)
+	pUnit:RegisterEvent("Ice_Nova", 14000, 0)
 end
 
-function Ice_Blast(pUnit, event, miscpUnit, misc)
-	pUnit:FullCastSpellOnTarget(11264,pUnit:GetRandomPlayer(1))
+function Ice_Blast(pUnit, Event)
+	pUnit:FullCastSpellOnTarget(11264, pUnit:GetRandomPlayer(1))
 end
 
-function Ice_Nova(pUnit, event, miscpUnit, misc)
-	pUnit:FullCastSpellOnTarget(22519,pUnit:GetClosestPlayer(1))
+function Ice_Nova(pUnit, Event)
+	pUnit:FullCastSpellOnTarget(22519, pUnit:GetClosestPlayer(1))
 end
 
-function Radioactive_frostwalker_OnLeaveCombat(pUnit)
+function Radioactive_frostwalker_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function Radioactive_frostwalker_OnDied(pUnit)
+function Radioactive_frostwalker_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
