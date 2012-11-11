@@ -79,8 +79,8 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 		Unit:GossipMenuAddItem(3,"Horda Warrior", 19, 0)
 		Unit:GossipMenuAddItem(3,"Horda Shaman", 20, 0)
 		Unit:GossipMenuAddItem(3,"Murloc 2", 21, 0)
-		Unit:GossipMenuAddItem(3,"", 22, 0)
-		Unit:GossipMenuAddItem(3,"", 23, 0)
+		Unit:GossipMenuAddItem(3,"Illidan", 22, 0)
+		Unit:GossipMenuAddItem(3,"Fox", 23, 0)
 		Unit:GossipMenuAddItem(3,"", 24, 0)
 		Unit:GossipMenuAddItem(3,"", 25, 0)
 		Unit:GossipMenuAddItem(0,"Back Page >-->>", 77, 0)
@@ -103,13 +103,13 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 			player:SetModel(23183)
 		end
 		if(intid == 21) then
-			player:SetModel()
+			player:SetModel(527)
 		end
 		if(intid == 22) then
-			player:SetModel()
+			player:SetModel(21135)
 		end
 		if(intid == 23) then
-			player:SetModel()
+			player:SetModel(30301)
 		end
 		if(intid == 24) then
 			player:SetModel()
