@@ -37,8 +37,8 @@ unit:GossipMenuAddItem(3,"Arthas", 7, 0)
 unit:GossipMenuAddItem(3,"Lich Arthas", 8, 0)
 unit:GossipMenuAddItem(3,"Sw Guard", 9, 0)
 unit:GossipMenuAddItem(3,"Og Guard", 10, 0)
-unit:GossipMenuAddItem(3,"Murlock", 11, 0)
-unit:GossipMenuAddItem(3,"Murlock costume", 12, 0)
+unit:GossipMenuAddItem(3,"Murloc", 11, 0)
+unit:GossipMenuAddItem(3,"Murloc costume", 12, 0)
 unit:GossipMenuAddItem(3,"Torp", 13, 0)
 unit:GossipMenuAddItem(3,"Kalapos Mage", 14, 0)
 unit:GossipMenuAddItem(3,"Capa", 15, 0)
@@ -47,6 +47,7 @@ unit:GossipMenuAddItem(3,"If Guard", 17, 0)
 unit:GossipMenuAddItem(3,"If Mage", 18, 0)
 unit:GossipMenuAddItem(3,"Horda Warrior", 19, 0)
 unit:GossipMenuAddItem(3,"Horda Shaman", 20, 0)
+unit:GossipMenuAddItem(3,"Murloc 2", 21, 0)
 unit:GossipSendMenu(player)
 end
 
@@ -94,6 +95,9 @@ player:SetModel(23121)
 end
 if(intid == 20) then
 player:SetModel(23183)
+end
+if(intid == 21) then
+player:SetModel(527)
 end
 if(intid == 40) then
 player:SetModel(49)
