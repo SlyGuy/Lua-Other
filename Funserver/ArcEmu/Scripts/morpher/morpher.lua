@@ -17,13 +17,14 @@
 function Morpher_Gossip(Unit, Event, player)
 local race=player:GetPlayerRace()
 	Unit:GossipCreateMenu(100, player, 0)
-	Unit:GossipMenuAddItem(6, " >--> Morph <--<", 77, 0)
+	Unit:GossipMenuAddItem(6, " >--> Morph and Size <--<", 75, 0)
 end
 
 function Morpher_Submenus(unit, event, player, id, intid, code)
 	if(intid == 75) then
 		Unit:GossipCreateMenu(78, player, 0)
 		Unit:GossipMenuAddItem(6, " >--> Morph <--<", 77, 0)
+		Unit:GossipMenuAddItem(6, " >--> Size <--<", 88, 0)
 		Unit:GossipSendMenu(player)
 	end
 	if(intid == 77) then
