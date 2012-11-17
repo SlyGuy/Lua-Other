@@ -82,8 +82,8 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 		Unit:GossipMenuAddItem(3,"Murloc 2", 21, 0)
 		Unit:GossipMenuAddItem(3,"Illidan", 22, 0)
 		Unit:GossipMenuAddItem(3,"Fox", 23, 0)
-		Unit:GossipMenuAddItem(3,"", 24, 0)
-		Unit:GossipMenuAddItem(3,"", 25, 0)
+		Unit:GossipMenuAddItem(3,"PlainStrider", 24, 0)
+		Unit:GossipMenuAddItem(3,"Fire Elemental", 25, 0)
 		Unit:GossipMenuAddItem(0,"Back Page >-->>", 77, 0)
 		Unit:GossipMenuAddItem(0,"Next Page >-->>", 79, 0)
 		Unit:GossipSendMenu(player)
@@ -113,52 +113,52 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 			player:SetModel(30301)
 		end
 		if(intid == 24) then
-			player:SetModel()
+			player:SetModel(1220)
 		end
 		if(intid == 25) then
-			player:SetModel()
+			player:SetModel(4607)
 		end
 	if(intid == 79) then
 		Unit:GossipCreateMenu(65, player, 0)
-		Unit:GossipMenuAddItem(3,"", 26, 0)
-		Unit:GossipMenuAddItem(3,"", 27, 0)
-		Unit:GossipMenuAddItem(3,"", 28, 0)
-		Unit:GossipMenuAddItem(3,"", 29, 0)
-		Unit:GossipMenuAddItem(3,"", 30, 0)
-		Unit:GossipMenuAddItem(3,"", 31, 0)
-		Unit:GossipMenuAddItem(3,"", 32, 0)
-		Unit:GossipMenuAddItem(3,"", 33, 0)
-		Unit:GossipMenuAddItem(3,"", 34, 0)
+		Unit:GossipMenuAddItem(3,"Algernon(Undead Guy)", 26, 0)
+		Unit:GossipMenuAddItem(3,"Robot Chicken", 27, 0)
+		Unit:GossipMenuAddItem(3,"Chicken", 28, 0)
+		Unit:GossipMenuAddItem(3,"Frog", 29, 0)
+		Unit:GossipMenuAddItem(3,"Cata OverSeer", 30, 0)
+		Unit:GossipMenuAddItem(3,"Kite", 31, 0)
+		Unit:GossipMenuAddItem(3,"Giant Eggs?", 32, 0)
+		Unit:GossipMenuAddItem(3,"Angry Dog", 33, 0)
+		Unit:GossipMenuAddItem(3,"Shadowy Dog", 34, 0)
 		Unit:GossipMenuAddItem(3,"", 35, 0)
 		Unit:GossipMenuAddItem(0,"Back Page >-->>", 78, 0)
 		Unit:GossipSendMenu(player)
 	end
 		if(intid == 26) then
-			player:SetModel()
+			player:SetModel(2676)
 		end
 		if(intid == 27) then
-			player:SetModel()
+			player:SetModel(6909)
 		end
 		if(intid == 28) then
-			player:SetModel()
+			player:SetModel(304)
 		end
 		if(intid == 29) then
-			player:SetModel()
+			player:SetModel(6297)
 		end
 		if(intid == 30) then
-			player:SetModel()
+			player:SetModel(20645)
 		end
 		if(intid == 31) then
-			player:SetModel()
+			player:SetModel(41903)
 		end
 		if(intid == 32) then
-			player:SetModel()
+			player:SetModel(26831)
 		end
 		if(intid == 33) then
-			player:SetModel()
+			player:SetModel(37773)
 		end
 		if(intid == 34) then
-			player:SetModel()
+			player:SetModel(16052)
 		end
 	if(intid == 35) then
 		player:SetModel()
