@@ -129,7 +129,7 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 		Unit:GossipMenuAddItem(3,"Giant Eggs?", 32, 0)
 		Unit:GossipMenuAddItem(3,"Angry Dog", 33, 0)
 		Unit:GossipMenuAddItem(3,"Shadowy Dog", 34, 0)
-		Unit:GossipMenuAddItem(3,"", 35, 0)
+		Unit:GossipMenuAddItem(3,"Dragon", 35, 0)
 		Unit:GossipMenuAddItem(0,"Back Page >-->>", 78, 0)
 		Unit:GossipSendMenu(player)
 	end
@@ -161,7 +161,7 @@ function Morpher_Submenus(unit, event, player, id, intid, code)
 			player:SetModel(16052)
 		end
 	if(intid == 35) then
-		player:SetModel()
+		player:SetModel(25852)
 	end
 	if(intid == 88) then
 		Unit:GossipCreateMenu(65, player, 0)
