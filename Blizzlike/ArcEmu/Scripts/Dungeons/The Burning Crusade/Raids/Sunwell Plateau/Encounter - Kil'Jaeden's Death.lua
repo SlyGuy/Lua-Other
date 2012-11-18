@@ -5,7 +5,7 @@ by the GPL v2. This script was released
 by BrantX of the Blua Scripting
 Project. Please give proper accredidations
 when re-releasing or sharing this script
-with others in the emulation community.
+with others in the emulation commUnity.
 
 ~~End of License Agreement
 -- BrantX, February 18, 2009. ]]

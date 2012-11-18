@@ -5,42 +5,44 @@ by the GPL v2. This script was released
 by BrantX of the Blua Scripting
 Project. Please give proper accredidations
 when re-releasing or sharing this script
-with others in the emulation community.
+with others in the emulation commUnity.
 
 ~~End of License Agreement
 -- BrantX, October 31, 2008. ]]
 
 function Sathrovarr_OnEnterCombat(pUnit, Event)
-	pUnit:SendChatMessage(14, 0, "Gyahaha... There will be no reprieve. My work here is nearly finished.")
-	pUnit:RegisterEvent("Sath_Curse",35000,0)
-	pUnit:RegisterEvent("Sath_ShadowBoltVolley",10000,0)
-	pUnit:RegisterEvent("Sath_CorruptingStrike",25000,0)
-	pUnit:RegisterEvent("Sathrovarr_Berserk",60000,0)
+	pUnit:SendChatMessage(14, 0, "There will be no reprieve! My work here is nearly finished!")
+	pUnit:RegisterEvent("Sath_Curse", 35000, 0)
+	pUnit:RegisterEvent("Sath_ShadowBoltVolley", 10000, 0)
+	pUnit:RegisterEvent("Sath_CorruptingStrike", 25000, 0)
+	pUnit:RegisterEvent("Sathrovarr_Berserk", 60000, 0)
 end
 
 function Sathrovarr_Curse(pUnit, Event)
-	if Choice==1 then
+local Choice = math.random(1, 2)
+	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Your misery is my delight!")
-	elseif Choice==2 then
+	elseif(Choice == 2) then
 		pUnit:SendChatMessage(14, 0, "I will watch you bleed!")
 	end
-	pUnit:CastSpellOnTarget(45034,pUnit:GetRandomPlayer(0))	
+	pUnit:CastSpellOnTarget(45034, pUnit:GetRandomPlayer(0))	
 end
 
 function Sathrovarr_ShadowBoltVolley(pUnit, Event)
-	local Choice=math.random(1,2)
-	if Choice == 1 then
+local Choice = math.random(1, 2)
+	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Your misery is my delight!")
-	elseif Choice == 2 then
+	elseif(Choice == 2) then
 		pUnit:SendChatMessage(14, 0, "I will watch you bleed!")
 	end
 	pUnit:CastSpellOnTarget(45031,pUnit:GetRandomPlayer(0))
 end
 
 function Sathrovarr_CorruptingStrike(pUnit, Event)
-	if Choice == 1 then
+local Choice = math.random(1, 2)
+	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Your misery is my delight!")
-	elseif Choice == 2 then
+	elseif(Choice == 2) then
 		pUnit:SendChatMessage(14, 0, "I will watch you bleed!")
 	end
 	pUnit:CastSpellOnTarget(45029,pUnit:GetRandomPlayer(0))	
@@ -52,10 +54,10 @@ function Sathrovarr_Berserk(pUnit,Event)
 end
 
 function Sathrovarr_OnKill(pUnit, Event)
-	local Choice=math.random
-	if Choice==1 then
-		pUnit:SendChatMessage(14, 0, "Pitious mortal!")
-	elseif Choice==2 then
+	local Choice = math.random(1, 2)
+	if(Choice == 1) then
+		pUnit:SendChatMessage(14, 0, "Piteous mortal!")
+	elseif(Choice == 2) then
 		pUnit:SendChatMessage(14, 0, "Haven't you heard? I always win!")	
 	end
 end
@@ -65,7 +67,7 @@ function Sathrovarr_OnLeaveCombat(pUnit, Event)
 end
 
 function Sathrovarr_OnDied(pUnit, Event)
-	pUnit:SendChatMessage(14, 0, "I'm... never on... the losing... side...")
+	pUnit:SendChatMessage(14, 0, "I'm never on the... losing... side!")
 	pUnit:RemoveEvents()	
 end
 

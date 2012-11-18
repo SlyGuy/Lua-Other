@@ -401,8 +401,8 @@ end
 function INSTANCE_ZULAMAN.JANALAI.JanAlai_FireBombOnSpawn(Unit)
 	Unit:DisableRespawn()
 	Unit:SetCombatMeleeCapable(1)
-	Unit:SetUInt32Value(UnitField.UNIT_FIELD_FLAGS,UnitFieldFlags.UNIT_FLAG_NOT_ATTACKABLE_9+UnitFieldFlags.UNIT_FLAG_NOT_SELECTABLE)
-	Unit:SetUInt32Value(UnitField.UNIT_FIELD_DISPLAYID,20374)
+	Unit:SetUInt32Value(UnitField.Unit_FIELD_FLAGS,UnitFieldFlags.Unit_FLAG_NOT_ATTACKABLE_9+UnitFieldFlags.Unit_FLAG_NOT_SELECTABLE)
+	Unit:SetUInt32Value(UnitField.Unit_FIELD_DISPLAYID,20374)
 	Unit:RegisterEvent("INSTANCE_ZULAMAN.JANALAI.JanAlai_FireBombExplode",10000,1)
 	Unit:RegisterEvent("INSTANCE_ZULAMAN.JANALAI.JanAlai_SpellVisual",200,1)
 end
@@ -425,7 +425,7 @@ end
 function INSTANCE_ZULAMAN.JANALAI.JanAlai_FireWallOnSpawn(Unit)
 	Unit:DisableRespawn()
 	Unit:SetCombatMeleeCapable(1)
-	Unit:SetUInt32Value(UnitField.UNIT_FIELD_FLAGS,UnitFieldFlags.UNIT_FLAG_NOT_ATTACKABLE_9+UnitFieldFlags.UNIT_FLAG_NOT_SELECTABLE)
+	Unit:SetUInt32Value(UnitField.Unit_FIELD_FLAGS,UnitFieldFlags.Unit_FLAG_NOT_ATTACKABLE_9+UnitFieldFlags.Unit_FLAG_NOT_SELECTABLE)
 	Unit:RegisterEvent("INSTANCE_ZULAMAN.JANALAI.JanAlai_FireWallSpellVisual",200,1)
 end
 function INSTANCE_ZULAMAN.JANALAI.JanAlai_FireWallSpellVisual(Unit)

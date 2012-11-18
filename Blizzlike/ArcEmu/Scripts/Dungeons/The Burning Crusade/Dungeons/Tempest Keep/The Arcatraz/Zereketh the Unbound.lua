@@ -1,26 +1,26 @@
-function Zereketh_Void_Zone(Unit, event, miscunit, misc)
-	print "Zereketh Void Zone"
-	Unit:FullCastSpellOnTarget(30533,Unit:GetRandomPlayer())
-	Unit:SendChatMessage(11, 0, "The Void Zone will steal your life...")
+--[[Zereketh the Unbound yells: Darkness... consumes all.
+Zereketh the Unbound yells: Life energy to... consume.
+Zereketh the Unbound yells: No... more... life.
+Zereketh the Unbound yells: The shadow... will engulf you.
+Zereketh the Unbound yells: The Void... beckons.
+Zereketh the Unbound yells: This vessel is empty.]]
+
+function Zereketh(Unit, event, miscUnit, misc)
+	Unit:RegisterEvent("Zereketh_Void_Zone", 10000, 0)
+	Unit:RegisterEvent("Zereketh_Corruption", 15000, 0)
+	Unit:RegisterEvent("Zereketh_Shadow_Nova", 23000, 0)
 end
 
-function Zereketh_Corruption(Unit, event, miscunit, misc)
-	print "Zereketh Corruption"
-	Unit:FullCastSpellOnTarget(32863,Unit:GetRandomPlayer())
-	Unit:SendChatMessage(11, 0, "I will corrupt you...")
+function Zereketh_Void_Zone(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(30533, Unit:GetRandomPlayer())
 end
 
-function Zereketh_Shadow_Nova(Unit, event, miscunit, misc)
-	print "Zereketh Shadow Nova"
-	Unit:FullCastSpellOnTarget(36127,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Let's Shadow force kill you...")
+function Zereketh_Corruption(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(32863, Unit:GetRandomPlayer())
 end
 
-function Zereketh(unit, event, miscunit, misc)
-	print "Zereketh"
-	unit:RegisterEvent("Zereketh_Void_Zone",10000,0)
-	unit:RegisterEvent("Zereketh_Corruption",15000,0)
-	unit:RegisterEvent("Zereketh_Shadow_Nova",23000,0)
+function Zereketh_Shadow_Nova(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(36127, Unit:GetClosestPlayer())
 end
 
-RegisterUnitEvent(20886,1,"Zereketh")
+RegisterUnitEvent(20870, 1, "Zereketh")

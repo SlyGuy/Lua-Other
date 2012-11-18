@@ -5,7 +5,7 @@ by the GPL v2. This script was released
 by BrantX of the Blua Scripting
 Project. Please give proper accredidations
 when re-releasing or sharing this script
-with others in the emulation community.
+with others in the emulation commUnity.
 
 ~~End of License Agreement
 -- Azolex, August 29, 2008. ]]
@@ -114,9 +114,9 @@ function WarriorAdd_Daze(pUnit, Event)
 end
 
 function WarriorAdd_FrighteningShout(pUnit, Event)
-   if pUnit:GetHealthPct() == 20 then
-   pUnit:FullCastSpell(19134)
-end
+	if(pUnit:GetHealthPct() == 20) then
+	   pUnit:FullCastSpell(19134)
+	end
 end
 
 function WarriorAdd_LeaveCombat(Unit, Event)
@@ -153,9 +153,9 @@ function HunterAdd_Trap(pUnit, Event)
 end
 
 function HunterAdd_AimedShoot(pUnit, Event)
-   if pUnit:GetHealthPct() == 32 then
-   pUnit:FullCastSpellOnTarget(44271, pUnit:GetRandomPlayer(0))
-end
+	if(pUnit:GetHealthPct() == 32) then
+	   pUnit:FullCastSpellOnTarget(44271, pUnit:GetRandomPlayer(0))
+	end
 end
 
 function WarriorAdd_Clip(pUnit, Event)

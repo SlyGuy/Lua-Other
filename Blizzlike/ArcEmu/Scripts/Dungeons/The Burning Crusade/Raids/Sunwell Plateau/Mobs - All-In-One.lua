@@ -5,7 +5,7 @@ by the GPL v2. This script was released
 by BrantX of the Blua Scripting
 Project. Please give proper accredidations
 when re-releasing or sharing this script
-with others in the emulation community.
+with others in the emulation commUnity.
 
 ~~End of License Agreement
 -- BrantX, November 07 2008. ]]
@@ -678,8 +678,8 @@ RegisterUnitEvent(25508, 4, "ShadowswordGuardian_OnDied")
 
 -- Hand of The Deceiver
 function HandOfTheDeceiver_OnEnterCombat(pUnit,Event)
-	pUnit:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT,0)
-	pUnit:SetUInt32Value(UNIT_CHANNEL_SPELL,0)
+	pUnit:SetUInt32Value(Unit_FIELD_CHANNEL_OBJECT,0)
+	pUnit:SetUInt32Value(Unit_CHANNEL_SPELL,0)
 	pUnit:RegisterEvent("HandOfTheDeceiver_ShadowInfusion", 1000,1)
 	pUnit:RegisterEvent("HandOfTheDeceiver_FelfirePortal", 35000, 0)
 	pUnit:RegisterEvent("HandOfTheDeceiver_Spell", 8000, 0)

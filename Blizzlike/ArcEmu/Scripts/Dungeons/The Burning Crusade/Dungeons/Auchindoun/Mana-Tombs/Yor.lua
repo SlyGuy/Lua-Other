@@ -16,22 +16,18 @@
    Version 1
 ========================================]]--
 
+function Yor_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Yor_Fire", 10000, 0)
+	pUnit:RegisterEvent("Yor_stomp", 13000, 0)
+end
+
 function Yor_Fire(pUnit, Event)
-	print "Yor Double Breath"
-	pUnit:FullCastSpellOnTarget(38361,Unit:GetClosestPlayer(0))
+	pUnit:FullCastSpellOnTarget(38361, Unit:GetClosestPlayer(0))
 end
 
 function Yor_stomp(pUnit, Event)
-	print "Yor stomp"
 	pUnit:CastSpell(36405)
 end
-
-function Yor_OnCombat(pUnit, Event)
-	print "Yor"
-	pUnit:RegisterEvent("Yor_Fire",10000,0)
-	pUnit:RegisterEvent("Yor_stomp",13000,0)
-end
-
 
 function Yor_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()	
@@ -40,7 +36,6 @@ end
 function Yor_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(22930, 1, "Yor_OnCombat")
 RegisterUnitEvent(22930, 2, "Yor_OnLeaveCombat")

@@ -1,32 +1,44 @@
+--[[Grand Warlock Nethekurse yells: Ah, what a waste... next!
+Grand Warlock Nethekurse yells: Beg for your pitiful life!
+Grand Warlock Nethekurse yells: Come on, show me a real fight!
+Grand Warlock Nethekurse yells: Don't waste your time on that one, he's weak!
+Grand Warlock Nethekurse yells: I had more fun torturing the peons!
+Grand Warlock Nethekurse yells: I was going to kill him anyway!
+Grand Warlock Nethekurse yells: I'm already bored!
+Grand Warlock Nethekurse yells: Oh, just die!
+Grand Warlock Nethekurse yells: One pitiful wretch down. Go on, take another one!
+Grand Warlock Nethekurse yells: Run, coward, run!
+Grand Warlock Nethekurse yells: Thank you for saving me the trouble. Now it's my turn to have some fun!
+Grand Warlock Nethekurse yells: What... a shame.
+Grand Warlock Nethekurse yells: Yes, beat him mercilessly! His skull is as thick as an ogre's!
+Grand Warlock Nethekurse yells: You can have that one, I no longer need him!
+Grand Warlock Nethekurse yells: You lose.
+Grand Warlock Nethekurse yells: You want him? Very well, take him!
+Grand Warlock Nethekurse yells: You wish to fight us all at once? This should be amusing!
+Grand Warlock Nethekurse yells: Your pain amuses me!
+]]
 local Didthat = 0
 
+function Nethekurse(Unit, event, miscUnit, misc)
+	Unit:RegisterEvent("Nethekurse_Dark_Spin", 1000, 0)
+	Unit:RegisterEvent("Nethekurse_Void_Zones", 10000, 0)
+	Unit:RegisterEvent("Nethekurse_Burning_Nova", 21000, 0)
+end
+
 function Nethekurse_Dark_Spin(Unit)
-	if Unit:GetHealthPct() < 20 and Didthat == 0 then
-		print "Nethekurse Dark Spin"
-		Unit:FullCastSpellOnTarget(30502,Unit:GetClosestPlayer())
-		Unit:SendChatMessage(11, 0, "Now, you will die...")
+	if((Unit:GetHealthPct() < 20) and (Didthat == 0)) then
+		Unit:FullCastSpellOnTarget(30502, Unit:GetClosestPlayer())
 		Didthat = 1
 	else
 	end
 end
 
-function Nethekurse_Void_Zones(Unit, event, miscunit, misc)
-	print "Nethekurse Void Zones"
-	Unit:FullCastSpellOnTarget(30533,Unit:GetRandomPlayer())
-	Unit:SendChatMessage(11, 0, "Don't stay on the zone...")
+function Nethekurse_Void_Zones(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(30533, Unit:GetRandomPlayer())
 end
 
-function Nethekurse_Burning_Nova(Unit, event, miscunit, misc)
-	print "Nethekurse Burning Nova"
-	Unit:FullCastSpellOnTarget(30500,Unit:GetRandomPlayer())
-	Unit:SendChatMessage(11, 0, "Adios...NOOB...")
+function Nethekurse_Burning_Nova(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(30500, Unit:GetRandomPlayer())
 end
 
-function Nethekurse(unit, event, miscunit, misc)
-	print "Nethekurse"
-	unit:RegisterEvent("Nethekurse_Dark_Spin",1000,0)
-	unit:RegisterEvent("Nethekurse_Void_Zones",10000,0)
-	unit:RegisterEvent("Nethekurse_Burning_Nova",21000,0)
-end
-
-RegisterUnitEvent(16807,1,"Nethekurse")
+RegisterUnitEvent(16807, 1, "Nethekurse")

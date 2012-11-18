@@ -16,9 +16,7 @@ redistributing and/or using this software. Thank you.
 ~~End of License Agreement
 -- LUA++ staff, March 26, 2008. ]]
 
-
 r = 20
-
 
 function OnCombat(Unit, event)
     Lurker = Unit
@@ -28,15 +26,15 @@ function OnCombat(Unit, event)
     Lurker:RegisterEvent("dummyspawn", 45000, 1)
     Lurker:RegisterEvent("Phase2", 120000, 1)
     Lurker:RegisterEvent("DidthatCheck", 5000, 0)
-    end
+end
     
 function OnLeaveCombat(Unit, event)
     Lurker:RemoveEvents()
-    end
+end
     
 function OnKilledTarget(Unit, event)
     Lurker:RemoveEvents()
-    end
+end
 
 function OnDied(Unit, event)
     Lurker:RemoveEvents()
@@ -53,15 +51,14 @@ function dummyspawn(Unit, event)
     Lurker:RegisterEvent("TauntedByDummy", 90, 1)
     else
     end
-    end
+end
     
 function SpoutFire(Unit, event)
     Lurker:FullCastSpell(37433)
-    Lurker:RegisterEvent("SpoutFire", 2500, 1) --Why are we registering the SpoutFire function once, but then it leads right back to it again, causing it to just reregister it. Should just use 0 instead.
-    end
+    Lurker:RegisterEvent("SpoutFire", 2500, 1)
+end
     
 function TauntedByDummy(Unit, event)
-    print "TauntedByDummy initiated..."
     Lurker:SetCombatMeleeCapable(1)
     Lurker:ChangeTarget(Dummy)
     Lurker:SetCombatTargetingCapable(1)
@@ -70,7 +67,6 @@ end
 
 --DummyAI--
 function DummySpawn(Unit, event)
-    print "DummySpawn initiated..."
     Dummy = Unit
     Dummy:SetNPCFlags(4)
     Dummy:SetCombatMeleeCapable(1)
@@ -83,15 +79,15 @@ end
 function DummyImmune(Unit, event)
     Dummy:CastSpell(37588)
     Dummy:CastSpell(37905)
-    end
+end
     
 function Dummytest(Unit, event)
-    if Targeting == 1 then
-    print "Dummy Targeted"
+    if(Targeting == 1) then
+		print "Dummy Targeted"
     end
-    if Targeting2 == 1 then
-    print "Lurker Targeted, Success"
-    Dummy:RegisterEvent("DummyMove", 1000, 1)
+    if(Targeting2 == 1) then
+		print "Lurker Targeted, Success"
+		Dummy:RegisterEvent("DummyMove", 1000, 1)
     end
 end
 
@@ -102,14 +98,12 @@ function DummyMove(Unit, event)
     Lurker:RegisterEvent("SpoutFire",2500, 1)
     Dummy:RegisterEvent("Move", 1, 1)
     Didthat = 1
-    print "Didthat = 1"
-    end
+end
 
 function Move(Unit, event)
     Dummy:CreateCustomWaypointMap()
     a = 0
     repeat
-        print (a)
         a = a+0.1291543
         Xpos = x+r*math.cos(a)
         Ypos = y+r*math.sin(a)
@@ -118,17 +112,16 @@ function Move(Unit, event)
     Lurker:RegisterEvent("DidthatCheck", 5000, 0)
     Dummy:MoveToWaypoint(1)
     Dummy:RegisterEvent("Destroy", 25000, 1)
-    end
+end
 
 function DidthatCheck(Unit, event)
-    if Didthat == 1 then
-    print "passed =]"
-    Passed = 2
+    if(Didthat == 1) then
+		Passed = 2
     end
-    if Passed == 2 then
-    Normal = 1
+    if(Passed == 2) then
+		Normal = 1
     end
-    end
+end
     
 function Destroy(Unit, event)
     Dummy:DestroyCustomWaypointMap()
@@ -141,69 +134,68 @@ function Destroy(Unit, event)
     Lurker:RegisterEvent("Whirl", 32000, 1)
     Lurker:RegisterEvent("WaterboltCheck", 5000, 0)
     Lurker:RegisterEvent("dummyspawn", 45000, 1)
-    if Didthat == 1 then
-    Lurker:RegisterEvent("Phase2", 75000, 1)
-    Didthat = 0
+    if(Didthat == 1) then
+		Lurker:RegisterEvent("Phase2", 75000, 1)
+		Didthat = 0
     end
-    if Passed == 2 then
-    Lurker:RegisterEvent("Phase2", 30000, 1)
-    Passed = 0
+    if(Passed == 2) then
+		Lurker:RegisterEvent("Phase2", 30000, 1)
+		Passed = 0
     end
-    if Normal == 1 then
-    Lurker:RegisterEvent("Phase2", 120000, 1)
+    if(Normal == 1) then
+		Lurker:RegisterEvent("Phase2", 120000, 1)
     end
-    end
+end
     
 RegisterUnitEvent(18729, 6, "DummySpawn")
 
 function Geyser(Unit, event)
     local plr = Lurker:GetRandomPlayer(0)
-    if (plr ~= nil) then
-    Lurker:FullCastSpellOnTarget(37478, plr)
+    if(plr ~= nil) then
+		Lurker:FullCastSpellOnTarget(37478, plr)
     else
     end
 end
 
-function Whirl(Unit, event) --I fixed this as it was causing multiple whirls at nearly the same time.
+function Whirl(Unit, event)
     local tank = Lurker:GetMainTank()
-    if (tank~= nil) then
-    Lurker:CastSpellOnTarget(37363, tank)
+    if(tank~= nil) then
+		Lurker:CastSpellOnTarget(37363, tank)
     else
     end
 end
 
 function WaterboltCheck(Unit, event)
     tank = Lurker:GetMainTank()
-    if (tank~= nil) then
-    Lurker:RegisterEvent("MtInRangeCheck", 200, 1)
+    if(tank~= nil) then
+		Lurker:RegisterEvent("MtInRangeCheck", 200, 1)
     else
     end
 end
     
-function MtInRangeCheck(Unit, event) --We are not checking if the main tank is in range but anybody inrange.
+function MtInRangeCheck(Unit, event)
     local x = Lurker:GetX()
     local y = Lurker:GetY()
     local xpos = tank:GetX()
     local ypos = tank:GetY()
-    if xpos > x + 30 and ypos > y - 50 then
-    Lurker:RegisterEvent("Waterbolt", 100, 1)
-    elseif
-    xpos <= x + 30 and ypos <= y - 50 then
-    Lurker:RemoveEvents()
-    Lurker:RegisterEvent("Geyser", 15000, 0)
-    Lurker:RegisterEvent("WaterboltCheck", 5000, 0)
-    Lurker:RegisterEvent("SpoutStart", 45000, 0)
-    Lurker:RegisterEvent("Phase2", 120000, 0)
-    Lurker:RegisterEvent("Whirl", 30000, 1)
-    Lurker:RegisterEvent("DidthatCheck", 5000, 0)
+    if(xpos > x + 30 and ypos > y - 50) then
+		Lurker:RegisterEvent("Waterbolt", 100, 1)
+    elseif(xpos <= x + 30 and ypos <= y - 50) then
+		Lurker:RemoveEvents()
+		Lurker:RegisterEvent("Geyser", 15000, 0)
+		Lurker:RegisterEvent("WaterboltCheck", 5000, 0)
+		Lurker:RegisterEvent("SpoutStart", 45000, 0)
+		Lurker:RegisterEvent("Phase2", 120000, 0)
+		Lurker:RegisterEvent("Whirl", 30000, 1)
+		Lurker:RegisterEvent("DidthatCheck", 5000, 0)
     end
 end
 
 function Waterbolt (Unit, event)
     local plr = Lurker:GetRandomPlayer(0)
     if (plr ~= nil) then
-    Lurker:StopMovement(99999999) --???? Why would we want to stop the movement forever? Does this count as an event?
-    Lurker:FullCastSpellOnTarget(37138 ,plr)
+		Lurker:StopMovement(1)
+		Lurker:FullCastSpellOnTarget(37138 ,plr)
     else
     end
     Lurker:RegisterEvent("WaterboltCheck", 2000, 1)
@@ -216,7 +208,7 @@ function Phase2(Unit, event)
     Lurker:Emote(374)
     Lurker:RegisterEvent("Submerge", 3000, 1)
     Lurker:RegisterEvent("Addspawn", 5000, 1)
-    end
+end
     
 function Submerge(Unit, event)
     local x = Lurker:GetX()
@@ -225,7 +217,7 @@ function Submerge(Unit, event)
     local o = Lurker:GetO()
     Lurker:MoveTo(x, y, z - 50, o)
     Lurker:RegisterEvent("ReEmerge", 60000, 1)
-    end
+end
     
 function ReEmerge(Unit, event)
     Lurker:RemoveEvents()
@@ -246,7 +238,7 @@ function Resume(Unit, event)
     Lurker:RegisterEvent("WaterboltCheck", 5000, 0)
     Lurker:RegisterEvent("dummyspawn", 45000, 0)
     Lurker:RegisterEvent("Phase2", 120000, 0)
-    end
+end
     
 function Addspawn(Unit, event)
 Lurker:SpawnCreature(21865, 58.503925, -470.745422, -19.793449, 2.003222, 1620, 0)
@@ -263,15 +255,16 @@ end
 function Ambusher(Unit, event)
     Ambusher = Unit
     local RandomPlayer = Ambusher:GetRandomPlayer(0)
-    if (RandomPlayer ~= nil) then
-    Ambusher:RegisterEvent("MultiShot", 1000, 1)
+    if(RandomPlayer ~= nil) then
+		Ambusher:RegisterEvent("MultiShot", 1000, 1)
     else
     end
-    end
+end
+
 function MultiShot(Unit)
-    if math.random() < 0.3 then
-    Ambusher:FullCastSpellOnTarget(30990, Ambusher:GetRandomPlayer(2))
-    Ambusher:RegisterEvent("MultiShot", 5000, 1)
+    if(math.random() < 0.3) then
+		Ambusher:FullCastSpellOnTarget(30990, Ambusher:GetRandomPlayer(2))
+		Ambusher:RegisterEvent("MultiShot", 5000, 1)
     end
 end
 
@@ -279,18 +272,19 @@ function Guardian(Unit, event)
     Guardian = Unit
     Guardian:RegisterEvent("ArcinSmash", 5000, 0)
     Guardian:RegisterEvent("Hamstring", 7000, 0)
-    end
+end
 
 function ArcinSmash(Unit, event)
-    if math.random() < 0.3 then
-    Guardian:FullCastSpellOnTarget(39144, Guardian:GetMainTank())
+    if(math.random() < 0.3) then
+		Guardian:FullCastSpellOnTarget(39144, Guardian:GetMainTank())
     end
-    end
+end
+
 function Hamstring(Unit, event)
-    if math.random() < 0.3 then
-    Guardian:FullCastSpellOnTarget(29667, Guardian:GetMainTank())
+    if(math.random() < 0.3) then
+		Guardian:FullCastSpellOnTarget(29667, Guardian:GetMainTank())
     end
-    end
+end
 
 RegisterUnitEvent(21865, 1, "Ambusher")
 RegisterUnitEvent(21873, 1, "Guardian")

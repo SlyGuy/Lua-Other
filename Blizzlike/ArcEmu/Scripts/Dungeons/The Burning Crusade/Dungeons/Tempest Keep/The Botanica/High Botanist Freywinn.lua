@@ -1,40 +1,38 @@
+--[[High Botanist Freywinn yells: Endorel anuminor!
+High Botanist Freywinn yells: Nature bends to my will....
+High Botanist Freywinn yells: The specimens... must be preserved.
+High Botanist Freywinn yells: What are you doing? These specimens are very delicate!
+High Botanist Freywinn says: ...mumble mumble...
+High Botanist Freywinn says: ...mumble...Petals of Fire...mumble...
+High Botanist Freywinn says: ...thorny vines...mumble...ouch!
+High Botanist Freywinn says: ...with the right mixture, perhaps...]]
+
+function Freywinn(Unit, event, miscUnit, misc)
+	Unit:RegisterEvent("Freywinn_Heal", 15000, 0)
+	Unit:RegisterEvent("Freywinn_White", 19000, 0)
+	Unit:RegisterEvent("Freywinn_Green", 23000, 0)
+	Unit:RegisterEvent("Freywinn_Blue", 27000, 0)
+	Unit:RegisterEvent("Freywinn_Red", 35000, 0)
+end
+
 function Freywinn_Heal(Unit)
-	print "Freywinn Heal"
 	Unit:FullCastSpell(25817)
-	Unit:SendChatMessage(11, 0, "Heal....")
 end
 
-function Freywinn_White(Unit, event, miscunit, misc)
-	print "Freywinn White"
-	Unit:FullCastSpellOnTarget(34759,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Grrrr...")
+function Freywinn_White(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(34759, Unit:GetClosestPlayer())
 end
 
-function Freywinn_Green(Unit, event, miscunit, misc)
-	print "Freywinn Green"
-	Unit:FullCastSpellOnTarget(34761,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Grrrr...")
+function Freywinn_Green(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(34761, Unit:GetClosestPlayer())
 end
 
-function Freywinn_Blue(Unit, event, miscunit, misc)
-	print "Freywinn Blue"
-	Unit:FullCastSpellOnTarget(34762,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Grrrr...")
+function Freywinn_Blue(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(34762, Unit:GetClosestPlayer())
 end
 
-function Freywinn_Red(Unit, event, miscunit, misc)
-	print "Freywinn Red"
-	Unit:FullCastSpellOnTarget(34763,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Grrrr...")
+function Freywinn_Red(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(34763, Unit:GetClosestPlayer())
 end
 
-function Freywinn(unit, event, miscunit, misc)
-	print "Freywinn"
-	unit:RegisterEvent("Freywinn_Heal",15000,0)
-	unit:RegisterEvent("Freywinn_White",19000,0)
-	unit:RegisterEvent("Freywinn_Green",23000,0)
-	unit:RegisterEvent("Freywinn_Blue",27000,0)
-	unit:RegisterEvent("Freywinn_Red",35000,0)
-end
-
-RegisterUnitEvent(17975,1,"Freywinn")
+RegisterUnitEvent(17975, 1, "Freywinn")

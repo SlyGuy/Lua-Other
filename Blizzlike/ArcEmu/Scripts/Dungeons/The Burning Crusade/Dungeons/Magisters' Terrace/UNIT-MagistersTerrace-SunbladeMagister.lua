@@ -22,17 +22,17 @@ function SunbladeMagister_OnCombat(Unit, Event)
 end
 
 function SunbladeMagister_Frostbolt(Unit, Event)
-	local plr = Unit:GetRandomPlayer(1)
-	if plr then
-		Unit:FullCastSpellOnTarget(46035,plr)
+local plr = Unit:GetRandomPlayer(1)
+	if(plr) then
+		Unit:FullCastSpellOnTarget(46035, plr)
 	end
 end
 
 function SunbladeMagister_ArcaneNova(Unit)
 	local arcaneflip = math.random(6)
 	local plr = Unit:GetRandomPlayer(7)
-	if arcaneflip == 1 and plr ~= nil then
-		Unit:FullCastSpellOnTarget(46036,plr)
+	if((arcaneflip == 1) and (plr ~= nil)) then
+		Unit:FullCastSpellOnTarget(46036, plr)
 	else
 	end
 end
@@ -46,7 +46,6 @@ function SunbladeMagister_OnDied(Unit)
 	Unit:RemoveEvents()
 	Unit:RemoveAIUpdateEvent()
 end
-
 
 RegisterUnitEvent(24685, 1, "SunbladeMagister_OnCombat")
 RegisterUnitEvent(24685, 21,"SunbladeMagister_Frostbolt")

@@ -1,5 +1,15 @@
--- The Encounter of Velen and Liadrin Talking
--- AFTER Kil'Jaeden Dies this is what happens
+--[[Prophet Velen says: As the Legion's final defeat draws ever-nearer, stand proud in the knowledge that you have saved worlds without number from the flame.
+Prophet Velen says: Farewell...
+Prophet Velen says: Gaze now, mortals - upon the HEART OF M'URU! Unblemished. Bathed by the light of Creation - just as it was at the Dawn.
+Prophet Velen says: In time, the light and hope held within - will rebirth more than this mere fount of power... Mayhap, they will rebirth the soul of a nation.
+Prophet Velen says: Just as this day marks an ending, so too does it herald a new beginning...
+Prophet Velen says: Mortal heroes - your victory here today was foretold long ago. My brother's anguished cry of defeat will echo across the universe - bringing renewed hope to all those who still stand against the Burning Crusade.
+Prophet Velen says: Salvation, young one. It waits for us all.
+Prophet Velen says: The creature Entropius, whom you were forced to destroy, was once the noble naaru, M'uru. In life, M'uru channeled vast energies of LIGHT and HOPE. For a time, a misguided few sought to steal those energies...
+Prophet Velen says: Then fortunate it is, that I have reclaimed the noble naaru's spark from where it fell! Where faith dwells, hope is never lost, young blood elf.]]
+--[[Lady Liadrin says: Blessed ancestors! I feel it... so much love... so much grace... there are... no words... impossible to describe...
+Lady Liadrin says: Can it be?
+Lady Liadrin says: Our arrogance was unpardonable. We damned one of the most noble beings of all. We may never atone for this sin.]]
 function Velen_OnSpawn(pUnit,Event)
 	pUnit:RegisterEvent("Velen_Talk1", 4000, 1)
 end
@@ -80,4 +90,4 @@ function Velen_Talk8(pUnit,Event)
 end
 
 RegisterUnitEvent(26246, 6, "Velen_OnSpawn")
-RegisterUnitEvent(25246, 6, "Liadrin_OnSpawn")
+RegisterUnitEvent(26247, 6, "Liadrin_OnSpawn")

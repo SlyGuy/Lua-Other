@@ -1,28 +1,30 @@
-local CHAT_MSG_MONSTER_YELL = 14
-local LANG_UNIVERSAL = 0
+--[[Keli'dan the Breaker yells: Closer! Come closer... and burn!
+Keli'dan the Breaker yells: Good...luck. You'll need it.
+Keli'dan the Breaker yells: Just as you deserve!
+Keli'dan the Breaker yells: Who dares interrupt--What is this; what have you done? You'll ruin everything!
+Keli'dan the Breaker yells: Your friends will soon be joining you!
+]]
+
+function Kelidan_OnCombat(Unit)
+	Unit:RegisterEvent("Kelidan_Shadow_Bolt_Volley", 9000, 0)
+	Unit:RegisterEvent("Kelidan_Burning_Nova", 14000, 0)
+end
+
 function Kelidan_Shadow_Bolt_Volley(Unit)
-	print "Kelidan Shadow Bolt Volley"
-	if Unit:GetClosestPlayer() ~= nil then
-		Unit:FullCastSpellOnTarget(36736,Unit:GetClosestPlayer())
-		Unit:SendChatMessage(CHAT_MSG_MONSTER_YELL,LANG_UNIVERSAL, "Rain of shadow Bolt...")
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:FullCastSpellOnTarget(36736, Unit:GetClosestPlayer())
 	end
 end
 
 function Kelidan_Burning_Nova(Unit)
-	print "Kelidan Burning Nova"
-	if Unit:GetClosestPlayer() ~= nil then
-		Unit:FullCastSpellOnTarget(20229,Unit:GetClosestPlayer())
-		Unit:SendChatMessage(CHAT_MSG_MONSTER_YELL,LANG_UNIVERSAL, "Fire...Fire...on you...")
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:FullCastSpellOnTarget(20229, Unit:GetClosestPlayer())
 	end
 end
+
 function Kelidan_OnWipe(Unit)
 	Unit:RemoveEvents()
 end
-function Kelidan_OnCombat(Unit)
-	print "Kelidan"
-	Unit:RegisterEvent("Kelidan_Shadow_Bolt_Volley",9000,0)
-	Unit:RegisterEvent("Kelidan_Burning_Nova",14000,0)
-end
-RegisterUnitEvent(17377,1,"Kelidan_OnCombat")
-RegisterUnitEvent(17377,2,"Kelidan_OnWipe")
-RegisterUnitEvent(17377,4,"Kelidan_OnWipe")
+
+RegisterUnitEvent(17377, 1, "Kelidan_OnCombat")
+RegisterUnitEvent(17377, 4, "Kelidan_OnWipe")
