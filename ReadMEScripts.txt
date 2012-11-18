@@ -11,6 +11,14 @@ _______KEY________
 - UPD = Updated -|
 - MER = Merge	-|
 _________________________________Updates:_____________________________|
+v1.0
+	zdroid9770:
+		--> ADD: Missing Classic Lua Dungeon scripts
+		--> ADD: Missing Burning Crusade Lua Dungeon scripts
+		--> ADD: Missing Wrath of the Lich King Lua Dungeon scripts
+		--> ADD: Cataclysm Lua Dungeon scripts
+		--> ADD: Mists of Pandaria Lua Dungeon scripts
+______________________________________________________________________|
 v0.9
 	zdroid9770:
 		--> UPD: Burning Crusade Dungeons Lua Scripts
