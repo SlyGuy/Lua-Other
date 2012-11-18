@@ -1,156 +1,155 @@
 local mod = getfenv(1)
 assert(mod)
---module(mod._NAME..".DARKWEAVER_SYTH",package.seeall)
 local self = getfenv(1)
 
-function OnCombat(unit,_,mTarget)
-	self[tostring(unit)] = {
-		shock = math.random(2,6),
-		chain = math.random(10,15),
+function OnCombat(Unit, _, mTarget)
+	self[tostring(Unit)] = {
+		shock = math.random(2, 6),
+		chain = math.random(10, 15),
 		summon_phase = 1,
-		isHeroic = (mTarget:IsPlayer() and mTarget:IsHeroic() )
+		isHeroic = (mTarget:IsPlayer() and mTarget:IsHeroic())
 	}
-	unit:RegisterAIUpdateEvent(1000)
-	local say_text = math.random(1,3)
+	Unit:RegisterAIUpdateEvent(1000)
+	local say_text = math.random(1, 3)
 	if(say_text == 1) then
-		unit:MonsterYell("Hrrmm.. Time to.. hrrm.. make my move.")
-		unit:PlaySoundToSet(10503)
+		Unit:SendChatMessage(14, 0, "Hrrmm.. Time to.. hrrm.. make my move.")
+		Unit:PlaySoundToSet(10503)
 	elseif(say_text == 2) then
-		unit:MonsterYell("Nice pets..hrm.. Yes!")
-		unit:PlaySoundToSet(10504)
+		Unit:SendChatMessage(14, 0, "Nice pets..hrm.. Yes!")
+		Unit:PlaySoundToSet(10504)
 	else
-		unit:MonsterYell("Nice pets have.. weapons. No so...nice.")
-		unit:PlaySoundToSet(10505)
+		Unit:SendChatMessage(14, 0, "Nice pets have.. weapons. No so...nice.")
+		Unit:PlaySoundToSet(10505)
 	end
 end
 
-function OnWipe(unit)
-	unit:RemoveAIUpdateEvent()
-	self[tostring(unit)] = nil
+function OnWipe(Unit)
+	Unit:RemoveAIUpdateEvent()
+	self[tostring(Unit)] = nil
 end
 
-function OnTargetKill(unit)
-	local say_text = math.random()
-	if(say_text) then
-		unit:MonsterYell("Death.. meeting life is..")
-		unit:PlaySoundToSet(10506)
+function OnTargetKill(Unit)
+	local say_text = math.random(1, 2)
+	if(say_text == 1) then
+		Unit:SendChatMessage(14, 0, "Death.. meeting life is..")
+		Unit:PlaySoundToSet(10506)
 	else
-		unit:MonsterYell("Uhn... Be free..")
-		unit:PlaySoundToSet(10507)
+		Unit:SendChatMessage(14, 0, "Uhn... Be free..")
+		Unit:PlaySoundToSet(10507)
 	end
 end
 
-function OnDeath(unit)
-	unit:MonsterYell("No more life... hrm. No more pain.")
-	unit:PlaySoundToSet(10508)
+function OnDeath(Unit)
+	Unit:SendChatMessage(14, 0, "No more life... hrm. No more pain.")
+	Unit:PlaySoundToSet(10508)
 end
-function AIUpdate(unit)
-	if(unit:IsCasting() ) then return end
-	if(unit:GetNextTarget() == nil) then
-		unit:WipeThreatList()
+
+function AIUpdate(Unit)
+	if(Unit:IsCasting()) then return end
+	if(Unit:GetNextTarget() == nil) then
+		Unit:WipeThreatList()
 		return
 	end
-	local vars = self[tostring(unit)]
+	local vars = self[tostring(Unit)]
 	vars.shock = vars.shock -1
 	vars.chain = vars.chain - 1
 	
 	if(vars.chain <= 0) then
-		local target = unit:GetRandomEnemy()
+		local target = Unit:GetRandomEnemy()
 		if(vars.isHeroic) then
-			unit:FullCastSpellOnTarget(15659,target)
+			Unit:FullCastSpellOnTarget(15659, target)
 		else
-			unit:FullCastSpellOnTarget(15305,target)
+			Unit:FullCastSpellOnTarget(15305, target)
 		end
-		vars.chain = math.random(10,20)
+		vars.chain = math.random(10, 20)
 	elseif(vars.shock <=0) then
-		local target = unit:GetRandomEnemy()
+		local target = Unit:GetRandomEnemy()
 		local spelltocast = math.random(4)
 		if(spelltocast == 1) then
 			if(vars.isHeroic) then
-				unit:FullCastSpellOnTarget(38135,target)
+				Unit:FullCastSpellOnTarget(38135, target)
 			else
-				unit:FullCastSpellOnTarget(33534,target)
+				Unit:FullCastSpellOnTarget(33534, target)
 			end
 		elseif(spelltocast == 2) then
 			if(vars.isHeroic) then
-				unit:FullCastSpellOnTarget(15616,target)
+				Unit:FullCastSpellOnTarget(15616, target)
 			else
-				unit:FullCastSpellOnTarget(15039,target)
+				Unit:FullCastSpellOnTarget(15039, target)
 			end
 		elseif(spelltocast == 3) then
 			if(vars.isHeroic) then
-				unit:FullCastSpellOnTarget(21401,target)
+				Unit:FullCastSpellOnTarget(21401, target)
 			else
-				unit:FullCastSpellOnTarget(12548,target)
+				Unit:FullCastSpellOnTarget(12548, target)
 			end
 		else
 			if(vars.isHeroic) then
-				unit:FullCastSpellOnTarget(38136,target)
+				Unit:FullCastSpellOnTarget(38136, target)
 			else
-				unit:FullCastSpellOnTarget(33620,target)
+				Unit:FullCastSpellOnTarget(33620, target)
 			end
 		end
 		vars.shock = math.random(5,15)
 	else
-		local hp = unit:GetHealthPct()
-		if( (hp <= 90 and vars.summon_phase == 1) 
-		or (hp <= 55 and vars.summon_phase == 2)
-		or (hp <= 10 and vars.summon_phase == 3) ) then
-			local summon_spells = {33538,33537,33539,33540}
+		local hp = Unit:GetHealthPct()
+		local asummon = vars.summon_phase
+		if((hp <= 90 and asummon == 1) or (hp <= 55 and asummon == 2) or (hp <= 10 and asummon == 3)) then
+			local summon_spells = {33538, 33537, 33539, 33540}
 			local angle = 0
 			for i = 1,4 do
-				local radius = math.random(5,10)
-				local x = unit:GetX()+math.cos(math.rad(angle))*radius
-				local y = unit:GetY()+math.sin(math.rad(angle))*radius
-				unit:CastSpellAoF(x,y,unit:GetZ(),summon_spells[i])
+				local radius = math.random(5, 10)
+				local x = Unit:GetX()+math.cos(math.rad(angle))*radius
+				local y = Unit:GetY()+math.sin(math.rad(angle))*radius
+				Unit:CastSpellAoF(x, y, Unit:GetZ(), summon_spells[i])
 				angle = angle+90
 			end
-			unit:MonsterYell("I have pets of my own!")
-			unit:PlaySoundToSet(10502)
+			Unit:SendChatMessage(14, 0, "I have pets of my own!")
+			Unit:PlaySoundToSet(10502)
 			vars.summon_phase = vars.summon_phase + 1
 		end
 	end
 end
 
-RegisterUnitEvent(18472, 1, OnCombat)
-RegisterUnitEvent(18472, 2, OnWipe)
-RegisterUnitEvent(18472, 3, OnTargetKill)
-RegisterUnitEvent(18472, 4, OnDeath)
-RegisterUnitEvent(18472, 21, AIUpdate)
+RegisterUnitEvent(18472, 1, "OnCombat")
+RegisterUnitEvent(18472, 2, "OnWipe")
+RegisterUnitEvent(18472, 3, "OnTargetKill")
+RegisterUnitEvent(18472, 4, "OnDeath")
+RegisterUnitEvent(18472, 21, "AIUpdate")
 
-function Elemental_Cast(unit,spell)
-	unit:FullCastSpell(spell)
+function Elemental_Cast(Unit, spell)
+	Unit:FullCastSpell(spell)
 end
 
-function Elemental_OnSpawn(unit)
-	 local entry = unit:GetEntry()
+function Elemental_OnSpawn(Unit)
+	 local entry = Unit:GetEntry()
 	 if(entry == 19205) then
-		unit:RegisterLuaEvent(Elemental_Cast,math.random(7,15)*1000,0,38138)
+		Unit:RegisterLuaEvent(Elemental_Cast, math.random(7, 15)*1000, 0, 38138)
 	elseif(entry == 19203) then
-		unit:RegisterLuaEvent(Elemental_Cast,math.random(7,15)*1000,0,38141)
+		Unit:RegisterLuaEvent(Elemental_Cast, math.random(7, 15)*1000, 0, 38141)
 	elseif(entry == 19204) then
-		unit:RegisterLuaEvent(Elemental_Cast,math.random(7,15)*1000,0,38142)
+		Unit:RegisterLuaEvent(Elemental_Cast, math.random(7, 15)*1000, 0, 38142)
 	else
-		unit:RegisterLuaEvent(Elemental_Cast,math.random(7,15)*1000,0,38143)
+		Unit:RegisterLuaEvent(Elemental_Cast, math.random(7, 15)*1000, 0, 38143)
 	end
-	local creator = unit:GetCreator()
+	local creator = Unit:GetCreator()
 	if(creator) then
-		unit:AttackReaction(creator:GetNextTarget(),1,0)
+		Unit:AttackReaction(creator:GetNextTarget(), 1, 0)
 	else
-		unit:AttackReaction(unit:GetRandomEnemy(),1,0)
+		Unit:AttackReaction(Unit:GetRandomEnemy(), 1, 0)
 	end
 end
 
-function Elemental_OnWipe(unit)
-	unit:RemoveLuaEvents()
-	unit:Despawn(1000,0)
+function Elemental_OnWipe(Unit)
+	Unit:RemoveLuaEvents()
+	Unit:Despawn(1000, 0)
 end
 
-RegisterUnitEvent(19205, 18, Elemental_OnSpawn)
-RegisterUnitEvent(19205, 2, Elemental_OnWipe)
-RegisterUnitEvent(19203, 18, Elemental_OnSpawn)
-RegisterUnitEvent(19203, 2, Elemental_OnWipe)
-RegisterUnitEvent(19204, 18, Elemental_OnSpawn)
-RegisterUnitEvent(19204, 2, Elemental_OnWipe)
-RegisterUnitEvent(19206, 18, Elemental_OnSpawn)
-RegisterUnitEvent(19206, 2, Elemental_OnWipe)
+RegisterUnitEvent(19205, 18, "Elemental_OnSpawn")
+RegisterUnitEvent(19205, 2, "Elemental_OnWipe")
+RegisterUnitEvent(19203, 18, "Elemental_OnSpawn")
+RegisterUnitEvent(19203, 2, "Elemental_OnWipe")
+RegisterUnitEvent(19204, 18, "Elemental_OnSpawn")
+RegisterUnitEvent(19204, 2, "Elemental_OnWipe")
+RegisterUnitEvent(19206, 18, "Elemental_OnSpawn")
+RegisterUnitEvent(19206, 2, "Elemental_OnWipe")

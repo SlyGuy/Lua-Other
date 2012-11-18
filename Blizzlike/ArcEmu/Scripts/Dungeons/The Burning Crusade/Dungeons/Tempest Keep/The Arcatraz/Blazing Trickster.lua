@@ -1,26 +1,22 @@
-function Trickster_FireBoltt(Unit, event, miscunit, misc)
-	print "Trickster FireBoltt"
-	Unit:FullCastSpellOnTarget(36906,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Try to catch that...")
+--[[Blazing Trickster yells: I hope you all... die in pain!
+Blazing Trickster yells: I'm gonna cook ya, an' then I'm gonna eat ya!]]
+
+function Trickster(Unit, event, miscUnit, misc)
+	Unit:RegisterEvent("Trickster_FireBolt", 10000, 0)
+	Unit:RegisterEvent("Trickster_FireShield", 15000, 0)
+	Unit:RegisterEvent("Trickster_Charge", 21000, 0)
+end
+
+function Trickster_FireBoltt(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(36906, Unit:GetClosestPlayer())
 end
 
 function Trickster_FireShield(Unit)
-	print "Trickster FireShield"
 	Unit:FullCastSpell(36907)
-	Unit:SendChatMessage(11, 0, "Now i will be protect form fire.... Noob.")
 end
 
-function Trickster_Charge(Unit, event, miscunit, misc)
-	print "Trickster Charge"
-	Unit:FullCastSpellOnTarget(36058,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "I will send you over the wall...")
+function Trickster_Charge(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(36058, Unit:GetClosestPlayer())
 end
 
-function Trickster(unit, event, miscunit, misc)
-	print "Trickster"
-	unit:RegisterEvent("Trickster_FireBolt",10000,0)
-	unit:RegisterEvent("Trickster_FireShield",15000,0)
-	unit:RegisterEvent("Trickster_Charge",21000,0)
-end
-
-RegisterUnitEvent(20905,1,"Trickster")
+RegisterUnitEvent(20905, 1, "Trickster")

@@ -1,201 +1,196 @@
 local mod = getfenv(1)
-if(type(mod) ~= "table") then 
-	error("Missing Shadow Labyrinth module!") 
-end
---module(mod._NAME..".GRAND_MASTER_VORPIL",package.seeall)
 local self = getfenv(1)
 
-function OnSpawn(unit)
-	unit:PlaySoundToSet(10522)
-	unit:MonsterYell("Keep your minds focused for the days of reckoning are close at hand. Soon, the destroyer of worlds will return to make good on his promise. Soon the destruction of all that is will begin!")
-	unit:RegisterEvent(RandomEmote,3500,0)
+function OnSpawn(Unit, Event)
+	Unit:SendChatMessage(14, 0, "Keep your minds focused for the days of reckoning are close at hand. Soon, the destroyer of worlds will return to make good on his promise. Soon the destruction of all that is will begin!")
+	Unit:PlaySoundToSet(10522)
+	Unit:RegisterEvent(RandomEmote, 3500,0)
 end
 
-function OnCombat(unit,_,mAggro)
-	unit:RemoveEvents()
-	self[tostring(unit)] = {
-		draw = math.random(20,30),
-		volley = math.random(2,5),
+function OnCombat(Unit, Event, _, mAggro)
+	Unit:RemoveEvents()
+	self[tostring(Unit)] = {
+		draw = math.random(20, 30),
+		volley = math.random(2, 5),
 		rain = nil,
-		banish = math.random(15,30),
+		banish = math.random(15, 30),
 		rifts = {},
 		enrage = false,
 		isHeroic = (mAggro:IsPlayer() and mAggro:IsHeroic() )
 	}
-	local say = math.random(1,3)
+	local say = math.random(1, 3)
 	if(say == 1) then
-		unit:PlaySoundToSet(10524)
-		unit:MonsterYell("I'll make an offering of your blood.")
+		Unit:PlaySoundToSet(10524)
+		Unit:SendChatMessage(14, 0, "I'll make an offering of your blood.")
 	elseif(say == 2) then
-		unit:PlaySoundToSet(10525)
-		unit:MonsterYell("You'll be a fine example for the others.")
+		Unit:SendChatMessage(14, 0, "You'll be a fine example for the others.")
+		Unit:PlaySoundToSet(10525)
 	else
-		unit:MonsterYell("Good! A worthy sacrifice!")
-		unit:PlaySoundToSet(10526)
+		Unit:SendChatMessage(14, 0, "Good! A worthy sacrifice!")
+		Unit:PlaySoundToSet(10526)
 	end
-	unit:RegisterAIUpdateEvent(1000)
-	unit:RegisterEvent(SummonPortals,math.random(7,9)*1000,1)
-	local allies = unit:GetInRangeFriends()
+	Unit:RegisterAIUpdateEvent(1000)
+	Unit:RegisterEvent(SummonPortals, math.random(7, 9)*1000, 1)
+	local allies = Unit:GetInRangeFriends()
 	for _,v in pairs(allies) do
-		if(unit:GetDistanceYards(v) <= 100) then
-			v:AttackReaction(mAggro,1,0)
+		if(Unit:GetDistanceYards(v) <= 100) then
+			v:AttackReaction(mAggro, 1, 0)
 		end
 	end
 end
 
-function RandomEmote(unit)
-	local emote_type = math.random(1,4)
+function RandomEmote(Unit, Event)
+	local emote_type = math.random(1, 4)
 	if(emote_type == 1) then
-		unit:Emote(LCF.EMOTE_ONESHOT_ROAR,0)
+		Unit:Emote(LCF.EMOTE_ONESHOT_ROAR, 0)
 	elseif(emote_type == 2) then
-		unit:Emote(LCF.EMOTE_ONESHOT_TALK,0)
+		Unit:Emote(LCF.EMOTE_ONESHOT_TALK, 0)
 	elseif(emote_type == 3) then
-		unit:Emote(LCF.EMOTE_ONESHOT_EXCLAMATION,0)
+		Unit:Emote(LCF.EMOTE_ONESHOT_EXCLAMATION, 0)
 	else
-		unit:Emote(LCF.EMOTE_ONESHOT_NO,0)
+		Unit:Emote(LCF.EMOTE_ONESHOT_NO,0)
 	end
 end
 
-function SummonPortals(unit)
-	unit:PlaySoundToSet(10523)
-	unit:MonsterYell("Come to my aid! Heed your master now!")
-	local summon_spells = {33582,33583,33584,33585,33586}
+function SummonPortals(Unit, Event)
+	Unit:PlaySoundToSet(10523)
+	Unit:SendChatMessage(14, 0, "Come to my aid! Heed your master now!")
+	local summon_spells = {33582, 33583, 33584, 33585, 33586}
 	local portal_coords = {
-		{-304.642212,-252.788239,12.683180},
-		{-305.964783,-269.496185,12.682022},
-		{-280.969879,-242.080200,12.682602},
-		{-266.907715,-289.525787,12.682111},
-		{-222.894775,-262.996704,17.086409}
+		{-304.642212, -252.788239, 12.683180},
+		{-305.964783, -269.496185, 12.682022},
+		{-280.969879, -242.080200, 12.682602},
+		{-266.907715, -289.525787, 12.682111},
+		{-222.894775, -262.996704, 17.086409}
 	}
 	local angle = 0
 	for i = 1,5 do
 		local x,y,z = portal_coords[i][1],portal_coords[i][2],portal_coords[i][3]
-		unit:CastSpellAoF(x,y,z,33566)
-		local portal = unit:GetCreatureNearestCoords(x,y,z,19224)
+		Unit:CastSpellAoF(x,y,z, 33566)
+		local portal = Unit:GetCreatureNearestCoords(x,y,z, 19224)
 		if(portal) then
-			portal:SetUInt32Value(LCF.UNIT_CHANNEL_SPELL,summon_spells[i])
+			portal:SetUInt32Value(LCF.Unit_CHANNEL_SPELL,summon_spells[i])
 			portal:CastSpell(33569)
 		end
 	end
 end
 
-function TeleportPlayers(unit) -- Draw shadows triggers an unknown spell :(
-	local x,y,z,o = unit:GetSpawnLocation()
-	local enemies = unit:GetInRangeEnemies()
+function TeleportPlayers(Unit, Event)
+	local x,y,z,o = Unit:GetSpawnLocation()
+	local enemies = Unit:GetInRangeEnemies()
 	for _,v in pairs(enemies) do
-		if(v:IsCreature() ) then
-			v:TeleportCreature(x,y,z)
+		if(v:IsCreature()) then
+			v:TeleportCreature(x,y,z,o)
 		else
-			v:Teleport(unit:GetMapId(),x,y,z,o)
+			v:Teleport(Unit:GetMapId(), x,y,z,o)
 		end
 	end
-	unit:TeleportCreature(x,y,z)
+	Unit:TeleportCreature(x,y,z)
 end
 
-function OnWipe(unit)
-	self[tostring(unit)] = nil
-	unit:RemoveAIUpdateEvent()
-	local units = unit:GetInRangeUnits()
-	for _,v in pairs(units) do
+function OnWipe(Unit, Event)
+	self[tostring(Unit)] = nil
+	Unit:RemoveAIUpdateEvent()
+	local Units = Unit:GetInRangeUnits()
+	for _,v in pairs(Units) do
 		if(v:GetEntry() == 19226) then
-			v:Despawn(1,0)
+			v:Despawn(1, 0)
 		end
 	end
-	if(unit:IsAlive() ) then
-		unit:MonsterYell("Fools!")
+	if(Unit:IsAlive()) then
+		Unit:SendChatMessage(14, 0, "Fools!")
 	end
 end
 
-function OnKill(unit)
-	local say = math.random(0,1)
+function OnKill(Unit)
+	local say = math.random(0, 1)
 	if(say) then
-		unit:MonsterYell("I serve with pride!")
-		unit:PlaySoundToSet(10527)
+		Unit:SendChatMessage(14, 0, "I serve with pride!")
+		Unit:PlaySoundToSet(10527)
 	else
-		unit:MonsterYell("Your death is for the greater cause!")
-		unit:PlaySoundToSet(10528)
+		Unit:SendChatMessage(14, 0, "Your death is for the greater cause!")
+		Unit:PlaySoundToSet(10528)
 	end
-	local gate = unit:GetGameObjectNearestCoords(-160.663055,-310.451263,17.086189,183295)
+	local gate = Unit:GetGameObjectNearestCoords(-160.663055, -310.451263, 17.086189, 183295)
 	if(gate) then
 		gate:Open()
 	end
 end
 
-function OnDeath(unit)
-	unit:MonsterYell("I give my life... gladly...")
-	unit:PlaySoundToSet(10529)
+function OnDeath(Unit)
+	Unit:SendChatMessage(14, 0, "I give my life... gladly...")
+	Unit:PlaySoundToSet(10529)
 end
 
-function AIUpdate(unit)
-	if(unit:IsCasting() ) then return end
-	if(unit:GetNextTarget() == nil) then
-		unit:WipeThreatList()
+function AIUpdate(Unit)
+	if(Unit:IsCasting()) then return end
+	if(Unit:GetNextTarget() == nil) then
+		Unit:WipeThreatList()
 		return
 	end
-	local vars = self[tostring(unit)]
+	local vars = self[tostring(Unit)]
 	vars.draw = vars.draw - 1
 	vars.volley = vars.volley - 1
 	vars.banish = vars.banish - 1
 	
 	if(vars.isHeroic and vars.banish <= 0) then
-		local enemy = unit:GetRandomEnemy()
-		unit:FullCastSpellOnTarget(38791,enemy)
-		vars.banish = math.random(15,30)
+		local enemy = Unit:GetRandomEnemy()
+		Unit:FullCastSpellOnTarget(38791, enemy)
+		vars.banish = math.random(15, 30)
 	elseif(vars.draw <= 0) then
-		unit:FullCastSpell(33563)
-		unit:MonsterYell("The darkness in your souls draws you ever closer...")
-		vars.draw = math.random(20,30)
+		Unit:FullCastSpell(33563)
+		Unit:SendChatMessage(14, 0, "The darkness in your souls draws you ever closer...")
+		vars.draw = math.random(20, 30)
 		vars.rain = 0
-		unit:RegisterEvent(TeleportPlayers,1000,1)
+		Unit:RegisterEvent(TeleportPlayers, 1000, 1)
 	elseif(vars.rain ~= nil and vars.rain <= 0) then
 		if(vars.isHeroic) then
-			unit:FullCastSpell(39363)
+			Unit:FullCastSpell(39363)
 		else
-			unit:FullCastSpell(33617)
+			Unit:FullCastSpell(33617)
 		end
 		vars.rain = nil
 	elseif(vars.volley <= 0) then
-		unit:FullCastSpell(33841)
-		vars.volley = math.random(10,15)
+		Unit:FullCastSpell(33841)
+		vars.volley = math.random(10, 15)
 	end
 end
 
-RegisterUnitEvent(18732, 18, OnSpawn)
-RegisterUnitEvent(18732, 1, OnCombat)
-RegisterUnitEvent(18732, 2, OnWipe)
-RegisterUnitEvent(18732, 3, OnKill)
-RegisterUnitEvent(18732, 4, OnDeath)
-RegisterUnitEvent(18732, 21, AIUpdate)
+RegisterUnitEvent(18732, 18, "OnSpawn")
+RegisterUnitEvent(18732, 1, "OnCombat")
+RegisterUnitEvent(18732, 2, "OnWipe")
+RegisterUnitEvent(18732, 3, "OnKill")
+RegisterUnitEvent(18732, 4, "OnDeath")
+RegisterUnitEvent(18732, 21, "AIUpdate")
 
-function VoidRift_OnSpawn(unit)
-	self[tostring(unit)] = {
-		spawn_time = math.random(2,5),
+function VoidRift_OnSpawn(Unit, Event)
+	self[tostring(Unit)] = {
+		spawn_time = math.random(2, 5),
 		reduce_timer = 45,
 		reduce_cnt = 0
 	}
-	unit:RegisterAIUpdateEvent(1000)
-	unit:FullCastSpell(33569)
-	unit:SetUnselectable()
-	local vorpil = unit:GetCreatureNearestCoords(-255.083817,-264.261200,17.086420,18732)
+	Unit:RegisterAIUpdateEvent(1000)
+	Unit:FullCastSpell(33569)
+	Unit:SetUnselectable()
+	local vorpil = Unit:GetCreatureNearestCoords(-255.083817, -264.261200, 17.086420, 18732)
 	if(vorpil) then
-		unit:SetCreator(vorpil)
+		Unit:SetCreator(vorpil)
 	end
 end
 
-function VoidRift_Update(unit)
-	-- first make sure vorpil can allow us to spawn more.
-	local vorpil = unit:GetCreator()
+function VoidRift_Update(Unit, Event)
+	local vorpil = Unit:GetCreator()
 	if(vorpil:IsDead() or vorpil:IsInCombat() == false) then
-		unit:RemoveAIUpdateEvent()
-		self[tostring(unit)] = nil
-		unit:Despawn(1,0)
+		Unit:RemoveAIUpdateEvent()
+		self[tostring(Unit)] = nil
+		Unit:Despawn(1,0)
 		return
 	end
-	local vars = self[tostring(unit)]
+	local vars = self[tostring(Unit)]
 	vars.spawn_time = vars.spawn_time - 1
 	vars.reduce_timer = vars.reduce_timer - 1
 	if(vars.spawn_time <= 0) then
-		unit:FullCastSpell(unit:GetUInt32Value(LCF.UNIT_CHANNEL_SPELL))
+		Unit:FullCastSpell(Unit:GetUInt32Value(LCF.Unit_CHANNEL_SPELL))
 		if(vars.reduce_cnt < 2) then
 			vars.spawn_time = 30
 		elseif(vars.reduce_cnt < 4) then
@@ -211,47 +206,47 @@ function VoidRift_Update(unit)
 	end
 end
 
-RegisterUnitEvent(19224, 18, VoidRift_OnSpawn)
-RegisterUnitEvent(19224, 21, VoidRift_Update)
+RegisterUnitEvent(19224, 18, "VoidRift_OnSpawn")
+RegisterUnitEvent(19224, 21, "VoidRift_Update")
 
-function Traveller_OnSpawn(unit)
-	unit:DisableTargeting(true)
-	local portal = unit:GetLocalCreature(19224)
+function Traveller_OnSpawn(Unit)
+	Unit:DisableTargeting(true)
+	local portal = Unit:GetLocalCreature(19224)
 	local vorpil = portal:GetCreator()
 	if(vorpil) then
-		unit:SetCreator(vorpil)
-		unit:ModifyRunSpeed(3)
-		unit:SetUnitToFollow(vorpil,1,math.pi)
-		unit:RegisterAIUpdateEvent(500)
+		Unit:SetCreator(vorpil)
+		Unit:ModifyRunSpeed(3)
+		Unit:SetUnitToFollow(vorpil, 1, math.pi)
+		Unit:RegisterAIUpdateEvent(500)
 	else
-		unit:Despawn(1000,0)
+		Unit:Despawn(1000, 0)
 	end
 end
 
-function Traveller_OnWipe(unit)
-	unit:RemoveAIUpdateEvent()
+function Traveller_OnWipe(Unit)
+	Unit:RemoveAIUpdateEvent()
 end
 
-function TravellerUpdate(unit)
-	local vorpil = unit:GetCreator()
+function TravellerUpdate(Unit)
+	local vorpil = Unit:GetCreator()
 	if(vorpil:IsInCombat() == false or vorpil:IsDead() ) then
-		unit:Kill(unit)
-		unit:Despawn(0,0)
+		Unit:Kill(Unit)
+		Unit:Despawn(0, 0)
 		return
 	end
 	local heroic = self[tostring(vorpil)].isHeroic
-	if(unit:GetDistanceYards(vorpil) <= 5) then
+	if(Unit:GetDistanceYards(vorpil) <= 5) then
 		if(heroic) then
 			vorpil:FullCastSpell(39364)
 		else
 			vorpil:FullCastSpell(33783)
 		end
-		unit:FullCastSpell(33846)
-		unit:RemoveAIUpdateEvent()
-		unit:Despawn(1000,0)
+		Unit:FullCastSpell(33846)
+		Unit:RemoveAIUpdateEvent()
+		Unit:Despawn(1000, 0)
 	end
 end
 
-RegisterUnitEvent(19226, 18, Traveller_OnSpawn)
-RegisterUnitEvent(19226, 21, TravellerUpdate)
-RegisterUnitEvent(19226, 2, Traveller_OnWipe)
+RegisterUnitEvent(19226, 18, "Traveller_OnSpawn")
+RegisterUnitEvent(19226, 21, "TravellerUpdate")
+RegisterUnitEvent(19226, 2, "Traveller_OnWipe")

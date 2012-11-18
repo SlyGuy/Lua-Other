@@ -1,176 +1,171 @@
 local mod = getfenv(1)
-if(type(mod) ~= "table") then 
-	error("Missing Shadow Labyrinth module!") 
-end
---module(mod._NAME..".BLACKHEART_THE_INCITER",package.seeall)
 local self = getfenv(1)
 
-function OnSpawn(unit)
-	local say  = math.random(1,3)
+function OnSpawn(Unit, Event)
+	local say  = math.random(1, 3)
 	if(say == 1) then
-		unit:PlaySoundToSet(10482)
-		unit:MonsterYell("All flesh must burn!")
+		Unit:SendChatMessage(14, 0, "All flesh must burn!")
+		Unit:PlaySoundToSet(10482)
 	elseif(say == 2) then
-		unit:MonsterYell("All creation must be unmade!")
-		unit:PlaySoundToSet(10483)
+		Unit:SendChatMessage(14, 0, "All creation must be unmade!")
+		Unit:PlaySoundToSet(10483)
 	elseif(say == 3) then
-		unit:PlaySoundToSet(10484)
-		unit:MonsterYell("Power will be yours!")
+		Unit:SendChatMessage(14, 0, "Power will be yours!")
+		Unit:PlaySoundToSet(10484)
 	elseif(say == 4) then
-		unit:PlaySoundToSet(10492)
-		unit:MonsterYell("Be ready for Dark One's return.")
+		Unit:SendChatMessage(14, 0, "Be ready for Dark One's return.")
+		Unit:PlaySoundToSet(10492)
 	elseif(say == 5) then
-		unit:MonsterYell("So we have place new universe!")
-		unit:PlaySoundToSet(10493)
+		Unit:SendChatMessage(14, 0, "So we have place new universe!")
+		Unit:PlaySoundToSet(10493)
 	else
-		unit:MonsterYell("Dark One... promise...")
-		unit:PlaySoundToSet(10494)
+		Unit:SendChatMessage(14, 0, "Dark One... promise...")
+		Unit:PlaySoundToSet(10494)
 	end
 end
 
-function OnCombat(unit)
-	self[tostring(unit)] = {
-		stomp = math.random(15,30),
-		charge = math.random(15,30),
+function OnCombat(Unit, Event)
+	self[tostring(Unit)] = {
+		stomp = math.random(15, 30),
+		charge = math.random(15, 30),
 		incite = 20
 	}
-	local say = math.random(1,6)
+	local say = math.random(1, 6)
 	if(say == 1) then
-		unit:PlaySoundToSet(10486)
-		unit:MonsterYell("You'll be sorry!")
+		Unit:PlaySoundToSet(10486)
+		Unit:SendChatMessage(14, 0, "You'll be sorry!")
 	elseif(say == 2) then
-		unit:PlaySoundToSet(10487)
-		unit:MonsterYell("Time for fun!")
+		Unit:PlaySoundToSet(10487)
+		Unit:SendChatMessage(14, 0, "Time for fun!")
 	elseif(say == 3) then
-		unit:PlaySoundToSet(10488)
-		unit:MonsterYell("I see dead people!")
+		Unit:PlaySoundToSet(10488)
+		Unit:SendChatMessage(14, 0, "I see dead people!")
 	elseif(say == 4) then
-		unit:PlaySoundToSet(10497)
-		unit:MonsterYell("Time to kill!")
+		Unit:PlaySoundToSet(10497)
+		Unit:SendChatMessage(14, 0, "Time to kill!")
 	else
-		unit:PlaySoundToSet(10498)
-		unit:MonsterYell("YOU be dead people.")
+		Unit:PlaySoundToSet(10498)
+		Unit:SendChatMessage(14, 0, "YOU be dead people.")
 	end
-	unit:RegisterAIUpdateEvent(1000)
-	local allies = unit:GetInRangeFriends()
+	Unit:RegisterAIUpdateEvent(1000)
+	local allies = Unit:GetInRangeFriends()
 	for _,v in pairs(allies) do
-		if(unit:GetDistanceYards(v) <= 100) then
+		if(Unit:GetDistanceYards(v) <= 100) then
 			local target = v:GetRandomEnemy()
-			v:AttackReaction(target,1,0)
+			v:AttackReaction(target, 1, 0)
 		end
 	end
 end
 
-function OnWipe(unit)
-	self[tostring(unit)] = nil
-	unit:RemoveAIUpdateEvent(1000)
-	unit:RemoveEvents()
+function OnWipe(Unit, Event)
+	self[tostring(Unit)] = nil
+	Unit:RemoveAIUpdateEvent(1000)
+	Unit:RemoveEvents()
 end
 
-function OnKill(unit)
-	local say = math.random(1,4)
+function OnKill(Unit, Event)
+	local say = math.random(1, 4)
 	if(say == 1) then
-		unit:PlaySoundToSet(10489)
-		unit:MonsterYell("NO coming back for you!")
+		Unit:PlaySoundToSet(10489)
+		Unit:SendChatMessage(14, 0, "NO coming back for you!")
 	elseif(say == 2) then
-		unit:PlaySoundToSet(10490)
-		unit:MonsterYell("Nice try!")
+		Unit:PlaySoundToSet(10490)
+		Unit:SendChatMessage(14, 0, "Nice try!")
 	elseif(say == 3) then
-		unit:PlaySoundToSet(10499)
-		unit:MonsterYell("Now you gone for good!")
+		Unit:PlaySoundToSet(10499)
+		Unit:SendChatMessage(14, 0, "Now you gone for good!")
 	else
-		unit:PlaySoundToSet(10500)
-		unit:MonsterYell("You fail!")
+		Unit:PlaySoundToSet(10500)
+		Unit:SendChatMessage(14, 0, "You fail!")
 	end
 end
 
-function OnDeath(unit)
-	local say = math.random(0,1)
-	if(say) then
-		unit:PlaySoundToSet(10491)
-		unit:MonsterYell("This no... good..")
+function OnDeath(Unit, Event)
+	local say = math.random(1, 2)
+	if(say == 1) then
+		Unit:PlaySoundToSet(10491)
+		Unit:SendChatMessage(14, 0, "This no... good..")
 	else
-		unit:PlaySoundToSet(10501)
-		unit:MonsterYell("<screaming>")
+		Unit:PlaySoundToSet(10501)
+		Unit:SendChatMessage(14, 0, "<screaming>")
 	end
-	local gate = unit:GetGameObjectNearestCoords(-375.146210,-39.748650,12.688822,183296)
+	local gate = Unit:GetGameObjectNearestCoords(-375.146210, -39.748650, 12.688822, 183296)
 	if(gate) then
 		gate:Open()
 	end
 end
 
-function InciteEvent(unit,phase)
+function InciteEvent(Unit, Event, phase)
 	if(phase == 1) then
-		unit:FullCastSpell(33676)
-		unit:RegisterLuaEvent(InciteEvent,3000,0,2)
+		Unit:FullCastSpell(33676)
+		Unit:RegisterLuaEvent(InciteEvent, 3000, 0, 2)
 	elseif(phase == 2) then
-		local target = unit:GetRandomEnemy()
-		unit:SetNextTarget(target)
-		unit:Emote(LCF.EMOTE_ONESHOT_LAUGH,0)
+		local target = Unit:GetRandomEnemy()
+		Unit:SetNextTarget(target)
+		Unit:Emote(LCF.EMOTE_ONESHOT_LAUGH,0)
 	else
-		unit:RemoveEvents()
-		unit:DisableMelee(false)
-		local enemy = unit:GetRandomEnemy()
-		unit:AttackReaction(enemy,1,0)
-		unit:RegisterAIUpdateEvent(1000)
+		Unit:RemoveEvents()
+		Unit:DisableMelee(false)
+		local enemy = Unit:GetRandomEnemy()
+		Unit:AttackReaction(enemy, 1, 0)
+		Unit:RegisterAIUpdateEvent(1000)
 	end
 end
 
-function AIUpdate(unit)
-	if(unit:IsCasting() ) then return end
-	if(unit:GetNextTarget() == nil) then
-		unit:WipeThreatList()
+function AIUpdate(Unit, Event)
+	if(Unit:IsCasting()) then return end
+	if(Unit:GetNextTarget() == nil) then
+		Unit:WipeThreatList()
 		return
 	end
-	local vars = self[tostring(unit)]
+	local vars = self[tostring(Unit)]
 	vars.stomp = vars.stomp - 1
 	vars.charge = vars.charge - 1
 	vars.incite = vars.incite - 1
 	if(vars.incite <= 0) then
 		vars.incite = 40
-		unit:RemoveAIUpdateEvent()
-		unit:DisableMelee(true)
-		unit:PlaySoundToSet(10487)
-		unit:MonsterYell("Time for fun!")
-		unit:RegisterLuaEvent(InciteEvent,3000,1,1)
-		unit:RegisterLuaEvent(InciteEvent,15000,1,3)
+		Unit:RemoveAIUpdateEvent()
+		Unit:DisableMelee(true)
+		Unit:PlaySoundToSet(10487)
+		Unit:SendChatMessage(14, 0, "Time for fun!")
+		Unit:RegisterLuaEvent(InciteEvent, 3000, 1, 1)
+		Unit:RegisterLuaEvent(InciteEvent, 15000, 1, 3)
 	elseif(vars.stomp <= 0) then
-		unit:FullCastSpell(33707)
-		vars.stomp = math.random(20,30)
+		Unit:FullCastSpell(33707)
+		vars.stomp = math.random(20, 30)
 		vars.charge = 1
 	elseif(vars.charge <= 0) then
-		local target = unit:GetRandomEnemy()
-		unit:FullCastSpellOnTarget(33709,target)
-		vars.charge = math.random(20,30)
+		local target = Unit:GetRandomEnemy()
+		Unit:FullCastSpellOnTarget(33709, target)
+		vars.charge = math.random(20, 30)
 	end
 end
 
-RegisterUnitEvent(18667, 18, OnSpawn)
-RegisterUnitEvent(18667, 1, OnCombat)
-RegisterUnitEvent(18667, 2, OnWipe)
-RegisterUnitEvent(18667, 3, OnKill)
-RegisterUnitEvent(18667, 4, OnDeath)
-RegisterUnitEvent(18667, 21, AIUpdate)
+RegisterUnitEvent(18667, 18, "OnSpawn")
+RegisterUnitEvent(18667, 1, "OnCombat")
+RegisterUnitEvent(18667, 2, "OnWipe")
+RegisterUnitEvent(18667, 3, "OnKill")
+RegisterUnitEvent(18667, 4, "OnDeath")
+RegisterUnitEvent(18667, 21, "AIUpdate")
 
-function InciteChaosEffect(_,spell)
+function InciteChaosEffect(_, spell)
 	local caster = spell:GetCaster()
 	local enemies = caster:GetInRangeEnemies()
 	for _,v in pairs(enemies) do
-		caster:FullCastSpellOnTarget(33684,v)
+		caster:FullCastSpellOnTarget(33684, v)
 		if(v:IsPlayer() ) then
 			v:UseAI(true)
 		end
 		v:FlagFFA(true)
-		v:RegisterLuaEvent(InciteChaosEnd,15000,1)
+		v:RegisterLuaEvent(InciteChaosEnd, 15000, 1)
 	end
 end
 
 function InciteChaosEnd(victim)
-	if(victim:IsPlayer() ) then
+	if(victim:IsPlayer()) then
 		victim:UseAI(false)
 	end
 	victim:FlagFFA(false)
 end
 
-RegisterDummySpell(33676, InciteChaosEffect)
---todo script player behavior under mc.	
+RegisterDummySpell(33676, "InciteChaosEffect")

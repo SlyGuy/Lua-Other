@@ -17,7 +17,7 @@
 ========================================]]--
 
 function FlameOfAzzinoth_OnSpawn(pUnit,Event)
-	pUnit:SetUInt64Value(UnitField.UNIT_FIELD_FLAGS, 0)
+	pUnit:SetUInt64Value(UnitField.Unit_FIELD_FLAGS, 0)
 end
 
 function FlameOfAzzinoth_OnEnterCombat(pUnit,Event)
@@ -26,10 +26,10 @@ function FlameOfAzzinoth_OnEnterCombat(pUnit,Event)
 end
 
 function FlameOfAzzinoth_FlameBlast(pUnit,Event)
-local plr=pUnit:GetRandomPlayer(0)
- if ( type(plr) == "userdata") then
-	pUnit:FullCastSpellOnTarget(40631,plr)
-end
+local plr = pUnit:GetRandomPlayer(0)
+	if(type(plr) == "userdata") then
+		pUnit:FullCastSpellOnTarget(40631, plr)
+	end
 end
 
 function FlameOfAzzinoth_OnLeaveCombat(pUnit,Event)
@@ -43,10 +43,3 @@ end
 RegisterUnitEvent(22997, 1, "FlameOfAzzinoth_OnEnterCombat")
 RegisterUnitEvent(22997, 2, "FlameOfAzzinoth_OnLeaveCombat")
 RegisterUnitEvent(22997, 4, "FlameOfAzzinoth_OnDied")
-
-function FlameOfAzzinoth_FlameBlast(pUnit,Event)
-local plr=pUnit:GetRandomPlayer(0)
- if ( type(plr) == "userdata") then
-	pUnit:FullCastSpellOnTarget(40631,plr)
-end
-end

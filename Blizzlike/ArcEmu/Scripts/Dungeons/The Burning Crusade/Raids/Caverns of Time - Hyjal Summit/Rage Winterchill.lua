@@ -15,18 +15,13 @@ redistributing and/or using this software. Thank you.
 
 ~~End of License Agreement
 -- LUA++ staff, April 15, 2008. ]]
--- The following script is completely written by me. If anyone has a similar script, sorry, I promise, I didn't copy it :P
--- Frostbolt 41486 (not sure if correct, because of that I took it from Moon++)
--- Death and Decay 39658
--- Frost Nova 31250
--- Frost Armor 31256
--- Berserk 46587 (only for five minutes, but that should be enough)
+
 function winterchill_start(Unit, Event)
    	Unit:SendChatMessage(14, 0, "The Legion's final conquest has begun! Once again the subjugation of this world is within our grasp. Let none survive!");
    	Unit:PlaySoundToSet(11022);
-   	Unit:RegisterEvent("winterchill_dnd", 100, 0); -- Death and Decay
-   	Unit:RegisterEvent("winterchill_fa", 100, 0); -- Frost Armor
-   	Unit:RegisterEvent("winterchill_enrage", 600000, 0); -- Enrage after 10 Minutes
+   	Unit:RegisterEvent("winterchill_dnd", 100, 0);
+   	Unit:RegisterEvent("winterchill_fa", 100, 0);
+   	Unit:RegisterEvent("winterchill_enrage", 600000, 0);
 end
 
 function winterchill_dnd(Unit, Event)
@@ -36,20 +31,19 @@ function winterchill_dnd(Unit, Event)
        	Unit:SendChatMessage(14, 0, "Crumble and rot!");
        	Unit:PlaySoundToSet(11023);
     elseif (speach == 2) then
-       	Unit:SendChatMessage(14, 0, "Ashes to ashes, dust to dust");
+       	Unit:SendChatMessage(14, 0, "Ashes to ashes, dust to dust!");
        	Unit:PlaySoundToSet(11055);
     end
     local oncast =	Unit:GetRandomPlayer(0);
     if (oncast ~= nil) then
     	Unit:FullCastSpellOnTarget(39658, oncast);
     end
-    -- Next Cast:
-    local randomtimer = math.random(30000, 60000); -- Timer, as I do not know how often Rage spams his skills, would be nice if anyone could provide me this info
+    local randomtimer = math.random(30000, 60000);
     local nextcast = math.random(1, 2);
     if (nextcast == 1) then
-       	Unit:RegisterEvent("winterchill_fb", randomtimer, 0); -- Frost Bolt
+       	Unit:RegisterEvent("winterchill_fb", randomtimer, 0);
     elseif (nextcast == 2) then
-       	Unit:RegisterEvent("winterchill_fn", randomtimer, 0); -- Frost Nova
+       	Unit:RegisterEvent("winterchill_fn", randomtimer, 0);
     end
 end
 
@@ -57,23 +51,22 @@ function winterchill_fb(Unit, Event)
    	Unit:RemoveEvents();
     local speach = math.random(1, 2);
     if (speach == 1) then
-       	Unit:SendChatMessage(14, 0, "Succumb to the icy chill ... of death!");
-        --	Unit:PlaySoundToSet(ID); Would be nice if someone has an ID list for me, I didn't find any
+       	Unit:SendChatMessage(14, 0, "Succumb to the icy chill... of death.");
+        --	Unit:PlaySoundToSet(ID);
     elseif (speach == 2) then
        	Unit:SendChatMesasge(13, 0, "It will be much colder in your grave.");
-        --	Unit:PlaySoundToSet(ID); Would be nice if someone has an ID list for me, I didn't find any
+        --	Unit:PlaySoundToSet(ID);
     end
     local oncast =	Unit:GetRandomPlayer(0);
     if (oncast ~= nil) then
     	Unit:CastSpellOnTarget(41486, oncast);
     end
-    -- Next Cast:
-    local randomtimer = math.random(30000, 60000); -- Timer, as I do not know how often Rage spams his skills, would be nice if anyone could provide me this info
-    local nextcast = math.random(1, 2);
+    local randomtimer = math.random(30000, 60000);
+	local nextcast = math.random(1, 2);
     if (nextcast == 1) then
-       	Unit:RegisterEvent("winterchill_dnd", randomtimer, 0); -- Death and Decay
+       	Unit:RegisterEvent("winterchill_dnd", randomtimer, 0);
     elseif (nextcast == 2) then
-       	Unit:RegisterEvent("winterchill_fn", randomtimer, 0); -- Frost Nova
+       	Unit:RegisterEvent("winterchill_fn", randomtimer, 0);
     end
 end
 
@@ -81,23 +74,22 @@ function winterchill_fn(Unit, Event)
    	Unit:RemoveEvents();
     local speach = math.random(1, 2);
     if (speach == 1) then
-       	Unit:SendChatMessage(14, 0, "Succumb to the icy chill ... of death!");
-        --	Unit:PlaySoundToSet(ID); Would be nice if someone has an ID list for me, I didn't find any
+       	Unit:SendChatMessage(14, 0, "Succumb to the icy chill... of death.");
+        --	Unit:PlaySoundToSet(ID);
     elseif (speach == 2) then
        	Unit:SendChatMesasge(13, 0, "It will be much colder in your grave.");
-        --	Unit:PlaySoundToSet(ID); Would be nice if someone has an ID list for me, I didn't find any
+        --	Unit:PlaySoundToSet(ID);
     end    
     local oncast =	Unit:GetRandomPlayer(0);
     if (oncast ~= nil) then
     	Unit:CastSpellOnTarget(31250, oncast);
     end
-    -- Next Cast:
-    local randomtimer = math.random(30000, 60000); -- Timer, as I do not know how often Rage spams his skills, would be nice if anyone could provide me this info
-    local nextcast = math.random(1, 2);
+    local randomtimer = math.random(30000, 60000);
+	local nextcast = math.random(1, 2);
     if (nextcast == 1) then
-       	Unit:RegisterEvent("winterchill_dnd", randomtimer, 0); -- Death and Decay
+       	Unit:RegisterEvent("winterchill_dnd", randomtimer, 0);
     elseif (nextcast == 2) then
-       	Unit:RegisterEvent("winterchill_fb", randomtimer, 0); -- Frost Bolt
+       	Unit:RegisterEvent("winterchill_fb", randomtimer, 0);
     end    
 end
 
@@ -105,14 +97,13 @@ function winterchill_fa(Unit, Event)
    	Unit:RemoveEvents();
    	Unit:CastSpellOnTarget(31256, Unit);
     local randomtimer = math.random(30000, 60000);
-   	Unit:RegisterEvent("winterchill_fa", randomtimer, 0); -- Frost Armor
+   	Unit:RegisterEvent("winterchill_fa", randomtimer, 0);
 end
     
 function winterchill_enrage(Unit, Event)
    	Unit:RemoveEvents();
    	Unit:CastSpellOnTarget(46587, Unit);
 end
-    
 
 function winterchill_killplayer(Unit, Event)
    	Unit:RemoveEvents();
@@ -124,13 +115,13 @@ function winterchill_killplayer(Unit, Event)
        	Unit:SendChatMessage(14, 0, "Your world is ours now!");
        	Unit:PlaySoundToSet(11056);
     elseif (speach == 3) then
-       	Unit:SendChatMessage(14, 0, "Victoy to the Legion!");
+       	Unit:SendChatMessage(14, 0, "Victory to the Legion!");
        	Unit:PlaySoundToSet(11057);
     end
 end
 
 function winterchill_death(Unit, Event)
-   	Unit:SendChatMessage(14, 0, "You have won this battle, but not ... the ... war");
+   	Unit:SendChatMessage(14, 0, "You have won this battle, but not... the... war.");
    	Unit:PlaySoundToSet(11026);
    	Unit:RemoveEvents();
 end

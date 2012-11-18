@@ -29,9 +29,8 @@ Unit:SendChatMessage(14, 0, "Release your rage!")
 
 -- [[ Functions ]] --
 function Arugal_OnCombat(Unit, Event)
-		--Unit:SendChatMessage(14, 0, "Who dares interfere with the Sons of Arugal?") --Send when Fenrus the Devourer dies
-		Unit:SendChatMessage(14, 0, "You too, shall serve!")
-	end
+	--Unit:SendChatMessage(14, 0, "Who dares interfere with the Sons of Arugal?") --Send when Fenrus the Devourer dies
+	Unit:SendChatMessage(14, 0, "You too, shall serve!")
 end
 
 function Arugal_OnLeaveCombat(Unit, Event)
