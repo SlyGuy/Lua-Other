@@ -22,8 +22,8 @@ function SunbladeMageGuard_OnCombat(Unit, Event)
 end
 
 function SunbladeMageGuard_GlaiveThrow(Unit)
-	local FlipGlaive = math.random(2)
-	if FlipGlaive ==1 and Unit:GetRandomPlayer(7) then
+	local FlipGlaive = math.random(1, 2)
+	if((FlipGlaive == 1) and (Unit:GetRandomPlayer(7))) then
 		Unit:CastSpellOnTarget(44478, Unit:GetRandomPlayer(7))
 	else
 		Unit:CastSpellOnTarget(46028, Unit:GetRandomPlayer(7))
@@ -37,8 +37,6 @@ end
 function SunbladeMageGuard_Died(Unit, Event)
 	Unit:RemoveAIUpdateEvent()
 end
-
-
 
 RegisterUnitEvent(24683, 1, "SunbladeMageGuard_OnCombat")
 RegisterUnitEvent(24683, 21, "SunbladeMageGuard_GlaiveThrow")

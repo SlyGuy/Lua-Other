@@ -42,8 +42,6 @@ RegisterUnitEvent(24685, 1, "SunbMag_OnCombat")
 RegisterUnitEvent(24685, 2, "SunbMag_LeaveCombat")
 RegisterUnitEvent(24685, 4, "SunbMag_Died")
 
-
-
 --Sunblade Warlock
 function SunbWarlock_OnCombat(Unit, Event)
   	Unit:CastSpell(44517)
@@ -71,8 +69,6 @@ RegisterUnitEvent(24686, 1, "SunbWarlock_OnCombat")
 RegisterUnitEvent(24686, 2, "SunbWarlock_LeaveCombat")
 RegisterUnitEvent(24686, 4, "SunbWarlock_Died")
 
-
-
 --Sunblade Keeper
 function SunbKpr_OnCombat(Unit, Event)
   	Unit:RegisterEvent("SunbKpr_Sb", 8000, 0)
@@ -93,7 +89,6 @@ end
 RegisterUnitEvent(24762, 1, "SunbKpr_OnCombat")
 RegisterUnitEvent(24762, 2, "SunbKpr_LeaveCombat")
 RegisterUnitEvent(24762, 4, "SunbKpr_Died")
-
 
 --Sister of Torment
 function SoTorment_OnCombat(Unit, Event)
@@ -121,7 +116,6 @@ RegisterUnitEvent(24697, 1, "SoTorment_OnCombat")
 RegisterUnitEvent(24697, 2, "SoTorment_LeaveCombat")
 RegisterUnitEvent(24697, 4, "SoTorment_Died")
 
-
 --Sunblade BloodKnight
 function SunbBK_OnCombat(Unit, Event)
   	Unit:RegisterEvent("SunbBK_HL", 8000, 35)
@@ -143,7 +137,6 @@ RegisterUnitEvent(27136, 1, "SunbBK_OnCombat")
 RegisterUnitEvent(27136, 2, "SunbBK_LeaveCombat")
 RegisterUnitEvent(27136, 4, "SunbBK_Died")
 
-
 --Sunblade MageGuard
 function SunbladeMageGuard_OnCombat(Unit, Event)
   	Unit:RegisterEvent("SunbMg_Gt", 8500, 0)
@@ -151,13 +144,12 @@ end
 
 function SunbMg_Gt(pUnit, Event)
    local FlipGt = math.random(1, 2)
-   if FlipGt==1 then
-      pUnit:CastSpellOnTarget(44478, pUnit:GetRandomPlayer(7))
+   if(FlipGt == 1) then
+		pUnit:CastSpellOnTarget(44478, pUnit:GetRandomPlayer(7))
    else
-      pUnit:CastSpellOnTarget(46028, pUnit:GetRandomPlayer(7))
+		pUnit:CastSpellOnTarget(46028, pUnit:GetRandomPlayer(7))
    end
 end
-
 
 function SunbladeMageGuard_LeaveCombat(Unit, Event)
   	Unit:RemoveEvents()
@@ -170,7 +162,6 @@ end
 RegisterUnitEvent(24683, 1, "SunbladeMageGuard_OnCombat")
 RegisterUnitEvent(24683, 2, "SunbladeMageGuard_LeaveCombat")
 RegisterUnitEvent(24683, 4, "SunbladeMageGuard_Died")
-
 
 --Ethereum Smuggler
 function Ethsm_OnCombat(Unit, Event)
@@ -193,7 +184,6 @@ RegisterUnitEvent(24698, 1, "Ethsm_OnCombat")
 RegisterUnitEvent(24698, 2, "Ethsm_LeaveCombat")
 RegisterUnitEvent(24698, 4, "Ethsm_Died")
 
-
 --Fizzle
 function Fizzle_OnCombat(Unit, Event)
   	Unit:RegisterEvent("Fizzle_Fireball", 5000, 0)
@@ -215,7 +205,6 @@ RegisterUnitEvent(24656, 1, "Fizzle_OnCombat")
 RegisterUnitEvent(24656, 2, "Fizzle_LeaveCombat")
 RegisterUnitEvent(24656, 4, "Fizzle_Died")
 
-
 --Sunblade Imp
 function SunbImp_OnCombat(Unit, Event)
   	Unit:RegisterEvent("SunbImp_Fireball", 7500, 0)
@@ -223,13 +212,12 @@ end
 
 function SunbImp_Fireball(pUnit, Event)
    local flipfire = math.random(1, 2)
-   if flipfire==1 then
-      pUnit:FullCastSpellOnTarget(44577, pUnit:GetRandomPlayer(0))
+   if(flipfire == 1) then
+		pUnit:FullCastSpellOnTarget(44577, pUnit:GetRandomPlayer(0))
    else
-      pUnit:FullCastSpellOnTarget(46044, pUnit:GetRandomPlayer(0))
+		pUnit:FullCastSpellOnTarget(46044, pUnit:GetRandomPlayer(0))
    end
 end
-
 
 function SunbImp_LeaveCombat(Unit, Event)
   	Unit:RemoveEvents()
@@ -243,7 +231,6 @@ RegisterUnitEvent(24815, 1, "SunbImp_OnCombat")
 RegisterUnitEvent(24815, 2, "SunbImp_LeaveCombat")
 RegisterUnitEvent(24815, 4, "SunbImp_Died")
 
-
 --Sunblade Physician
 --It could be that they need core / db support tho xD
 function SunbPh_OnCombat(Unit, Event)
@@ -252,7 +239,7 @@ end
 
 function SunbPh_Poision(Unit, Event)
    local FlipPh = math.random(1, 2)
-   if FlipPh==1 then
+   if(FlipPh == 1) then
      	Unit:FullCastSpell(46046)
    else
      	Unit:FullCastSpell(44599)
@@ -271,7 +258,6 @@ RegisterUnitEvent(24687, 1, "SunbPh_OnCombat")
 RegisterUnitEvent(24687, 2, "SunbPh_LeaveCombat")
 RegisterUnitEvent(24687, 4, "SunbPh_Died")
 
-
 --Wretched Bruiser
 function WretchedBruiser_OnCombat(Unit, Event)
   	Unit:RegisterEvent("WretchedBruiser_Potion", 1000, 1)
@@ -279,11 +265,10 @@ function WretchedBruiser_OnCombat(Unit, Event)
 end
 
 function WretchedBruiser_Potion(Unit, Event)
-   if	Unit:GetHealthPct() < 15 then
+   if(Unit:GetHealthPct() < 15) then
      	Unit:FullCastSpell(44505)
    end
 end
-
 
 function WretchedBruiser_Strike(pUnit, Event)
    pUnit:FullCastSpellOnTarget(44534, pUnit:GetClosestPlayer())
@@ -309,20 +294,19 @@ function WretchedHesk_OnCombat(Unit, Event)
 end
 
 function WretchedHesk_Potion(Unit, Event)
-   if	Unit:GetHealthPct() < 15 then
+   if(Unit:GetHealthPct() < 15) then
      	Unit:FullCastSpell(44505)
    end
 end
 
 function WretchedHesk_Hesk(pUnit, Event)
    local Flipball = math.random(1, 2)
-   if Flipball==1 then
-      pUnit:FullCastSpellOnTarget(44503, pUnit:GetRandomPlayer())
+   if(Flipball == 1) then
+		pUnit:FullCastSpellOnTarget(44503, pUnit:GetRandomPlayer())
    else
-      pUnit:FullCastSpellOnTarget(44504, pUnit:GetRandomPlayer())
+		pUnit:FullCastSpellOnTarget(44504, pUnit:GetRandomPlayer())
    end
 end
-
 
 function WretchedHesk_LeaveCombat(Unit, Event)
   	Unit:RemoveEvents()
@@ -344,11 +328,10 @@ function WretchedSkulker_OnCombat(Unit, Event)
 end
 
 function WretchedSkulker_Potion(Unit, Event)
-   if	Unit:GetHealthPct() < 15 then
+   if(Unit:GetHealthPct() < 15) then
      	Unit:FullCastSpell(44505)
    end
 end
-
 
 function WretchedSkulker_Strike(pUnit, Event)
    pUnit:FullCastSpellOnTarget(44533, pUnit:GetClosestPlayer())

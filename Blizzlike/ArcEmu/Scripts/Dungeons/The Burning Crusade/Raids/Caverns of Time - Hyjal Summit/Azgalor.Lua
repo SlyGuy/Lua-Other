@@ -17,7 +17,7 @@ redistributing and/or using this software. Thank you.
 -- LUA++ staff, April 15, 2008. ]]
 
 function Az_OnCombat(pUnit, event)
-	pUnit:SendChatMessage(14, 0, "Abandon all hope! The legion has returned to finish what was begun so many years ago. This time there will be no escape!")
+	pUnit:SendChatMessage(14, 0, "Abandon all hope! The Legion has returned to finish what was begun so many years ago. This time, there will be no escape!")
 	pUnit:PlaySoundToSet(10999)
 	pUnit:RegisterEvent("AzAttacks", 1000, 0)
 	pUnit:CastSpell(31344)
@@ -29,20 +29,20 @@ end
 
 function Az_OnKilledTarget(pUnit, event)
 	local AzSpeech = math.random(1,3)
-	if (AzSpeech == 1) then
+	if(AzSpeech == 1) then
 		pUnit:SendChatMessage(14, 0, "Reesh, hokta!")
 		pUnit:PlaySoundToSet(11001)
-	elseif (AzSpeech == 2) then
-		pUnit:SendChatMessage(14, 0, "No one is going to save you!")
+	elseif(AzSpeech == 2) then
+		pUnit:SendChatMessage(14, 0, "No one is going to save you.")
 		pUnit:PlaySoundToSet(11047)
-	elseif (AzSpeech == 3) then
-		pUnit:SendChatMessage(14, 0, "Don't fight it!")
+	elseif(AzSpeech == 3) then
+		pUnit:SendChatMessage(14, 0, "Don't fight it.")
 		pUnit:PlaySoundToSet(11048)
 	end
 end
 
 function Az_OnDeath(pUnit, event)
-	pUnit:SendChatMessage(14, 0, "Your time is almost... up!")
+	pUnit:SendChatMessage(14, 0, "Your time is almost... up.")
 	pUnit:PlaySoundToSet(11002)
 end
 
@@ -58,7 +58,7 @@ function AzCleave(pUnit, event)
 end
 
 function AzRoF(pUnit, event)
-	if (pUnit:GetRandomPlayer(0) ~= nil) then
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
 		local pUnit = pUnit:GetRandomPlayer(0)
 		local x = pUnit:GetX()
 		local y = pUnit:GetY()
@@ -75,11 +75,11 @@ end
 function AzDoom(pUnit, event)
 	pUnit:CastSpell(31347, pUnit:GetRandomTarget(7))
 	local AzDoomSpeech = math.random(1,2)
-		if (AzDoomSpeech == 1) then
+		if(AzDoomSpeech == 1) then
 			pUnit:SendChatMessage(14, 0, "Just a taste... of what awaits you.")
 			pUnit:PlaySoundToSet()
-		if (AzDoomSpeech == 2) then
-			pUnit:SendChatMessage(14, 0, "Suffer you dispicable insect!")
+		if(AzDoomSpeech == 2) then
+			pUnit:SendChatMessage(14, 0, "Suffer, you despicable insect!")
 			pUnit:PlaySoundToSet()
 		end
 	end

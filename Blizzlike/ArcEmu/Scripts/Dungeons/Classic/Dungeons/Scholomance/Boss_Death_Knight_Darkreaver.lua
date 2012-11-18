@@ -11,40 +11,32 @@
    LOG: http://luapparc.burning-azzinoth.de/trac/timeline
    TRAC: http://luapparc.burning-azzinoth.de/trac
    ----------------------
-   Boss_MaievShadowsong.lua
+   Boss_Darkmaster_Gandling.lua
    Original Code by DARKI
    Version 1
 ========================================]]--
+-- % Completed: 20
+-- Comments: Missing Whole Script
 
+-- [[Spells ]] --
+local SUMMON = 23261
 
-
-
-
-
-function Maiev_Died(Unit, event, player)
-
-Unit:RemoveEvents()
-
+function Deathknight_OnCombat(Unit, Event)
 end
 
-
-function Maiev_OnCombat(Unit, event, player)
-
-Unit:RegisterEvent("Maiev_Say", 62000, 0)
-
+function Deathknight_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-
-function Maiev_Say(Unit, event, player)
-
-Unit:SendChatMessage(12, 0, "I've waited for this moment for years. Illidan and his lapdogs will be destroyed!!")
-Unit:SendChatMessage(12, 0, "You've sealed your fate, Akama. The Master will learn of your betrayal!")
-
+function Deathknight_OnKilledTarget(Unit, Event)
+	Unit:CastSpell(SUMMON)
 end
 
+function Deathknight_OnDied(Unit, Event)
+	Unit:RemoveEvents()
+end 
 
-RegisterUnitEvent(21699, 18, "Maiev_OnCombat")
-
-RegisterUnitEvent(21699, 4, "Maiev_Died")
-
+RegisterUnitEvent(14516, 1, "Deathknight_OnCombat")
+RegisterUnitEvent(14516, 2, "Deathknight_OnLeaveCombat")
+RegisterUnitEvent(14516, 3, "Deathknight_OnKilledTarget")
+RegisterUnitEvent(14516, 4, "Deathknight_OnDied")

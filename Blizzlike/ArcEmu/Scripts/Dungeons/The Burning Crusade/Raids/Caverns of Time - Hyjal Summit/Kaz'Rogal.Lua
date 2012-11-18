@@ -15,6 +15,7 @@ redistributing and/or using this software. Thank you.
 
 ~~End of License Agreement
 -- LUA++ staff, April 15, 2008. ]]
+--[[Kaz'rogal yells: Shaza-kiel!]]
 
 function Kaz_OnCombat(pUnit, event)
 	pUnit:SendChatMessage(14, 0, "Cry for mercy! Your meaningless lives will soon be forfeit.")
@@ -28,10 +29,10 @@ end
 
 function Kaz_OnKilledTarget(pUnit, event)
 	local KazSpeech = math.random(1, 2)
-	if (KazSpeech == 1) then
+	if(KazSpeech == 1) then
 		pUnit:SendChatMessage(14, 0, "Your death will be a painful one.")
 		pUnit:PlaySoundToSet(11016)
-	elseif (KazSpeech == 2) then
+	elseif(KazSpeech == 2) then
 		pUnit:SendChatMessage(14, 0, "You... are marked.")
 		pUnit:PlaySoundToSet(11052)
 	end
@@ -55,11 +56,11 @@ end
 
 function KazMOKR(pUnit, event)
 	local KazMOKRSpeech = math.random(1,2)
-	if (KazMOKRSpeech == 1) then
-		pUnit:SendChatMessage(14, 0, "You... are nothing!")
+	if(KazMOKRSpeech == 1) then
+		pUnit:SendChatMessage(14, 0, "You are nothing!")
 		pUnit:PlaysoundToSet(11053)
 		pUnit:CastSpellOnTarget(31447, pUnit:GetInRangePlayers())
-	elseif (KazMOKRSpeech == 2) then
+	elseif(KazMOKRSpeech == 2) then
 		pUnit:SendChatMessage(14, 0, "Miserable nuisance!")
 		pUnit:PlaySoundToSet(11054)
 		pUnit:CastSpellOnTarget(31447, pUnit:GetInRangePlayers())

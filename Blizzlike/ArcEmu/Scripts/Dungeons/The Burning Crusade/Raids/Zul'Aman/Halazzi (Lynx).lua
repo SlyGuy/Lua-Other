@@ -20,7 +20,7 @@ end
 function INSTANCE_ZULAMAN.HALAZZI.Halazzi_OnCombat(Unit)
 	local args = getvars(Unit)
 	args.HALAZZI.halazziptr = Unit
-	args.HALAZZI.maxhp = Unit:GetUInt32Value(UnitField.UNIT_FIELD_MAXHEALTH);
+	args.HALAZZI.maxhp = Unit:GetUInt32Value(UnitField.Unit_FIELD_MAXHEALTH);
 	args.HALAZZI.m_phase = 1
 	INSTANCE_ZULAMAN.HALAZZI.Halazzi_PhaseCheck(Unit)
 	Unit:SendChatMessage(ChatField.CHAT_MSG_MONSTER_YELL,LangField.LANG_UNIVERSAL,"Get on your knees and bow to da fang and claw!")
@@ -145,9 +145,9 @@ function INSTANCE_ZULAMAN.HALAZZI.Halazzi_Split(Unit)
 		Unit:SendChatMessage(ChatField.CHAT_MSG_MONSTER_YELL,LangField.LANG_UNIVERSAL,"I fight wit' untamed spirit...")
 		Unit:PlaySoundToSet(12021)
 		args.HALAZZI.halazzihp = Unit:GetHealth()
-		Unit:SetUInt32Value(UnitField.UNIT_FIELD_MAXHEALTH,400000)
-		args.HALAZZI.lynxptr = Unit:SpawnCreature(24143,Unit:GetX()+math.cos(20,30)*3,Unit:GetY()+math.sin(20,40)*3,Unit:GetZ(),Unit:GetO(),Unit:GetUInt32Value(UnitField.UNIT_FIELD_FACTIONTEMPLATE),0)
-		args.HALAZZI.lynxptr:SetUInt32Value(UnitField.UNIT_FIELD_MAXHEALTH,200000)
+		Unit:SetUInt32Value(UnitField.Unit_FIELD_MAXHEALTH,400000)
+		args.HALAZZI.lynxptr = Unit:SpawnCreature(24143,Unit:GetX()+math.cos(20,30)*3,Unit:GetY()+math.sin(20,40)*3,Unit:GetZ(),Unit:GetO(),Unit:GetUInt32Value(UnitField.Unit_FIELD_FACTIONTEMPLATE),0)
+		args.HALAZZI.lynxptr:SetUInt32Value(UnitField.Unit_FIELD_MAXHEALTH,200000)
 		args.HALAZZI.lynxptr:AttackReaction(Unit:GetNextTarget(),1,0)
 		Unit:FullCastSpell(44054) -- transfigure
 	elseif args.HALAZZI.merge == true then
@@ -155,8 +155,8 @@ function INSTANCE_ZULAMAN.HALAZZI.Halazzi_Split(Unit)
 		Unit:SendChatMessage(ChatField.CHAT_MSG_MONSTER_YELL,LangField.LANG_UNIVERSAL,"Spirit, come back to me!")
 		Unit:PlaySoundToSet(12022)
 		args.HALAZZI.lynxptr:RemoveFromWorld()
-		Unit:SetUInt32Value(UnitField.UNIT_FIELD_MAXHEALTH,args.HALAZZI.maxhp)
-		Unit:SetUInt32Value(UnitField.UNIT_FIELD_HEALTH,args.HALAZZI.halazzihp)
+		Unit:SetUInt32Value(UnitField.Unit_FIELD_MAXHEALTH,args.HALAZZI.maxhp)
+		Unit:SetUInt32Value(UnitField.Unit_FIELD_HEALTH,args.HALAZZI.halazzihp)
 	end
 end
 function INSTANCE_ZULAMAN.HALAZZI.Halazzi_PhaseCheck(Unit)
@@ -180,9 +180,9 @@ function INSTANCE_ZULAMAN.HALAZZI.Halazzi_PhaseCheck(Unit)
 end
 function INSTANCE_ZULAMAN.HALAZZI.Halazzi_SetForm(Unit,val)
 	if val == "TROLL" then
-		Unit:SetUInt32Value(UnitField.UNIT_FIELD_DISPLAYID,22348)
+		Unit:SetUInt32Value(UnitField.Unit_FIELD_DISPLAYID,22348)
 	elseif val == "LYNX" then
-		Unit:SetUInt32Value(UnitField.UNIT_FIELD_DISPLAYID,21632)
+		Unit:SetUInt32Value(UnitField.Unit_FIELD_DISPLAYID,21632)
 	end
 end
 --[[

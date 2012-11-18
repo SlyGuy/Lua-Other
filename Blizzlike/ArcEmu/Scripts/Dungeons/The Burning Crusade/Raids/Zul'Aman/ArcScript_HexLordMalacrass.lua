@@ -13,10 +13,8 @@
    *	                                                            *
    *	               OpenSource Scripting Team                    *
    *	                <http://www.arcemu.org>                     *
-   *	                                                            *
-   ******************************************************************
-
- Script Maded By Morfeo ]] 
+   *	                Script Maded By Morfeo            	        *
+   ******************************************************************]] 
 
 local slither = 24242;
 local thurg = 24241

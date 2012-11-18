@@ -1,34 +1,25 @@
-local CHAT_MSG_MONSTER_YELL = 14
-local LANG_UNIVERSAL = 0
+function Stalker(Unit)
+	Unit:RegisterEvent("Stalker_Charge", 7000, 0)
+	Unit:RegisterEvent("Stalker_Light", 14000, 0)
+	Unit:RegisterEvent("Stalker_Levitate", 21000, 0)
+end
+
 function Stalker_Charge(Unit)
-	print "Stalker Charge"
-	if Unit:GetClosestPlayer() ~= nil then
-		Unit:FullCastSpellOnTarget(31715,Unit:GetClosestPlayer())
-		Unit:SendChatMessage(CHAT_MSG_MONSTER_YELL,LANG_UNIVERSAL, "CHARGE...")
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:FullCastSpellOnTarget(31715, Unit:GetClosestPlayer())
 	end
 end
 
 function Stalker_Light(Unit)
-	print "Stalker Light"
-	if Unit:GetClosestPlayer() ~= nil then
-		Unit:FullCastSpellOnTarget(31330,Unit:GetClosestPlayer())
-		Unit:SendChatMessage(CHAT_MSG_MONSTER_YELL,LANG_UNIVERSAL, "I will kill you...")
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:FullCastSpellOnTarget(31330, Unit:GetClosestPlayer())
 	end
 end
 
 function Stalker_Levitate(Unit)
-	print "Stalker Levitate"
-	if Unit:GetRandomPlayer(0) ~= nil then
-		Unit:FullCastSpellOnTarget(31704,Unit:GetRandomPlayer())
-		Unit:SendChatMessage(CHAT_MSG_MONSTER_YELL,LANG_UNIVERSAL, "You want to fly...")
+	if(Unit:GetRandomPlayer(0) ~= nil) then
+		Unit:FullCastSpellOnTarget(31704, Unit:GetRandomPlayer())
 	end
 end
 
-function Stalker(Unit)
-	print "Stalker"
-	Unit:RegisterEvent("Stalker_Charge",7000,0)
-	Unit:RegisterEvent("Stalker_Light",8000,0)
-	Unit:RegisterEvent("Stalker_Levitate",11000,0)
-end
-
-RegisterUnitEvent(17882,1,"Stalker")
+RegisterUnitEvent(17882, 1, "Stalker")

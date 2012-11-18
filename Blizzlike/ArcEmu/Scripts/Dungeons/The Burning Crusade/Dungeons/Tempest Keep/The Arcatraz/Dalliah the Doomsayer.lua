@@ -1,25 +1,36 @@
-function Dalliah_Red(Unit, event, miscunit, misc)
-	print "Dalliah Red"
-	Unit:FullCastSpellOnTarget(14264,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "You will pay the price...")
+--[[Dalliah the Doomsayer yells: Ahh... just what I needed.
+Dalliah the Doomsayer yells: Completely ineffective. Just like someone else I know.
+Dalliah the Doomsayer yells: Congratulations. I've wanted to do that for years.
+Dalliah the Doomsayer yells: Don't worry about me; kill that worthless dullard instead!
+Dalliah the Doomsayer yells: I suppose I'll end up fighting them all myself.
+Dalliah the Doomsayer yells: I'll cut you to pieces!
+Dalliah the Doomsayer yells: I've grown used to cleaning up your messes.
+Dalliah the Doomsayer yells: It is unwise to anger me!
+Dalliah the Doomsayer yells: More than you can handle, scryer?
+Dalliah the Doomsayer yells: Now I'm really angry.
+Dalliah the Doomsayer yells: Reap the whirlwind!
+Dalliah the Doomsayer yells: That is much better.
+Dalliah the Doomsayer yells: What would you know about commitment, sheet-sah?
+Dalliah the Doomsayer yells: When I need someone to prance around like an overstuffed peacock, I'll call on you.
+Dalliah the Doomsayer yells: Why would I call on you?
+Dalliah the Doomsayer yells: You chose the wrong opponent.]]
+
+function Dalliah(Unit, event, miscUnit, misc)
+	Unit:RegisterEvent("Dalliah_Red", 11000, 0)
+	Unit:RegisterEvent("Dalliah_Whirlwind_Heal", 21000, 0)
+	Unit:RegisterEvent("Dalliah_Doomsayer", 31000, 0)
+end
+
+function Dalliah_Red(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(14264, Unit:GetClosestPlayer())
 end
 
 function Dalliah_Whirlwind_Heal(Unit)
-	print "Dalliah Whirlwind Heal"
 	Unit:FullCastSpell(36142)
-	Unit:SendChatMessage(11, 0, "Let's have some heal..")
 end
 
-function Dalliah_Doomsayer(Unit, event, miscunit, misc)
-	print "Dalliah Doomsayer"
-	Unit:FullCastSpellOnTarget(36173,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "The power of Doom it's on me....")
-end
-function Dalliah(unit, event, miscunit, misc)
-	print "Dalliah"
-	unit:RegisterEvent("Dalliah_Red",11000,0)
-	unit:RegisterEvent("Dalliah_Whirlwind_Heal",21000,0)
-	unit:RegisterEvent("Dalliah_Doomsayer",31000,0)
+function Dalliah_Doomsayer(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(36173, Unit:GetClosestPlayer())
 end
 
-RegisterUnitEvent(20885,1,"Dalliah")
+RegisterUnitEvent(20885, 1, "Dalliah")

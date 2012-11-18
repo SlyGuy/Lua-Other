@@ -21,7 +21,6 @@ function SunbladeBloodKnight_OnCombat(Unit, Event)
 	Unit:RegisterAIUpdateEvent(10000)
 end
 
---[[-- I dont't know how often he does this just set it to 6, 3 sec--]]
 function SunbladeBloodKnight_HolyLight(Unit, Event)
 	Unit:FullCastSpell(27136)
 end
@@ -33,7 +32,6 @@ end
 function SunbladeBloodKnight_Died(Unit, Event)
 	Unit:RemoveAIUpdateEvent()
 end
-
 
 RegisterUnitEvent(27136, 1, "SunbladeBloodKnight_OnCombat")
 RegisterUnitEvent(27136, 21, "SunbladeBloodKnight_HolyLight")

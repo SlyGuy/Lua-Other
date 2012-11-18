@@ -1,16 +1,14 @@
-function Nazan_Fireball(Unit, event, miscunit, misc)
-	Unit:FullCastSpellOnTarget(37111,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Ha..Ho...A good fire ball...")
+function Nazan(Unit, event, miscUnit, misc)
+	Unit:RegisterEvent("Nazan_Fireball", 5000, 0)
+	Unit:RegisterEvent("Nazan_Cone_Fire", 11000, 0)
 end
 
-function Nazan_Cone_Fire(Unit, event, miscunit, misc)
-	Unit:FullCastSpellOnTarget(30926,Unit:GetClosestPlayer())
-	Unit:SendChatMessage(11, 0, "Cone of fire...")
+function Nazan_Fireball(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(37111, Unit:GetClosestPlayer())
 end
 
-function Nazan(unit, event, miscunit, misc)
-	unit:RegisterEvent("Nazan_Fireball",5000,0)
-	unit:RegisterEvent("Nazan_Cone_Fire",11000,0)
+function Nazan_Cone_Fire(Unit, event, miscUnit, misc)
+	Unit:FullCastSpellOnTarget(30926, Unit:GetClosestPlayer())
 end
 
-RegisterUnitEvent(17536,1,"Nazan")
+RegisterUnitEvent(17536, 1, "Nazan")

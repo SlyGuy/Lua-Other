@@ -5,7 +5,7 @@ by the GPL v2. This script was released
 by Paroxysm of the Blua Scripting
 Project. Please give proper accredidations
 when re-releasing or sharing this script
-with others in the emulation community.
+with others in the emulation commUnity.
 
 ~~End of License Agreement
 -- Paroxysm, August 27, 2008. ]]
@@ -104,7 +104,7 @@ end
 function AKILZON_SummonEagles(Unit)
 	if table.getn(args.AKILZON.soaring_table) <= 20 then
 		for i = 1,math.random(6,7) do
-			Unit:SpawnCreature(24858,Unit:GetX(),Unit:GetY(),Unit:GetZ()+20,Unit:GetO(),Unit:GetUInt32Value(UnitField.UNIT_FIELD_FACTIONTEMPLATE),0)
+			Unit:SpawnCreature(24858,Unit:GetX(),Unit:GetY(),Unit:GetZ()+20,Unit:GetO(),Unit:GetUInt32Value(UnitField.Unit_FIELD_FACTIONTEMPLATE),0)
 		end
 		Unit:SendChatMessage(ChatField.CHAT_MSG_MONSTER_YELL,LangField.LANG_UNIVERSAL,"Feed me bruddahs!")
 		Unit:PlaySoundToSet(12019)

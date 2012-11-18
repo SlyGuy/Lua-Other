@@ -22,11 +22,10 @@ function SunbladeKeeper_OnCombat(Unit, Event)
 end
 
 function SunbladeKeeper_ShadowBolt(Unit, Event)
-	if Unit:GetRandomPlayer(7) then
+if(Unit:GetRandomPlayer(7)) then
 		Unit:FullCastSpellOnTarget(15232, Unit:GetRandomPlayer(7))
 	end
 end
-
 
 function SunbladeKeeper_LeaveCombat(Unit, Event)
 	Unit:RegisterAIUpdateEvent()
@@ -35,7 +34,6 @@ end
 function SunbladeKeeper_Died(Unit, Event)
 	Unit:RegisterAIUpdateEvent()
 end
-
 
 RegisterUnitEvent(24762, 1, "SunbladeKeeper_OnCombat")
 RegisterUnitEvent(24762, 21, "SunbladeKeeper_ShadowBolt")
