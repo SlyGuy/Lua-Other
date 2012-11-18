@@ -14,11 +14,6 @@ _________________________________Updates:_____________________________|
 v0.9
 	zdroid9770:
 		--> UPD: Burning Crusade Dungeons Lua Scripts
-		--> ADD: Missing Classic Lua Dungeon scripts
-		--> ADD: Missing Burning Crusade Lua Dungeon scripts
-		--> ADD: Missing Wrath of the Lich King Lua Dungeon scripts
-		--> ADD: Cataclysm Lua Dungeon scripts
-		--> ADD: Mists of Pandaria Lua Dungeon scripts
 	SlyGuy:
 		--> UPD: Custom Morpher Script
 ______________________________________________________________________|
