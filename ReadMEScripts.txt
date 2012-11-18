@@ -11,7 +11,7 @@ _______KEY________
 - UPD = Updated -|
 - MER = Merge	-|
 _________________________________Updates:_____________________________|
-v1.0
+Coming Soon: v1.0
 	zdroid9770:
 		--> ADD: Missing Classic Lua Dungeon scripts
 		--> ADD: Missing Burning Crusade Lua Dungeon scripts
