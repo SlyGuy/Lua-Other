@@ -10,6 +10,7 @@ _______KEY________
 - FIX = Fixed	-|
 - UPD = Updated -|
 - MER = Merge	-|
+<<<<<<< HEAD:Revision.txt
 _________________________________Revision:_____________________________|
 Coming Soon: r0110
 	zdroid9770:
