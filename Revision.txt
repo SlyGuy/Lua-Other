@@ -1,5 +1,5 @@
-This pack is brought to you by the staff members of [http://zarkmania.ucoz.com].
-You can't Blame me that i made all of this, Most of this is made by other people especially a group like ArcEmu and Trinity.
+This pack is brought to you by the staff members of [http://zarkmania.allalla.com].
+You can't Blame me that i made all of this, Most of this is made by other people especially a groups like ArcEmu and Trinity.
 Read the "People" for all the people who made some stuff in here. 
 (I try my best to get everyone for credits because they did a lot of hard work and they deserve it :3)
 Some scripts may be changed on my rules of conversations(Its a Zeta Droid law) between zdroid9770(Founder) and the rest of the staff members.
@@ -17,6 +17,8 @@ Coming Soon: r0110
 		--> ADD: ../../Funserver/Mangos
 		--> ADD: ../../Blizzlike/SkyFire
 		--> ADD: ../../Blizzlike/Mangos
+		--> FIX: Minor Bugs
+		--> MER: Merge Repository
 ______________________________________________________________________|
 r0100
 	zdroid9770:

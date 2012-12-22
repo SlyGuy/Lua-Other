@@ -4,7 +4,7 @@ WoTD Team:
 | (Founder/Owner) zdroid9770 / Zarkmania.allalla.com / Zark / zdroid | Zuel
 | (Administrator/Head Developer) Ronvenal / Bobmaster 
 | (Head Moderator/Developer) SlyGuy 
-| (Emulators) TrinityCore | ArcEmu
+| (Emulators) TrinityCore | ArcEmu | Skyfire
 | (Database/Events) dev.landofelves.net | https://github.com/DarkAngel39/Events
 
 Retired WoTD Team:
