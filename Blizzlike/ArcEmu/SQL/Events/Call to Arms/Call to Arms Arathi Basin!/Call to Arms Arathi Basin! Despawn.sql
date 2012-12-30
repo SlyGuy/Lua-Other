@@ -1,2 +1,0 @@
-DELETE FROM `creature_spawns` WHERE `id` BETWEEN 434789 AND 434917;
-DELETE FROM `gameobject_spawns` WHERE `id` BETWEEN 512830 AND 512888;
