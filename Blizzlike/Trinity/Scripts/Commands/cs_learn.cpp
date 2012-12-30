@@ -25,8 +25,11 @@ EndScriptData */
 #include "Chat.h"
 #include "ScriptMgr.h"
 #include "ObjectMgr.h"
+#include "Language.h"
 #include "SpellMgr.h"
 #include "SpellInfo.h"
+#include "Player.h"
+#include "Pet.h"
 
 class learn_commandscript : public CommandScript
 {
@@ -394,33 +397,14 @@ public:
                 !skillInfo->canLink)                            // only prof with recipes have set
                 continue;
 
-            int locale = handler->GetSessionDbcLocale();
-            name = skillInfo->name[locale];
+            name = skillInfo->name;
             if (name.empty())
                 continue;
 
             if (!Utf8FitTo(name, namePart))
-            {
-                locale = 0;
-                for (; locale < TOTAL_LOCALES; ++locale)
-                {
-                    if (locale == handler->GetSessionDbcLocale())
-                        continue;
+                continue;
 
-                    name = skillInfo->name[locale];
-                    if (name.empty())
-                        continue;
-
-                    if (Utf8FitTo(name, namePart))
-                        break;
-                }
-            }
-
-            if (locale < TOTAL_LOCALES)
-            {
-                targetSkillInfo = skillInfo;
-                break;
-            }
+            targetSkillInfo = skillInfo;
         }
 
         if (!targetSkillInfo)

@@ -26,7 +26,10 @@ EndScriptData */
 #include "ObjectMgr.h"
 #include "Chat.h"
 #include "AccountMgr.h"
+#include "Language.h"
 #include "World.h"
+#include "Player.h"
+#include "Opcodes.h"
 
 class gm_commandscript : public CommandScript
 {
@@ -96,19 +99,16 @@ public:
         if (!target)
             target = handler->GetSession()->GetPlayer();
 
-        WorldPacket data(12);
+        WorldPacket data;
         if (strncmp(args, "on", 3) == 0)
-            data.SetOpcode(SMSG_MOVE_SET_CAN_FLY);
+            target->SendMovementSetCanFly(true);
         else if (strncmp(args, "off", 4) == 0)
-            data.SetOpcode(SMSG_MOVE_UNSET_CAN_FLY);
+            target->SendMovementSetCanFly(false);
         else
         {
             handler->SendSysMessage(LANG_USE_BOL);
             return false;
         }
-        data.append(target->GetPackGUID());
-        data << uint32(0);                                      // unknown
-        target->SendMessageToSet(&data, true);
         handler->PSendSysMessage(LANG_COMMAND_FLYMODE_STATUS, handler->GetNameLink(target).c_str(), args);
         return true;
     }
@@ -133,16 +133,17 @@ public:
                     handler->SendSysMessage(LANG_GMS_ON_SRV);
                     handler->SendSysMessage("========================");
                 }
-                char const* name = itr->second->GetName();
+                std::string const& name = itr->second->GetName();
+                uint8 size = name.size();
                 uint8 security = itrSec;
-                uint8 max = ((16 - strlen(name)) / 2);
+                uint8 max = ((16 - size) / 2);
                 uint8 max2 = max;
-                if ((max + max2 + strlen(name)) == 16)
+                if ((max + max2 + size) == 16)
                     max2 = max - 1;
                 if (handler->GetSession())
-                    handler->PSendSysMessage("|    %s GMLevel %u", name, security);
+                    handler->PSendSysMessage("|    %s GMLevel %u", name.c_str(), security);
                 else
-                    handler->PSendSysMessage("|%*s%s%*s|   %u  |", max, " ", name, max2, " ", security);
+                    handler->PSendSysMessage("|%*s%s%*s|   %u  |", max, " ", name.c_str(), max2, " ", security);
             }
         }
         if (footer)

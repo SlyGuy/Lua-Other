@@ -21,6 +21,7 @@
  * Scriptnames of files in this file should be prefixed with "spell_warl_".
  */
 
+#include "Player.h"
 #include "ScriptMgr.h"
 #include "SpellScript.h"
 #include "SpellAuraEffects.h"
@@ -40,9 +41,19 @@ enum WarlockSpells
     WARLOCK_HAUNT                           = 48181,
     WARLOCK_HAUNT_HEAL                      = 48210,
     WARLOCK_UNSTABLE_AFFLICTION_DISPEL      = 31117,
-    WARLOCK_CURSE_OF_DOOM_EFFECT            = 18662,
+    WARLOCK_BANE_OF_DOOM_EFFECT             = 18662,
+    WARLOCK_IMPROVED_HEALTH_FUNNEL_R1       = 18703,
+    WARLOCK_IMPROVED_HEALTH_FUNNEL_R2       = 18704,
+    WARLOCK_IMPROVED_HEALTH_FUNNEL_BUFF_R1  = 60955,
+    WARLOCK_IMPROVED_HEALTH_FUNNEL_BUFF_R2  = 60956,
+    WARLOCK_SOULSHATTER                     = 32835,
+    WARLOCK_LIFE_TAP_ENERGIZE               = 31818,
+    WARLOCK_LIFE_TAP_ENERGIZE_2             = 32553,
+    WARLOCK_IMPROVED_LIFE_TAP_ICON_ID       = 208,
+    WARLOCK_MANA_FEED_ICON_ID               = 1982,
 };
 
+/// Updated 4.3.4
 class spell_warl_banish : public SpellScriptLoader
 {
 public:
@@ -60,11 +71,13 @@ public:
 
         void HandleBanish()
         {
+            /// Casting Banish on a banished target will cancel the effect
+            /// Check if the target already has Banish, if so, do nothing.
             if (Unit* target = GetHitUnit())
             {
                 if (target->GetAuraEffect(SPELL_AURA_SCHOOL_IMMUNITY, SPELLFAMILY_WARLOCK, 0, 0x08000000, 0))
                 {
-                    //No need to remove old aura since its removed due to not stack by current Banish aura
+                    // No need to remove old aura since its removed due to not stack by current Banish aura
                     PreventHitDefaultEffect(EFFECT_0);
                     PreventHitDefaultEffect(EFFECT_1);
                     PreventHitDefaultEffect(EFFECT_2);
@@ -95,6 +108,7 @@ public:
 };
 
 // 47193 Demonic Empowerment
+/// Updated 4.3.4
 class spell_warl_demonic_empowerment : public SpellScriptLoader
 {
     public:
@@ -128,7 +142,6 @@ class spell_warl_demonic_empowerment : public SpellScriptLoader
                             SpellInfo const* spellInfo = sSpellMgr->GetSpellInfo(WARLOCK_DEMONIC_EMPOWERMENT_VOIDWALKER);
                             int32 hp = int32(targetCreature->CountPctFromMaxHealth(GetCaster()->CalculateSpellDamage(targetCreature, spellInfo, 0)));
                             targetCreature->CastCustomSpell(targetCreature, WARLOCK_DEMONIC_EMPOWERMENT_VOIDWALKER, &hp, NULL, NULL, true);
-                            //unitTarget->CastSpell(unitTarget, 54441, true);
                             break;
                         }
                         case CREATURE_FAMILY_FELGUARD:
@@ -157,7 +170,7 @@ class spell_warl_demonic_empowerment : public SpellScriptLoader
         }
 };
 
-// 6201 Create Healthstone (and ranks)
+// 6201 Create Healthstone
 class spell_warl_create_healthstone : public SpellScriptLoader
 {
     public:
@@ -237,6 +250,7 @@ uint32 const spell_warl_create_healthstone::spell_warl_create_healthstone_SpellS
 };
 
 // 47422 Everlasting Affliction
+/// Updated 4.3.4
 class spell_warl_everlasting_affliction : public SpellScriptLoader
 {
     public:
@@ -266,34 +280,8 @@ class spell_warl_everlasting_affliction : public SpellScriptLoader
         }
 };
 
-// 18541 Ritual of Doom Effect
-class spell_warl_ritual_of_doom_effect : public SpellScriptLoader
-{
-public:
-    spell_warl_ritual_of_doom_effect() : SpellScriptLoader("spell_warl_ritual_of_doom_effect") { }
-
-    class spell_warl_ritual_of_doom_effect_SpellScript : public SpellScript
-    {
-        PrepareSpellScript(spell_warl_ritual_of_doom_effect_SpellScript);
-
-        void HandleDummy(SpellEffIndex /*effIndex*/)
-        {
-            Unit* caster = GetCaster();
-            caster->CastSpell(caster, GetEffectValue(), true);
-        }
-
-        void Register()
-        {
-            OnEffectHit += SpellEffectFn(spell_warl_ritual_of_doom_effect_SpellScript::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
-        }
-    };
-
-    SpellScript* GetSpellScript() const
-    {
-        return new spell_warl_ritual_of_doom_effect_SpellScript();
-    }
-};
-
+// 27285 Seed of Corruption
+/// Updated 4.3.4
 class spell_warl_seed_of_corruption : public SpellScriptLoader
 {
     public:
@@ -321,11 +309,8 @@ class spell_warl_seed_of_corruption : public SpellScriptLoader
         }
 };
 
-enum Soulshatter
-{
-    SPELL_SOULSHATTER   = 32835,
-};
-
+// 29858 Soulshatter
+/// Updated 4.3.4
 class spell_warl_soulshatter : public SpellScriptLoader
 {
     public:
@@ -337,7 +322,7 @@ class spell_warl_soulshatter : public SpellScriptLoader
 
             bool Validate(SpellInfo const* /*spell*/)
             {
-                if (!sSpellMgr->GetSpellInfo(SPELL_SOULSHATTER))
+                if (!sSpellMgr->GetSpellInfo(WARLOCK_SOULSHATTER))
                     return false;
                 return true;
             }
@@ -346,10 +331,8 @@ class spell_warl_soulshatter : public SpellScriptLoader
             {
                 Unit* caster = GetCaster();
                 if (Unit* target = GetHitUnit())
-                {
                     if (target->CanHaveThreatList() && target->getThreatManager().getThreat(caster) > 0.0f)
-                        caster->CastSpell(target, SPELL_SOULSHATTER, true);
-                }
+                        caster->CastSpell(target, WARLOCK_SOULSHATTER, true);
             }
 
             void Register()
@@ -364,14 +347,8 @@ class spell_warl_soulshatter : public SpellScriptLoader
         }
 };
 
-enum LifeTap
-{
-    SPELL_LIFE_TAP_ENERGIZE     = 31818,
-    SPELL_LIFE_TAP_ENERGIZE_2   = 32553,
-    ICON_ID_IMPROVED_LIFE_TAP   = 208,
-    ICON_ID_MANA_FEED           = 1982,
-};
-
+// 1454 Life Tap
+/// Updated 4.3.4
 class spell_warl_life_tap : public SpellScriptLoader
 {
     public:
@@ -388,7 +365,7 @@ class spell_warl_life_tap : public SpellScriptLoader
 
             bool Validate(SpellInfo const* /*spell*/)
             {
-                if (!sSpellMgr->GetSpellInfo(SPELL_LIFE_TAP_ENERGIZE) || !sSpellMgr->GetSpellInfo(SPELL_LIFE_TAP_ENERGIZE_2))
+                if (!sSpellMgr->GetSpellInfo(WARLOCK_LIFE_TAP_ENERGIZE) || !sSpellMgr->GetSpellInfo(WARLOCK_LIFE_TAP_ENERGIZE_2))
                     return false;
                 return true;
             }
@@ -398,34 +375,31 @@ class spell_warl_life_tap : public SpellScriptLoader
                 Player* caster = GetCaster()->ToPlayer();
                 if (Unit* target = GetHitUnit())
                 {
-                    int32 damage = GetEffectValue();
-                    int32 mana = int32(damage + (caster->GetUInt32Value(PLAYER_FIELD_MOD_DAMAGE_DONE_POS+SPELL_SCHOOL_SHADOW) * 0.5f));
+                    int32 damage = caster->CountPctFromMaxHealth(GetSpellInfo()->Effects[EFFECT_2].CalcValue());
+                    int32 mana = CalculatePct(damage, GetSpellInfo()->Effects[EFFECT_1].CalcValue());
 
                     // Shouldn't Appear in Combat Log
                     target->ModifyHealth(-damage);
 
                     // Improved Life Tap mod
-                    if (AuraEffect const* aurEff = caster->GetDummyAuraEffect(SPELLFAMILY_WARLOCK, ICON_ID_IMPROVED_LIFE_TAP, 0))
-                        AddPctN(mana, aurEff->GetAmount());
+                    if (AuraEffect const* aurEff = caster->GetDummyAuraEffect(SPELLFAMILY_WARLOCK, WARLOCK_IMPROVED_LIFE_TAP_ICON_ID, 0))
+                        AddPct(mana, aurEff->GetAmount());
 
-                    caster->CastCustomSpell(target, SPELL_LIFE_TAP_ENERGIZE, &mana, NULL, NULL, false);
+                    caster->CastCustomSpell(target, WARLOCK_LIFE_TAP_ENERGIZE, &mana, NULL, NULL, false);
 
                     // Mana Feed
-                    int32 manaFeedVal = 0;
-                    if (AuraEffect const* aurEff = caster->GetAuraEffect(SPELL_AURA_ADD_FLAT_MODIFIER, SPELLFAMILY_WARLOCK, ICON_ID_MANA_FEED, 0))
-                        manaFeedVal = aurEff->GetAmount();
-
-                    if (manaFeedVal > 0)
+                    if (AuraEffect const* aurEff = caster->GetAuraEffect(SPELL_AURA_ADD_FLAT_MODIFIER, SPELLFAMILY_WARLOCK, WARLOCK_MANA_FEED_ICON_ID, 0))
                     {
-                        ApplyPctN(manaFeedVal, mana);
-                        caster->CastCustomSpell(caster, SPELL_LIFE_TAP_ENERGIZE_2, &manaFeedVal, NULL, NULL, true, NULL);
+                        int32 manaFeedVal = aurEff->GetAmount();
+                        ApplyPct(manaFeedVal, mana);
+                        caster->CastCustomSpell(caster, WARLOCK_LIFE_TAP_ENERGIZE_2, &manaFeedVal, NULL, NULL, true, NULL);
                     }
                 }
             }
 
             SpellCastResult CheckCast()
             {
-                if ((int32(GetCaster()->GetHealth()) > int32(GetSpellInfo()->Effects[EFFECT_0].CalcValue() + (6.3875 * GetSpellInfo()->BaseLevel))))
+                if (int32(GetCaster()->GetHealth()) > int32(GetCaster()->CountPctFromMaxHealth(GetSpellInfo()->Effects[EFFECT_2].CalcValue())))
                     return SPELL_CAST_OK;
                 return SPELL_FAILED_FIZZLE;
             }
@@ -443,6 +417,8 @@ class spell_warl_life_tap : public SpellScriptLoader
         }
 };
 
+// 48018 Demonic Circle: Summon
+/// Updated 4.3.4
 class spell_warl_demonic_circle_summon : public SpellScriptLoader
 {
     public:
@@ -494,6 +470,8 @@ class spell_warl_demonic_circle_summon : public SpellScriptLoader
         }
 };
 
+// 48020 Demonic Circle: Teleport
+/// Updated 4.3.4
 class spell_warl_demonic_circle_teleport : public SpellScriptLoader
 {
     public:
@@ -527,6 +505,8 @@ class spell_warl_demonic_circle_teleport : public SpellScriptLoader
         }
 };
 
+// 48181 Haunt
+/// Updated 4.3.4
 class spell_warl_haunt : public SpellScriptLoader
 {
     public:
@@ -540,7 +520,7 @@ class spell_warl_haunt : public SpellScriptLoader
             {
                 if (Aura* aura = GetHitAura())
                     if (AuraEffect* aurEff = aura->GetEffect(EFFECT_1))
-                        aurEff->SetAmount(CalculatePctN(aurEff->GetAmount(), GetHitDamage()));
+                        aurEff->SetAmount(CalculatePct(aurEff->GetAmount(), GetHitDamage()));
             }
 
             void Register()
@@ -586,6 +566,7 @@ class spell_warl_haunt : public SpellScriptLoader
         }
 };
 
+/// Updated 4.3.4
 class spell_warl_unstable_affliction : public SpellScriptLoader
 {
     public:
@@ -625,10 +606,12 @@ class spell_warl_unstable_affliction : public SpellScriptLoader
         }
 };
 
-class spell_warl_curse_of_doom : public SpellScriptLoader
+// 603 Bane of Doom
+/// Updated 4.3.4
+class spell_warl_bane_of_doom : public SpellScriptLoader
 {
     public:
-        spell_warl_curse_of_doom() : SpellScriptLoader("spell_warl_curse_of_doom") { }
+        spell_warl_bane_of_doom() : SpellScriptLoader("spell_warl_bane_of_doom") { }
 
         class spell_warl_curse_of_doom_AuraScript : public AuraScript
         {
@@ -636,7 +619,7 @@ class spell_warl_curse_of_doom : public SpellScriptLoader
 
             bool Validate(SpellInfo const* /*spell*/)
             {
-                if (!sSpellMgr->GetSpellInfo(WARLOCK_CURSE_OF_DOOM_EFFECT))
+                if (!sSpellMgr->GetSpellInfo(WARLOCK_BANE_OF_DOOM_EFFECT))
                     return false;
                 return true;
             }
@@ -656,7 +639,7 @@ class spell_warl_curse_of_doom : public SpellScriptLoader
                     return;
 
                 if (GetCaster()->ToPlayer()->isHonorOrXPTarget(GetTarget()))
-                    GetCaster()->CastSpell(GetTarget(), WARLOCK_CURSE_OF_DOOM_EFFECT, true, NULL, aurEff);
+                    GetCaster()->CastSpell(GetTarget(), WARLOCK_BANE_OF_DOOM_EFFECT, true, NULL, aurEff);
             }
 
             void Register()
@@ -671,13 +654,56 @@ class spell_warl_curse_of_doom : public SpellScriptLoader
         }
 };
 
+// 755 Health Funnel
+/// Updated 4.3.4
+class spell_warl_health_funnel : public SpellScriptLoader
+{
+public:
+    spell_warl_health_funnel() : SpellScriptLoader("spell_warl_health_funnel") { }
+
+    class spell_warl_health_funnel_AuraScript : public AuraScript
+    {
+        PrepareAuraScript(spell_warl_health_funnel_AuraScript);
+
+        void ApplyEffect(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
+        {
+            Unit* caster = GetCaster();
+            if (!caster)
+                return;
+
+            Unit* target = GetTarget();
+            if (caster->HasAura(WARLOCK_IMPROVED_HEALTH_FUNNEL_R2))
+                target->CastSpell(target, WARLOCK_IMPROVED_HEALTH_FUNNEL_BUFF_R2, true);
+            else if (caster->HasAura(WARLOCK_IMPROVED_HEALTH_FUNNEL_R1))
+                target->CastSpell(target, WARLOCK_IMPROVED_HEALTH_FUNNEL_BUFF_R1, true);
+        }
+
+        void RemoveEffect(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
+        {
+            Unit* target = GetTarget();
+            target->RemoveAurasDueToSpell(WARLOCK_IMPROVED_HEALTH_FUNNEL_BUFF_R1);
+            target->RemoveAurasDueToSpell(WARLOCK_IMPROVED_HEALTH_FUNNEL_BUFF_R2);
+        }
+
+        void Register()
+        {
+            OnEffectRemove += AuraEffectRemoveFn(spell_warl_health_funnel_AuraScript::RemoveEffect, EFFECT_0, SPELL_AURA_PERIODIC_HEAL, AURA_EFFECT_HANDLE_REAL);
+            OnEffectApply += AuraEffectApplyFn(spell_warl_health_funnel_AuraScript::ApplyEffect, EFFECT_0, SPELL_AURA_PERIODIC_HEAL, AURA_EFFECT_HANDLE_REAL);
+        }
+    };
+
+    AuraScript* GetAuraScript() const
+    {
+        return new spell_warl_health_funnel_AuraScript();
+    }
+};
+
 void AddSC_warlock_spell_scripts()
 {
     new spell_warl_banish();
     new spell_warl_demonic_empowerment();
     new spell_warl_create_healthstone();
     new spell_warl_everlasting_affliction();
-    new spell_warl_ritual_of_doom_effect();
     new spell_warl_seed_of_corruption();
     new spell_warl_soulshatter();
     new spell_warl_life_tap();
@@ -685,5 +711,6 @@ void AddSC_warlock_spell_scripts()
     new spell_warl_demonic_circle_teleport();
     new spell_warl_haunt();
     new spell_warl_unstable_affliction();
-    new spell_warl_curse_of_doom();
+    new spell_warl_bane_of_doom();
+    new spell_warl_health_funnel();
 }

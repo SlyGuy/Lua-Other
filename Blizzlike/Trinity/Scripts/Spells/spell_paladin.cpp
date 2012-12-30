@@ -21,10 +21,11 @@
  * Scriptnames of files in this file should be prefixed with "spell_pal_".
  */
 
+#include "Player.h"
 #include "ScriptMgr.h"
 #include "SpellScript.h"
 #include "SpellAuraEffects.h"
-
+#include "Group.h"
 
 enum PaladinSpells
 {
@@ -47,10 +48,13 @@ enum PaladinSpells
     SPELL_FORBEARANCE                            = 25771,
     SPELL_AVENGING_WRATH_MARKER                  = 61987,
     SPELL_IMMUNE_SHIELD_MARKER                   = 61988,
+
+    SPELL_HAND_OF_SACRIFICE                      = 6940,
+    SPELL_DIVINE_SACRIFICE                       = 64205,
 };
 
 // 31850 - Ardent Defender
-class spell_pal_ardent_defender : public SpellScriptLoader
+/*class spell_pal_ardent_defender : public SpellScriptLoader
 {
     public:
         spell_pal_ardent_defender() : SpellScriptLoader("spell_pal_ardent_defender") { }
@@ -73,7 +77,7 @@ class spell_pal_ardent_defender : public SpellScriptLoader
                 return GetUnitOwner()->GetTypeId() == TYPEID_PLAYER;
             }
 
-            void CalculateAmount(AuraEffect const* /*aurEff*/, int32 & amount, bool & /*canBeRecalculated*/)
+            void CalculateAmount(AuraEffect const* aurEff, int32 & amount, bool & canBeRecalculated)
             {
                 // Set absorbtion amount to unlimited
                 amount = -1;
@@ -108,7 +112,7 @@ class spell_pal_ardent_defender : public SpellScriptLoader
                     uint32 damageToReduce = (victim->GetHealth() < allowedHealth)
                         ? dmgInfo.GetDamage()
                         : allowedHealth - remainingHealth;
-                    absorbAmount = CalculatePctN(damageToReduce, absorbPct);
+                    absorbAmount = CalculatePct(damageToReduce, absorbPct);
                 }
             }
 
@@ -123,7 +127,7 @@ class spell_pal_ardent_defender : public SpellScriptLoader
         {
             return new spell_pal_ardent_defender_AuraScript();
         }
-};
+};*/
 
 class spell_pal_blessing_of_faith : public SpellScriptLoader
 {
@@ -566,17 +570,151 @@ class spell_pal_exorcism_and_holy_wrath_damage : public SpellScriptLoader
         }
 };
 
+class spell_pal_hand_of_sacrifice : public SpellScriptLoader
+{
+    public:
+        spell_pal_hand_of_sacrifice() : SpellScriptLoader("spell_pal_hand_of_sacrifice") { }
+
+        class spell_pal_hand_of_sacrifice_AuraScript : public AuraScript
+        {
+            PrepareAuraScript(spell_pal_hand_of_sacrifice_AuraScript);
+
+            int32 remainingAmount;
+
+            bool Load()
+            {
+                if (Unit* caster = GetCaster())
+                {
+                    remainingAmount = caster->GetMaxHealth();
+                    return true;
+                }
+                return false;
+            }
+
+            void Split(AuraEffect* /*aurEff*/, DamageInfo & /*dmgInfo*/, uint32 & splitAmount)
+            {
+                remainingAmount -= splitAmount;
+
+                if (remainingAmount <= 0)
+                {
+                    GetTarget()->RemoveAura(SPELL_HAND_OF_SACRIFICE);
+                }
+            }
+
+            void Register()
+            {
+                OnEffectSplit += AuraEffectSplitFn(spell_pal_hand_of_sacrifice_AuraScript::Split, EFFECT_0);
+            }
+        };
+
+        AuraScript* GetAuraScript() const
+        {
+            return new spell_pal_hand_of_sacrifice_AuraScript();
+        }
+};
+
+class spell_pal_divine_sacrifice : public SpellScriptLoader
+{
+    public:
+        spell_pal_divine_sacrifice() : SpellScriptLoader("spell_pal_divine_sacrifice") { }
+
+        class spell_pal_divine_sacrifice_AuraScript : public AuraScript
+        {
+            PrepareAuraScript(spell_pal_divine_sacrifice_AuraScript);
+
+            uint32 groupSize, minHpPct;
+            int32 remainingAmount;
+
+            bool Load()
+            {
+
+                if (Unit* caster = GetCaster())
+                {
+                    if (caster->GetTypeId() == TYPEID_PLAYER)
+                    {
+                        if (caster->ToPlayer()->GetGroup())
+                            groupSize = caster->ToPlayer()->GetGroup()->GetMembersCount();
+                        else
+                            groupSize = 1;
+                    }
+                    else
+                        return false;
+
+                    remainingAmount = (caster->CountPctFromMaxHealth(GetSpellInfo()->Effects[EFFECT_2].CalcValue(caster)) * groupSize);
+                    minHpPct = GetSpellInfo()->Effects[EFFECT_1].CalcValue(caster);
+                    return true;
+                }
+                return false;
+            }
+
+            void Split(AuraEffect* /*aurEff*/, DamageInfo & /*dmgInfo*/, uint32 & splitAmount)
+            {
+                remainingAmount -= splitAmount;
+                // break when absorbed everything it could, or if the casters hp drops below 20%
+                if (Unit* caster = GetCaster())
+                    if (remainingAmount <= 0 || (caster->GetHealthPct() < minHpPct))
+                        caster->RemoveAura(SPELL_DIVINE_SACRIFICE);
+            }
+
+            void Register()
+            {
+                OnEffectSplit += AuraEffectSplitFn(spell_pal_divine_sacrifice_AuraScript::Split, EFFECT_0);
+            }
+        };
+
+        AuraScript* GetAuraScript() const
+        {
+            return new spell_pal_divine_sacrifice_AuraScript();
+        }
+};
+
+class spell_pal_sacred_shield : public SpellScriptLoader
+{
+    public:
+        spell_pal_sacred_shield() : SpellScriptLoader("spell_pal_sacred_shield") { }
+
+        class spell_pal_sacred_shield_SpellScript : public SpellScript
+        {
+            PrepareSpellScript(spell_pal_sacred_shield_SpellScript);
+
+            SpellCastResult CheckCast()
+            {
+                Unit* caster = GetCaster();
+                if (caster->GetTypeId() != TYPEID_PLAYER)
+                    return SPELL_FAILED_DONT_REPORT;
+
+                if (!caster->HealthBelowPct(30))
+                    return SPELL_FAILED_CANT_DO_THAT_RIGHT_NOW;
+
+                return SPELL_CAST_OK;
+            }
+
+            void Register()
+            {
+                OnCheckCast += SpellCheckCastFn(spell_pal_sacred_shield_SpellScript::CheckCast);
+            }
+        };
+
+        SpellScript* GetSpellScript() const
+        {
+            return new spell_pal_sacred_shield_SpellScript();
+        }
+};
+
 void AddSC_paladin_spell_scripts()
 {
-    new spell_pal_ardent_defender();
+    //new spell_pal_ardent_defender();
     new spell_pal_blessing_of_faith();
     new spell_pal_blessing_of_sanctuary();
+    new spell_pal_divine_sacrifice();
+    new spell_pal_exorcism_and_holy_wrath_damage();
     new spell_pal_guarded_by_the_light();
+    new spell_pal_hand_of_sacrifice();
     new spell_pal_holy_shock();
     new spell_pal_judgement_of_command();
     new spell_pal_divine_storm();
     new spell_pal_divine_storm_dummy();
     new spell_pal_lay_on_hands();
     new spell_pal_righteous_defense();
-    new spell_pal_exorcism_and_holy_wrath_damage();
+    new spell_pal_sacred_shield();
 }
