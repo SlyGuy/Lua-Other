@@ -20,66 +20,42 @@
 
 #include "Setup.h"
 
-
-#define SendQuickMenu(textid) objmgr.CreateGossipMenuForPlayer(&Menu, pObject->GetGUID(), textid, plr); \
-    Menu->SendTo(plr);
-
-
-class TheSummoning : public GossipScript
+class TheSummoning : public QuestScript
 {
-	public:
-		void GossipHello(Object* pObject, Player* plr)
+public:
+	void OnQuestStart(Player* pPlayer, QuestLogEntry* qLogEntry)
+	{
+		Creature *windwatcher = pPlayer->GetMapMgr()->GetInterface()->GetCreatureNearestCoords(pPlayer->GetPositionX(), pPlayer->GetPositionY(), pPlayer->GetPositionZ(), 6176);
+		if(!windwatcher) return;
+
+		// questgiver will walk to the place where Cyclonian is spawned
+		// only walk when we are at home
+		if(windwatcher->CalcDistance(250.839996f, -1470.579956f, 55.4491f) > 1) return;
 		{
-			if(!plr)
+			windwatcher->SendChatMessage(CHAT_MSG_MONSTER_SAY, LANG_UNIVERSAL, "Follow me");
+			sEAS.CreateCustomWaypointMap(windwatcher);
+			sEAS.WaypointCreate(windwatcher, 269.29f, -1433.32f, 50.31f, 0.19f, 0, 0, 0);
+			sEAS.WaypointCreate(windwatcher, 328.52f, -1442.03f, 40.5f, 5.65f, 0, 0, 0);
+			sEAS.WaypointCreate(windwatcher, 333.31f, -1453.69f, 42.01f, 4.68f, 0, 0, 0);
+			sEAS.EnableWaypoints(windwatcher);
+			windwatcher->GetAIInterface()->setMoveType(11);
+		}
+		windwatcher->Despawn(15*60*1000, 0);
+
+		// spawn cyclonian if not spawned already
+		Creature *cyclonian = pPlayer->GetMapMgr()->GetInterface()->GetCreatureNearestCoords(323.947f, -1483.68f, 43.1363f, 6239);
+		if( cyclonian == NULL)
+		{
+			cyclonian = sEAS.SpawnCreature(pPlayer, 6239, 323.947f, -1483.68f, 43.1363f, 0.682991f);
+
+			// if spawning cyclonian failed, we have to return.
+			if(cyclonian == NULL)
 				return;
-
-			GossipMenu* Menu;
-			Creature* windwatcher = TO_CREATURE(pObject);
-			if(windwatcher == NULL)
-				return;
-
-			objmgr.CreateGossipMenuForPlayer(&Menu, pObject->GetGUID(), 1, plr);
-			if(plr->GetQuestLogForEntry(1713))
-				Menu->AddItem(0, "I'm ready, Summon Him!", 1);
-
-			Menu->SendTo(plr);
 		}
 
-		void GossipSelectOption(Object* pObject, Player* plr, uint32 Id, uint32 IntId, const char* EnteredCode)
-		{
-			if(!plr)
-				return;
-
-			Creature* windwatcher = TO_CREATURE(pObject);
-			if(windwatcher == NULL)
-				return;
-
-			switch(IntId)
-			{
-				case 0:
-					GossipHello(pObject, plr);
-					break;
-
-				case 1:
-					{
-						Creature* whirlwind = plr->GetMapMgr()->GetInterface()->GetCreatureNearestCoords(plr->GetPositionX(), plr->GetPositionY(), plr->GetPositionZ(), 6239);
-						if(whirlwind != NULL)
-						{
-							if(!whirlwind->isAlive())
-							{
-								whirlwind->Delete();
-							}
-							else
-								return;
-						}
-
-						whirlwind = sEAS.SpawnCreature(plr, 6239, plr->GetPositionX() + 7, plr->GetPositionY() + 7, plr->GetPositionZ(), plr->GetOrientation(), 0);
-						whirlwind->Despawn(5 * 60 * 1000, 0);
-					}
-					break;
-			}
-		}
-
+		// queue cyclonian for despawn
+		cyclonian->Despawn(15*60*1000, 0);
+	}
 };
 
 class Bartleby : public CreatureAIScript
@@ -153,8 +129,7 @@ class BeatBartleby : public QuestScript
 
 void SetupWarrior(ScriptMgr* mgr)
 {
-	GossipScript* gossip1 = new TheSummoning();
-	mgr->register_gossip_script(6176, gossip1);
+	mgr->register_quest_script(1713, new TheSummoning());
 	mgr->register_creature_script(6090, &Bartleby::Create);
 	mgr->register_quest_script(1640, new BeatBartleby());
 }
