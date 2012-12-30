@@ -13,12 +13,15 @@ _______KEY________
 _________________________________Revision:_____________________________|
 Coming Soon: r0110
 	zdroid9770:
-		--> ADD: ../../Funserver/SkyFire
-		--> ADD: ../../Funserver/Mangos
-		--> ADD: ../../Blizzlike/SkyFire
-		--> ADD: ../../Blizzlike/Mangos
+		--> UPD: C++ Blizzlike ArcEmu Scripts
+		--> UPD: Lua Blizzlike ArcEmu Scripts
+		--> UPD: SQL ArcEmu
+		--> UPD: C++ Blizzlike Trinity Scripts
 		--> FIX: Minor Bugs
 		--> MER: Merge Repository
+		--> ADD: Gunship C++ Scripts
+		--> ADD: C++ Funserver Trinity Scripts
+		--> ADD: LoE Changelogs (ArcEmu Database)
 ______________________________________________________________________|
 r0100
 	zdroid9770:
