@@ -1,0 +1,2 @@
+--[[(SPELL|22478)Intense Pain  — Inflicts 200 Shadow damage to enemies within 20 yards every 3 sec. for 15 sec.
+(SPELL|22651)Sacrifice   — Teleports a player to Zevrim's altar, stunning them and leeching 300 health from them every second for 8 sec.]]--
