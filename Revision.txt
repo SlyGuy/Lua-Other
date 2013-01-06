@@ -13,6 +13,9 @@ _______KEY________
 _________________________________Revision:_____________________________|
 Coming Soon: r0120
 	zdroid9770:
+		--> ADD: FlameWoW C++ Scripts
+		--> ADD: ArcEmu Lua Funserver Scripts
+		--> ADD: ArcEmu Blizzlike Quests/Mobs
 ______________________________________________________________________|
 r0110
 	zdroid9770:
