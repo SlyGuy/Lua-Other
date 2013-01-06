@@ -11,7 +11,10 @@ _______KEY________
 - UPD = Updated -|
 - MER = Merge	-|
 _________________________________Revision:_____________________________|
-Coming Soon: r0120
+Coming Soon: r0130
+	zdroid9770:
+______________________________________________________________________|
+r0120
 	zdroid9770:
 		--> ADD: FlameWoW C++ Scripts
 		--> ADD: ArcEmu Lua Funserver Scripts
