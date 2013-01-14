@@ -71,7 +71,7 @@ class spell_mage_blast_wave : public SpellScriptLoader
         {
             PrepareSpellScript(spell_mage_blast_wave_SpellScript);
 
-            bool Validate(SpellInfo const* /*spellEntry*/)
+            bool Validate(SpellInfo const* /*spellInfo*/)
             {
                 if (!sSpellMgr->GetSpellInfo(SPELL_MAGE_FLAMESTRIKE))
                     return false;
@@ -131,7 +131,6 @@ class spell_mage_cold_snap : public SpellScriptLoader
 
             void HandleDummy(SpellEffIndex /*effIndex*/)
             {
-
                 Player* caster = GetCaster()->ToPlayer();
                 // immediately finishes the cooldown on Frost spells
                 const SpellCooldowns& cm = caster->GetSpellCooldownMap();
@@ -152,7 +151,6 @@ class spell_mage_cold_snap : public SpellScriptLoader
 
             void Register()
             {
-                // add dummy effect spell handler to Cold Snap
                 OnEffectHit += SpellEffectFn(spell_mage_cold_snap_SpellScript::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
             }
         };
@@ -467,7 +465,7 @@ class spell_mage_conjure_refreshment : public SpellScriptLoader
 class spell_mage_blizzard : public SpellScriptLoader
 {
    public:
-       spell_mage_blizzard() : SpellScriptLoader("spell_mage_blizzard") { } 
+       spell_mage_blizzard() : SpellScriptLoader("spell_mage_blizzard") { }
 
        class spell_mage_blizzard_SpellScript : public SpellScript
        {
@@ -500,7 +498,7 @@ class spell_mage_blizzard : public SpellScriptLoader
            }
        };
 
-       SpellScript *GetSpellScript() const
+       SpellScript* GetSpellScript() const
        {
            return new spell_mage_blizzard_SpellScript();
        }
@@ -511,7 +509,7 @@ class spell_mage_blizzard : public SpellScriptLoader
 class spell_mage_frostbolt : public SpellScriptLoader
 {
    public:
-       spell_mage_frostbolt() : SpellScriptLoader("spell_mage_frostbolt") { } 
+       spell_mage_frostbolt() : SpellScriptLoader("spell_mage_frostbolt") { }
 
        class spell_mage_frostbolt_SpellScript : public SpellScript
        {
@@ -536,7 +534,7 @@ class spell_mage_frostbolt : public SpellScriptLoader
            }
        };
 
-       SpellScript *GetSpellScript() const
+       SpellScript* GetSpellScript() const
        {
            return new spell_mage_frostbolt_SpellScript();
        }
@@ -553,7 +551,7 @@ class spell_mage_ice_barrier : public SpellScriptLoader
        {
            PrepareAuraScript(spell_mage_ice_barrier_AuraScript);
 
-           void AfterRemove(AuraEffect const* aurEff, AuraEffectHandleModes /*mode*/)
+           void AfterRemove(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
            {
                if (GetTargetApplication()->GetRemoveMode() != AURA_REMOVE_BY_ENEMY_SPELL)
                    return;
@@ -587,7 +585,7 @@ class spell_mage_mana_shield : public SpellScriptLoader
        {
            PrepareAuraScript(spell_mage_mana_shield_AuraScript);
 
-           void HandleAbsorb(AuraEffect* aurEff, DamageInfo & /*dmgInfo*/, uint32 & absorbAmount)
+           void HandleAbsorb(AuraEffect* /*aurEff*/, DamageInfo & /*dmgInfo*/, uint32 & absorbAmount)
            {
                if (AuraEffect* aurEff = GetTarget()->GetAuraEffect(SPELL_AURA_DUMMY, SPELLFAMILY_GENERIC, ICON_MAGE_INCANTER_S_ABSORPTION, EFFECT_0))
                {
@@ -596,7 +594,7 @@ class spell_mage_mana_shield : public SpellScriptLoader
                }
            }
 
-           void AfterRemove(AuraEffect const* aurEff, AuraEffectHandleModes /*mode*/)
+           void AfterRemove(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
            {
                if (GetTargetApplication()->GetRemoveMode() == AURA_REMOVE_BY_ENEMY_SPELL)
                    GetTarget()->CastSpell(GetTarget(), SPELL_MAGE_INCANTER_S_ABSORPTION_KNOCKBACK, true);
@@ -626,7 +624,7 @@ class spell_mage_mage_ward : public SpellScriptLoader
        {
            PrepareAuraScript(spell_mage_mage_ward_AuraScript);
 
-           void HandleAbsorb(AuraEffect* aurEff, DamageInfo & /*dmgInfo*/, uint32 & absorbAmount)
+           void HandleAbsorb(AuraEffect* /*aurEff*/, DamageInfo & /*dmgInfo*/, uint32 & absorbAmount)
            {
                if (AuraEffect* aurEff = GetTarget()->GetAuraEffect(SPELL_AURA_DUMMY, SPELLFAMILY_GENERIC, ICON_MAGE_INCANTER_S_ABSORPTION, EFFECT_0))
                {

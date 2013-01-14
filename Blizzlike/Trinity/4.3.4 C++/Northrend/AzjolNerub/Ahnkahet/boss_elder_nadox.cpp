@@ -94,13 +94,13 @@ class boss_elder_nadox : public CreatureScript
                 if (instance)
                     instance->SetData(DATA_ELDER_NADOX_EVENT, IN_PROGRESS);
 
-                events.ScheduleEvent(EVENT_PLAGUE, 13*IN_MILLISECONDS);
-                events.ScheduleEvent(EVENT_SUMMON_SWARMER, 10*IN_MILLISECONDS);
+                events.ScheduleEvent(EVENT_PLAGUE, 13 * IN_MILLISECONDS);
+                events.ScheduleEvent(EVENT_SUMMON_SWARMER, 10 * IN_MILLISECONDS);
 
                 if (IsHeroic())
                 {
-                    events.ScheduleEvent(EVENT_RAGE, 12*IN_MILLISECONDS);
-                    events.ScheduleEvent(EVENT_CHECK_ENRAGE, 5*IN_MILLISECONDS);
+                    events.ScheduleEvent(EVENT_RAGE, 12 * IN_MILLISECONDS);
+                    events.ScheduleEvent(EVENT_CHECK_ENRAGE, 5 * IN_MILLISECONDS);
                 }
             }
 
@@ -151,32 +151,32 @@ class boss_elder_nadox : public CreatureScript
                     switch (eventId)
                     {
                         case EVENT_PLAGUE:
-                            DoCast(SelectTarget(SELECT_TARGET_RANDOM,0, 100, true),SPELL_BROOD_PLAGUE,true);
-                            events.ScheduleEvent(EVENT_PLAGUE, 15*IN_MILLISECONDS);
+                            DoCast(SelectTarget(SELECT_TARGET_RANDOM, 0, 100, true), SPELL_BROOD_PLAGUE, true);
+                            events.ScheduleEvent(EVENT_PLAGUE, 15 * IN_MILLISECONDS);
                             break;
                         case EVENT_RAGE:
                             DoCast(H_SPELL_BROOD_RAGE);
-                            events.ScheduleEvent(EVENT_RAGE, urand(10*IN_MILLISECONDS, 50*IN_MILLISECONDS));
+                            events.ScheduleEvent(EVENT_RAGE, urand(10 * IN_MILLISECONDS, 50 * IN_MILLISECONDS));
                             break;
                         case EVENT_SUMMON_SWARMER:
                             DoCast(me, SPELL_SUMMON_SWARMERS);
                             if (urand(1, 3) == 3) // 33% chance of dialog
                                 Talk(SAY_EGG_SAC);
-                            events.ScheduleEvent(EVENT_SUMMON_SWARMER, 10*IN_MILLISECONDS);
+                            events.ScheduleEvent(EVENT_SUMMON_SWARMER, 10 * IN_MILLISECONDS);
                             break;
                         case EVENT_CHECK_ENRAGE:
                             if (me->HasAura(SPELL_ENRAGE))
                                 return;
                             if (me->GetPositionZ() < 24.0f)
                                 DoCast(me, SPELL_ENRAGE, true);
-                            events.ScheduleEvent(EVENT_CHECK_ENRAGE, 5*IN_MILLISECONDS);
+                            events.ScheduleEvent(EVENT_CHECK_ENRAGE, 5 * IN_MILLISECONDS);
                             break;
                         default:
                             break;
                     }
                 }
 
-                if (me->HealthBelowPct(100 - AmountHealthModifier * 25))
+                if (me->HealthBelowPct(100 - AmountHealthModifier* 25))
                 {
                     Talk(EMOTE_HATCHES, me->GetGUID());
                     DoCast(me, SPELL_SUMMON_SWARM_GUARD);
@@ -209,7 +209,7 @@ class mob_ahnkahar_nerubian : public CreatureScript
                 if (me->GetEntry() == NPC_AHNKAHAR_GUARDIAN)
                     DoCast(me, SPELL_GUARDIAN_AURA, true);
 
-                events.ScheduleEvent(EVENT_SPRINT, 13*IN_MILLISECONDS);
+                events.ScheduleEvent(EVENT_SPRINT, 13 * IN_MILLISECONDS);
             }
 
             void JustDied(Unit* /*killer*/)
@@ -234,7 +234,7 @@ class mob_ahnkahar_nerubian : public CreatureScript
                     {
                     case EVENT_SPRINT:
                         DoCast(me, SPELL_SPRINT);
-                        events.ScheduleEvent(EVENT_SPRINT, 20*IN_MILLISECONDS);
+                        events.ScheduleEvent(EVENT_SPRINT, 20 * IN_MILLISECONDS);
                         break;
                     }
                 }
@@ -298,7 +298,7 @@ public:
 
         void FilterTargets(std::list<WorldObject*>& targets)
         {
-            targets.remove_if(GuardianCheck());
+            targets.remove_if (GuardianCheck());
         }
 
         void Register()
