@@ -17,10 +17,12 @@ end
  
 function FrenziedRage(pUnit, Event)
 	pUnit:CastSpell(3490)
+	pUnit:RegisterEvent("FrenziedRage", 7000, 0)
 end
  
 function PoisonCloud(pUnit, Event)
 	pUnit:CastSpell(3815)
+	pUnit:RegisterEvent("PoisonCloud", 14000, 0)
 end
  
 function Akumai_OnLeaveCombat(pUnit, event)

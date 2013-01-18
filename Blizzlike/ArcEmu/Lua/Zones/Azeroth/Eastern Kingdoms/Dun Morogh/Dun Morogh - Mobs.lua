@@ -39,7 +39,7 @@ function ECragBoar_OnCombat(Unit, Event)
 end
 
 function ECragBoar_LeaveCombat(pUnit, Event)
-	pUnit::RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function ECragBoar_Dead(pUnit, Event)
@@ -58,7 +58,7 @@ function FHH_OnCombat(Unit, Event)
 end
 
 function FHH_Throw(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(10277, plr)
 	end
@@ -83,7 +83,7 @@ function FHS_OnCombat(Unit, Event)
 end
 
 function FHS_BS(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(7159, plr)
 	end
@@ -110,7 +110,7 @@ function FN_OnCombat(Unit, Event)
 end
 
 function FN_WF(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(6949, plr)
 	end
@@ -137,7 +137,7 @@ function FS_OnCombat(Unit, Event)
 end
 
 function FS_LB(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(9532, plr)
 	end
@@ -169,14 +169,14 @@ function FSC_OnCombat(Unit, Event)
 end
 
 function FSC_COW(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(11980, plr)
 	end
 end
 
 function FSC_SHB(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(20791, plr)
 	end
@@ -202,7 +202,7 @@ function FSCI_OnCombat(Unit, Event)
 end
 
 function FSCI_FF(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(6950, plr)
 	end
@@ -228,7 +228,7 @@ function Gib_OnCombat(Unit, Event)
 end
 
 function Gib_FB(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(20793, plr)
 	end
@@ -254,7 +254,7 @@ function GTG_OnCombat(Unit, Event)
 end
 
 function GTG_FSH(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(21030, plr)
 	end
@@ -284,14 +284,14 @@ function HW_OnCombat(Unit, Event)
 end
 
 function HW_Pummel(pUnit, Event)
-local plr = 	pUnit:GetRandomPlayer(4)
+local plr = pUnit:GetRandomPlayer(4)
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(12555, plr)
 	end
 end
 
 function HW_Strike(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(11976, plr)
 	end
@@ -316,7 +316,7 @@ function ICB_OnCombat(Unit, Event)
 end
 
 function ICB_IClaw(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3130, plr)
 	end
@@ -342,7 +342,7 @@ function IG_OnCombat(Unit, Event)
 end
 
 function IG_SA(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(11971, plr)
 	end
@@ -371,7 +371,7 @@ function IM_OnCombat(Unit, Event)
 end
 
 function IM_Shoot(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(6660, plr)
 	end
@@ -415,7 +415,7 @@ function LG_OnCombat(Unit, Event)
 end
 
 function LG_DCS(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(6951, plr)
 	end
@@ -440,7 +440,7 @@ function MG_OnCombat(Unit, Event)
 end
 
 function MG_Ravage(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3242, plr)
 	end
@@ -466,7 +466,7 @@ function OI_OnCombat(Unit, Event)
 end
 
 function OI_IcyG(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3145, plr)
 	end
@@ -495,7 +495,7 @@ function RBS_OnCombat(Unit, Event)
 end
 
 function RBS_KD(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(5164, plr)
 	end
@@ -520,7 +520,7 @@ function RST_OnCombat(Unit, Event)
 end
 
 function RST_HC(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3148, plr)
 	end
@@ -584,7 +584,7 @@ function Timber_OnCombat(Unit, Event)
 end
 
 function Timber_Rabies(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3150, plr)
 	end
@@ -610,7 +610,7 @@ function Veg_OnCombat(Unit, Event)
 end
 
 function Veg_GR(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3143, plr)
 	end
@@ -636,7 +636,7 @@ function Wen_OnCombat(Unit, Event)
 end
 
 function Wen_FB(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3131, plr)
 	end
@@ -662,7 +662,7 @@ function YWen_OnCombat(Unit, Event)
 end
 
 function YWen_FB(pUnit, Event)
-local plr = 	pUnit:GetClosestPlayer()
+local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(3131, plr)
 	end

@@ -8,10 +8,10 @@
 
 -- Portal
 function PortalToQuelDanas_onUse1 (pUnit, Event, pMisc)
-pMisc:Teleport (530, 12806.004, -6911.1494, 41.1161)
+	pMisc:Teleport (530, 12806.004, -6911.1494, 41.1161)
 end
-RegisterGameObjectEvent(449944, 2, "PortalToQuelDanas_onUse1")
 
+RegisterGameObjectEvent(449944, 2, "PortalToQuelDanas_onUse1")
 
 -- Orbs
 function QuelDanasOrbOne(pGameObject, Event, pMisc)

@@ -41,52 +41,57 @@ Scourgelord Tyrannus yells: Your last waking memory will be of agonizing pain.
 Scourgelord Tyrannus yells: Your pursuit shall be in vain, intruders, for the Lich King has placed an army of undead at my command! Behold!
 ]]--
 
+
 function Tyrannus_OnCombat (pUnit, Event)
-	pUnit:SendChatMessage(14, 0, "Alas, brave brave heroes, do you hear the clatter of bone and steel coming up behind you? that is your end!")
-	pUnit:RegisterEvent("Tyrannus_Forceful", 18000, 0)
-	punit:RegisterEvent("Tyrannus_Overlord", 20000, 0)
-	punit:RegisterEvent("Tyrannus_Unholy", 24000, 0)
-	pUnit:RegisterEvent("Tyrannus_Mark", 16000, 0)
-	pUnit:RegisterEvent("Tyrannus_Icyblast", 19000, 0)
+pUnit:SendChatMessage(14, 0, "Alas, brave brave heroes, do you hear the clatter of bone and steel coming up behind you? that is your end!")
+pUnit:RegisterEvent("Tyrannus_Forceful", 18000, 0)
+punit:RegisterEvent("Tyrannus_Overlord", 20000, 0)
+punit:RegisterEvent("Tyrannus_Unholy", 24000, 0)
+pUnit:RegisterEvent("Tyrannus_Mark", 16000, 0)
+pUnit:RegisterEvent("Tyrannus_Icyblast", 19000, 0)
 end
 
 function Tyrannus_Forceful (pUnit, Event)
-	pUnit:FullCastSpellOnTarget(69155, pUnit:GetMainTank())
+pUnit:FullCastSpellOnTarget(69155, pUnit:GetMainTank())
 end
 
 function Tyrannus_Overlord (pUnit, Event)
-	pUnit:FullCastSpellOnTarget (69172, pUnit:GetRandomPlayer(0))
+pUnit:FullCastSpellOnTarget (69172, pUnit:GetRandomPlayer(0))
 end
 
 function Tyrannus_Unholy (pUnit, Event)
-	pUnit:CastSpell(69167)
-	pUnit:SendChatMessage(14, 0, "Power... overwhelming!")
-	pUnit:SendChatMessage(42, 0, "Scourgelord Tyrannus roars and swells with dark might!")
+pUnit:CastSpell(69167)
+pUnit:SendChatMessage(14, 0, "Power... overwhelming!")
+pUnit:SendChatMessage(42, 0, "Scourgelord Tyrannus roars and swells with dark might!")
 end
 
 function Tyrannus_Mark (pUnit, Event)
-	pUnit:FullCastSpellOnTarget (69275, pUnit:GetRandomPlayer(0))
-	pUnit:SendChatMessage(14, 0, "Rimefang, destroy this fool!")
-	pUnit:RegisterEvent("Tyrannus_Hoarfrost", 16000, 0)
+pUnit:FullCastSpellOnTarget (69275, pUnit:GetRandomPlayer(0))
+pUnit:SendChatMessage(14, 0, "Rimefang, destroy this fool!")
+pUnit:RegisterEvent("Tyrannus_Hoarfrost", 16000, 0)
 end
 
 function Tyrannus_Hoarfrost (pUnit, Event)
-	pUnit:FullCastSpellOnTarget (69245, pUnit:GetRandomPlayer(0))
+pUnit:FullCastSpellOnTarget (69245, pUnit:GetRandomPlayer(0))
 end
 
 function Tyrannus_Icyblast (pUnit, Event)
-	pUnit:FullCastSpellOnTarget (69238, pUnit:GetRandomPlayer(0))
+pUnit:FullCastSpellOnTarget (69238, pUnit:GetRandomPlayer(0))
+end
+
+function Tyrannus_OnKillPlr (pUnit, Event)
 end
 
 function Tyrannus_OnDeath (pUnit, Event)
-	pUnit:RemoveEvents()
-	pUnit:SendChatMessage(14, 0, "Impossible.... Rimefang.... warn....")
+pUnit:RemoveEvents()
+pUnit:SendChatMessage(14, 0, "Impossible.... Rimefang.... warn....")
 end
 
 function Tyrannus_OnLeaveCombat (pUnit, Event)
-	pUnit:RemoveEvents()
+pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(36658, 1, "Tyrannus_OnCombat")
 RegisterUnitEvent(36658, 2, "Tyrannus_OnLeaveCombat")
+RegisterUnitEvent(36658, 3, "Tyrannus_OnKillPlr")
 RegisterUnitEvent(36658, 4, "Tyrannus_OnDeath")

@@ -11,9 +11,9 @@ function DB_OnCombat(Unit, Event)
 end
 
 function DB_SKck(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
-		z	pUnit:FullCastSpellOnTarget(8646, plr)
+		pUnit:FullCastSpellOnTarget(8646, plr)
 	end
 end
 
@@ -37,14 +37,14 @@ function DB_OnCombat(Unit, Event)
 end
 
 function DB_BS(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(7159, plr)
 	end
 end
 
 function DB_Dis(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(6713, plr)
 	end
@@ -69,7 +69,7 @@ function DC_OnCombat(Unit, Event)
 end
 
 function DC_BSi(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(7159, plr)
 	end
@@ -94,7 +94,7 @@ function DD_OnCombat(Unit, Event)
 end
 
 function DD_SK(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(8646, plr)
 	end
@@ -120,7 +120,7 @@ function DRW_OnCombat(Unit, Event)
 end
 
 function DRW_FBt(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(13322, plr)
 	end
@@ -151,14 +151,14 @@ function Ho_OnCombat(Unit, Event)
 end
 
 function Ho_HBt(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(13322, plr)
 	end
 end
 
 function Ho_PA(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(13322, plr)
 	end
@@ -184,7 +184,7 @@ function KG_OnCombat(Unit, Event)
 end
 
 function KG_FBl(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(20793, plr)
 	end
@@ -213,7 +213,7 @@ function KM_OnCombat(Unit, Event)
 end
 
 function KM_FBl(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(6016, plr)
 	end
@@ -238,7 +238,7 @@ function MTS_OnCombat(Unit, Event)
 end
 
 function MTS_Gouge(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(1776, plr)
 	end
@@ -263,7 +263,7 @@ function MTC_OnCombat(Unit, Event)
 end
 
 function MTC_Gougei(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(1776, plr)
 	end
@@ -310,7 +310,7 @@ function ML_OnCombat(Unit, Event)
 end
 
 function ML_BSu(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(7159, plr)
 	end
@@ -469,7 +469,7 @@ function SC_FrostArmor(Unit, Event)
 end
 
 function ML_Fireball(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
+local plr = pUnit:GetMainTank()
 	if (plr ~= nil) then
 		pUnit:FullCastSpellOnTarget(20793, plr)
 	end

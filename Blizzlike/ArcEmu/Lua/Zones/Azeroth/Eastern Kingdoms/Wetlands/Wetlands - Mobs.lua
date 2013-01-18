@@ -9,8 +9,8 @@
 
 
 function Axtroz_OnCombat(pUnit, event)
-	pUnit:pUnit:RegisterEvent("Breath", 10000, 0)
-	pUnit:pUnit:RegisterEvent("Rend", 15000, 0)
+	pUnit:RegisterEvent("Breath", 10000, 0)
+	pUnit:RegisterEvent("Rend", 15000, 0)
 end
 
 function Breath(pUnit, event)
@@ -99,7 +99,7 @@ RegisterUnitEvent(1007, 2, "MosshideGnoll_OnLeaveCombat")
 RegisterUnitEvent(1007, 4, "MosshideGnoll_OnDeath")
 
 function MosshideMongrel_OnCombat(pUnit, event)
-	pUnit:pUnit:RegisterEvent("Decay", 10000, 0)
+	pUnit:RegisterEvent("Decay", 10000, 0)
 end
 function Decay(pUnit, event)
 local plr = pUnit:GetMainTank()

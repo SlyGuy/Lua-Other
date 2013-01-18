@@ -1,235 +1,226 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
+-------------------------------------------------------------------
+-- This script is created by zdroid9770; please do not edit this --
+-- script and claim it as your own, as of All rights are claimed --
+-- by me.                                                        --
+--                     Copyright© zdroid9770					 --
+-------------------------------------------------------------------
 
 --HORDE
 --Undercity
 
-function TaxiUC_Combat(Unit, Event)
+function TaxiUC_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 68, 60000)
 end
 
-function TaxiUC_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiUC_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiUC_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiUC_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(4551, 1, "TaxiUC_Combat")
-RegisterUnitEvent(4551, 2, "TaxiUC_LeaveCombat")
-RegisterUnitEvent(4551, 4, "TaxiUC_Died")
+RegisterUnitEvent(4551, 1, "TaxiUC_OnCombat")
+RegisterUnitEvent(4551, 2, "TaxiUC_OnLeaveCombat")
+RegisterUnitEvent(4551, 4, "TaxiUC_OnDied")
 
 --Thunderbluff
 
-function TaxiTB_Combat(Unit, Event)
+function TaxiTB_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
 end
 
-function TaxiTB_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiTB_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiTB_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiTB_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(2995, 1, "TaxiTB_Combat")
-RegisterUnitEvent(2995, 2, "TaxiTB_LeaveCombat")
-RegisterUnitEvent(2995, 4, "TaxiTB_Died")
+RegisterUnitEvent(2995, 1, "TaxiTB_OnCombat")
+RegisterUnitEvent(2995, 2, "TaxiTB_OnLeaveCombat")
+RegisterUnitEvent(2995, 4, "TaxiTB_OnDied")
 
 --Silvermoon
 
-function TaxiSM_Combat(Unit, Event)
+function TaxiSM_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
-Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
+	Unit:SpawnCreature(9521, x, y, z, o, 1602, 60000)
 end
 
-function TaxiSM_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiSM_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiSM_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiSM_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(16192, 1, "TaxiSM_Combat")
-RegisterUnitEvent(16192, 2, "TaxiSM_LeaveCombat")
-RegisterUnitEvent(16192, 4, "TaxiSM_Died")
+RegisterUnitEvent(16192, 1, "TaxiSM_OnCombat")
+RegisterUnitEvent(16192, 2, "TaxiSM_OnLeaveCombat")
+RegisterUnitEvent(16192, 4, "TaxiSM_OnDied")
 
 
 --Orgimmar
 
-function TaxiOG_Combat(Unit, Event)
+function TaxiOG_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
-Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
+	Unit:SpawnCreature(9297, x, y, z, o, 83, 60000)
 end
 
-function TaxiOG_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiOG_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiOG_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiOG_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(3310, 1, "TaxiOG_Combat")
-RegisterUnitEvent(3310, 2, "TaxiOG_LeaveCombat")
-RegisterUnitEvent(3310, 4, "TaxiOG_Died")
+RegisterUnitEvent(3310, 1, "TaxiOG_OnCombat")
+RegisterUnitEvent(3310, 2, "TaxiOG_OnLeaveCombat")
+RegisterUnitEvent(3310, 4, "TaxiOG_OnDied")
 
 --Alliance
 --Stormwind
 
-function TaxiSW_Combat(Unit, Event)
+function TaxiSW_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 12, 60000)
 end
 
-function TaxiSW_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiSW_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiSW_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiSW_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(352, 1, "TaxiSW_Combat")
-RegisterUnitEvent(352, 2, "TaxiSW_LeaveCombat")
-RegisterUnitEvent(352, 4, "TaxiSW_Died")
+RegisterUnitEvent(352, 1, "TaxiSW_OnCombat")
+RegisterUnitEvent(352, 2, "TaxiSW_OnLeaveCombat")
+RegisterUnitEvent(352, 4, "TaxiSW_OnDied")
 
 --Darnassus
 
-function TaxiRT_Combat(Unit, Event)
+function TaxiRT_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 80, 60000)
 end
 
-function TaxiRT_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiRT_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiRT_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiRT_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(3838, 1, "TaxiRT_Combat")
-RegisterUnitEvent(3838, 2, "TaxiRT_LeaveCombat")
-RegisterUnitEvent(3838, 4, "TaxiRT_Died")
+RegisterUnitEvent(3838, 1, "TaxiRT_OnCombat")
+RegisterUnitEvent(3838, 2, "TaxiRT_OnLeaveCombat")
+RegisterUnitEvent(3838, 4, "TaxiRT_OnDied")
 
 
 --Ironforge
 
-function TaxiIF_Combat(Unit, Event)
+function TaxiIF_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
-Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
+	Unit:SpawnCreature(9526, x, y, z, o, 55, 60000)
 end
 
-function TaxiIF_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiIF_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiIF_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiIF_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(1573, 1, "TaxiIF_Combat")
-RegisterUnitEvent(1573, 2, "TaxiIF_LeaveCombat")
-RegisterUnitEvent(1573, 4, "TaxiIF_Died")
+RegisterUnitEvent(1573, 1, "TaxiIF_OnCombat")
+RegisterUnitEvent(1573, 2, "TaxiIF_OnLeaveCombat")
+RegisterUnitEvent(1573, 4, "TaxiIF_OnDied")
 
 --Exodar
 
-function TaxiEX_Combat(Unit, Event)
+function TaxiEX_OnCombat(Unit, Event)
 local x = Unit:GetX()
 local y = Unit:GetY()
 local z = Unit:GetZ()
 local o = Unit:GetO()
-Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
-Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
+	Unit:SpawnCreature(9527, x, y, z, o, 1638, 60000)
 end
 
-function TaxiEX_LeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+function TaxiEX_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function TaxiEX_Died(Unit, Event)
-Unit:RemoveEvents()
+function TaxiEX_OnDied(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-
-RegisterUnitEvent(17555, 1, "TaxiEX_Combat")
-RegisterUnitEvent(17555, 2, "TaxiEX_LeaveCombat")
-RegisterUnitEvent(17555, 4, "TaxiEX_Died")
+RegisterUnitEvent(17555, 1, "TaxiEX_OnCombat")
+RegisterUnitEvent(17555, 2, "TaxiEX_OnLeaveCombat")
+RegisterUnitEvent(17555, 4, "TaxiEX_OnDied")

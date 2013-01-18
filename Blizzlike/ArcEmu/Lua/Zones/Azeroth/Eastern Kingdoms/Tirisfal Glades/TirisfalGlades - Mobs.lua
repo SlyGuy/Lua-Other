@@ -13,7 +13,7 @@ function CaptainMelrache_OnCombat(Unit, Event)
 end
 
 function CaptainMelrache_Strike(pUnit, Event)
-	pUnit:CastSpellOnTarget(11976, p	Unit:GetClosestPlayer())
+	pUnit:CastSpellOnTarget(11976, pUnit:GetClosestPlayer())
 end
 
 function CaptainMelrache_DevotationAura(Unit, Event)
@@ -38,7 +38,7 @@ function DarkeyeBonecaster_OnCombat(Unit, Event)
 end
 
 function DarkeyeBonecaster_FrostBolt(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(13322, p	Unit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13322, pUnit:GetClosestPlayer())
 end
 
 function DarkeyeBonecaster_OnLeaveCombat(Unit, Event)
@@ -65,11 +65,11 @@ function FallenHero_Shout(pUnit, Event)
 end
 
 function FallenHero_MortalStrike(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(19643, p	Unit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(19643, pUnit:GetClosestPlayer())
 end
 
 function FallenHero_SnapKick(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(15618, p	Unit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15618, pUnit:GetClosestPlayer())
 end
 
 function FallenHero_OnLeaveCombat(Unit, Event)
@@ -90,7 +90,7 @@ function FarmerSolliden_OnCombat(Unit, Event)
 end
 
 function FarmerSolliden_Strike(pUnit, Event)
-	pUnit:CastSpellOnTarget(11976, p	Unit:GetClosestPlayer())
+	pUnit:CastSpellOnTarget(11976, pUnit:GetClosestPlayer())
 end
 
 function FarmerSolliden_OnLeaveCombat(Unit, Event)
@@ -111,7 +111,7 @@ function HungeringDead_OnCombat(Unit, Event)
 end
 
 function HungeringDead_DiseaseTouch(pUnit, Event)
-	pUnit:CastSpellOnTarget(3234, p	Unit:GetClosestPlayer())
+	pUnit:CastSpellOnTarget(3234, pUnit:GetClosestPlayer())
 end
 
 function HungeringDead_OnLeaveCombat(Unit, Event)
@@ -141,7 +141,7 @@ function ScarletAugur_OnCombat(Unit, Event)
 end
 
 function ScarletAugur_ShadowBolt(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(9613, p	Unit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function ScarletAugur_OnLeaveCombat(Unit, Event)
@@ -183,7 +183,7 @@ function ScarletDisciple_OnCombat(Unit, Event)
 end
 
 function ScarletDisciple_HolySmight(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(9734, p	Unit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9734, pUnit:GetClosestPlayer())
 end
 
 function ScarletDisciple_OnLeaveCombat(Unit, Event)
@@ -204,7 +204,7 @@ function ScarletMagician_OnCombat(Unit, Event)
 end
 
 function ScarletMagician_Fireball(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(9053, p	Unit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9053, pUnit:GetClosestPlayer())
 end
 
 function ScarletMagician_OnLeaveCombat(Unit, Event)

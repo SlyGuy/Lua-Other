@@ -1,10 +1,17 @@
-  OBJECT_FIELD_GUID                        =  0x0000-- Size: 2, Type: LONG, Flags: PUBLIC
-  OBJECT_FIELD_TYPE                        =  0x0002 -- Size: 1, Type: INT, Flags: PUBLIC
-  OBJECT_FIELD_ENTRY                       =  0x0003 -- Size: 1, Type: INT, Flags: PUBLIC
-  OBJECT_FIELD_SCALE_X                     =  0x0004 -- Size: 1, Type: FLOAT, Flags: PUBLIC
-  OBJECT_FIELD_PADDING                     =  0x0005 -- Size: 1, Type: INT, Flags: NONE
-  OBJECT_END                               =  0x0006
-  CORPSE_END    					= OBJECT_END + 0x0022
+-------------------------------------------------------------------
+-- This script is created by zdroid9770; please do not edit this --
+-- script and claim it as your own, as of All rights are claimed --
+-- by me.                                                        --
+--                     Copyright© zdroid9770					 --
+-------------------------------------------------------------------
+
+  OBJECT_FIELD_GUID                      	 =  0x0000-- Size: 2, Type: LONG, Flags: PUBLIC
+  OBJECT_FIELD_TYPE                      	 =  0x0002 -- Size: 1, Type: INT, Flags: PUBLIC
+  OBJECT_FIELD_ENTRY                     	 =  0x0003 -- Size: 1, Type: INT, Flags: PUBLIC
+  OBJECT_FIELD_SCALE_X                    	 =  0x0004 -- Size: 1, Type: FLOAT, Flags: PUBLIC
+  OBJECT_FIELD_PADDING                   	 =  0x0005 -- Size: 1, Type: INT, Flags: NONE
+  OBJECT_END                              	 =  0x0006
+  CORPSE_END    							 = OBJECT_END + 0x0022
   ITEM_END                                   = OBJECT_END + 0x003A
   CONTAINER_END                              = ITEM_END + 0x004A
   UNIT_END                                   = OBJECT_END + 0x008E

@@ -15,6 +15,7 @@ end
  
 function Trample(pUnit, Event)
 	pUnit:CastSpell(5568)
+	pUnit:RegisterEvent("Trample", 7000, 0)
 end
  
 function Ghamoora_OnLeaveCombat(pUnit, event)

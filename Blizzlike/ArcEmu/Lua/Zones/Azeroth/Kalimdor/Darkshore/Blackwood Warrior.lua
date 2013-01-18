@@ -29,5 +29,4 @@ end
 
 RegisterUnitEvent(2168, 1, "BlackwoodWarrior_OnCombat")
 RegisterUnitEvent(2168, 2, "BlackwoodWarrior_OnLeaveCombat")
-RegisterUnitEvent(2168, 3, "BlackwoodWarrior_OnKilledTarget")
 RegisterUnitEvent(2168, 4, "BlackwoodWarrior_OnDied")

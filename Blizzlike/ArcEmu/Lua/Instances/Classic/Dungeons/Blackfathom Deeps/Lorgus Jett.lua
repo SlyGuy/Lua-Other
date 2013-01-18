@@ -17,10 +17,12 @@ end
  
 function LightningBolt(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(12167, pUnit:GetRandomPlayer(0))
+	pUnit:RegisterEvent("LightningBolt", 7000, 0)
 end
  
 function LightningShield(pUnit, Event)
 	pUnit:CastSpell(12550)
+	pUnit:RegisterEvent("LightningShield", 14000, 0)
 end
  
 function LorgusJett_OnLeaveCombat(pUnit, event)

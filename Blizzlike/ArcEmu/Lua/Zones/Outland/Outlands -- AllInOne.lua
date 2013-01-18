@@ -355,17 +355,17 @@ function Capatain_Wind(pUnit,Event)
     pUnit:FullCastSpellOnTarget(17207,pUnit:GetClosestPlayer())
 end
 
-function Capatain_OnLeaveCombat(pUnit,Event)
+function Captain_OnLeaveCombat(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-function Capatain_OnDied(pUnit,Event)
+function Captain_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19635, 1, "Capatain_OnEnterCombat")
-RegisterUnitEvent (19635, 2, "Capatain_OnLeaveCombat")
-RegisterUnitEvent (19635, 4, "Capatain_OnDied")
+RegisterUnitEvent (19635, 1, "Captain_OnEnterCombat")
+RegisterUnitEvent (19635, 2, "Captain_OnLeaveCombat")
+RegisterUnitEvent (19635, 4, "Captain_OnDied")
 
 function Captain_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Captain_Cleave",1000,0)
@@ -383,9 +383,9 @@ function Capatain_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20985, 1, "Capatain_OnEnterCombat")
-RegisterUnitEvent (20985, 2, "Capatain_OnLeaveCombat")
-RegisterUnitEvent (20985, 4, "Capatain_OnDied")
+RegisterUnitEvent (20985, 1, "Captain_OnEnterCombat")
+RegisterUnitEvent (20985, 2, "Captain_OnLeaveCombat")
+RegisterUnitEvent (20985, 4, "Captain_OnDied")
 
 function Captain_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Captain_Cleave",1000,0)
@@ -400,17 +400,17 @@ function Captain_Thougen(pUnit,Event)
     pUnit:CastSpell(33962)
 end
 
-function Capatain_OnLeaveCombat(pUnit,Event)
+function Captain_OnLeaveCombat(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-function Capatain_OnDied(pUnit,Event)
+function Captain_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20727, 1, "Capatain_OnEnterCombat")
-RegisterUnitEvent (20727, 2, "Capatain_OnLeaveCombat")
-RegisterUnitEvent (20727, 4, "Capatain_OnDied")
+RegisterUnitEvent (20727, 1, "Captain_OnEnterCombat")
+RegisterUnitEvent (20727, 2, "Captain_OnLeaveCombat")
+RegisterUnitEvent (20727, 4, "Captain_OnDied")
 
 function Captured_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Captured_Glaive",1000,0)
@@ -3803,17 +3803,12 @@ function Corpse_OnLeaveCombat(pUnit,Event)
     pUnit:RemoveEvents()
 end
 
-function Corpse_OnKilledTarget(pUnit,Event)
-    pUnit:RemoveEvents()
-end
-
 function Corpse_OnDied(pUnit,Event)
     pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(20561,1,"Corpse_OnEnterCombat")
 RegisterUnitEvent(20561,2,"Corpse_OnLeaveCombat")
-RegisterUnitEvent(20561,3,"Corpes_OnKilledTarget")
 RegisterUnitEvent(20561,4,"Corpse_OnDied")
 
 function Lord_OnCombat(Unit, Event)
@@ -4908,9 +4903,9 @@ function AltarDefender_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (23453, 1, "Alandien_OnEnterCombat")
-RegisterUnitEvent (23453, 2, "Alandien_OnLeaveCombat")
-RegisterUnitEvent (23453, 4, "Alandien_OnDiedCombat")
+RegisterUnitEvent (23453, 1, "AltarDefender_OnEnterCombat")
+RegisterUnitEvent (23453, 2, "AltarDefender_OnLeaveCombat")
+RegisterUnitEvent (23453, 4, "AltarDefender_OnDied")
 
 function AltarOfShatar_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AltarOfShatar_Net", 20000, 0)
@@ -5002,6 +4997,14 @@ function ArcanoScorp_Pince(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(37918,pUnit:GetClosestPlayer())
 end
 
+function ArcanoScorp_OnLeaveCombat(pUnit,Event)
+	pUnit:RemoveEvents()
+end
+
+function ArcanoScorp_OnDied(pUnit,Event)
+	pUnit:RemoveEvents()
+end
+
 RegisterUnitEvent (21909, 1, "ArcanoScorp_OnEnterCombat")
 RegisterUnitEvent (21909, 2, "ArcanoScorp_OnLeaveCombat")
 RegisterUnitEvent (21909, 4, "ArcanoScorp_OnDied")
@@ -5057,9 +5060,9 @@ function Asghar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22025, 1, "Asgarhar_OnEnterCombat")
-RegisterUnitEvent (22025, 2, "Asgarhar_OnLeaveCombat")
-RegisterUnitEvent (22025, 4, "Asgarhar_OnDied")
+RegisterUnitEvent (22025, 1, "Asghar_OnEnterCombat")
+RegisterUnitEvent (22025, 2, "Asghar_OnLeaveCombat")
+RegisterUnitEvent (22025, 4, "Asghar_OnDied")
 
 function AshtongueShaman_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AshtongueShaman_Bloodlust", 60000, 0)
@@ -5349,6 +5352,14 @@ function ChancellorBloodleaf_Spell2(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(15791,pUnit:GetClosestPlayer())
 end
 
+function ChancellorBloodleaf_OnLeaveCombat(pUnit,Event)
+	pUnit:RemoveEvents()
+end
+
+function ChancellorBloodleaf_OnDied(pUnit,Event)
+	pUnit:RemoveEvents()
+end
+
 RegisterUnitEvent(22012, 1, "ChancellorBloodleaf_OnEnterCombat")
 RegisterUnitEvent(22012, 2, "ChancellorBloodleaf_OnLeaveCombat")
 RegisterUnitEvent(22012, 4, "ChancellorBloodleaf_OnDied")
@@ -5607,7 +5618,7 @@ function CAE_OnLeaveCombat(pUnit,Event)
 end
 
 
-function CAE_OnDiedCombat(pUnit,Event)
+function CAE_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
@@ -6240,19 +6251,20 @@ local announces = {}
 local announcei = 3
 local choice = 1
 
-RegisterUnitEvent(22252, 6, "DragonmawPeon_Random_Setup")
 announces[1] = "It put the mutton in the stomach!"
 announces[2] = "WHY IT PUT DA BOOTERANG ON DA SKIN?! WHY?!"
 announces[3] = "You is bad orc... baaad... or... argh!"
+
+function DragonmawPeon_Random_Setup(pUnit, Event)
+   pUnit:RegisterEvent("DragonmawPeon_Random_Tick", cry_delay, 0)
+end
 
 function DragonmawPeon_Random_Tick(pUnit, Event)
    choice = math.random(1, announcei)
    pUnit:SendChatMessage(12, 0, announces[choice])
 end
 
-function DragonmawPeon_Random_Setup(pUnit, Event)
-   pUnit:RegisterEvent("DragonmawPeon_Random_Tick", cry_delay, 0)
-end
+RegisterUnitEvent(22252, 6, "DragonmawPeon_Random_Setup")
 
 function DShaman_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("DShaman_LShield", 20000, 0)
@@ -7817,7 +7829,7 @@ function NetherwingRay_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(23501, 1, "NetherwingRay_OnEnterCombat")
-RegisterUnitEvent(23501, 2, "NetherwingRay_OnLeaveCombsat")
+RegisterUnitEvent(23501, 2, "NetherwingRay_OnLeaveCombat")
 RegisterUnitEvent(23501, 4, "NetherwingRay_OnDied")
 
 function OrkaosTheInsane_OnEnterCombat(pUnit,Event)
@@ -7847,7 +7859,7 @@ function OrkaosTheInsane_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(23168, 1, "OrkaosTheInsane_OnEnterCombat")
-RegisterUnitEvent(23168, 2, "OrkaosTheInsane_OnLeaveCombsat")
+RegisterUnitEvent(23168, 2, "OrkaosTheInsane_OnLeaveCombat")
 RegisterUnitEvent(23168, 4, "OrkaosTheInsane_OnDied")
 
 function OronokTornheart_OnEnterCombat(pUnit,Event)
@@ -7877,7 +7889,7 @@ function OronokTornheart_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(21183, 1, "OronokTornheart_OnEnterCombat")
-RegisterUnitEvent(21183, 2, "OronokTornheart_OnLeaveCombsat")
+RegisterUnitEvent(21183, 2, "OronokTornheart_OnLeaveCombat")
 RegisterUnitEvent(21183, 4, "OronokTornheart_OnDied")
 
 function OronuTheElder_OnEnterCombat(pUnit,Event)
@@ -7907,7 +7919,7 @@ function OronuTheElder_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(21663, 1, "OronuTheElder_OnEnterCombat")
-RegisterUnitEvent(21663, 2, "OronuTheElder_OnLeaveCombsat")
+RegisterUnitEvent(21663, 2, "OronuTheElder_OnLeaveCombat")
 RegisterUnitEvent(21663, 4, "OronuTheElder_OnDied")
 
 function OvermineFlayer_OnEnterCombat(pUnit,Event)
@@ -7923,16 +7935,16 @@ function OvermineFlayer_RockShell(pUnit,Event)
 	pUnit:CastSpell(33810)
 end
 
-function OronuTheElder_OnLeaveCombat(pUnit,Event)
+function OvermineFlayer_OnLeaveCombat(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-function OronuTheElder_OnDied(pUnit,Event)
+function OvermineFlayer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(23264, 1, "OvermineFlayer_OnEnterCombat")
-RegisterUnitEvent(23264, 2, "OvermineFlayer_OnLeaveCombsat")
+RegisterUnitEvent(23264, 2, "OvermineFlayer_OnLeaveCombat")
 RegisterUnitEvent(23264, 4, "OvermineFlayer_OnDied")
 
 function OverseerRipsaw_OnEnterCombat(pUnit,Event)
@@ -7957,7 +7969,7 @@ function OverseerRipsaw_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(21499, 1, "OverseerRipsaw_OnEnterCombat")
-RegisterUnitEvent(21499, 2, "OverseerRipsaw_OnLeaveCombsat")
+RegisterUnitEvent(21499, 2, "OverseerRipsaw_OnLeaveCombat")
 RegisterUnitEvent(21499, 4, "OverseerRipsaw_OnDied")
 
 function PainmistressGabrissa_OnEnterCombat(pUnit,Event)
@@ -7980,7 +7992,7 @@ function PainmistressGabrissa_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(21309, 1, "PainmistressGabrissa_OnEnterCombat")
-RegisterUnitEvent(21309, 2, "PainmistressGabrissa_OnLeaveCombsat")
+RegisterUnitEvent(21309, 2, "PainmistressGabrissa_OnLeaveCombat")
 RegisterUnitEvent(21309, 4, "PainmistressGabrissa_OnDied")
 
 function ProphetessCavrylin_OnEnterCombat(pUnit,Event)
@@ -8002,7 +8014,7 @@ function ProphetessCavrylin_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(20683, 1, "ProphetessCavrylin_OnEnterCombat")
-RegisterUnitEvent(20683, 2, "ProphetessCavrylin_OnLeaveCombsat")
+RegisterUnitEvent(20683, 2, "ProphetessCavrylin_OnLeaveCombat")
 RegisterUnitEvent(20683, 4, "ProphetessCavrylin_OnDied")
 
 function RavenousFlayerMatriarch_OnEnterCombat(pUnit,Event)
@@ -8023,7 +8035,7 @@ function RavenousFlayerMatriarch_OnDied(pUnit,Event)
 end
 
 RegisterUnitEvent(21205, 1, "RavenousFlayerMatriarch_OnEnterCombat")
-RegisterUnitEvent(21205, 2, "RavenousFlayerMatriarch_OnLeaveCombsat")
+RegisterUnitEvent(21205, 2, "RavenousFlayerMatriarch_OnLeaveCombat")
 RegisterUnitEvent(21205, 4, "RavenousFlayerMatriarch_OnDied")
 
 function RemnantofCorruption_OnSpawn(pUnit,Event)
@@ -9149,6 +9161,10 @@ end
 
 function Xiri_LightOfTheNaaru3(pUnit,Event)
 	pUnit:CastSpell(39832)
+end
+
+function Xiri_OnLeaveCombat(pUnit,Event)
+	pUnit:RemoveEvents()
 end
 
 function Xiri_OnDied(pUnit,Event)

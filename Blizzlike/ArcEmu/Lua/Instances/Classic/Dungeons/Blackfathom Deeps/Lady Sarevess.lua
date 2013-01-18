@@ -16,7 +16,7 @@ Slow-246
 ]]--
 
 function LadySarevess_OnCombat(pUnit, event)
-	pUnit:SendChatMessage(14, 0, "You should not be here! Slay them!")
+	pUnit:SendChatMessage(12, 0, "You should not be here! Slay them!")
 	pUnit:PlaySoundToSet(5801)
 	pUnit:RegisterEvent("ForkedLightning", 7000, 0)
 	pUnit:RegisterEvent("Shoot", 14000, 0)
@@ -25,14 +25,17 @@ end
 
 function ForkedLightning(pUnit, Event)
 	pUnit:CastSpell(8435) 
+	pUnit:RegisterEvent("ForkedLightning", 7000, 0)
 end
 
 function Shoot(pUnit, Event)
  	pUnit:FullCastSpellOnTarget(6660, pUnit:GetRandomPlayer(0))
+	pUnit:RegisterEvent("Shoot", 14000, 0)
 end
 
 function Slow(pUnit, Event)
   	pUnit:FullCastSpellOnTarget(246, pUnit:GetRandomPlayer(0))
+	pUnit:RegisterEvent("Slow", 21000, 0)
 end
 
 function LadySarevess_OnLeaveCombat(pUnit, event)

@@ -25,5 +25,4 @@ end
 
 RegisterUnitEvent(12037, 1, "Ursollok_OnCombat")
 RegisterUnitEvent(12037, 2, "Ursollok_OnLeaveCombat")
-RegisterUnitEvent(12037, 3, "Ursollok_OnKilledTarget")
 RegisterUnitEvent(12037, 4, "Ursollok_OnDied")

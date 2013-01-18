@@ -1,10 +1,9 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
+-------------------------------------------------------------------
+-- This script is created by zdroid9770; please do not edit this --
+-- script and claim it as your own, as of All rights are claimed --
+-- by me.                                                        --
+--                     Copyright© zdroid9770					 --
+-------------------------------------------------------------------
 
 function TeleportDown_AI(pUnit,Event)
 	pUnit:RegsiterEvent("TeleportDown_DownFront", 1000, 0)
@@ -12,15 +11,15 @@ function TeleportDown_AI(pUnit,Event)
 end
 
 function TeleportDown_DownFront(pUnit,Event)
- if pUnit:IsInFront() then
-	pUnit:Teleport(609, 2389.989990, -5640.930176, 377.266998)
-end
+	if pUnit:IsInFront() then
+		pUnit:Teleport(609, 2389.989990, -5640.930176, 377.266998)
+	end
 end
 
 function TeleportDown_DownBack(pUnit,Event)
- if pUnit:IsInBack() then
-	pUnit:Teleport(609, 2389.989990, -5640.930176, 377.266998)
-end
+	if pUnit:IsInBack() then
+		pUnit:Teleport(609, 2389.989990, -5640.930176, 377.266998)
+	end
 end
 
 RegisterUnitEvent(29581, 10, "TeleportDown_AI")
@@ -31,15 +30,15 @@ function TeleportUp_AI(pUnit,Event)
 end
 
 function TeleportUp_UpFront(pUnit,Event)
- if pUnit:IsInFront() then
-	pUnit:Teleport(609, 2383.649902, -5645.240234, 420.880005)
-end
+	if pUnit:IsInFront() then
+		pUnit:Teleport(609, 2383.649902, -5645.240234, 420.880005)
+	end
 end
 
 function TeleportUp_UpBack(pUnit,Event)
- if pUnit:IsInBack() then
-	pUnit:Teleport(609, 2383.649902, -5645.240234, 420.880005)
-end
+	if pUnit:IsInBack() then
+		pUnit:Teleport(609, 2383.649902, -5645.240234, 420.880005)
+	end
 end
 
 RegisterUnitEvent(29580, 10, "TeleportUp_AI")

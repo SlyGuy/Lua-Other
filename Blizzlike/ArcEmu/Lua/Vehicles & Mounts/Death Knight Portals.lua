@@ -1,15 +1,14 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
+-------------------------------------------------------------------
+-- This script is created by zdroid9770; please do not edit this --
+-- script and claim it as your own, as of All rights are claimed --
+-- by me.                                                        --
+--                     Copyright© zdroid9770					 --
+-------------------------------------------------------------------
 
 function DkstartDown_OnGossip(Unit, Event, Player)
-Unit:GossipCreateMenu(100, Player, 0)
-Unit:GossipMenuAddItem(0, "Take me to first floor", 1, 0)
-Unit:GossipSendMenu(Player)
+	Unit:GossipCreateMenu(100, Player, 0)
+	Unit:GossipMenuAddItem(0, "Take me to first floor", 1, 0)
+	Unit:GossipSendMenu(Player)
 end
 
 function DkstartDown_OnSelect(Unit, Event, Player, MenuId, id, Code)
@@ -20,9 +19,9 @@ function DkstartDown_OnSelect(Unit, Event, Player, MenuId, id, Code)
 end
 
 function DkstartUp_OnGossip(Unit, Event, Player)
-Unit:GossipCreateMenu(100, Player, 0)
-Unit:GossipMenuAddItem(0, "Take me to second floor", 1, 0)
-Unit:GossipSendMenu(Player)
+	Unit:GossipCreateMenu(100, Player, 0)
+	Unit:GossipMenuAddItem(0, "Take me to second floor", 1, 0)
+	Unit:GossipSendMenu(Player)
 end
 
 function DkstartUp_OnSelect(Unit, Event, Player, MenuId, id, Code)

@@ -38,8 +38,6 @@ function Banddespawn(unit, Event)
 unit:Delete()
 end
 
-
-
 function despawnband(unit, Event)
 unit:RegisterEvent(500, spellflare, 1)
 unit:RemoveEvents() 
@@ -51,7 +49,6 @@ unit:RegisterEvent(500, spellflare, 2)
 unit:RemoveEvents() 
 unit:Despawn(1000,2000000)
 end
-
 
 function spellfire(unit)
 unit:CastSpell(42501)
@@ -108,7 +105,6 @@ unit:RegisterEvent(138000, Emotetwodrum, 1)
 unit:RegisterEvent(210000, Emoterolldrum, 1)
 unit:RegisterEvent(203000, Normalstate, 1)
 end
-
 
 function Emotejumpdrum(unit)
 unit:Emote(405)
@@ -195,7 +191,6 @@ unit:RegisterEvent(229550, EmoteStepbass, 1)
 unit:RegisterEvent(280000, despawnband, 1)
 end
 
-
 function EmoteStrumbass(unit)
 unit:Emote(404)
 end
@@ -231,7 +226,6 @@ unit:RegisterEvent(257000, Normalstate, 1)
 unit:RegisterEvent(259000, EmoteSpinGui, 1)
 end
 
-
 function EmoteStrumGui(unit)
 unit:Emote(402)
 end
@@ -256,16 +250,12 @@ function Spotlight(unit)
 unit:CastSpell(39312)
 end
 
-
-
-
 function spellearth(unit)
 unit:CastSpell(42499)
 unit:RegisterEvent(2000, spellfire, 1)
 end
 
 function spelllightning(unit)
-
 unit:CastSpell(42510)
 unit:CastSpell(42507)
 end
@@ -286,7 +276,6 @@ unit:RegisterEvent(230000, spellstorm, 1)
 unit:RegisterEvent(243000, spellstorm, 1) 
 unit:RegisterEvent(280000, despawnband, 0)  
 end
-
 
 RegisterUnitEvent(23624, 6, "Trollemotes") 
 RegisterUnitEvent(23619, 6, "UDemotes")  

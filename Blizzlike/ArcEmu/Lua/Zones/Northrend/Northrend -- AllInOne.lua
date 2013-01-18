@@ -6042,7 +6042,7 @@ end
 function LostShandaralSpirit_OnKilledTarget(Unit, Event) 
 end
 
-RegisterUnitEvent(31231, 1, "LostLostShandaralSpirit_OnCombat")
+RegisterUnitEvent(31231, 1, "LostShandaralSpirit_OnCombat")
 RegisterUnitEvent(31231, 2, "LostShandaralSpirit_OnLeaveCombat")
 RegisterUnitEvent(31231, 3, "LostShandaralSpirit_OnKilledTarget")
 RegisterUnitEvent(31231, 4, "LostShandaralSpirit_OnDied")
@@ -6085,7 +6085,7 @@ end
 function ShandaralDruidSpirit_OnKilledTarget(Unit, Event) 
 end
 
-RegisterUnitEvent(30863, 1, "LostShandaralDruidSpirit_OnCombat")
+RegisterUnitEvent(30863, 1, "ShandaralDruidSpirit_OnCombat")
 RegisterUnitEvent(30863, 2, "ShandaralDruidSpirit_OnLeaveCombat")
 RegisterUnitEvent(30863, 3, "ShandaralDruidSpirit_OnKilledTarget")
 RegisterUnitEvent(30863, 4, "ShandaralDruidSpirit_OnDied")

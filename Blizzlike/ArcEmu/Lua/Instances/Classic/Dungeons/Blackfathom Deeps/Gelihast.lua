@@ -16,6 +16,7 @@ end
  
 function Net(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(6533, pUnit:GetRandomPlayer(0))
+	pUnit:RegisterEvent("Net", 7000, 0)
 end
  
 function Gelihast_OnLeaveCombat(pUnit, event)

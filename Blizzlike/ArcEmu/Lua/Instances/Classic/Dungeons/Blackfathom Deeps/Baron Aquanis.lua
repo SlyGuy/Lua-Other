@@ -17,10 +17,12 @@ end
  
 function FrostNova(pUnit, Event)
 	pUnit:CastSpell(15531)
+	pUnit:RegisterEvent("FrostNova", 7000, 0)
 end
  
 function Frostbolt(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(15043, pUnit:GetRandomPlayer(0))
+	pUnit:RegisterEvent("Frostbolt", 14000, 0)
 end
  
 function BaronAquanis_OnLeaveCombat(pUnit, event)

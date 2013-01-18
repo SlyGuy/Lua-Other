@@ -18,7 +18,7 @@ Sleep-8399
 ]]--
 
 function TwilightLordKelris_OnCombat(pUnit, event)
-	pUnit:SendChatMessage(14, 0, "Who dares disturb my meditation?!")
+	pUnit:SendChatMessage(12, 0, "Who dares disturb my meditation?!")
 	pUnit:PlaySoundToSet(5802)
 	pUnit:RegisterEvent("MindBlast", 7000, 0)
 	pUnit:RegisterEvent("Sleep", 14000, 0)
@@ -26,12 +26,14 @@ end
  
 function MindBlast(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(15587, pUnit:GetRandomPlayer(0))
+	pUnit:RegisterEvent("MindBlast", 7000, 0)
 end
  
 function Sleep(pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "Sleep...")
 	pUnit:PlaySoundToSet(5804)
 	pUnit:CastSpell(8399)
+	pUnit:RegisterEvent("Sleep", 14000, 0)
 end
  
 function TwilightLordKelris_OnLeaveCombat(pUnit, event)
