@@ -1,13 +1,21 @@
 TIME_TO_BATTLE = 9000
-BATTLE_TIMER = 2100
+BATTLE_TIMER = 1800
 local timer_nextbattle = os.time() + TIME_TO_BATTLE
 local timer_battle = 0
 local controll = math.random(1,2)
 battle = 0
-states = nil
-battlestates_set = nil
+states = 0
 stateuiset = 0
 add_tokens = 1
+starttimer = 0
+spawnobjects = 0
+npcstarted = false
+south_towers = 3
+ATTACKER = " "
+DEFENDER = " "
+
+C_BAR_NEUTRAL = 80 -- the neutral vallue of the capture bar. MUST BE UNDER 100.
+C_BAR_CAPTURE = (100 - C_BAR_NEUTRAL)/2
 
 GAMEOBJECT_FACTION = 0x0006 + 0x0009
 
@@ -88,12 +96,23 @@ WG_STATE_SS_TOWER = 3704
  -- Dynamic capturebar states
 WG_STATE_SOUTH_SHOW = 3501
 WG_STATE_SOUTH_PROGRESS = 3502
+WG_STATE_SOUTH_NEUTRAL = 3508
+
+WG_STATE_NORTH_SHOW = 3466
+WG_STATE_NORTH_PROGRESS = 3467
+WG_STATE_NORTH_NEUTRAL = 3468
 
 NPC_DETECTION_UNIT = 27869
 NPC_GOBLIN_ENGINEER = 30400
 NPC_GNOME_ENGINEER = 30499
+NPC_NOT_IMMUNE_PC_NPC = 23472
+NPC_INVISIBLE_STALKER = 15214
+NPC_VEHICLE_CATAPULT = 27881
+NPC_VEHICLE_DEMOLISHER = 28094
+NPC_VEHICLE_SIEGE_ENGINE_H = 32627
+NPC_VEHICLE_SIEGE_ENGINE_A = 28312
 
-GO_WINTERGRASP_TITAN_RELIC = 192829 -- 5439.66, 2840.83, 420.427, 6.20393, 0, 0, 0.0396173, -0.999215 should be spawned by the sript.
+GO_WINTERGRASP_TITAN_RELIC = 192829
 GO_WINTERGRASP_SE_TOWER = 190377
 GO_WINTERGRASP_NE_TOWER = 190378
 GO_WINTERGRASP_SW_TOWER = 190373
@@ -132,14 +151,26 @@ GO_WINTERGRASP_WORKSHOP_W = 192028
 GO_WINTERGRASP_FW_TOWER = 190358
 GO_WINTERGRASP_WE_TOWER = 190357
 GO_WINTERGRASP_SS_TOWER = 190356
-GO_WINTERGRASP_DEFENDER_P_H = 190763
-GO_WINTERGRASP_DEFENDER_P_A = 191575
+GO_WINTERGRASP_DEFENDER_H = 190763
+GO_WINTERGRASP_DEFENDER_A = 191575
+GO_WINTERGRASP_DEFENDER_N = 192819
+GO_WINTERGRASP_VEHICLE_TELEPORTER = 192951
  -- Eastspark
 GO_WINTERGRASP_WORKSHOP_ES = 192033
-GO_WINTERGRASP_CAPTUREPOINT_ES = 194959
- -- Westspark
-GO_WINTERGRASP_WORKSHOP_ES = 192032
-GO_WINTERGRASP_CAPTUREPOINT_ES = 194962
+GO_WINTERGRASP_CAPTUREPOINT_ES_100 = 194959
+GO_WINTERGRASP_CAPTUREPOINT_ES_0 = 194960
+
+GO_WINTERGRASP_WORKSHOP_WS = 192032
+GO_WINTERGRASP_CAPTUREPOINT_WS_100 = 194962
+GO_WINTERGRASP_CAPTUREPOINT_WS_0 = 194963
+
+GO_WINTERGRASP_WORKSHOP_SR = 192031
+GO_WINTERGRASP_CAPTUREPOINT_SR_100 = 190475
+GO_WINTERGRASP_CAPTUREPOINT_SR_0 = 192626
+
+GO_WINTERGRASP_WORKSHOP_BT = 192030
+GO_WINTERGRASP_CAPTUREPOINT_BT_100 = 190487
+GO_WINTERGRASP_CAPTUREPOINT_BT_0 = 192627
  -- Map info
 MAP_HOR = 668
 MAP_NEXUS = 576
@@ -169,7 +200,7 @@ AREA_WINTERSEDGE_T = 4582
 AREA_SHADOWSIGHT_T = 4583
 AREA_C_BRIDGE = 4576
 AREA_E_BRIDGE = 4557
-AREA_W_BRIDGE = 4577
+AREA_W_BRIDGE = 4578
  -- Spells
 SPELL_RECRUIT = 37795
 SPELL_CORPORAL = 33280
@@ -184,6 +215,12 @@ SPELL_GREATEST_HONOR = 58557
 SPELL_ALLIANCE_FLAG = 14268
 SPELL_HORDE_FLAG = 14267
 SPELL_GRAB_PASSENGER = 61178
+SPELL_TELEPORT_DEFENDER = 54643
+SPELL_TELEPORT_VEHICLE = 49759
+SPELL_BUILD_CATAPULT = 56663
+SPELL_BUILD_DEMOLISHER = 56575
+SPELL_BUILD_ENGINE_A = 56661
+SPELL_BUILD_ENGINE_H = 61408
  -- Reward spells
 SPELL_VICTORY_REWARD = 56902
 SPELL_DEFEAT_REWARD = 58494
@@ -196,7 +233,7 @@ SPELL_TELEPORT_FORTRESS = 60035
 SPELL_TELEPORT_DALARAN = 53360
 SPELL_VICTORY_AURA = 60044
 SPELL_WINTERGRASP_WATER = 36444
-SPELL_ESSENCE_OF_WINTERGRASP = 58045
+SPELL_ESSENCE_OF_WINTERGRASP = 57940
 SPELL_WINTERGRASP_RESTRICTED_FLIGHT_AREA = 58730
  -- Phasing spells
 SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT = 56618 -- phase 16
@@ -206,6 +243,7 @@ SPELL_ALLIANCE_CONTROL_PHASE_SHIFT = 55774  -- phase 128
 
  -- achievements
 ACHIEVEMENT_VICTORY = 1717
+ACHIEVEMENT_WIN_OUR_GRASP = 1755
 
  -- Quests
 QUEST_WG_VICTORY_A = 13181
@@ -213,15 +251,41 @@ QUEST_WG_VICTORY_H = 13183
 QUEST_WG_TOPPING_TOWERS = 13539
 QUEST_WG_SOUTHEN_SABOTAGE = 13538
 
+-- Opcodes
+SMSG_PLAY_SOUND = 0x2D2
+SMSG_BATTLEFIELD_MGR_ENTRY_INVITE = 0x4DE
+CMSG_BATTLEFIELD_MGR_ENTRY_INVITE_RESPONSE = 0x4DF
+SMSG_BATTLEFIELD_MGR_ENTERED = 0x4E0
+SMSG_BATTLEFIELD_MGR_QUEUE_INVITE = 0x4E1
+CMSG_BATTLEFIELD_MGR_QUEUE_INVITE_RESPONSE = 0x4E2
+CMSG_BATTLEFIELD_MGR_QUEUE_REQUEST = 0x4E3
+SMSG_BATTLEFIELD_MGR_QUEUE_REQUEST_RESPONSE = 0x4E4
+SMSG_BATTLEFIELD_MGR_EJECT_PENDING  = 0x4E5
+SMSG_BATTLEFIELD_MGR_EJECTED = 0x4E6
+CMSG_BATTLEFIELD_MGR_EXIT_REQUEST = 0x4E7
+SMSG_BATTLEFIELD_MGR_STATE_CHANGE = 0x4E8
+CMSG_BATTLEFIELD_MANAGER_ADVANCE_STATE = 0x4E9
+CMSG_BATTLEFIELD_MANAGER_SET_NEXT_TRANSITION_TIME = 0x4EA
+CMSG_START_BATTLEFIELD_CHEAT = 0x4CB
+CMSG_END_BATTLEFIELD_CHEAT = 0x4CC
+CMSG_LEAVE_BATTLEFIELD = 0x2E1
+CMSG_BATTLEFIELD_PORT = 0x2D5
+CMSG_BATTLEFIELD_STATUS = 0x2D3
+SMSG_BATTLEFIELD_STATUS = 0x2D4
+CMSG_BATTLEFIELD_LIST = 0x23C
+SMSG_BATTLEFIELD_LIST = 0x23D
+CMSG_BATTLEFIELD_JOIN = 0x23E
+SMSG_BATTLEFIELD_PORT_DENIED = 0x14B
+
 function Aura()
 for k,l in pairs(GetPlayersInWorld())do
 if(l:GetMapId() == MAP_HOR or l:GetMapId() == MAP_NEXUS or l:GetMapId() == MAP_UP or l:GetMapId() == MAP_UK or l:GetMapId() == MAP_OCULUS or l:GetMapId() == MAP_POS or l:GetMapId() == MAP_TOC or l:GetMapId() == MAP_FOS or l:GetMapId() == MAP_AK or l:GetMapId() == MAP_VH or l:GetMapId() == MAP_GUND or l:GetMapId() == MAP_HOL or l:GetMapId() == MAP_AN or l:GetMapId() == MAP_HOS or l:GetMapId() == MAP_COS or l:GetMapId() == MAP_NORTHREND)then
 	if(battle == 0 and controll == 1 and l:GetTeam() == 0 and l:HasAura(SPELL_ESSENCE_OF_WINTERGRASP) ~= true)then
-		l:CastSpell(SPELL_ESSENCE_OF_WINTERGRASP)
+		l:AddAura(SPELL_ESSENCE_OF_WINTERGRASP,0)
 	elseif(controll == 1 and l:GetTeam() == 1 and l:HasAura(SPELL_ESSENCE_OF_WINTERGRASP))then
 		l:RemoveAura(SPELL_ESSENCE_OF_WINTERGRASP)
 	elseif(battle == 0 and controll == 2 and l:GetTeam() == 1 and l:HasAura(SPELL_ESSENCE_OF_WINTERGRASP) ~= true)then
-		l:CastSpell(SPELL_ESSENCE_OF_WINTERGRASP)
+		l:AddAura(SPELL_ESSENCE_OF_WINTERGRASP,0)
 	elseif(controll == 2 and l:GetTeam() == 0 and l:HasAura(SPELL_ESSENCE_OF_WINTERGRASP))then
 		l:RemoveAura(SPELL_ESSENCE_OF_WINTERGRASP)
 	elseif(battle == 1)then
@@ -234,6 +298,153 @@ else
 		l:RemoveAura(SPELL_ESSENCE_OF_WINTERGRASP)
 	end
 end
+if(l:GetZoneId() ~= ZONE_WG)then
+	if(l:HasAura(SPELL_RECRUIT))then
+		l:RemoveAura(SPELL_RECRUIT)
+	end
+	if(l:HasAura(SPELL_CORPORAL))then
+		l:RemoveAura(SPELL_CORPORAL)
+	end
+	if(l:HasAura(SPELL_LIEUTENANT))then
+		l:RemoveAura(SPELL_LIEUTENANT)
+	end
+	if(l:HasAura(SPELL_TOWER_CONTROL))then
+		l:RemoveAura(SPELL_TOWER_CONTROL)
+	end
+	if(l:HasAura(SPELL_GREAT_HONOR))then
+		l:RemoveAura(SPELL_GREAT_HONOR)
+	end
+	if(l:HasAura(SPELL_GREATER_HONOR))then
+		l:RemoveAura(SPELL_GREATER_HONOR)
+	end
+	if(l:HasAura(SPELL_GREATEST_HONOR))then
+		l:RemoveAura(SPELL_GREATEST_HONOR)
+	end
+	if(l:HasAura(SPELL_VICTORY_AURA))then
+		l:RemoveAura(SPELL_VICTORY_AURA)
+	end
+end
+if(l:GetAreaId() == AREA_EASTSPARK)then
+	if(eastspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(eastspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and eastspark_progress > C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(eastspark_progress < C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	end
+elseif(l:GetAreaId() == AREA_WESTSPARK)then
+	if(westspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(westspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and westspark_progress > C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(westspark_progress < C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	end
+elseif(l:GetAreaId() == AREA_SUNKENRING)then
+	if(sunkenring_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(sunkenring_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and sunkenring_progress > C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(sunkenring_progress < C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	end
+elseif(l:GetAreaId() == AREA_BROKENTEMPLE)then
+	if(brokentemple_progres > C_BAR_CAPTURE + C_BAR_NEUTRAL)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(brokentemple_progres < C_BAR_CAPTURE + C_BAR_NEUTRAL and brokentemple_progres > C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	elseif(brokentemple_progres < C_BAR_CAPTURE)then
+		if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT) == false)then
+			l:CastSpell(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+		if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	end
+else
+	if(l:HasAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_ALLIANCE_CONTROLS_FACTORY_PHASE_SHIFT)
+		end
+	if(l:HasAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT))then
+			l:RemoveAura(SPELL_HORDE_CONTROLS_FACTORY_PHASE_SHIFT)
+	end
+end
+if(l:GetZoneId() == ZONE_WG and controll == 1 and l:GetTeam() == 1 and battle == 1)then
+	if(l:HasAura(SPELL_TOWER_CONTROL) == false and south_towers > 0)then
+		l:CastSpell(SPELL_TOWER_CONTROL)
+	elseif(l:HasAura(SPELL_TOWER_CONTROL) and south_towers > 0 and l:GetAuraStackCount(SPELL_TOWER_CONTROL) < south_towers)then
+		l:CastSpell(SPELL_TOWER_CONTROL)
+	elseif(l:HasAura(SPELL_TOWER_CONTROL) and south_towers < l:GetAuraStackCount(SPELL_TOWER_CONTROL))then
+		l:RemoveAura(SPELL_TOWER_CONTROL)
+	end
+elseif(l:GetZoneId() == ZONE_WG and controll == 2 and l:GetTeam() == 0 and battle == 1)then
+	if(l:HasAura(SPELL_TOWER_CONTROL) == false and south_towers > 0)then
+		l:CastSpell(SPELL_TOWER_CONTROL)
+	elseif(l:HasAura(SPELL_TOWER_CONTROL) and south_towers > 0 and l:GetAuraStackCount(SPELL_TOWER_CONTROL) < south_towers)then
+		l:CastSpell(SPELL_TOWER_CONTROL)
+	elseif(l:HasAura(SPELL_TOWER_CONTROL) and south_towers < l:GetAuraStackCount(SPELL_TOWER_CONTROL))then
+		l:RemoveAura(SPELL_TOWER_CONTROL)
+	end
+elseif(l:GetZoneId() == ZONE_WG and battle == 0)then
+	if(l:HasAura(SPELL_TOWER_CONTROL))then
+		l:RemoveAura(SPELL_TOWER_CONTROL)
+	end
+end
 end
 end
 
@@ -243,75 +454,112 @@ if(timer_nextbattle <= os.time() and timer_battle == 0)then
 	timer_battle = os.time() + BATTLE_TIMER
 	timer_nextbattle = 0
 	battle = 1
-	battlestates_set = 0
 	stateuiset = 0
 	states = 0
 	add_tokens = 0
+	starttimer = os.time()
+	if(controll == 1)then
+		eastspark_progress = 0
+		westspark_progress = 0
+	elseif(controll == 2)then
+		eastspark_progress = 100
+		westspark_progress = 100
+	end
+	for k,v in pairs(GetPlayersInZone(ZONE_WG))do
+	local packetssound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
+	packetssound:WriteULong(3439)
+	v:SendPacketToPlayer(packetssound)
+	end
 elseif(timer_nextbattle == 0 and timer_battle <= os.time())then
 	timer_battle = 0
 	timer_nextbattle = os.time() + TIME_TO_BATTLE
 	SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
 	battle = 0
 	stateuiset = 0
-end
-for k,v in pairs(GetPlayersInZone(ZONE_WG))do
-if(battle == 1)then
-	if(v:HasAura(SPELL_RECRUIT) == false and v:HasAura(SPELL_CORPORAL) == false and v:HasAura(SPELL_LIEUTENANT) == false)then
-		v:CastSpell(SPELL_RECRUIT)
+	starttimer = 0
+	south_towers = 3
+	for k,v in pairs(GetPlayersInZone(ZONE_WG))do
+	local packetseound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
+	if(controll == 1)then
+		packetseound:WriteULong(8455)
+		v:SendPacketToPlayer(packetseound)
+	elseif(controll == 2)then
+		packetseound:WriteULong(8454)
+		v:SendPacketToPlayer(packetseound)
 	end
-elseif(battle == 0)then
-	if(v:HasAura(SPELL_RECRUIT))then
-		v:RemoveAura(SPELL_RECRUIT)
-	end
-	if(v:HasAura(SPELL_CORPORAL))then
-		v:RemoveAura(SPELL_CORPORAL)
-	end
-	if(v:HasAura(SPELL_LIEUTENANT))then
-		v:RemoveAura(SPELL_LIEUTENANT)
 	end
 end
-if(controll == 1 and battle == 0 and add_tokens == 0)then
-		if(v:GetTeam() == 0)then
-			v:CastSpell(SPELL_VICTORY_REWARD)
-			--[[if(v:HasAchievement(ACHIEVEMENT_VICTORY) == false)then
-				v:AddAchievement(ACHIEVEMENT_VICTORY)  -- For some reason this causes crashes.
-			end]]--
-		elseif(v:GetTeam() == 1)then
-			v:CastSpell(SPELL_DEFEAT_REWARD)
+for k,v in pairs(GetPlayersInMap(MAP_NORTHREND))do
+if(v:GetZoneId() == ZONE_WG)then
+if(south_towers == 0)then
+	timer_battle = timer_battle - 600 -- if all southen towers are destroyed, the attackers loose 10 min.
+	v:SetWorldStateForZone(WG_STATE_BATTLE_TIME, timer_battle)
+	south_towers = -1
+end
+	if(v:IsPvPFlagged() ~= true)then
+		v:FlagPvP()
+	end
+	if(battle == 1)then
+		if(v:HasAura(SPELL_RECRUIT) == false)then
+			if(v:HasAura(SPELL_CORPORAL) == false)then
+				if(v:HasAura(SPELL_LIEUTENANT) == false)then
+					v:AddAura(SPELL_RECRUIT,0)
+				end
+			end
 		end
-		add_tokens = 1
-end
-if(controll == 2 and battle == 0 and add_tokens == 0)then
-		if(v:GetTeam() == 1)then
-			v:CastSpell(SPELL_VICTORY_REWARD)
-			--[[if(v:HasAchievement(ACHIEVEMENT_VICTORY) == false)then
-				v:AddAchievement(ACHIEVEMENT_VICTORY)  -- For some reason this causes crashes.
-			end]]--
-		elseif(v:GetTeam() == 0)then
-			v:CastSpell(SPELL_DEFEAT_REWARD)
+	elseif(battle == 0)then
+		if(v:HasAura(SPELL_RECRUIT))then
+			v:RemoveAura(SPELL_RECRUIT)
 		end
-		add_tokens = 1
-end
-if(battle == 0)then
-end
+		if(v:HasAura(SPELL_CORPORAL))then
+			v:RemoveAura(SPELL_CORPORAL)
+		end
+		if(v:HasAura(SPELL_LIEUTENANT))then
+			v:RemoveAura(SPELL_LIEUTENANT)
+		end
+	end
+	if(controll == 1 and battle == 0 and add_tokens == 0)then
+			if(v:GetTeam() == 0)then
+				v:CastSpell(SPELL_VICTORY_REWARD)
+				v:CastSpell(SPELL_VICTORY_AURA)
+				if(v:HasQuest(QUEST_WG_VICTORY_A) and v:GetQuestObjectiveCompletion(QUEST_WG_VICTORY_A, 0) == 0)then
+					v:AdvanceQuestObjective(QUEST_WG_VICTORY_A, 0)
+				end
+			elseif(v:GetTeam() == 1)then
+				v:CastSpell(SPELL_DEFEAT_REWARD)
+			end
+			add_tokens = 1
+	end
+	if(controll == 2 and battle == 0 and add_tokens == 0)then
+			if(v:GetTeam() == 1)then
+				v:CastSpell(SPELL_VICTORY_REWARD)
+				v:CastSpell(SPELL_VICTORY_AURA)
+				if(v:HasQuest(QUEST_WG_VICTORY_H) and v:GetQuestObjectiveCompletion(QUEST_WG_VICTORY_H, 0) == 0)then
+					v:AdvanceQuestObjective(QUEST_WG_VICTORY_H, 0)
+				end
+			elseif(v:GetTeam() == 0)then
+				v:CastSpell(SPELL_DEFEAT_REWARD)
+			end
+			add_tokens = 1
+	end
 if(v:GetAreaId() == AREA_FORTRESS or v:GetAreaId() == AREA_FLAMEWATCH_T or v:GetAreaId() == AREA_WINTERSEDGE_T or v:GetAreaId() == AREA_SHADOWSIGHT_T or v:GetAreaId() == AREA_C_BRIDGE or v:GetAreaId() == AREA_W_BRIDGE or v:GetAreaId() == AREA_E_BRIDGE or v:GetAreaId() == ZONE_WG)then
 	if(controll == 1)then
 		if(v:HasAura(SPELL_HORDE_CONTROL_PHASE_SHIFT))then
 			v:RemoveAura(SPELL_HORDE_CONTROL_PHASE_SHIFT)
 		end
 		v:CastSpell(SPELL_ALLIANCE_CONTROL_PHASE_SHIFT)
-		elseif(controll == 2)then
+	elseif(controll == 2)then
 		if(v:HasAura(SPELL_ALLIANCE_CONTROL_PHASE_SHIFT))then
 			v:RemoveAura(SPELL_ALLIANCE_CONTROL_PHASE_SHIFT)
 		end
 		v:CastSpell(SPELL_HORDE_CONTROL_PHASE_SHIFT)
 	end
-elseif(v:GetAreaId() ~= ZONE_WG and v:GetAreaId() ~= AREA_FORTRESS and v:GetAreaId() ~= AREA_FLAMEWATCH_T and v:GetAreaId() ~= AREA_WINTERSEDGE_T and v:GetAreaId() ~= AREA_SHADOWSIGHT_T and v:GetAreaId() ~= AREA_C_BRIDGE and v:GetAreaId() ~= AREA_W_BRIDGE and v:GetAreaId() ~= AREA_E_BRIDGE and v:GetAreaId() ~= ZONE_WG)then
+elseif(v:GetAreaId() ~= AREA_FORTRESS and v:GetAreaId() ~= AREA_FLAMEWATCH_T and v:GetAreaId() ~= AREA_WINTERSEDGE_T and v:GetAreaId() ~= AREA_SHADOWSIGHT_T and v:GetAreaId() ~= AREA_C_BRIDGE and v:GetAreaId() ~= AREA_W_BRIDGE and v:GetAreaId() ~= AREA_E_BRIDGE and v:GetAreaId() ~= ZONE_WG)then
 	if(v:HasAura(SPELL_HORDE_CONTROL_PHASE_SHIFT))then
-			v:RemoveAura(SPELL_HORDE_CONTROL_PHASE_SHIFT)
+		v:RemoveAura(SPELL_HORDE_CONTROL_PHASE_SHIFT)
 	end
 	if(v:HasAura(SPELL_ALLIANCE_CONTROL_PHASE_SHIFT))then
-			v:RemoveAura(SPELL_ALLIANCE_CONTROL_PHASE_SHIFT)
+		v:RemoveAura(SPELL_ALLIANCE_CONTROL_PHASE_SHIFT)
 	end
 end
 if(stateuiset == 0)then
@@ -340,12 +588,7 @@ if(stateuiset == 0)then
 	end
 end
 if(controll == 1)then
-	if(states == 0 or states == nil)then
-		if(battle == 0)then
-			v:SetWorldStateForZone(WG_ALLIANCE_CONTROLLED, 1)
-			v:SetWorldStateForZone(WG_HORDE_CONTROLLED, 0)
-			v:SetWorldStateForZone(WG_STATE_NEXT_BATTLE_TIME, timer_nextbattle)
-		end
+	if(states == 0)then
 		v:SetWorldStateForZone(WG_STATE_W_FORTRESS_WORKSHOP, 7)
 		v:SetWorldStateForZone(WG_STATE_E_FORTRESS_WORKSHOP, 7)
 		v:SetWorldStateForZone(WG_STATE_SS_TOWER, 4)
@@ -384,17 +627,14 @@ if(controll == 1)then
 		v:SetWorldStateForZone(WG_STATE_ES_WORKSHOP, 4)
 		v:SetWorldStateForZone(WG_STATE_BT_WORKSHOP, 1)
 		v:SetWorldStateForZone(WG_STATE_SR_WORKSHOP, 1)
-		eastspark_progress = 100
-		westspark_progress = 100
+		eastspark_progress =  0
+		westspark_progress =  0
 		states = 1
+		ATTACKER = "Horde"
+		DEFENDER = "Alliance"
 	end
 elseif(controll == 2)then
-	if(states == 0 or states == nil)then
-		if(battle == 0)then
-			v:SetWorldStateForZone(WG_HORDE_CONTROLLED, 1)
-			v:SetWorldStateForZone(WG_ALLIANCE_CONTROLLED, 0)
-			v:SetWorldStateForZone(WG_STATE_NEXT_BATTLE_TIME, timer_nextbattle)
-		end
+	if(states == 0)then
 		v:SetWorldStateForZone(WG_STATE_W_FORTRESS_WORKSHOP, 4)
 		v:SetWorldStateForZone(WG_STATE_E_FORTRESS_WORKSHOP, 4)
 		v:SetWorldStateForZone(WG_STATE_SS_TOWER, 7)
@@ -433,21 +673,60 @@ elseif(controll == 2)then
 		v:SetWorldStateForZone(WG_STATE_ES_WORKSHOP, 7)
 		v:SetWorldStateForZone(WG_STATE_BT_WORKSHOP, 1)
 		v:SetWorldStateForZone(WG_STATE_SR_WORKSHOP, 1)
-		eastspark_progress = 0
-		westspark_progress = 0
+		eastspark_progress = 100
+		westspark_progress = 100
 		states = 1
+		ATTACKER = "Alliance"
+		DEFENDER = "Horde"
 	end
+end
 end
 end
 end
 
 function DetectionUnitOnSpawn(pUnit, event)
-pUnit:RegisterAIUpdateEvent(1000)
+if(pUnit:GetMapId() == MAP_NORTHREND)then
+	pUnit:RegisterAIUpdateEvent(1000)
+end
 end
 
 function DetectionUnitAIUpdate(pUnit)
 if(pUnit == nil)then
 	pUnit:RemoveAIUpdateEvent()
+end
+if(pUnit:GetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY) == 0 or pUnit:GetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY) == 1)then
+	if(npcstarted == false)then
+		stateuiset = 0
+		states = 0
+		npcstarted = true
+	end
+else
+	npcstarted = true
+end
+for k,m in pairs(GetPlayersInZone(ZONE_WG))do
+	if(m:HasAura(SPELL_VICTORY_AURA))then
+		if(m:HasAchievement(ACHIEVEMENT_VICTORY) == false)then
+			m:AddAchievement(ACHIEVEMENT_VICTORY)
+		end
+		m:RemoveAura(SPELL_VICTORY_AURA)
+	end
+end
+if(spawnobjects == 0 and battle == 1)then
+	PerformIngameSpawn(2,GO_WINTERGRASP_TITAN_RELIC,MAP_NORTHREND,5439.66,2840.83,430.282,6.20393,100,2300000)
+	PerformIngameSpawn(2,GO_WINTERGRASP_KEEP_COLLISION_WALL,MAP_NORTHREND,5397.11,2841.54,425.901,3.14159,100,2300000)
+	spawnobjects = 1
+end
+if(battle == 0 and spawnobjects == 1)then
+	SendWorldMsg("Wintergrasp condition: Battle = "..battle.." and objstate = "..spawnobjects..".|r", 1)
+	spawnobjects = 0
+	local relick = pUnit:GetGameObjectNearestCoords(5439.66,2840.83,430.282,GO_WINTERGRASP_TITAN_RELIC)
+	local collision = pUnit:GetGameObjectNearestCoords(5397.11,2841.54,425.901,GO_WINTERGRASP_KEEP_COLLISION_WALL)
+	if(relick ~= nil)then
+		relick:Despawn(1,0)
+	end
+	if(collision ~= nil)then
+		collision:Despawn(1,0)
+	end
 end
 if(pUnit:GetWorldStateForZone(WG_STATE_W_FORTRESS_WORKSHOP) == 4)then
 	A_V_FORTRESS_WEST = 0
@@ -1042,18 +1321,167 @@ if(v:GetHP() ~= nil)then -- filter all non destructable objects.
 		end
 	end
 	if(v:GetUInt32Value(GAMEOBJECT_FACTION) ~= FACTION_HORDE and battle == 1 and controll == 2 and v:GetAreaId() == AREA_FORTRESS)then -- this changes the faction of the objects but for some reason they can not be damaged as they should by the vehicles.
-		v:SetByte(GAMEOBJECT_FACTION,0,FACTION_HORDE)
+		v:SetUInt32Value(GAMEOBJECT_FACTION,FACTION_HORDE)
 	elseif(battle == 1 and v:GetUInt32Value(GAMEOBJECT_FACTION) ~= FACTION_NEUTRAL)then
-		v:SetByte(GAMEOBJECT_FACTION,0,FACTION_NEUTRAL)
+		v:SetUInt32Value(GAMEOBJECT_FACTION,FACTION_NEUTRAL)
 	elseif(v:GetUInt32Value(GAMEOBJECT_FACTION) ~= FACTION_ALLIANCE and battle == 1 and controll == 1 and v:GetAreaId() == AREA_FORTRESS)then
-		v:SetByte(GAMEOBJECT_FACTION,0,FACTION_ALLIANCE)
+		v:SetUInt32Value(GAMEOBJECT_FACTION,FACTION_ALLIANCE)
+	elseif((v:GetAreaId() == AREA_FLAMEWATCH_T or v:GetAreaId() == AREA_WINTERSEDGE_T or v:GetAreaId() == AREA_SHADOWSIGHT_T))then
+		if(battle == 1 and controll == 2 and v:GetUInt32Value(GAMEOBJECT_FACTION) ~= FACTION_ALLIANCE)then
+			v:SetUInt32Value(GAMEOBJECT_FACTION,FACTION_ALLIANCE)
+		elseif(battle == 1 and controll == 1 and v:GetUInt32Value(GAMEOBJECT_FACTION) ~= FACTION_HORDE)then
+			v:SetUInt32Value(GAMEOBJECT_FACTION,FACTION_HORDE)
+		elseif(battle == 0 and v:GetUInt32Value(GAMEOBJECT_FACTION) ~= FACTION_NEUTRAL)then
+			v:SetUInt32Value(GAMEOBJECT_FACTION,FACTION_NEUTRAL)
+		end
 	end
 end
+end
+if(pUnit:GetEntry() == NPC_NOT_IMMUNE_PC_NPC)then
+local XT = pUnit:GetX()
+local YT = pUnit:GetY()
+	if(XT >= 5245.92 and XT <= 5247.92 and YT >= 2977.32 and YT <= 2979.32)then
+		pUnit:TeleportCreature(5316.25,2977.04,409.274)
+	elseif(XT >= 5248.89 and XT <= 5250.89 and YT >= 2702.11 and YT <= 2704.11)then
+		pUnit:TeleportCreature(5314.51,2703.11,409.275)
+	elseif(XT >= 5400.92 and XT <= 5402.92 and YT >= 2828.91 and YT <= 2830.91)then
+		pUnit:TeleportCreature(5391.28,2828.09,418.675)
+	elseif(XT >= 5391.81 and XT <= 5393.81 and YT >= 2853.02 and YT <= 2855.02)then
+		pUnit:TeleportCreature(5401.63,2853.67,418.675)
+	end
+end
+if(C_BAR_CAPTURE >= 1 and battle == 1)then
+	if(pUnit:GetAreaId() == AREA_EASTSPARK)then
+	local esshop = pUnit:GetGameObjectNearestCoords(pUnit:GetX(),pUnit:GetY(),pUnit:GetZ(),GO_WINTERGRASP_WORKSHOP_ES)
+	if(esshop ~= nil)then
+		if(esshop:GetHP() ~= nil)then
+			if(esshop:GetHP() > esshop:GetMaxHP()/2)then
+				if(eastspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 7)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,7)
+				elseif(eastspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and eastspark_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 1)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,1)
+				elseif(eastspark_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 4)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,4)
+				end
+			elseif(esshop:GetHP() < esshop:GetMaxHP()/2 and esshop:GetHP() > 0)then
+				if(eastspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL  and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 8)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,8)
+				elseif(eastspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and eastspark_progress > C_BAR_CAPTURE  and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 2)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,2)
+				elseif(eastspark_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 5)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,5)
+				end
+			elseif(esshop:GetHP() == 0)then
+				if(eastspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 9)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,9)
+				elseif(eastspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and eastspark_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 3)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,3)
+				elseif(eastspark_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_ES_WORKSHOP) ~= 6)then
+					pUnit:SetWorldStateForZone(WG_STATE_ES_WORKSHOP,6)
+				end
+			end
+		end
+	end
+	elseif(pUnit:GetAreaId() == AREA_WESTSPARK)then
+	local wsshop = pUnit:GetGameObjectNearestCoords(pUnit:GetX(),pUnit:GetY(),pUnit:GetZ(),GO_WINTERGRASP_WORKSHOP_WS)
+	if(wsshop ~= nil)then
+		if(wsshop:GetHP() ~= nil)then
+			if(wsshop:GetHP() > wsshop:GetMaxHP()/2)then
+				if(westspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 7)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,7)
+				elseif(westspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and westspark_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 1)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,1)
+				elseif(westspark_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 4)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,4)
+				end
+			elseif(wsshop:GetHP() < wsshop:GetMaxHP()/2 and wsshop:GetHP() > 0)then
+				if(westspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 8)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,8)
+				elseif(westspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and westspark_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 2)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,2)
+				elseif(westspark_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 5)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,5)
+				end
+			elseif(wsshop:GetHP() == 0)then
+				if(westspark_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 9)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,9)
+				elseif(westspark_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and westspark_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 3)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,3)
+				elseif(westspark_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_WS_WORKSHOP) ~= 6)then
+					pUnit:SetWorldStateForZone(WG_STATE_WS_WORKSHOP,6)
+				end
+			end
+		end
+	end
+	elseif(pUnit:GetAreaId() == AREA_SUNKENRING)then
+	local srshop = pUnit:GetGameObjectNearestCoords(pUnit:GetX(),pUnit:GetY(),pUnit:GetZ(),GO_WINTERGRASP_WORKSHOP_SR)
+	if(srshop ~= nil)then
+		if(srshop:GetHP() ~= nil)then
+			if(srshop:GetHP() > srshop:GetMaxHP()/2)then
+				if(sunkenring_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 7)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,7)
+				elseif(sunkenring_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and sunkenring_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 1)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,1)
+				elseif(sunkenring_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 4)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,4)
+				end
+			elseif(srshop:GetHP() < srshop:GetMaxHP()/2 and srshop:GetHP() > 0)then
+				if(sunkenring_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 8)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,8)
+				elseif(sunkenring_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and sunkenring_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 2)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,2)
+				elseif(sunkenring_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 5)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,5)
+				end
+			elseif(srshop:GetHP() == 0)then
+				if(sunkenring_progress > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 9)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,9)
+				elseif(sunkenring_progress < C_BAR_CAPTURE + C_BAR_NEUTRAL and sunkenring_progress > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 3)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,3)
+				elseif(sunkenring_progress < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_SR_WORKSHOP) ~= 6)then
+					pUnit:SetWorldStateForZone(WG_STATE_SR_WORKSHOP,6)
+				end
+			end
+		end
+	end
+	elseif(pUnit:GetAreaId() == AREA_BROKENTEMPLE)then
+	local srshop = pUnit:GetGameObjectNearestCoords(pUnit:GetX(),pUnit:GetY(),pUnit:GetZ(),GO_WINTERGRASP_WORKSHOP_BT)
+	if(srshop ~= nil)then
+		if(srshop:GetHP() ~= nil)then
+			if(srshop:GetHP() > srshop:GetMaxHP()/2)then
+				if(brokentemple_progres > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 7)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,7)
+				elseif(brokentemple_progres < C_BAR_CAPTURE + C_BAR_NEUTRAL and brokentemple_progres > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 1)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,1)
+				elseif(brokentemple_progres < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 4)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,4)
+				end
+			elseif(srshop:GetHP() < srshop:GetMaxHP()/2 and srshop:GetHP() > 0)then
+				if(brokentemple_progres > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 8)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,8)
+				elseif(brokentemple_progres < C_BAR_CAPTURE + C_BAR_NEUTRAL and brokentemple_progres > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 2)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,2)
+				elseif(brokentemple_progres < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 5)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,5)
+				end
+			elseif(srshop:GetHP() == 0)then
+				if(brokentemple_progres > C_BAR_CAPTURE + C_BAR_NEUTRAL and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 9)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,9)
+				elseif(brokentemple_progres < C_BAR_CAPTURE + C_BAR_NEUTRAL and brokentemple_progres > C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 3)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,3)
+				elseif(brokentemple_progres < C_BAR_CAPTURE and pUnit:GetWorldStateForZone(WG_STATE_BT_WORKSHOP) ~= 6)then
+					pUnit:SetWorldStateForZone(WG_STATE_BT_WORKSHOP,6)
+				end
+			end
+		end
+	end
+	end
 end
 end
 
 function TitanRelickOnUse(pGO, event, pPlayer)
 if(battle == 1)then
+local timebattle = os.time() - starttimer
 	if(controll == 1 and pPlayer:GetTeam() == 1)then
 		timer_battle = 0
 		timer_nextbattle = os.time() + TIME_TO_BATTLE
@@ -1063,11 +1491,22 @@ if(battle == 1)then
 		states = 0
 		pGO:Despawn(1,0)
 		stateuiset = 0
+		starttimer = 0
+		south_towers = 3
 		for k,v in pairs (GetPlayersInZone(ZONE_WG))do
+		local packetseound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
+		packetseound:WriteULong(8454)
+		v:SendPacketToPlayer(packetseound)
 			if(v:GetTeam() == 1)then
 				v:CastSpell(SPELL_VICTORY_REWARD)
-				if(v:HasAchievement(ACHIEVEMENT_VICTORY) == false)then
-					v:AddAchievement(ACHIEVEMENT_VICTORY)
+				v:CastSpell(SPELL_VICTORY_AURA)
+				if(timebattle <= 600)then
+					if(v:HasAchievement(ACHIEVEMENT_WIN_OUR_GRASP) == false)then
+						v:AddAchievement(ACHIEVEMENT_WIN_OUR_GRASP)
+					end
+				end
+				if(v:HasQuest(QUEST_WG_VICTORY_H) and v:GetQuestObjectiveCompletion(QUEST_WG_VICTORY_H, 0) == 0)then
+					v:AdvanceQuestObjective(QUEST_WG_VICTORY_H, 0)
 				end
 			elseif(v:GetTeam() == 0)then
 				v:CastSpell(SPELL_DEFEAT_REWARD)
@@ -1080,13 +1519,25 @@ if(battle == 1)then
 		SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
 		battle = 0
 		controll = 1
+		states = 0
 		pGO:Despawn(1,0)
 		stateuiset = 0
+		starttimer = 0
+		south_towers = 3
 		for k,v in pairs (GetPlayersInZone(ZONE_WG))do
+		local packetseound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
+		packetseound:WriteULong(8455)
+		v:SendPacketToPlayer(packetseound)
 			if(v:GetTeam() == 0)then
 				v:CastSpell(SPELL_VICTORY_REWARD)
-				if(v:HasAchievement(ACHIEVEMENT_VICTORY) == false)then
-					v:AddAchievement(ACHIEVEMENT_VICTORY)
+				v:CastSpell(SPELL_VICTORY_AURA)
+				if(timebattle <= 600)then
+					if(v:HasAchievement(ACHIEVEMENT_WIN_OUR_GRASP) == false)then
+						v:AddAchievement(ACHIEVEMENT_WIN_OUR_GRASP)
+					end
+				end
+				if(v:HasQuest(QUEST_WG_VICTORY_A) and v:GetQuestObjectiveCompletion(QUEST_WG_VICTORY_A, 0) == 0)then
+					v:AdvanceQuestObjective(QUEST_WG_VICTORY_A, 0)
 				end
 			elseif(v:GetTeam() == 1)then
 				v:CastSpell(SPELL_DEFEAT_REWARD)
@@ -1096,26 +1547,410 @@ if(battle == 1)then
 end
 end
 
-function TitanrelickOnLoad(pGO)
+function DebugWG(event, pPlayer, message, type, language)
+if(pPlayer:IsGm() and pPlayer:GetZoneId() == ZONE_WG and battle == 0)then
+	if(message == "#debug WG")then
+		timer_nextbattle = os.time() + 10
+		SendWorldMsg("Wintergrasp starts after 10s. Battlefield started by GM "..pPlayer:GetName()..".|r", 1)
+		pPlayer:SetWorldStateForZone(WG_STATE_NEXT_BATTLE_TIME, timer_nextbattle)
+	elseif(message == "#st")then
+		SendWorldMsg("The states is "..states..".|r")
+	end
+end
+end
+
+function PortalOnUse(pGO, event, pPlayer)
+if(pGO:GetMapId() == MAP_NORTHREND)then
+	if(pPlayer:HasAura(SPELL_TELEPORT_DEFENDER) == false)then
+		local teleportunit = pGO:GetCreatureNearestCoords(pGO:GetX(),pGO:GetY(),pGO:GetZ(),NPC_NOT_IMMUNE_PC_NPC)
+		if(teleportunit ~= nil)then
+			local xu,yu,zu,ou = teleportunit:GetSpawnLocation()
+			pPlayer:Teleport(MAP_NORTHREND,xu,yu,zu,ou)
+			pPlayer:CastSpell(SPELL_TELEPORT_DEFENDER)
+		end
+	else
+		pPlayer:SendAreaTriggerMessage("You can't do that yet!")
+	end
+else
+	pPlayer:CastSpell(54640)
+end
+end
+
+function OnLoadVehicleTeleporter(pGO)
 pGO:RegisterAIUpdateEvent(1000)
 end
 
-function TitanrelickAIUpdate(pGO)
+function OnAIUpdateVehicleTeleporter(pGO)
 if(pGO == nil)then
 	pGO:RemoveAIUpdateEvent()
 end
-local relick = pGO:GetGameObjectNearestCoords(5439.66,2840.83,420.427,GO_WINTERGRASP_TITAN_RELIC)
-if(relick == nil and battle == 1)then
-	PerformIngameSpawn(2,GO_WINTERGRASP_TITAN_RELIC,MAP_NORTHREND,5439.66,2840.83,420.427,6.20393,100.1,2300)
-elseif(relick ~= nil and battle ~= 1)then
-	relick:Despawn(1,0)
+for k,v in pairs(pGO:GetInRangeUnits()) do
+if(v:IsCreature())then
+	if(pGO:GetDistance(v) < 10 and battle == 1)then
+		if((v:GetFaction() == FACTION_ALLIANCE and controll == 1) or (v:GetFaction() == FACTION_HORDE and controll == 2))then
+			if(v:HasAura(SPELL_TELEPORT_VEHICLE) == false)then
+				if(v:GetEntry() == NPC_VEHICLE_CATAPULT or v:GetEntry() == NPC_VEHICLE_DEMOLISHER or v:GetEntry() == NPC_VEHICLE_SIEGE_ENGINE_H or v:GetEntry() == NPC_VEHICLE_SIEGE_ENGINE_A)then
+					local teleportunit = pGO:GetCreatureNearestCoords(pGO:GetX(),pGO:GetY(),pGO:GetZ(),NPC_NOT_IMMUNE_PC_NPC)
+					if(teleportunit ~= nil)then
+						local xu,yu,zu = teleportunit:GetSpawnLocation()
+						v:TeleportCreature(xu,yu,zu)
+						v:CastSpell(SPELL_TELEPORT_VEHICLE)
+					end
+				end
+			end
+		end
+	end
+end
 end
 end
 
-RegisterGameObjectEvent(GO_WINTERGRASP_KEEP_COLLISION_WALL,5,TitanrelickAIUpdate)
-RegisterGameObjectEvent(GO_WINTERGRASP_KEEP_COLLISION_WALL,2,TitanrelickOnLoad)
+function OnSP_Cpoint(pGO)
+pGO:RegisterAIUpdateEvent(1500)
+end
+
+function AIUpdate_Cpoint(pGO)
+if(battle == 1)then
+ES_P = 0
+WS_P = 0
+SR_P = 0
+BT_P = 0
+if(pGO == nil)then
+	pGO:RemoveAIUpdateEvent()
+end
+for k,m in pairs(pGO:GetInRangePlayers())do
+if(battle == 1 and m:IsPvPFlagged() and m:IsStealthed() == false and m:IsAlive())then
+	if(m:GetAreaId() == AREA_EASTSPARK and pGO:GetDistance(m) <= 5500)then
+		ES_A = 0
+		ES_H = 0
+		if(m:GetTeam() == 0)then
+			ES_A = ES_A + 1
+		elseif(m:GetTeam() == 1)then
+			ES_H = ES_H + 1
+		end
+		ES_P = ES_A - ES_H
+		if(eastspark_progress < 100 and eastspark_progress > 0)then
+			if(ES_P < 0)then
+				eastspark_progress = eastspark_progress - 1
+			elseif(ES_P > 0)then
+				eastspark_progress = eastspark_progress + 1
+			end
+		elseif(eastspark_progress == 0)then
+			if(ES_P > 0)then
+				eastspark_progress = eastspark_progress + 1
+			end
+		elseif(eastspark_progress == 100)then
+			if(ES_P < 0)then
+				eastspark_progress = eastspark_progress - 1
+			end
+		end
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_SHOW,1)
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_PROGRESS,eastspark_progress)
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_NEUTRAL,C_BAR_NEUTRAL)
+	elseif(m:GetAreaId() == AREA_WESTSPARK and pGO:GetDistance(m) <= 5500)then
+		WS_A = 0
+		WS_H = 0
+		if(m:GetTeam() == 0)then
+			WS_A = WS_A + 1
+		elseif(m:GetTeam() == 1)then
+			WS_H = WS_H + 1
+		end
+		WS_P = WS_A - WS_H
+		if(westspark_progress < 100 and westspark_progress > 0)then
+			if(WS_P < 0)then
+				westspark_progress = westspark_progress - 1
+			elseif(WS_P > 0)then
+				westspark_progress = westspark_progress + 1
+			end
+		elseif(westspark_progress == 0)then
+			if(WS_P > 0)then
+				westspark_progress = westspark_progress + 1
+			end
+		elseif(westspark_progress == 100)then
+			if(WS_P < 0)then
+				westspark_progress = westspark_progress - 1
+			end
+		end
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_SHOW,1)
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_PROGRESS,westspark_progress)
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_NEUTRAL,C_BAR_NEUTRAL)
+	else
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_SHOW,0)
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_PROGRESS,0)
+		m:SetWorldStateForPlayer(WG_STATE_SOUTH_NEUTRAL,0)
+	end
+	if(m:GetAreaId() == AREA_SUNKENRING and pGO:GetDistance(m) <= 5500)then
+		SR_A = 0
+		SR_H = 0
+		if(m:GetTeam() == 0)then
+			SR_A = SR_A + 1
+		elseif(m:GetTeam() == 1)then
+			SR_H = SR_H + 1
+		end
+		SR_P = SR_A - SR_H
+		if(sunkenring_progress < 100 and sunkenring_progress > 0)then
+			if(SR_P < 0)then
+				sunkenring_progress = sunkenring_progress - 1
+			elseif(SR_P > 0)then
+				sunkenring_progress = sunkenring_progress + 1
+			end
+		elseif(sunkenring_progress == 0)then
+			if(SR_P > 0)then
+				sunkenring_progress = sunkenring_progress + 1
+			end
+		elseif(sunkenring_progress == 100)then
+			if(SR_P < 0)then
+				sunkenring_progress = sunkenring_progress - 1
+			end
+		end
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_SHOW,1)
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_PROGRESS,sunkenring_progress)
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_NEUTRAL,C_BAR_NEUTRAL)
+	elseif(m:GetAreaId() == AREA_BROKENTEMPLE and pGO:GetDistance(m) <= 5500)then
+		BT_A = 0
+		BT_H = 0
+		if(m:GetTeam() == 0)then
+			BT_A = BT_A + 1
+		elseif(m:GetTeam() == 1)then
+			BT_H = BT_H + 1
+		end
+		BT_P = BT_A - BT_H
+		if(brokentemple_progres < 100 and brokentemple_progres > 0)then
+			if(BT_P < 0)then
+				brokentemple_progres = brokentemple_progres - 1
+			elseif(BT_P > 0)then
+				brokentemple_progres = brokentemple_progres + 1
+			end
+		elseif(brokentemple_progres == 0)then
+			if(BT_P > 0)then
+				brokentemple_progres = brokentemple_progres + 1
+			end
+		elseif(brokentemple_progres == 100)then
+			if(BT_P < 0)then
+				brokentemple_progres = brokentemple_progres - 1
+			end
+		end
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_SHOW,1)
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_PROGRESS,brokentemple_progres)
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_NEUTRAL,C_BAR_NEUTRAL)
+	else
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_SHOW,0)
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_PROGRESS,0)
+		m:SetWorldStateForPlayer(WG_STATE_NORTH_NEUTRAL,0)
+	end
+else
+	m:SetWorldStateForPlayer(WG_STATE_NORTH_SHOW,0)
+	m:SetWorldStateForPlayer(WG_STATE_NORTH_PROGRESS,0)
+	m:SetWorldStateForPlayer(WG_STATE_NORTH_NEUTRAL,0)
+	m:SetWorldStateForPlayer(WG_STATE_SOUTH_SHOW,0)
+	m:SetWorldStateForPlayer(WG_STATE_SOUTH_PROGRESS,0)
+	m:SetWorldStateForPlayer(WG_STATE_SOUTH_NEUTRAL,0)
+end
+end
+end
+end
+
+function KillCreature(pUnit, event, pLastTarget)
+	if(battle == 1)then
+		for k,v in pairs(pUnit:GetInRangePlayers())do
+			if(v:IsPlayer())then
+				if(v:HasAura(SPELL_RECRUIT))then
+					if(v:GetAuraStackCount(SPELL_RECRUIT) < 5)then
+						v:CastSpell(SPELL_RECRUIT)
+					else
+						pUnit:SendChatMessageToPlayer(42, 0, "You have reached Rank 1: Corporal", v)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:CastSpell(SPELL_CORPORAL)
+					end
+				elseif(v:HasAura(SPELL_CORPORAL))then
+					if(v:GetAuraStackCount(SPELL_CORPORAL) < 5)then
+						v:CastSpell(SPELL_CORPORAL)
+					else
+						pUnit:SendChatMessageToPlayer(42, 0, "You have reached Rank 2: Lieutenant", v)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:AddAura(SPELL_LIEUTENANT,0)
+					end
+				end
+			end
+		end
+	end
+end
+
+function KillPlayer(event, pKiller, pVictim)
+if(battle == 1)then
+	for k,v in pairs(pVictim:GetInRangePlayers())do
+		if(pVictim:GetTeam() ~= v:GetTeam())then
+			if(v:HasAura(SPELL_RECRUIT))then
+					if(v:GetAuraStackCount(SPELL_RECRUIT) < 5)then
+						v:CastSpell(SPELL_RECRUIT)
+					else
+						v:SendAreaTriggerMessage("You have reached Rank 1: Corporal")
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:RemoveAura(SPELL_RECRUIT)
+						v:CastSpell(SPELL_CORPORAL)
+					end
+				elseif(v:HasAura(SPELL_CORPORAL))then
+					if(v:GetAuraStackCount(SPELL_CORPORAL) < 5)then
+						v:CastSpell(SPELL_CORPORAL)
+					else
+						v:SendAreaTriggerMessage("You have reached Rank 2: Lieutenant")
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:RemoveAura(SPELL_CORPORAL)
+						v:AddAura(SPELL_LIEUTENANT,0)
+					end
+				end
+		end
+	end
+end
+end
+
+function GengineerOnGossip(pUnit, event, pPlayer)
+if(pUnit:GetWorldStateForZone(WG_STATE_MAX_A_VEHICLES) > pUnit:GetWorldStateForZone(WG_STATE_CURRENT_A_VEHICLES))then
+	if(pPlayer:HasAura(SPELL_CORPORAL) or pPlayer:HasAura(SPELL_LIEUTENANT) and battle == 1)then
+		if(pPlayer:HasAura(SPELL_CORPORAL))then
+			pUnit:GossipCreateMenu(13798, pPlayer, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a catapult.", 1, 0)
+			pUnit:GossipSendMenu(pPlayer)
+		elseif(pPlayer:HasAura(SPELL_LIEUTENANT) and battle == 1)then
+			pUnit:GossipCreateMenu(13798, pPlayer, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a catapult.", 1, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a demolisher.", 2, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a siege engine.", 3, 0)
+			pUnit:GossipSendMenu(pPlayer)
+		else
+			pUnit:GossipCreateMenu(14172, pPlayer, 0)
+			pUnit:GossipSendMenu(pPlayer)
+		end
+	end
+else
+	pUnit:GossipCreateMenu(14172, pPlayer, 0)
+	pUnit:GossipSendMenu(pPlayer)
+end
+end
+
+function OnSelect(pUnit, event, pPlayer, id, intid, code)
+if(pUnit:GetWorldStateForZone(WG_STATE_MAX_A_VEHICLES) > pUnit:GetWorldStateForZone(WG_STATE_CURRENT_A_VEHICLES))then
+	if(intid == 1)then
+		pPlayer:FullCastSpell(SPELL_BUILD_CATAPULT)
+		pPlayer:GossipComplete()
+	elseif(intid == 2)then
+		pPlayer:FullCastSpell(SPELL_BUILD_DEMOLISHER)
+		pPlayer:GossipComplete()
+	elseif(intid == 3)then
+		pPlayer:FullCastSpell(SPELL_BUILD_ENGINE_A)
+		pPlayer:GossipComplete()
+	end
+end
+end
+
+function HGengineerOnGossip(pUnit, event, pPlayer)
+if(pUnit:GetWorldStateForZone(WG_STATE_MAX_H_VEHICLES) > pUnit:GetWorldStateForZone(WG_STATE_CURRENT_H_VEHICLES))then
+	if(pPlayer:HasAura(SPELL_CORPORAL) or pPlayer:HasAura(SPELL_LIEUTENANT) and battle == 1)then
+		if(pPlayer:HasAura(SPELL_CORPORAL))then
+			pUnit:GossipCreateMenu(13798, pPlayer, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a catapult.", 1, 0)
+			pUnit:GossipSendMenu(pPlayer)
+		elseif(pPlayer:HasAura(SPELL_LIEUTENANT) and battle == 1)then
+			pUnit:GossipCreateMenu(13798, pPlayer, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a catapult.", 1, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a demolisher.", 2, 0)
+			pUnit:GossipMenuAddItem(0, "I'd like to build a siege engine.", 3, 0)
+			pUnit:GossipSendMenu(pPlayer)
+		else
+			pUnit:GossipCreateMenu(14172, pPlayer, 0)
+			pUnit:GossipSendMenu(pPlayer)
+		end
+	end
+else
+	pUnit:GossipCreateMenu(14172, pPlayer, 0)
+	pUnit:GossipSendMenu(pPlayer)
+end
+end
+
+function HOnSelect(pUnit, event, pPlayer, id, intid, code)
+if(pUnit:GetWorldStateForZone(WG_STATE_MAX_H_VEHICLES) > pUnit:GetWorldStateForZone(WG_STATE_CURRENT_H_VEHICLES))then
+	if(intid == 1)then
+		pPlayer:FullCastSpell(SPELL_BUILD_CATAPULT)
+		pPlayer:GossipComplete()
+	elseif(intid == 2)then
+		pPlayer:FullCastSpell(SPELL_BUILD_DEMOLISHER)
+		pPlayer:GossipComplete()
+	elseif(intid == 3)then
+		pPlayer:FullCastSpell(SPELL_BUILD_ENGINE_H)
+		pPlayer:GossipComplete()
+	end
+end
+end
+
+function OnDestroy(pGO)
+for k,v in pairs(GetPlayersInZone(ZONE_WG))do
+	if(pGO:GetEntry() == GO_WINTERGRASP_SS_TOWER)then
+		south_towers = south_towers - 1
+		for k,g in pairs(GetPlayersInZone(ZONE_WG))do
+			g:SendBroadcastMessage("The Shadowsight Tower was destroyed by the "..DEFENDER.."!")
+			g:SendAreaTriggerMessage("The Shadowsight Tower was destroyed by the "..DEFENDER.."!")
+		end
+	elseif(pGO:GetEntry() == GO_WINTERGRASP_WE_TOWER)then
+		south_towers = south_towers - 1
+		for k,g in pairs(GetPlayersInZone(ZONE_WG))do
+			g:SendBroadcastMessage("The Winter's Edge Tower was destroyed by the "..DEFENDER.."!")
+			g:SendAreaTriggerMessage("The Winter's Edge Tower was destroyed by the "..DEFENDER.."!")
+		end
+	elseif(pGO:GetEntry() == GO_WINTERGRASP_FW_TOWER)then
+		south_towers = south_towers - 1
+		for k,g in pairs(GetPlayersInZone(ZONE_WG))do
+			g:SendBroadcastMessage("The Flamewatch Tower was destroyed by the "..DEFENDER.."!")
+			g:SendAreaTriggerMessage("The Flamewatch Tower was destroyed by the "..DEFENDER.."!")
+		end
+	end
+end
+end
+
+RegisterGameObjectEvent(GO_WINTERGRASP_SS_TOWER,8,OnDestroy)
+RegisterGameObjectEvent(GO_WINTERGRASP_WE_TOWER,8,OnDestroy)
+RegisterGameObjectEvent(GO_WINTERGRASP_FW_TOWER,8,OnDestroy)
+RegisterUnitGossipEvent(NPC_GOBLIN_ENGINEER,2,HOnSelect)
+RegisterUnitGossipEvent(NPC_GOBLIN_ENGINEER,1,HGengineerOnGossip)
+RegisterUnitGossipEvent(NPC_GNOME_ENGINEER,2,AOnSelect)
+RegisterUnitGossipEvent(NPC_GNOME_ENGINEER,1,AGengineerOnGossip)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_WS_100,5,AIUpdate_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_WS_100,2,OnSP_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_ES_100,5,AIUpdate_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_ES_100,2,OnSP_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_BT_100,5,AIUpdate_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_BT_100,2,OnSP_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_SR_100,5,AIUpdate_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_CAPTUREPOINT_SR_100,2,OnSP_Cpoint)
+RegisterGameObjectEvent(GO_WINTERGRASP_VEHICLE_TELEPORTER,5,OnAIUpdateVehicleTeleporter)
+RegisterGameObjectEvent(GO_WINTERGRASP_VEHICLE_TELEPORTER,2,OnLoadVehicleTeleporter)
+RegisterGameObjectEvent(GO_WINTERGRASP_DEFENDER_A,4,PortalOnUse)
+RegisterGameObjectEvent(GO_WINTERGRASP_DEFENDER_H,4,PortalOnUse)
+RegisterGameObjectEvent(GO_WINTERGRASP_DEFENDER_N,4,PortalOnUse)
 RegisterGameObjectEvent(GO_WINTERGRASP_TITAN_RELIC,4,TitanRelickOnUse)
 RegisterUnitEvent(NPC_DETECTION_UNIT,18,DetectionUnitOnSpawn)
 RegisterUnitEvent(NPC_DETECTION_UNIT,21,DetectionUnitAIUpdate)
+RegisterUnitEvent(NPC_NOT_IMMUNE_PC_NPC,18,DetectionUnitOnSpawn)
+RegisterUnitEvent(NPC_NOT_IMMUNE_PC_NPC,21,DetectionUnitAIUpdate)
 RegisterTimedEvent("WGUpdate", 1000, 0)
 RegisterTimedEvent("Aura", 1000, 0)
+RegisterServerHook(16, "DebugWG")
+RegisterServerHook(2,KillPlayer)
+RegisterUnitEvent(30739,4,KillCreature)
+RegisterUnitEvent(30740,4,KillCreature)
