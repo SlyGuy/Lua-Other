@@ -1,40 +1,33 @@
---[[
-*******************************************************
-*          LASP - LUA AREA SCRIPTING PROJECT          *
-*                      License                        *
-*******************************************************
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The Lua Area Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Area - Quel'Danas - Normal Mobs.lua by Yerney
-Report Bugs at www.lasp.forumotion.com
--- ]]
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Yerney; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 --Darkspine Myrmidon
-function DSM_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("DSM_Shout", 8000, 1)
-pUnit:RegisterEvent("DSM_Sunder", 14000, 1)
+function DSM_OnCombat(Unit, Event)
+	Unit:RegisterEvent("DSM_Shout", 8000, 1)
+	Unit:RegisterEvent("DSM_Sunder", 14000, 1)
 end
 
-function DSM_Shout(pUnit, Event)
-pUnit:FullCastSpell(13730)
+function DSM_Shout(Unit, Event)
+	Unit:FullCastSpell(13730)
 end
 
-function DSM_Sunder(pUnit, Event)
-pUnit:FullCastSpellOnTarget(11971, pUnit:GetClosestPlayer())
+function DSM_Sunder(Unit, Event)
+	Unit:FullCastSpellOnTarget(11971, Unit:GetClosestPlayer())
 end
 
-function DSM_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function DSM_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function DSM_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function DSM_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25060, 1, "DSM_OnCombat")
@@ -42,31 +35,31 @@ RegisterUnitEvent(25060, 2, "DSM_LeaveCombat")
 RegisterUnitEvent(25060, 4, "DSM_Dead")
 
 --DarkSpine Siren
-function DSS_OnCombat(pUnit, Event)
-pUnit:CastSpell(12544)
-pUnit:RegisterEvent("DSS_Scr", 12000, 1)
-pUnit:RegisterEvent("DSS_FrNo", 24000, 1)
-pUnit:RegisterEvent("DSS_FrB", 7000, 0)
+function DSS_OnCombat(Unit, Event)
+	Unit:CastSpell(12544)
+	Unit:RegisterEvent("DSS_Scr", 12000, 1)
+	Unit:RegisterEvent("DSS_FrNo", 24000, 1)
+	Unit:RegisterEvent("DSS_FrB", 7000, 0)
 end
 
-function DSS_Scr(pUnit, Event)
-pUnit:FullCastSpell(3589)
+function DSS_Scr(Unit, Event)
+	Unit:FullCastSpell(3589)
 end
 
-function DSS_FrNo(pUnit, Event)
-pUnit:FullCastSpell(38033)
+function DSS_FrNo(Unit, Event)
+	Unit:FullCastSpell(38033)
 end
 
-function DSS_FrB(pUnit, Event)
-pUnit:FullCastSpellOnTarget(9672, pUnit:GetClosestPlayer())
+function DSS_FrB(Unit, Event)
+	Unit:FullCastSpellOnTarget(9672, Unit:GetClosestPlayer())
 end
 
-function DSS_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function DSS_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function DSS_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function DSS_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25073, 1, "DSS_OnCombat")
@@ -74,87 +67,83 @@ RegisterUnitEvent(25073, 2, "DSS_LeaveCombat")
 RegisterUnitEvent(25073, 4, "DSS_Dead")
 
 --DawnBlade Blood Knight
-function DBBK_OnCombat(pUnit, Event)
-pUnit:FullCastSpellOnTarget(45105, pUnit:GetClosestPlayer())
-pUnit:RegisterEvent("DBBK_Heal", 26000, 1)
-pUnit:RegisterEvent("DBBK_SoW", 8000, 4)
-pUnit:RegisterEvent("DBBK_JoW", 13000, 4)
+function DBBK_OnCombat(Unit, Event)
+	Unit:FullCastSpellOnTarget(45105, Unit:GetClosestPlayer())
+	Unit:RegisterEvent("DBBK_Heal", 26000, 1)
+	Unit:RegisterEvent("DBBK_SoW", 8000, 4)
+	Unit:RegisterEvent("DBBK_JoW", 13000, 4)
 end
 
-function DBBK_Heal(pUnit, Event)
-pUnit:CastSpell(13952)
+function DBBK_Heal(Unit, Event)
+	Unit:CastSpell(13952)
 end
 
-function DBBK_SoW(pUnit, Event)
-pUnit:CastSpellOnTarget(45095, pUnit:GetClosestPlayer())
+function DBBK_SoW(Unit, Event)
+	Unit:CastSpellOnTarget(45095, Unit:GetClosestPlayer())
 end
 
-function DBBK_JoW(pUnit, Event)
-pUnit:CastSpellOnTarget(45337, pUnit:GetClosestPlayer())
+function DBBK_JoW(Unit, Event)
+	Unit:CastSpellOnTarget(45337, Unit:GetClosestPlayer())
 end
 
-function DBBK_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function DBBK_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function DBBK_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function DBBK_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(24976, 1, "DBBK_OnCombat")
 RegisterUnitEvent(24976, 2, "DBBK_LeaveCombat")
 RegisterUnitEvent(24976, 4, "DBBK_Dead")
-
---[[DawnBlade MarksMan
--- His Skills don't Got Core support so they don't Work well!
-function DBM_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("DBM_Shoot", 4000, 0)
-pUnit:RegisterEvent("DBM_Flame", 8000, 0)
-pUnit:RegisterEvent("DBM_Immo", 16000, 0)
+--[[
+--DawnBlade MarksMan
+function DBM_OnCombat(Unit, Event)
+	Unit:RegisterEvent("DBM_Shoot", 4000, 0)
+	Unit:RegisterEvent("DBM_Flame", 8000, 0)
+	Unit:RegisterEvent("DBM_Immo", 16000, 0)
 end
 
-function DBM_Shoot(pUnit, Event)
-pUnit:FullCastSpellOnTarget(6660, pUnit:GetClosestPlayer())
+function DBM_Shoot(Unit, Event)
+	Unit:FullCastSpellOnTarget(6660, Unit:GetClosestPlayer())
 end
 
-function DBM_Flame(pUnit, Event)
-pUnit:CastSpellOnTarget(45101, pUnit:GetClosestPlayer())
+function DBM_Flame(Unit, Event)
+	Unit:CastSpellOnTarget(45101, Unit:GetClosestPlayer())
 end
 
-function DBM_Immo(pUnit, Event)
-pUnit:CastSpellOnTarget(37847, pUnit:GetClosestPlayer())
+function DBM_Immo(Unit, Event)
+	Unit:CastSpellOnTarget(37847, Unit:GetClosestPlayer())
 end
 
-function DBM_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function DBM_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function DBM_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function DBM_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(24979, 1, "DBM_OnCombat")
 RegisterUnitEvent(24979, 2, "DBM_LeaveCombat")
 RegisterUnitEvent(24979, 4, "DBM_Dead")
 --]]
-
-
 --DawnBlade Reservist
--- Only Raptor Strike for now!
-function DBR_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("DBR_Strike", 9000, 0)
+function DBR_OnCombat(Unit, Event)
+	Unit:RegisterEvent("DBR_Strike", 9000, 0)
 end
 
-function DBR_Strike(pUnit, Event)
-pUnit:CastSpellOnTarget(32915, pUnit:GetClosestPlayer())
+function DBR_Strike(Unit, Event)
+	Unit:CastSpellOnTarget(32915, Unit:GetClosestPlayer())
 end
 
-function DBR_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function DBR_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function DBR_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function DBR_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25087, 1, "DBR_OnCombat")
@@ -162,73 +151,68 @@ RegisterUnitEvent(25087, 2, "DBR_LeaveCombat")
 RegisterUnitEvent(25087, 4, "DBR_Dead")
 
 --DawnBlade Summoner
---Summoning is coming later
-function DBS_OnCombat(pUnit, Event)
-pUnit:CastSpell(44977)
-pUnit:RegisterEvent("DBS_Flame",18000, 0)
-pUnit:RegisterEvent("DBS_Immo", 16000, 0)
+function DBS_OnCombat(Unit, Event)
+	Unit:CastSpell(44977)
+	Unit:RegisterEvent("DBS_Flame",18000, 0)
+	Unit:RegisterEvent("DBS_Immo", 16000, 0)
 end
 
-function DBS_Flame(pUnit, Event)
-pUnit:FullCastSpellOnTarget(32707, pUnit:GetClosestPlayer())
+function DBS_Flame(Unit, Event)
+	Unit:FullCastSpellOnTarget(32707, Unit:GetClosestPlayer())
 end
 
-function DBS_Immo(pUnit, Event)
-pUnit:FullCastSpellOnTarget(11962, pUnit:GetClosestPlayer())
+function DBS_Immo(Unit, Event)
+	Unit:FullCastSpellOnTarget(11962, Unit:GetClosestPlayer())
 end
 
-function DBS_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function DBS_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function DBS_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function DBS_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(24978, 1, "DBS_OnCombat")
 RegisterUnitEvent(24978, 2, "DBS_LeaveCombat")
 RegisterUnitEvent(24978, 4, "DBS_Dead")
 
-
 --Emissary of Hate
---A pretty Simple one :P
-function EoH_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("EoH_Rend", 12000, 0)
+function EoH_OnCombat(Unit, Event)
+	Unit:RegisterEvent("EoH_Rend", 12000, 0)
 end
 
-function EoH_Rend(pUnit, Event)
-pUnit:FullCastSpellOnTarget(12054, pUnit:GetClosestPlayer())
+function EoH_Rend(Unit, Event)
+	Unit:FullCastSpellOnTarget(12054, Unit:GetClosestPlayer())
 end
 
-function EoH_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function EoH_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function EoH_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function EoH_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25003, 1, "EoH_OnCombat")
 RegisterUnitEvent(25003, 2, "EoH_LeaveCombat")
 RegisterUnitEvent(25003, 4, "EoH_Dead")
 
-
 --unleashed Hellion
---One Skill atm, Rain of Fire doesn't Work
-function UH_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("UH_Strike", 12000, 0)
+function UH_OnCombat(Unit, Event)
+	Unit:RegisterEvent("UH_Strike", 12000, 0)
 end
 
-function UH_Strike(pUnit, Event)
-pUnit:CastSpell(11876)
+function UH_Strike(Unit, Event)
+	Unit:CastSpell(11876)
 end
 
-function UH_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function UH_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function UH_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function UH_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25002, 1, "UH_OnCombat")
@@ -236,21 +220,20 @@ RegisterUnitEvent(25002, 2, "UH_LeaveCombat")
 RegisterUnitEvent(25002, 4, "UH_Dead")
 
 --Wretched Devourer
---Another Simple one!
-function WD_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("WD_Nether", 12000, 0)
+function WD_OnCombat(Unit, Event)
+	Unit:RegisterEvent("WD_Nether", 12000, 0)
 end
 
-function WD_Nether(pUnit, Event)
-pUnit:FullCastSpellOnTarget(35334, pUnit:GetClosestPlayer())
+function WD_Nether(Unit, Event)
+	Unit:FullCastSpellOnTarget(35334, Unit:GetClosestPlayer())
 end
 
-function WD_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function WD_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function WD_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function WD_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(24960, 1, "WD_OnCombat")
@@ -258,21 +241,20 @@ RegisterUnitEvent(24960, 2, "WD_LeaveCombat")
 RegisterUnitEvent(24960, 4, "WD_Dead")
 
 --Wretched Fiend
---Also one skill, lazy Blizzard...
-function WF_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("WF_Sunder", 14000, 1)
+function WF_OnCombat(Unit, Event)
+	Unit:RegisterEvent("WF_Sunder", 14000, 1)
 end
 
-function WF_Sunder(pUnit, Event)
-pUnit:FullCastSpellOnTarget(11971, pUnit:GetClosestPlayer())
+function WF_Sunder(Unit, Event)
+	Unit:FullCastSpellOnTarget(11971, Unit:GetClosestPlayer())
 end
 
-function WF_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function WF_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function WF_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function WF_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(24966, 1, "WF_OnCombat")
@@ -280,36 +262,34 @@ RegisterUnitEvent(24966, 2, "WF_LeaveCombat")
 RegisterUnitEvent(24966, 4, "WF_Dead")
 
 --Erractic Sentry
-function SelfRepair(pUnit, Event)
-      pUnit:CastSpell(44994)
+function SelfRepair(Unit, Event)
+    Unit:CastSpell(44994)
 end
 
-function SetHP(pUnit, Event)
-      pUnit:SetHealthPct(80)
-	  pUnit:RegisterEvent("RepairEffect", 1200, 1)
+function SetHP(Unit, Event)
+    Unit:SetHealthPct(80)
+	Unit:RegisterEvent("RepairEffect", 1200, 1)
 end
 
-function RepairEffect(pUnit, Event)
-      pUnit:CastSpell(45000)
-	  if pUnit:GetHealthPct() < 100 then
-	     pUnit:RegisterEvent("SelfRepair", 1200, 1)
-	  end
+function RepairEffect(Unit, Event)
+	Unit:CastSpell(45000)
+	if(Unit:GetHealthPct() < 100) then
+		Unit:RegisterEvent("SelfRepair", 1200, 1)
+	end
 end
 
-function ErraticSentryCapacitorOverload(pUnit, Event)
-	pUnit:RegisterEvent("SetHP", math.random(16000,36000), 0)
+function ErraticSentryCapacitorOverload(Unit, Event)
+	Unit:RegisterEvent("SetHP", math.random(16000,36000), 0)
 end
 
-function ErraticSentryCapacitorOverload_OnEnterCombat(pUnit, Event)
-	pUnit:RemoveEvents()	
+function ErraticSentryCapacitorOverload_OnEnterCombat(Unit, Event)
+	Unit:RemoveEvents()	
 end
 
-function ErraticSentryCapacitorOverload_OnLeaveCombat(pUnit, Event)
-	pUnit:RegisterEvent("SetHP", math.random(16000,36000), 0)	
+function ErraticSentryCapacitorOverload_OnLeaveCombat(Unit, Event)
+	Unit:RegisterEvent("SetHP", math.random(16000,36000), 0)	
 end
 
 RegisterUnitEvent(24972, 6, "ErraticSentryCapacitorOverload")
 RegisterUnitEvent(24972, 1, "ErraticSentryCapacitorOverload_OnEnterCombat")
 RegisterUnitEvent(24972, 2, "ErraticSentryCapacitorOverload_OnLeaveCombat")
-
-

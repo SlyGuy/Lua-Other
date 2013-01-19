@@ -1,11 +1,12 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
-
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 -- Bellygrub
 function B_OnCombat(Unit, Event)
@@ -29,16 +30,14 @@ RegisterUnitEvent(345, 1, "B_OnCombat")
 RegisterUnitEvent(345, 2, "B_OnLeaveCombat")
 RegisterUnitEvent(345, 4, "B_OnDied")
 
-
 -- Black Dragon Whelp
 function BDW_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BDW_FB", 3000, 0)
 end
 
 function BDW_FB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20793, plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(20793, pUnit:GetMainTank())
 	end
 end
 
@@ -53,7 +52,6 @@ end
 RegisterUnitEvent(441, 1, "BDW_OnCombat")
 RegisterUnitEvent(441, 2, "BDW_OnLeaveCombat")
 RegisterUnitEvent(441, 4, "BDW_OnDied")
-
 
 -- Blackrock Champion
 function BC_OnCombat(Unit, Event)
@@ -86,7 +84,6 @@ RegisterUnitEvent(435, 1, "BC_OnCombat")
 RegisterUnitEvent(435, 2, "BC_OnLeaveCombat")
 RegisterUnitEvent(435, 4, "BC_OnDied")
 
-
 -- Blackrock Gladiator
 function BG_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BG_BS", 30000, 0)
@@ -103,9 +100,8 @@ function BG_EN(Unit, Event)
 end
 
 function BG_D(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6713, plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6713, pUnit:GetMainTank())
 	end
 end
 
@@ -120,7 +116,6 @@ end
 RegisterUnitEvent(4464, 1, "BG_OnCombat")
 RegisterUnitEvent(4464, 2, "BG_OnLeaveCombat")
 RegisterUnitEvent(4464, 4, "BG_OnDied")
-
 
 -- Blackrock Grunt
 function BGR_OnCombat(Unit, Event)
@@ -143,7 +138,6 @@ RegisterUnitEvent(440, 1, "BGR_OnCombat")
 RegisterUnitEvent(440, 2, "BGR_OnLeaveCombat")
 RegisterUnitEvent(440, 4, "BGR_OnDied")
 
-
 -- Blackrock Hunter
 function BH_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BH_T", 3000, 0)
@@ -155,9 +149,8 @@ function BH_ENRA(Unit, Event)
 end
 
 function BH_T(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(10277, plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(10277, pUnit:GetMainTank())
 	end
 end
 
@@ -173,7 +166,6 @@ RegisterUnitEvent(4462, 1, "BH_OnCombat")
 RegisterUnitEvent(4462, 2, "BH_OnLeaveCombat")
 RegisterUnitEvent(4462, 4, "BH_OnDied")
 
-
 -- Blackrock Outrunner
 function BO_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BO_N", 12000, 0)
@@ -185,9 +177,8 @@ function BO_ENRAG(Unit, Event)
 end
 
 function BO_N(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6533 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6533, pUnit:GetMainTank())
 	end
 end
 
@@ -203,7 +194,6 @@ RegisterUnitEvent(485, 1, "BO_OnCombat")
 RegisterUnitEvent(485, 2, "BO_OnLeaveCombat")
 RegisterUnitEvent(485, 4, "BO_OnDied")
 
-
 -- Blackrock Renegade
 function BR_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BR_SL", 12000, 1)
@@ -215,9 +205,8 @@ function BR_ENRAGE(Unit, Event)
 end
 
 function BR_SL(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(8242 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(8242, pUnit:GetMainTank())
 	end
 end
 
@@ -233,7 +222,6 @@ RegisterUnitEvent(437, 1, "BR_OnCombat")
 RegisterUnitEvent(437, 2, "BR_OnLeaveCombat")
 RegisterUnitEvent(437, 4, "BR_OnDied")
 
-
 -- Blackrock Scout
 function BST_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BST_SH", 3000, 0)
@@ -245,9 +233,8 @@ function BST_ENRAGEA(Unit, Event)
 end
 
 function BST_SH(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6660 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6660, pUnit:GetMainTank())
 	end
 end
 
@@ -262,7 +249,6 @@ end
 RegisterUnitEvent(4064, 1, "BST_OnCombat")
 RegisterUnitEvent(4064, 2, "BST_OnLeaveCombat")
 RegisterUnitEvent(4064, 4, "BST_OnDied")
-
 
 -- Blackrock Sentry
 function BSY_OnCombat(Unit, Event)
@@ -285,7 +271,6 @@ RegisterUnitEvent(4065, 1, "BSY_OnCombat")
 RegisterUnitEvent(4065, 2, "BSY_OnLeaveCombat")
 RegisterUnitEvent(4065, 4, "BSY_OnDied")
 
-
 -- Blackrock Shadowcaster
 function BSC_OnCombat(Unit, Event)
 	Unit:RegisterEvent("BSC_BA", 3000, 1)
@@ -304,23 +289,20 @@ function BSC_DA(Unit, Event)
 end
 
 function BSC_BA(Unit, Event)
-local plr = 	pUnit:GetRandomPlayer(7)
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(8994 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(8994, pUnit:GetRandomPlayer(7))
 	end
 end
 
 function BSC_SB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(9613 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(9613, pUnit:GetMainTank())
 	end
 end
 
 function BSC_SWP(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11639 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11639 , pUnit:GetMainTank())
 	end
 end
 
@@ -335,7 +317,6 @@ end
 RegisterUnitEvent(436, 1, "BSC_OnCombat")
 RegisterUnitEvent(436, 2, "BSC_OnLeaveCombat")
 RegisterUnitEvent(436, 4, "BSC_OnDied")
-
 
 -- Blackrock Summoner
 function BSU_OnCombat(Unit, Event)
@@ -358,9 +339,8 @@ function BSU_SI(Unit, Event)
 end
 
 function BSU_SBA(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20793 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(20793, pUnit:GetMainTank())
 	end
 end
 
@@ -375,7 +355,6 @@ end
 RegisterUnitEvent(4463, 1, "BSU_OnCombat")
 RegisterUnitEvent(4463, 2, "BSU_OnLeaveCombat")
 RegisterUnitEvent(4463, 4, "BSU_OnDied")
-
 
 -- Blackrock Tracker
 function BTT_OnCombat(Unit, Event)
@@ -398,7 +377,6 @@ RegisterUnitEvent(615, 1, "BTT_OnCombat")
 RegisterUnitEvent(615, 2, "BTT_OnLeaveCombat")
 RegisterUnitEvent(615, 4, "BTT_OnDied")
 
-
 -- Gath'llzogg
 function GL_OnCombat(Unit, Event)
 	Unit:RegisterEvent("GL_IW", 20000, 0)
@@ -406,16 +384,14 @@ function GL_OnCombat(Unit, Event)
 end
 
 function GL_IW(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3427 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3427, pUnit:GetMainTank())
 	end
 end
 
 function GL_SBAA(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11972 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11972, pUnit:GetMainTank())
 	end
 end
 
@@ -430,7 +406,6 @@ end
 RegisterUnitEvent(334, 1, "GL_OnCombat")
 RegisterUnitEvent(334, 2, "GL_OnLeaveCombat")
 RegisterUnitEvent(334, 4, "GL_OnDied")
-
 
 -- Great Goretusk
 function GG_OnCombat(Unit, Event)
@@ -449,7 +424,6 @@ RegisterUnitEvent(547, 1, "GG_OnCombat")
 RegisterUnitEvent(547, 2, "GG_OnLeaveCombat")
 RegisterUnitEvent(547, 4, "GG_OnDied")
 
-
 -- Murloc Minor Tidecaller
 function MMT_OnCombat(Unit, Event)
 	Unit:RegisterEvent("MMT_FRB", 3000, 0)
@@ -457,9 +431,8 @@ function MMT_OnCombat(Unit, Event)
 end
 
 function MMT_FRB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(9672 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(9672, pUnit:GetMainTank())
 	end
 end
 
@@ -479,7 +452,6 @@ RegisterUnitEvent(548, 1, "MMT_OnCombat")
 RegisterUnitEvent(548, 2, "MMT_OnLeaveCombat")
 RegisterUnitEvent(548, 4, "MMT_OnDied")
 
-
 -- Murloc Shorestriker
 function MSTR_OnCombat(Unit, Event)
 	Unit:CastSpell(6268)
@@ -496,7 +468,6 @@ end
 RegisterUnitEvent(1083, 1, "MSTR_OnCombat")
 RegisterUnitEvent(1083, 2, "MSTR_OnLeaveCombat")
 RegisterUnitEvent(1083, 4, "MSTR_OnDied")
-
 
 -- Murloc Tidecaller
 function MTC_OnCombat(Unit, Event)
@@ -519,7 +490,6 @@ RegisterUnitEvent(545, 1, "MTC_OnCombat")
 RegisterUnitEvent(545, 2, "MTC_OnLeaveCombat")
 RegisterUnitEvent(545, 4, "MTC_OnDied")
 
-
 -- Rabid Shadowhide Gnoll
 function RSG_OnCombat(Unit, Event)
 	Unit:RegisterEvent("RSG_P", 3000, 1)
@@ -527,16 +497,14 @@ function RSG_OnCombat(Unit, Event)
 end
 
 function RSG_P(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(744 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(744, pUnit:GetMainTank())
 	end
 end
 
 function RSG_RB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3150 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3150, pUnit:GetMainTank())
 	end
 end
 
@@ -559,9 +527,8 @@ function RA_OnCombat(Unit, Event)
 end
 
 function RA_Strike(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11976 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11976, pUnit:GetMainTank())
 	end
 end
 
@@ -585,16 +552,14 @@ function RBSH_OnCombat(Unit, Event)
 end
 
 function RBSH_KD(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(5164 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(5164, pUnit:GetMainTank())
 	end
 end
 
 function RBSH_REND(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11977 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11977, pUnit:GetMainTank())
 	end
 end
 
@@ -610,16 +575,14 @@ RegisterUnitEvent(446, 1, "RBSH_OnCombat")
 RegisterUnitEvent(446, 2, "RBSH_OnLeaveCombat")
 RegisterUnitEvent(446, 4, "RBSH_OnDied")
 
-
 -- Redridge Mongrel
 function RMGG_OnCombat(Unit, Event)
 	Unit:RegisterEvent("RMGG_IWDD", 1000, 1)
 end
 
 function RMGG_IWDD(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3427 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3427, pUnit:GetMainTank())
 	end
 end
 
@@ -635,7 +598,6 @@ RegisterUnitEvent(423, 1, "RMGG_OnCombat")
 RegisterUnitEvent(423, 2, "RMGG_OnLeaveCombat")
 RegisterUnitEvent(423, 4, "RMGG_OnDied")
 
-
 -- Redridge Mystic
 function RRMM_OnCombat(Unit, Event)
 	Unit:RegisterEvent("RRMM_HWK", 15000, 0)
@@ -643,16 +605,14 @@ function RRMM_OnCombat(Unit, Event)
 end
 
 function RRMM_HWK(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(547 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(547, pUnit:GetMainTank())
 	end
 end
 
 function RRMM_LIB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20802 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(20802, pUnit:GetMainTank())
 	end
 end
 
@@ -668,16 +628,14 @@ RegisterUnitEvent(430, 1, "RRMM_OnCombat")
 RegisterUnitEvent(430, 2, "RRMM_OnLeaveCombat")
 RegisterUnitEvent(430, 4, "RRMM_OnDied")
 
-
 -- Redridge Poacher
 function RR_OnCombat(Unit, Event)
 	Unit:RegisterEvent("RR_HWK", 3000, 0)
 end
 
 function RR_HWK(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6660 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6660, pUnit:GetMainTank())
 	end
 end
 
@@ -693,16 +651,14 @@ RegisterUnitEvent(424, 1, "RR_OnCombat")
 RegisterUnitEvent(424, 2, "RR_OnLeaveCombat")
 RegisterUnitEvent(424, 4, "RR_OnDied")
 
-
 -- Servant of Ilgalar
 function SOI_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SOI_MB", 7000, 0)
 end
 
 function SOI_MB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(8129 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(8129, pUnit:GetMainTank())
 	end
 end
 
@@ -718,7 +674,6 @@ RegisterUnitEvent(819, 1, "SOI_OnCombat")
 RegisterUnitEvent(819, 2, "SOI_OnLeaveCombat")
 RegisterUnitEvent(819, 4, "SOI_OnDied")
 
-
 -- Shadowhide Assassin
 function SHA_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SHA_BS", 4000, 0)
@@ -726,16 +681,14 @@ function SHA_OnCombat(Unit, Event)
 end
 
 function SHA_BS(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(2590 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(2590, pUnit:GetMainTank())
 	end
 end
 
 function SHA_PN(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(744 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(744, pUnit:GetMainTank())
 	end
 end
 
@@ -750,7 +703,6 @@ end
 RegisterUnitEvent(579, 1, "SHA_OnCombat")
 RegisterUnitEvent(579, 2, "SHA_OnLeaveCombat")
 RegisterUnitEvent(579, 4, "SHA_OnDied")
-
 
 -- Shadowhide Brute
 function SHB_OnCombat(Unit, Event)
@@ -773,16 +725,14 @@ RegisterUnitEvent(432, 1, "SHB_OnCombat")
 RegisterUnitEvent(432, 2, "SHB_OnLeaveCombat")
 RegisterUnitEvent(432, 4, "SHB_OnDied")
 
-
 -- Shadowhide Darkweaver
 function SHDW_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SHDW_SBLT", 3000, 0)
 end
 
 function SHDW_SBLT(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(2590 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(2590, pUnit:GetMainTank())
 	end
 end
 
@@ -798,16 +748,14 @@ RegisterUnitEvent(429, 1, "SHDW_OnCombat")
 RegisterUnitEvent(429, 2, "SHDW_OnLeaveCombat")
 RegisterUnitEvent(429, 4, "SHDW_OnDied")
 
-
 -- Shadowhide Slayer
 function SHS_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SHS_EX", 30000, 0)
 end
 
 function SHS_EX(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(7160 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(7160, pUnit:GetMainTank())
 	end
 end
 
@@ -823,16 +771,14 @@ RegisterUnitEvent(431, 1, "SHS_OnCombat")
 RegisterUnitEvent(431, 2, "SHS_OnLeaveCombat")
 RegisterUnitEvent(431, 4, "SHS_OnDied")
 
-
 -- Shadowhide Warrior
 function SHW_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SHW_SAR", 30000, 0)
 end
 
 function SHW_SAR(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(7405 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(7405, pUnit:GetMainTank())
 	end
 end
 
@@ -848,7 +794,6 @@ RegisterUnitEvent(568, 1, "SHW_OnCombat")
 RegisterUnitEvent(568, 2, "SHW_OnLeaveCombat")
 RegisterUnitEvent(568, 4, "SHW_OnDied")
 
-
 -- Singe
 function Singe_OnCombat(Unit, Event)
 	Unit:RegisterEvent("Singe_FIBB", 3000, 0)
@@ -856,9 +801,8 @@ function Singe_OnCombat(Unit, Event)
 end
 
 function SHW_FIBB(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(13375 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(13375, pUnit:GetMainTank())
 	end
 end
 
@@ -878,16 +822,14 @@ RegisterUnitEvent(335, 1, "Singe_OnCombat")
 RegisterUnitEvent(335, 2, "Singe_OnLeaveCombat")
 RegisterUnitEvent(335, 4, "Singe_OnDied")
 
-
 -- Tarantula
 function Tara_OnCombat(Unit, Event)
 	Unit:RegisterEvent("Tara_PON", 3000, 0)
 end
 
 function SHW_PON(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(744 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(744, pUnit:GetMainTank())
 	end
 end
 
@@ -903,7 +845,6 @@ RegisterUnitEvent(442, 1, "Tara_OnCombat")
 RegisterUnitEvent(442, 2, "Tara_OnLeaveCombat")
 RegisterUnitEvent(442, 4, "Tara_OnDied")
 
-
 -- Tharil'zun
 function THA_OnCombat(Unit, Event)
 	Unit:RegisterEvent("THA_BFY", 20000, 0)
@@ -912,9 +853,8 @@ function THA_OnCombat(Unit, Event)
 end
 
 function SHW_NETTT(pUnit, Event)
-local plr = 	pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6533 , plr)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6533, pUnit:GetMainTank())
 	end
 end
 

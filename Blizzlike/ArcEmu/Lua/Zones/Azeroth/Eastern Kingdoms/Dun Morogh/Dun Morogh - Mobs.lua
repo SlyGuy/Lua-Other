@@ -28,7 +28,6 @@ function CragBoar_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1125, 1, "CragBoar_OnCombat")
 RegisterUnitEvent(1125, 2, "CragBoar_LeaveCombat")
 RegisterUnitEvent(1125, 4, "CragBoar_Dead")
@@ -46,11 +45,9 @@ function ECragBoar_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1127, 1, "ECragBoar_OnCombat")
 RegisterUnitEvent(1127, 2, "ECragBoar_LeaveCombat")
 RegisterUnitEvent(1127, 4, "ECragBoar_Dead")
-
 
 -- Frostmane Headhunter
 function FHH_OnCombat(Unit, Event)
@@ -58,9 +55,8 @@ function FHH_OnCombat(Unit, Event)
 end
 
 function FHH_Throw(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(10277, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(10277, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -72,7 +68,6 @@ function FHH_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1123, 1, "FHH_OnCombat")
 RegisterUnitEvent(1123, 2, "FHH_LeaveCombat")
 RegisterUnitEvent(1123, 4, "FHH_Dead")
@@ -83,12 +78,10 @@ function FHS_OnCombat(Unit, Event)
 end
 
 function FHS_BS(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(7159, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(7159, pUnit:GetClosestPlayer())
 	end
 end
-
 
 function FHS_LeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
@@ -98,11 +91,9 @@ function FHS_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1122, 1, "FHS_OnCombat")
 RegisterUnitEvent(1122, 2, "FHS_LeaveCombat")
 RegisterUnitEvent(1122, 4, "FHS_Dead")
-
 
 -- Frostmane Novice
 function FN_OnCombat(Unit, Event)
@@ -110,12 +101,10 @@ function FN_OnCombat(Unit, Event)
 end
 
 function FN_WF(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6949, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6949, pUnit:GetClosestPlayer())
 	end
 end
-
 
 function FN_LeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
@@ -124,7 +113,6 @@ end
 function FN_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(946, 1, "FN_OnCombat")
 RegisterUnitEvent(946, 2, "FN_LeaveCombat")
@@ -137,9 +125,8 @@ function FS_OnCombat(Unit, Event)
 end
 
 function FS_LB(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(9532, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(9532, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -155,11 +142,9 @@ function FS_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1397, 1, "FS_OnCombat")
 RegisterUnitEvent(1397, 2, "FS_LeaveCombat")
 RegisterUnitEvent(1397, 4, "FS_Dead")
-
 
 -- Frostmane Shadowcaster
 function FSC_OnCombat(Unit, Event)
@@ -169,16 +154,14 @@ function FSC_OnCombat(Unit, Event)
 end
 
 function FSC_COW(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11980, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11980, pUnit:GetClosestPlayer())
 	end
 end
 
 function FSC_SHB(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20791, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(20791, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -189,7 +172,6 @@ end
 function FSC_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1124, 1, "FSC_OnCombat")
 RegisterUnitEvent(1124, 2, "FSC_LeaveCombat")
@@ -202,9 +184,8 @@ function FSCI_OnCombat(Unit, Event)
 end
 
 function FSCI_FF(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6950, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6950, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -216,11 +197,9 @@ function FSCI_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1121, 1, "FSCI_OnCombat")
 RegisterUnitEvent(1121, 2, "FSCI_LeaveCombat")
 RegisterUnitEvent(1121, 4, "FSCI_Dead")
-
 
 -- Gibblewilt
 function Gib_OnCombat(Unit, Event)
@@ -228,9 +207,8 @@ function Gib_OnCombat(Unit, Event)
 end
 
 function Gib_FB(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20793, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(20793, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -241,7 +219,6 @@ end
 function Gib_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(8503, 1, "Gib_OnCombat")
 RegisterUnitEvent(8503, 2, "Gib_LeaveCombat")
@@ -254,9 +231,8 @@ function GTG_OnCombat(Unit, Event)
 end
 
 function GTG_FSH(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(21030, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(21030, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -272,7 +248,6 @@ function GTG_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(808, 1, "GTG_OnCombat")
 RegisterUnitEvent(808, 2, "GTG_LeaveCombat")
 RegisterUnitEvent(808, 4, "GTG_Dead")
@@ -284,16 +259,14 @@ function HW_OnCombat(Unit, Event)
 end
 
 function HW_Pummel(pUnit, Event)
-local plr = pUnit:GetRandomPlayer(4)
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(12555, plr)
+	if(pUnit:GetRandomPlayer(4) ~= nil) then
+		pUnit:FullCastSpellOnTarget(12555, pUnit:GetRandomPlayer(4))
 	end
 end
 
 function HW_Strike(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11976, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11976, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -316,9 +289,8 @@ function ICB_OnCombat(Unit, Event)
 end
 
 function ICB_IClaw(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3130, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3130, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -329,7 +301,6 @@ end
 function ICB_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1196, 1, "ICB_OnCombat")
 RegisterUnitEvent(1196, 2, "ICB_LeaveCombat")
@@ -342,9 +313,8 @@ function IG_OnCombat(Unit, Event)
 end
 
 function IG_SA(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(11971, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(11971, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -371,9 +341,8 @@ function IM_OnCombat(Unit, Event)
 end
 
 function IM_Shoot(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6660, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6660, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -384,7 +353,6 @@ end
 function IM_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(727, 1, "IM_OnCombat")
 RegisterUnitEvent(727, 2, "IM_LeaveCombat")
@@ -403,11 +371,9 @@ function LCragBoar_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1126, 1, "LCragBoar_OnCombat")
 RegisterUnitEvent(1126, 2, "LCragBoar_LeaveCombat")
 RegisterUnitEvent(1126, 4, "LCragBoar_Dead")
-
 
 -- Leper Gnome
 function LG_OnCombat(Unit, Event)
@@ -415,9 +381,8 @@ function LG_OnCombat(Unit, Event)
 end
 
 function LG_DCS(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6951, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(6951, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -429,7 +394,6 @@ function LG_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1211, 1, "LG_OnCombat")
 RegisterUnitEvent(1211, 2, "LG_LeaveCombat")
 RegisterUnitEvent(1211, 4, "LG_Dead")
@@ -440,9 +404,8 @@ function MG_OnCombat(Unit, Event)
 end
 
 function MG_Ravage(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3242, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3242, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -453,7 +416,6 @@ end
 function MG_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1961, 1, "MG_OnCombat")
 RegisterUnitEvent(1961, 2, "MG_LeaveCombat")
@@ -466,9 +428,8 @@ function OI_OnCombat(Unit, Event)
 end
 
 function OI_IcyG(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3145, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3145, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -484,7 +445,6 @@ function OI_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1271, 1, "OI_OnCombat")
 RegisterUnitEvent(1271, 2, "OI_LeaveCombat")
 RegisterUnitEvent(1271, 4, "OI_Dead")
@@ -495,9 +455,8 @@ function RBS_OnCombat(Unit, Event)
 end
 
 function RBS_KD(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(5164, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(5164, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -509,7 +468,6 @@ function RBS_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1117, 1, "RBS_OnCombat")
 RegisterUnitEvent(1117, 2, "RBS_LeaveCombat")
 RegisterUnitEvent(1117, 4, "RBS_Dead")
@@ -520,9 +478,8 @@ function RST_OnCombat(Unit, Event)
 end
 
 function RST_HC(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3148, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3148, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -533,7 +490,6 @@ end
 function RST_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1115, 1, "RST_OnCombat")
 RegisterUnitEvent(1115, 2, "RST_LeaveCombat")
@@ -552,9 +508,7 @@ function SCragBoar_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1689, 1, "SCragBoar_OnCombat")
-
 
 -- Starving Winter Wolf
 function SWW_OnCombat(Unit, Event)
@@ -573,7 +527,6 @@ function SWW_Dead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-
 RegisterUnitEvent(1133, 1, "SWW_OnCombat")
 RegisterUnitEvent(1133, 2, "SWW_LeaveCombat")
 RegisterUnitEvent(1133, 4, "SWW_Dead")
@@ -584,12 +537,10 @@ function Timber_OnCombat(Unit, Event)
 end
 
 function Timber_Rabies(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3150, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3150, pUnit:GetClosestPlayer())
 	end
 end
-
 
 function Timber_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
@@ -598,7 +549,6 @@ end
 function Timber_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1132, 1, "Timber_OnCombat")
 RegisterUnitEvent(1132, 2, "Timber_OnLeaveCombat")
@@ -610,12 +560,10 @@ function Veg_OnCombat(Unit, Event)
 end
 
 function Veg_GR(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3143, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3143, pUnit:GetClosestPlayer())
 	end
 end
-
 
 function Veg_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
@@ -624,7 +572,6 @@ end
 function Veg_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1388, 1, "Veg_OnCombat")
 RegisterUnitEvent(1388, 2, "Veg_OnLeaveCombat")
@@ -636,12 +583,10 @@ function Wen_OnCombat(Unit, Event)
 end
 
 function Wen_FB(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3131, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3131, pUnit:GetClosestPlayer())
 	end
 end
-
 
 function Wen_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
@@ -650,7 +595,6 @@ end
 function Wen_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1135, 1, "Wen_OnCombat")
 RegisterUnitEvent(1135, 2, "Wen_OnLeaveCombat")
@@ -662,12 +606,10 @@ function YWen_OnCombat(Unit, Event)
 end
 
 function YWen_FB(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(3131, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(3131, pUnit:GetClosestPlayer())
 	end
 end
-
 
 function YWen_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
@@ -676,7 +618,6 @@ end
 function YWen_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(1134, 1, "YWen_OnCombat")
 RegisterUnitEvent(1134, 2, "YWen_OnLeaveCombat")

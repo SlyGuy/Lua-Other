@@ -1,35 +1,28 @@
---[[
-*******************************************************
-*          LASP - LUA AREA SCRIPTING PROJECT          *
-*                      License                        *
-*******************************************************
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The Lua Area Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Area - Quel'Danas - Elite Mobs.lua by Yerney
-Report Bugs at www.lasp.forumotion.com
--- ]]
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Yerney; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 --Eredar Sorcerer
-function Eredar_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Eredar_Flames", 8900, 10)
+function Eredar_OnCombat(Unit, Event)
+	Unit:RegisterEvent("Eredar_Flames", 8900, 10)
 end
 
-function Eredar_Flames(pUnit, Event)
-pUnit:FullCastSpellOnTarget(45046, pUnit:GetRandomPlayer(0))
+function Eredar_Flames(Unit, Event)
+	Unit:FullCastSpellOnTarget(45046, Unit:GetRandomPlayer(0))
 end
 
-function Eredar_leaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function Eredar_leaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function Eredar_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function Eredar_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25033, 1, "Eredar_OnCombat")
@@ -37,30 +30,30 @@ RegisterUnitEvent(25033, 2, "Eredar_leaveCombat")
 RegisterUnitEvent(25033, 4, "Eredar_Dead")
 
 --Pit Overlord
-function Pit_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Pit_Cleave", 4000, 0)
-pUnit:RegisterEvent("Pit_Cone", 17000, 1)
-pUnit:RegisterEvent("Pit_Coil", 8000, 3)
+function Pit_OnCombat(Unit, Event)
+	Unit:RegisterEvent("Pit_Cleave", 4000, 0)
+	Unit:RegisterEvent("Pit_Cone", 17000, 1)
+	Unit:RegisterEvent("Pit_Coil", 8000, 3)
 end
 
-function Pit_Cleave(pUnit, Event)
-pUnit:FullCastSpellOnTarget(15284, pUnit:GetClosestPlayer())
+function Pit_Cleave(Unit, Event)
+	Unit:FullCastSpellOnTarget(15284, Unit:GetClosestPlayer())
 end
 
-function Pit_Cone(pUnit, Event)
-pUnit:FullCastSpell(19630)
+function Pit_Cone(Unit, Event)
+	Unit:FullCastSpell(19630)
 end
 
-function Pit_Coil(pUnit, Event)
-pUnit:FullCastSpellOnTarget(32709, pUnit:GetRandomPlayer(0))
+function Pit_Coil(Unit, Event)
+	Unit:FullCastSpellOnTarget(32709, Unit:GetRandomPlayer(0))
 end
 
-function Pit_LeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+function Pit_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function Pit_Dead(pUnit, Event)
-pUnit:RemoveEvents()
+function Pit_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25031, 1, "Pit_OnCombat")

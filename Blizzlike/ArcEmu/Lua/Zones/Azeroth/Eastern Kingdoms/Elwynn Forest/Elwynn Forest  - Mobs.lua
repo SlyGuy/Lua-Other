@@ -1,34 +1,35 @@
---[[====================================
-   Example.lua
-   Original Code by zdroid9770
-   Version 9
-========================================]]--
--- % Complete: 90%
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 -- Defias Bandit
 function DB_OnCombat(Unit, Event)
-		Unit:RegisterEvent("DB_SKck", 10000, 0)
+	Unit:RegisterEvent("DB_SKck", 10000, 0)
 end
 
-function DB_SKck(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(8646, plr)
+function DB_SKck(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(8646, Unit:GetMainTank())
 	end
 end
 
 function DB_OnDied(Unit, Event)
-		Unit:RemoveEvents()
+	Unit:RemoveEvents()
 end
 
 function DB_OnLeaveCombat(Unit, Event)
-		Unit:RemoveEvents()
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(116, 1, "DB_OnCombat")
 RegisterUnitEvent(116, 2, "DB_OnLeaveCombat")
 RegisterUnitEvent(116, 4, "DB_OnDied")
-
 
 -- Defias Bodyguard
 function DB_OnCombat(Unit, Event)
@@ -36,17 +37,15 @@ function DB_OnCombat(Unit, Event)
 	Unit:RegisterEvent("DB_Dis", 15000, 0)
 end
 
-function DB_BS(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(7159, plr)
+function DB_BS(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(7159, Unit:GetMainTank())
 	end
 end
 
-function DB_Dis(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6713, plr)
+function DB_Dis(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(6713, Unit:GetMainTank())
 	end
 end
 
@@ -61,17 +60,15 @@ end
 RegisterUnitEvent(6866, 1, "DB_OnCombat")
 RegisterUnitEvent(6866, 2, "DB_OnLeaveCombat")
 RegisterUnitEvent(6866, 4, "DB_OnDied")
-
-
---[[ Defias Cutpurse
+--[[
+--Defias Cutpurse
 function DC_OnCombat(Unit, Event)
 	Unit:RegisterEvent("DB_BSi", 5000, 0)
 end
 
-function DC_BSi(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(7159, plr)
+function DC_BSi(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(7159, Unit:GetMainTank())
 	end
 end
 
@@ -85,18 +82,16 @@ end
 
 RegisterUnitEvent(94, 1, "DC_OnCombat")
 RegisterUnitEvent(94, 2, "DC_OnLeaveCombat")
-RegisterUnitEvent(94, 4, "DC_OnDied")]]--
-
-
+RegisterUnitEvent(94, 4, "DC_OnDied")
+]]--
 -- Defias Dockworker
 function DD_OnCombat(Unit, Event)
 	Unit:RegisterEvent("DD_SK", 10000, 0)
 end
 
-function DD_SK(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(8646, plr)
+function DD_SK(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(8646, Unit:GetMainTank())
 	end
 end
 
@@ -112,17 +107,15 @@ RegisterUnitEvent(6927, 1, "DD_OnCombat")
 RegisterUnitEvent(6927, 2, "DD_OnLeaveCombat")
 RegisterUnitEvent(6927, 4, "DD_OnDied")
 
-
 -- Defias Rogue Wizard
 function DRW_OnCombat(Unit, Event)
 	Unit:RegisterEvent("DRW_FBt", 3000, 0)
 	Unit:RegisterEvent("DRW_FA", 10000, 1)
 end
 
-function DRW_FBt(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(13322, plr)
+function DRW_FBt(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(13322, Unit:GetMainTank())
 	end
 end
 
@@ -142,7 +135,6 @@ RegisterUnitEvent(474, 1, "DRW_OnCombat")
 RegisterUnitEvent(474, 2, "DRW_OnLeaveCombat")
 RegisterUnitEvent(474, 4, "DRW_OnDied")
 
-
 -- Hogger
 function Ho_OnCombat(Unit, Event)
 	Unit:CastSpell(6268)
@@ -150,17 +142,15 @@ function Ho_OnCombat(Unit, Event)
 	Unit:RegisterEvent("Ho_PA", 45000, 0)
 end
 
-function Ho_HBt(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(13322, plr)
+function Ho_HBt(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(13322, Unit:GetMainTank())
 	end
 end
 
-function Ho_PA(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(13322, plr)
+function Ho_PA(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(13322, Unit:GetMainTank())
 	end
 end
 
@@ -176,17 +166,16 @@ RegisterUnitEvent(448, 1, "Ho_OnCombat")
 RegisterUnitEvent(448, 4, "Ho_OnDied")
 RegisterUnitEvent(448, 2, "HO_OnLeaveCombat")
 
-
 -- Kobold Geomancer
 function KG_OnCombat(Unit, Event)
 	Unit:RegisterEvent("KG_FBl", 3000, 0)
 	Unit:RegisterEvent("KG_FAA", 10000, 1)
 end
 
-function KG_FBl(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20793, plr)
+function KG_FBl(Unit, Event)
+local plr = Unit:GetMainTank()
+	if (Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(20793, Unit:GetMainTank())
 	end
 end
 
@@ -206,16 +195,14 @@ RegisterUnitEvent(476, 1, "KG_OnCombat")
 RegisterUnitEvent(476, 2, "KG_OnLeaveCombat")
 RegisterUnitEvent(476, 4, "KG_OnDied")
 
-
 -- Kobold Miner
 function KM_OnCombat(Unit, Event)
 	Unit:RegisterEvent("KM_FBl", 45000, 0)
 end
 
-function KM_FBl(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(6016, plr)
+function KM_FBl(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(6016, Unit:GetMainTank())
 	end
 end
 
@@ -231,16 +218,14 @@ RegisterUnitEvent(40, 1, "KM_OnCombat")
 RegisterUnitEvent(40, 2, "KM_OnLeaveCombat")
 RegisterUnitEvent(40, 4, "KM_OnDied")
 
-
 -- Morgaine the Sly
 function MTS_OnCombat(Unit, Event)
 	Unit:RegisterEvent("MTS_Gouge", 10000, 0)
 end
 
-function MTS_Gouge(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(1776, plr)
+function MTS_Gouge(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(1776, Unit:GetMainTank())
 	end
 end
 
@@ -256,16 +241,14 @@ RegisterUnitEvent(99, 1, "MTS_OnCombat")
 RegisterUnitEvent(99, 2, "MTS_OnLeaveCombat")
 RegisterUnitEvent(99, 4, "MTS_OnDied")
 
-
 -- Morgan the Collector
 function MTC_OnCombat(Unit, Event)
 	Unit:RegisterEvent("MTC_Gougei", 10000, 0)
 end
 
-function MTC_Gougei(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(1776, plr)
+function MTC_Gougei(Unit, Event)
+	if (Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(1776, Unit:GetMainTank())
 	end
 end
 
@@ -280,7 +263,6 @@ end
 RegisterUnitEvent(473, 1, "MTC_OnCombat")
 RegisterUnitEvent(473, 2, "MTC_OnLeaveCombat")
 RegisterUnitEvent(473, 4, "MTC_OnDied")
-
 
 -- Murloc Forager
 function MF_OnCombat(Unit, Event)
@@ -303,16 +285,14 @@ RegisterUnitEvent(46, 1, "MF_OnCombat")
 RegisterUnitEvent(46, 2, "MF_OnLeaveCombat")
 RegisterUnitEvent(46, 4, "MF_OnDied")
 
-
 -- Murloc Lurker
 function ML_OnCombat(Unit, Event)
 	Unit:RegisterEvent("ML_BSu", 3000, 0)
 end
 
-function ML_BSu(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(7159, plr)
+function ML_BSu(Unit, Event)
+	if (Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(7159, Unit:GetMainTank())
 	end
 end
 
@@ -327,8 +307,6 @@ end
 RegisterUnitEvent(732, 1, "ML_OnCombat")
 RegisterUnitEvent(732, 2, "ML_OnLeaveCombat")
 RegisterUnitEvent(732, 4, "ML_OnDied")
-
-
 
 -- Narg the Taskmaster
 function NTT_OnCombat(Unit, Event)
@@ -351,47 +329,39 @@ RegisterUnitEvent(79, 1, "NTT_OnCombat")
 RegisterUnitEvent(79, 2, "NTT_OnLeaveCombat")
 RegisterUnitEvent(79, 4, "NTT_OnDied")
 
-
-
 -- Porcine Entourage
 function PE_OnCombat(Unit, Event)
 	Unit:CastSpell(6268)
 end
 
-function PE_LeaveCombat(pUnit, Event)
-	pUnit:RemoveEvents()
+function PE_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function PE_Dead(pUnit, Event)
-	pUnit:RemoveEvents()
+function PE_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(390, 1, "PE_OnCombat")
 RegisterUnitEvent(390, 2, "PE_LeaveCombat")
 RegisterUnitEvent(390, 4, "PE_Dead")
-
-
 
 -- Princess
 function Princess_OnCombat(Unit, Event)
 	Unit:CastSpell(6268)
 end
 
-function Princess_LeaveCombat(pUnit, Event)
-	pUnit:RemoveEvents()
+function Princess_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function Princess_Dead(pUnit, Event)
-	pUnit:RemoveEvents()
+function Princess_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(330, 1, "Princess_OnCombat")
 RegisterUnitEvent(330, 2, "Princess_LeaveCombat")
 RegisterUnitEvent(330, 4, "Princess_Dead")
-
-
 
 -- Riverpaw Outrunner
 function RPOR_OnCombat(Unit, Event)
@@ -414,26 +384,22 @@ RegisterUnitEvent(478, 1, "RPOR_OnCombat")
 RegisterUnitEvent(478, 2, "RPOR_OnLeaveCombat")
 RegisterUnitEvent(478, 4, "RPOR_OnDied")
 
-
 -- Rockhide Boar
 function RB_OnCombat(Unit, Event)
 	Unit:CastSpell(6268)
 end
 
-function RB_LeaveCombat(pUnit, Event)
-	pUnit:RemoveEvents()
+function RB_LeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
 end
 
-function RB_Dead(pUnit, Event)
-	pUnit:RemoveEvents()
+function RB_Dead(Unit, Event)
+	Unit:RemoveEvents()
 end
-
 
 RegisterUnitEvent(524, 1, "RB_OnCombat")
 RegisterUnitEvent(524, 2, "RB_LeaveCombat")
 RegisterUnitEvent(524, 4, "RB_Dead")
-
-
 
 -- Rogue Black Drake
 function RBD_OnCombat(Unit, Event)
@@ -456,8 +422,6 @@ RegisterUnitEvent(14388, 1, "RBD_OnCombat")
 RegisterUnitEvent(14388, 2, "RBD_OnLeaveCombat")
 RegisterUnitEvent(14388, 4, "RBD_OnDied")
 
-
-
 -- Surena Caledon
 function SC_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SC_Fireball", 3000, 0)
@@ -468,10 +432,9 @@ function SC_FrostArmor(Unit, Event)
 	Unit:FullCastSpell(12544)
 end
 
-function ML_Fireball(pUnit, Event)
-local plr = pUnit:GetMainTank()
-	if (plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20793, plr)
+function ML_Fireball(Unit, Event)
+	if(Unit:GetMainTank() ~= nil) then
+		Unit:FullCastSpellOnTarget(20793, Unit:GetMainTank())
 	end
 end
 
@@ -486,27 +449,6 @@ end
 RegisterUnitEvent(881, 1, "SC_OnCombat")
 RegisterUnitEvent(881, 2, "SC_OnLeaveCombat")
 RegisterUnitEvent(881, 4, "SC_OnDied")
-
-
---        ##### ##         ##### ##          ##### ##        ##### ##   
---     /#####  /##      ######  /###      /#####  /##     ######  /##   
---   //    /  / ###    /#   /  /  ###   //    /  / ###   /#   /  / ##   
---  /     /  /   ###  /    /  /    ### /     /  /   ### /    /  /  ##   
---       /  /     ###     /  /      ##      /  /     ###    /  /   /    
---      ## ##      ##    ## ##      ##     ## ##      ##   ## ##  /     
---      ## ##      ##    ## ##      ##     ## ##      ##   ## ## /      
---      ## ##      ##  /### ##      /      ## ##      ##   ## ##/       
---      ## ##      ## / ### ##     /       ## ##      ##   ## ## ###    
---      ## ##      ##    ## ######/        ## ##      ##   ## ##   ###  
---      #  ##      ##    ## ######         #  ##      ##   #  ##     ## 
---         /       /     ## ##                /       /       /      ## 
---    /###/       /      ## ##           /###/       /    /##/     ###  
---   /   ########/       ## ##          /   ########/    /  ########    
---  /       ####    ##   ## ##         /       ####     /     ####      
---  #              ###   #  /          #                #               
---   ##             ###    /            ##               ##             
---                  #####/                                             
---                    ###               www.DPS-DB.com         
 
 -- Matt
 MATT = {}
@@ -523,6 +465,5 @@ function MATT_Say(Unit, event, player)
 	Unit:SendChatMessage(12, 7, "Dang! Fish arent biting here either! Im gonna go back to my ol' fishin' hole" )
 end
 
--- Matt
 RegisterUnitEvent(794, 18, "MATT_onSpawn")
 RegisterUnitEvent(794, 4, "MATT_onDied")
