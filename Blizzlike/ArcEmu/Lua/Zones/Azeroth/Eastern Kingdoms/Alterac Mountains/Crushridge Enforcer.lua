@@ -1,24 +1,26 @@
---[[ AscendScripting Script - 
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The AscendScripting Team.This script was
-written and is protected by the GPL v2. The following
-script was released by a AscendScripting Staff Member.
-Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Ascendscripting; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-~~End of License Agreement
--- AscendScripting Staff, February 26, 2009. ]]
-
-function Enforcer_OnCombat(Unit, Event)
-	Unit:RegisterEvent("Enforcer_Crack", 8000, 0)
+function Enforcer_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Enforcer_crack", 20000, 0)
 end
 
-function Enforcer_Crack(pUnit, Event) 
-	pUnit:FullCastSpellOnTarget(9791, pUnit:GetMainTank()) 
+function Enforcer_crack(pUnit, Event)
+local plr = pUnit:GetClosestPlayer()
+	if(plr ~= nil) then
+		pUnit:FullCastSpellOnTarget(9791, plr)
+	end
 end
 
 function Enforcer_OnLeaveCombat(Unit, Event) 
-Unit:RemoveEvents() 
+	Unit:RemoveEvents() 
 end
 
 function Enforcer_OnDied(Unit, Event) 

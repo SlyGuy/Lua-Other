@@ -1,25 +1,27 @@
---[[ AscendScripting Script - 
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The AscendScripting Team.This script was
-written and is protected by the GPL v2. The following
-script was released by a AscendScripting Staff Member.
-Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Ascendscripting; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-~~End of License Agreement
--- AscendScripting Staff, February 26, 2009. ]]
-
-function CMage_OnCombat(Unit, Event)
-	Unit:RegisterEvent("CMage_Bloodlust", 10000, 0)
-	Unit:RegisterEvent("CMage_Bolt", 6000, 0)
+function CMage_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("frostbolt", 4000, 0)
+	pUnit:RegisterEvent("bloodlust", 16000, 1)
 end
 
-function CMage_Bolt(pUnit, Event) 
-	pUnit:FullCastSpellOnTarget(9672, pUnit:GetMainTank()) 
+function frostbolt(pUnit, Event)
+local plr = pUnit:GetClosestPlayer()
+	if(plr ~= nil) then
+		pUnit:FullCastSpellOnTarget(9672, plr)
+	end
 end
 
-function CMage_Bloodlust(pUnit, Event) 
-	pUnit:CastSpell(6742) 
+function bloodlust(pUnit, Event)
+	pUnit:CastSpell(6742)
 end
 
 function CMage_OnLeaveCombat(Unit, Event) 
