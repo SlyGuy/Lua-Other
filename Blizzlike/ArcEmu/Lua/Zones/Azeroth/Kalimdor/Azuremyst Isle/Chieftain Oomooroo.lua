@@ -1,33 +1,34 @@
---[[
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
-
-
-function ChieftainOomooroo_OnCombat(Unit, Event)
-	Unit:RegisterEvent("ChieftainOomooroo_Enrage", 10000, 1)
-	Unit:RegisterEvent("ChieftainOomooroo_Strike", 6000, 0)
+function Chieftain_OnCombat(Unit, Event)
+	Unit:RegisterEvent("Chieftain_Spellname", 9000, 0)
+	Unit:RegisterEvent("Chieftain_enrage", 16000, 1)
 end
 
-function ChieftainOomooroo_Enrage(pUnit, Event) 
+function Chieftain_Spellname(pUnit, Event)
+	pUnit:CastSpellOnTarget(13446, pUnit:GetClosestPlayer())
+end
+
+function Chieftain_enrage(pUnit, Event)
 	pUnit:CastSpell(18501) 
 end
 
-function ChieftainOomooroo_Strike(pUnit, Event) 
-	pUnit:FullCastSpellOnTarget(13446, 	pUnit:GetMainTank()) 
-end
-
-function ChieftainOomooroo_OnLeaveCombat(Unit, Event) 
-	Unit:RemoveEvents() 
-end
-
-function ChieftainOomooroo_OnDied(Unit, Event) 
+function Chieftain_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-RegisterUnitEvent(17448, 1, "ChieftainOomooroo_OnCombat")
-RegisterUnitEvent(17448, 2, "ChieftainOomooroo_OnLeaveCombat")
-RegisterUnitEvent(17448, 4, "ChieftainOomooroo_OnDied")
+function Chieftain_OnLeaveCombat(Unit, Event)
+	Unit:RemoveEvents()
+end
+
+RegisterUnitEvent(17448, 1, "Chieftain_OnCombat")
+RegisterUnitEvent(17448, 2, "Chieftain_OnLeaveCombat")
+RegisterUnitEvent(17448, 4, "Chieftain_OnDied")

@@ -1,10 +1,12 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function MalginBarleybrew_OnCombat(Unit, Event)
 	Unit:RegisterEvent("MalginBarleybrew_BladeFlurry", 4000, 1)
@@ -27,10 +29,6 @@ function MalginBarleybrew_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function MalginBarleybrew_OnKilledTarget(Unit, Event) 
-end
-
 RegisterUnitEvent(5848, 1, "MalginBarleybrew_OnCombat")
 RegisterUnitEvent(5848, 2, "MalginBarleybrew_OnLeaveCombat")
-RegisterUnitEvent(5848, 3, "MalginBarleybrew_OnKilledTarget")
 RegisterUnitEvent(5848, 4, "MalginBarleybrew_OnDied")

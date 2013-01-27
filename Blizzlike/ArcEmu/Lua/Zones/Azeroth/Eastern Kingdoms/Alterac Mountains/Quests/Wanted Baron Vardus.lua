@@ -26,7 +26,7 @@ function BaronVardus_QuestOnAccept (pUnit, Event)
 			pUnit:SpawnCreature (2306, 1001.20, -793.93, 108.65, 1.17511, 14, 1800000)
 			AllowSpawn = 0
 		else
-			print ("Error: QUEST - Hillsbrad Foothills - Wanted Baron Vardus.lua: function block BaronVardus_QuestOnAccept() - invalid number rolled")
+			print ("Error: Wanted Baron Vardus.lua: function block BaronVardus_QuestOnAccept() - invalid number rolled")
 		end
 	end
 end
@@ -36,5 +36,5 @@ function BaronVardus_OnDead (pUnit, Event)
 end
 
 --RegisterQuestEvent(566, 2,"BaronVardus_OnAcceptQuest")
-RegisterUnitEvent(2306, 6, "BaronVardus_QuestOnAccept") --would be similar to how the quest accept event would look like, except as a unit event. Needs ascent work.
+RegisterUnitEvent(2306, 6, "BaronVardus_QuestOnAccept")
 RegisterUnitEvent(2306, 4, "BaronVardus_OnDead") 

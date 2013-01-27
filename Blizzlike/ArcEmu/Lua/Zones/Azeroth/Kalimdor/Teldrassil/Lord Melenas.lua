@@ -1,11 +1,12 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
-
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function LordMelenas_OnCombat(Unit, Event)
 	Unit:RegisterEvent("LordMelenas_CatForm", 1000, 1)
@@ -18,7 +19,7 @@ function LordMelenas_CatForm(Unit, Event)
 end
 
 function LordMelenas_Rake(Unit, Event) 
-	Unit:FullCastSpellOnTarget(1822, 	Unit:GetMainTank()) 
+	Unit:FullCastSpellOnTarget(1822, Unit:GetMainTank()) 
 end
 
 function LordMelenas_Rejuvenation(Unit, Event) 
@@ -33,10 +34,6 @@ function LordMelenas_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function LordMelenas_OnKilledTarget(Unit, Event) 
-end
-
 RegisterUnitEvent(2038, 1, "LordMelenas_OnCombat")
 RegisterUnitEvent(2038, 2, "LordMelenas_OnLeaveCombat")
-RegisterUnitEvent(2038, 3, "LordMelenas_OnKilledTarget")
 RegisterUnitEvent(2038, 4, "LordMelenas_OnDied")

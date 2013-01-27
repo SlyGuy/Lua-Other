@@ -1,11 +1,12 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
-
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function JanelaStouthammer_OnCombat(Unit, Event)
 	Unit:RegisterEvent("JanelaStouthammer_CrusaderStrike", 8000, 0)
@@ -13,7 +14,7 @@ function JanelaStouthammer_OnCombat(Unit, Event)
 end
 
 function JanelaStouthammer_CrusaderStrike(Unit, Event) 
-	Unit:FullCastSpellOnTarget(14518, 	Unit:GetMainTank()) 
+	Unit:FullCastSpellOnTarget(14518, Unit:GetMainTank()) 
 end
 
 function JanelaStouthammer_HolyLight(Unit, Event) 
@@ -28,10 +29,6 @@ function JanelaStouthammer_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function JanelaStouthammer_OnKilledTarget(Unit, Event) 
-end
-
 RegisterUnitEvent(15443, 1, "JanelaStouthammer_OnCombat")
 RegisterUnitEvent(15443, 2, "JanelaStouthammer_OnLeaveCombat")
-RegisterUnitEvent(15443, 3, "JanelaStouthammer_OnKilledTarget")
 RegisterUnitEvent(15443, 4, "JanelaStouthammer_OnDied")

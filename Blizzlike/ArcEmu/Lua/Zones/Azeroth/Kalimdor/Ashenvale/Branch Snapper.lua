@@ -13,11 +13,11 @@ function BranchSnapper_OnCombat(Unit, Event)
 end
 
 function BranchSnapper_DeadlyPoison(pUnit, Event) 
-	pUnit:FullCastSpellOnTarget(3583, 	pUnit:GetMainTank()) 
+	pUnit:FullCastSpellOnTarget(3583, pUnit:GetMainTank()) 
 end
 
 function BranchSnapper_KnockAway(pUnit, Event) 
-	pUnit:FullCastSpellOnTarget(10101, 	pUnit:GetMainTank()) 
+	pUnit:FullCastSpellOnTarget(10101, pUnit:GetMainTank()) 
 end
 
 function BranchSnapper_OnLeaveCombat(Unit, Event) 

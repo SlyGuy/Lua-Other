@@ -9,7 +9,7 @@ Thank: Ascendscripting; for the Script
 -- WoTD Team, Janurary 19, 2010. ]]
 
 function LordFalconcrest_OnEnterCombat(Unit,Event)
-	Unit:SendChatMessage(12, 0, "I presume you come with good news?")
+	Unit:SendChatMessage(21, 0, "I presume you come with good news?")
 	Unit:CastSpell()
 	Unit:RegisterEvent("Disarm", 23000, 0)
 end

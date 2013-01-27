@@ -1,38 +1,36 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Arikara_OnCombat(Unit, Event)
-	UnitRegisterEvent("Arikara_CurseofVengeance", 10000, 3)
-	UnitRegisterEvent("Arikara_Enrage", 120000, 0)
+	Unit:RegisterEvent("Arikara_CurseofVengeance", 10000, 3)
+	Unit:RegisterEvent("Arikara_Enrage", 120000, 0)
 end
 
 function Arikara_CurseofVengeance(Unit, Event) 
-	UnitFullCastSpellOnTarget(17213, 	UnitGetMainTank()) 
+	Unit:FullCastSpellOnTarget(17213, Unit:GetMainTank()) 
 end
 
 function Arikara_Enrage(Unit, Event)
-if 	UnitGetHealthPct() < 25 then
-	UnitCastSpell(8599) 
-end
+	if(Unit:GetHealthPct() < 25) then
+		Unit:CastSpell(8599) 
+	end
 end
 
 function Arikara_OnLeaveCombat(Unit, Event) 
-	UnitRemoveEvents() 
+	Unit:RemoveEvents() 
 end
 
 function Arikara_OnDied(Unit, Event) 
-	UnitRemoveEvents()
-end
-
-function Arikara_OnKilledTarget(Unit, Event) 
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(10882, 1, "Arikara_OnCombat")
 RegisterUnitEvent(10882, 2, "Arikara_OnLeaveCombat")
-RegisterUnitEvent(10882, 3, "Arikara_OnKilledTarget")
 RegisterUnitEvent(10882, 4, "Arikara_OnDied")

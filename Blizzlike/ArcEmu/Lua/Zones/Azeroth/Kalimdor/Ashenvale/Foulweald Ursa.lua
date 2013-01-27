@@ -12,7 +12,7 @@ function FoulwealdUrsa_OnCombat(Unit, Event)
 end
 
 function FoulwealdUrsa_Hamstring(pUnit, Event) 
-	pUnit:FullCastSpellOnTarget(9080, 	pUnit:GetMainTank()) 
+	pUnit:FullCastSpellOnTarget(9080, pUnit:GetMainTank()) 
 end
 
 function FoulwealdUrsa_OnLeaveCombat(Unit, Event) 

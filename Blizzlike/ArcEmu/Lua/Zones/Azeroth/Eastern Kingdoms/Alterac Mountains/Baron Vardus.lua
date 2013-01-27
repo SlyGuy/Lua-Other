@@ -13,9 +13,8 @@ function Vardus_OnCombat(pUnit, Event)
 end
 
 function frostbolt(pUnit, Event)
-local plr = pUnit:GetClosestPlayer()
-	if(plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(20822, plr)
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:FullCastSpellOnTarget(20822, pUnit:GetClosestPlayer())
 	end
 end
 

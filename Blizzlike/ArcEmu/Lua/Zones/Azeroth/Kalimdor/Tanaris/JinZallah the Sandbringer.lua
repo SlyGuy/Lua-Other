@@ -1,10 +1,12 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function JinZallahtheSandbringer_OnCombat(Unit, Event)
 	Unit:RegisterEvent("JinZallahtheSandbringer_DustCloud", 15000, 0)
@@ -17,7 +19,7 @@ function JinZallahtheSandbringer_DustCloud(Unit, Event)
 end
 
 function JinZallahtheSandbringer_LightningBolt(Unit, Event) 
-	Unit:FullCastSpellOnTarget(20824, 	Unit:GetMainTank()) 
+	Unit:FullCastSpellOnTarget(20824, Unit:GetMainTank()) 
 end
 
 function JinZallahtheSandbringer_SandStorms(Unit, Event) 
@@ -32,10 +34,6 @@ function JinZallahtheSandbringer_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function JinZallahtheSandbringer_OnKilledTarget(Unit, Event) 
-end
-
 RegisterUnitEvent(8200, 1, "JinZallahtheSandbringer_OnCombat")
 RegisterUnitEvent(8200, 2, "JinZallahtheSandbringer_OnLeaveCombat")
-RegisterUnitEvent(8200, 3, "JinZallahtheSandbringer_OnKilledTarget")
 RegisterUnitEvent(8200, 4, "JinZallahtheSandbringer_OnDied")
