@@ -19,7 +19,7 @@ local choice = math.random(1,2)
 end
 
 function Frenzy(Unit,Event)
-	if(Unit:GetHealthPct() <= 290 then
+	if(Unit:GetHealthPct() <= 290) then
 		Unit:CastSpell(3019)
 	end
 end

@@ -30,7 +30,6 @@ Staff of ArcScript Project, Feb 2008
 -- ]]
 
 function HoggerCharge(pUnit, Event)
-	
 	pUnit:SendChatMessage(9, 0, "Hogger charges!");
 	pUnit:CastSpellOnTarget(6268, pUnit:GetClosestPlayer());
 end

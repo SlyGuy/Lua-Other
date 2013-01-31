@@ -24,6 +24,6 @@ function Gibblesnik_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-RegisterUnitEvent(4093, 1, "GalakWrangler_OnCombat")
-RegisterUnitEvent(4093, 2, "GalakWrangler_OnLeaveCombat")
-RegisterUnitEvent(4093, 4, "GalakWrangler_OnDied")
+RegisterUnitEvent(4093, 1, "Gibblesnik_OnCombat")
+RegisterUnitEvent(4093, 2, "Gibblesnik_OnLeaveCombat")
+RegisterUnitEvent(4093, 4, "Gibblesnik_OnDied")

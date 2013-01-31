@@ -1,28 +1,35 @@
+-------------------------------------------------------------------
+-- This script is created by zdroid9770; please do not edit this --
+-- script and claim it as your own, as of All rights are claimed --
+-- by me.                                                        --
+--                     Copyright© zdroid9770					 --
+-------------------------------------------------------------------
+
 function MindBlastOne(effectIndex, Spell)
         local plr = Spell:GetCaster()
         if(plr:HasSpell(15257) == true) then
-                if(Spell:GetSpellState(3) == true) then
-                local choice = math.random(1, 3)
-                        if(choice == 1) then
-                        plr:CastSpell(15258)
+			if(Spell:GetSpellState(3) == true) then
+				local choice = math.random(1, 3)
+        if(choice == 1) then
+            plr:CastSpell(15258)
         else
-        if(plr:HasSpell(15331) == true) then
+			if(plr:HasSpell(15331) == true) then
                 if(Spell:GetSpellState(3) == true) then
-                local choice = math.random(1, 2)
-                        if(choice == 1) then
-                        plr:CastSpell(15258)
-        else
-        if(plr:HasSpell(15332) == true) then
-                if(Spell:GetSpellState(3) == true) then
-                        plr:CastSpell(15258)
-                                                 end
-                                                end
-                                        end
-                                end
-                        end
+					local choice = math.random(1, 2)
+						if(choice == 1) then
+							plr:CastSpell(15258)
+						else
+							if(plr:HasSpell(15332) == true) then
+								if(Spell:GetSpellState(3) == true) then
+									plr:CastSpell(15258)
+								end
+							end
+						end
+					end
                 end
+            end
         end
-end
+	end
 end
  
 function MindBlastTwo(effectIndex, Spell)

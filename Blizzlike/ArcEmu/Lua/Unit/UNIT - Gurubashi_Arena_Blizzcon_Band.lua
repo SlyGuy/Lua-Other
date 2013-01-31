@@ -18,6 +18,7 @@ end
 function BlizzconBand_Despawn(Unit)
 	Unit:RemoveFromWorld()
 end
+
 RegisterUnitEvent(66666, 4, "BlizzconBand_Spawn_On_MobDied")
 
 

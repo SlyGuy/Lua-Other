@@ -31,5 +31,4 @@ end
 
 RegisterUnitEvent(7167, 1, "Polly_OnCombat")
 RegisterUnitEvent(7167, 2, "Polly_OnLeaveCombat")
-RegisterUnitEvent(7167, 3, "Polly_OnKilledTarget")
 RegisterUnitEvent(7167, 4, "Polly_OnDied")

@@ -45,7 +45,6 @@ function Anok_OnCombat(Unit, Event)
 end
 
 function Anok_Poison(Unit, Event)
-Unit:GetMainTank() = Unit:GetMainTank()
 	Unit:FullCastSpellOnTarget(744, Unit:GetMainTank())
 	Unit:RegisterEvent("NGuard_Strike", 5000, 2)
 end

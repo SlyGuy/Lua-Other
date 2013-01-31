@@ -1652,7 +1652,7 @@ end
 
 RegisterUnitEvent(11684, 1, "WarsongShredder_OnCombat")
 RegisterUnitEvent(11684, 2, "WarsongShredder_OnLeaveCombat")
-RegisterUnitEvent(11684, 4, "WarsongShredder_OnDied")'
+RegisterUnitEvent(11684, 4, "WarsongShredder_OnDied")
 
 --Wild Buck
 function WildBuck_OnCombat(Unit, Event)

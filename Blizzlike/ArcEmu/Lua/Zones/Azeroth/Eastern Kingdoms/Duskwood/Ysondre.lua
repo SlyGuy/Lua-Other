@@ -110,10 +110,10 @@ function Ysondre_TailSweep(Unit, Event)
 	Unit:RegisterEvent("Ysondre_TailSweep", math.random(2000,3000), 1)
 end
 
-RegisterUnit Event(14887,1,"Ysondre_OnCombat")
-RegisterUnit Event(14887,2,"Ysondre_OnWipe")
-RegisterUnit Event(14887,3,"Ysondre_OnKill")
-RegisterUnit Event(14887,4,"Ysondre_OnDeath")
+RegisterUnitEvent(14887,1,"Ysondre_OnCombat")
+RegisterUnitEvent(14887,2,"Ysondre_OnWipe")
+RegisterUnitEvent(14887,3,"Ysondre_OnKill")
+RegisterUnitEvent(14887,4,"Ysondre_OnDeath")
 
 --[[
 function Emeriss_Immune(Unit, Event)
@@ -130,8 +130,8 @@ function Emeriss_MTRange(Unit, Event)
 	Unit:RegisterEvent("Emeriss_MTRange", 1000, 1)
 end
 
-RegisterUnit Event(15224, 18, "DreamFog_OnSpawn")
-RegisterUnit Event(15224, 19, "DreamFog_OnReachWp")
+RegisterUnitEvent(15224, 18, "DreamFog_OnSpawn")
+RegisterUnitEvent(15224, 19, "DreamFog_OnReachWp")
 
 function DreamFog_OnSpawn(Unit, Event)
 	Unit:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE)
@@ -197,11 +197,11 @@ function Druid_OnEnterCombat(pUnit, Event)
 	pUnit:RegisterEvent("Druid_Silence", math.random(8000, 12000), 1)
 end
 
-RegisterUnit Event(15260, 1, "Druid_OnEnterCombat")
+RegisterUnitEvent(15260, 1, "Druid_OnEnterCombat")
 
 function Druid_OnWipe(pUnit, Event)
     pUnit:RemoveEvents()
 	pUnit:Despawn(100, 0)
 end
 
-RegisterUnit Event(15260, 2, "Druid_OnWipe")
+RegisterUnitEvent(15260, 2, "Druid_OnWipe")

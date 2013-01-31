@@ -33,7 +33,6 @@ function RottingForestRagerMinion_Summon (pUnit, Event)
 	pUnit:CastSpell (39130)
 end
 
-
 function InfestedRootwalkerMinion_Summon (pUnit, Event)
 	pUnit:CastSpell (39130)
 end

@@ -27,15 +27,19 @@ Staff of ArcScript Project, Feb 2008
 
 #############################################################
 
+
+Talen says: <name>, I am in need of your help once again.
+Talen says: These statuettes must hold a hidden compartment....
+Talen says: They're locked! NO!!
 -- ]]
 
 function Talen_onSpawn (pUnit, Event)
-	pUnit:Emote (13)
+	pUnit:Emote(13)
 end
 
 function Talen_onCombat (pUnit, Event)
-	pUnit:Emote (26)
+	pUnit:Emote(26)
 end
 
-RegisterUnitEvent (3846, 1, "Talen_onCombat")
-RegisterUnitEvent (3846, 6, "Talen_onSpawn")
+RegisterUnitEvent(3846, 1, "Talen_onCombat")
+RegisterUnitEvent(3846, 6, "Talen_onSpawn")

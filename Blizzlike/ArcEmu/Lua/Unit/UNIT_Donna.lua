@@ -11,29 +11,24 @@
 Created:Recon
 -- ]]
 
-
-
 function donna_Died(Unit, event, player)
 	Unit:RemoveEvents()
 end
-
-
 
 function donna(Unit, event, player)
 	Unit:RegisterEvent("donna_Say",45000, 0)
 end
 
-
 function donna_Say(Unit, event, player)
 local chance = math.random(1,3)
 	if(chance == 1) then
-		Unit:SendChatMessage(12, 0, "Hey you, did you see my puppy ?")
+		Unit:SendChatMessage(12, 0, "Hey you, did you see my puppy?")
 	end
 	if(chance == 2) then
-		Unit:SendChatMessage(12, 0, "Guard ? Can you find my puppy for me ?")
+		Unit:SendChatMessage(12, 0, "Guard ? Can you find my puppy for me?")
 	end
 	if(chance == 3) then
-		Unit:SendChatMessage(12, 0, "Hmmm ... Where is my puppey ?")
+		Unit:SendChatMessage(12, 0, "Hmmm ... Where is my puppy?")
 	end
 end
 

@@ -332,7 +332,6 @@ end
 
 RegisterUnitEvent(2984, 1, "SeerWiserunner_OnCombat")
 RegisterUnitEvent(2984, 2, "SeerWiserunner_OnLeaveCombat")
-RegisterUnitEvent(2984, 3, "SeerWiserunner_OnKilledTarget")
 RegisterUnitEvent(2984, 4, "SeerWiserunner_OnDied")
 
 --

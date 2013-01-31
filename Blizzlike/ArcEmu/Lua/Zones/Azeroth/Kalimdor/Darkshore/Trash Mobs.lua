@@ -564,7 +564,7 @@ function GreymistSeer_LightningShield(pUnit, Event)
 	pUnit:FullCastSpell(324)
 end
 
-function GreymistSeer_OnDead(pUnit, Event)
+function GreymistSeer_OnDied(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 

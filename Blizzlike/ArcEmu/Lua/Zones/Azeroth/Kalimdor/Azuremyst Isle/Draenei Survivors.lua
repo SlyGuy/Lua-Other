@@ -41,7 +41,7 @@ local chance = math.random(1, 3)
 end
 
 RegisterUnitEvent(16483, 18, "DRAENEISURVIVOR_OnSpawn")
-RegisterUnitEvent(16483, 4, "DRAENEISURVIVOR_onDied")
+RegisterUnitEvent(16483, 4, "DRAENEISURVIVOR_OnDied")
 
 --Injured Draenei 
 function INJUREDDRAENEI_OnSpawn(pUnit, event)
