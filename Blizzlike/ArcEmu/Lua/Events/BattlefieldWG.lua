@@ -244,12 +244,17 @@ SPELL_ALLIANCE_CONTROL_PHASE_SHIFT = 55774  -- phase 128
  -- achievements
 ACHIEVEMENT_VICTORY = 1717
 ACHIEVEMENT_WIN_OUR_GRASP = 1755
+ACHIEVEMENT_LEANING_T = 1727
 
  -- Quests
 QUEST_WG_VICTORY_A = 13181
 QUEST_WG_VICTORY_H = 13183
 QUEST_WG_TOPPING_TOWERS = 13539
 QUEST_WG_SOUTHEN_SABOTAGE = 13538
+QUEST_WG_SOUTHEN_SABOTAGE_A = 13538
+QUEST_WG_TOPPING_THE_TOWERS_H = 13539
+QUEST_WG_DEFEND_SIEDGE_A = 13222
+QUEST_WG_DEFEND_SIEDGE_H = 13223
 
 -- Opcodes
 SMSG_PLAY_SOUND = 0x2D2
@@ -1482,7 +1487,7 @@ end
 function TitanRelickOnUse(pGO, event, pPlayer)
 if(battle == 1)then
 local timebattle = os.time() - starttimer
-	if(controll == 1 and pPlayer:GetTeam() == 1)then
+	if(controll == 1 and pPlayer:GetTeam() == 1 and pGO:GetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY) == 9)then
 		timer_battle = 0
 		timer_nextbattle = os.time() + TIME_TO_BATTLE
 		SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
@@ -1513,7 +1518,7 @@ local timebattle = os.time() - starttimer
 			end
 		end
 		end
-	if(controll == 2 and pPlayer:GetTeam() == 0)then
+	if(controll == 2 and pPlayer:GetTeam() == 0 and pGO:GetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY) == 6)then
 		timer_battle = 0
 		timer_nextbattle = os.time() + TIME_TO_BATTLE
 		SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
