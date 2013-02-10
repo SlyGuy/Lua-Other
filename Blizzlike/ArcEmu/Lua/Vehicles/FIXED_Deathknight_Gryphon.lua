@@ -1,15 +1,13 @@
 --[[
-
 	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
+	ï¿½ Copyright 2012
+	Edited by Mathix to make it blizzlike ^^
 ]]
 
 
 function GryphonDown_OnGossip(Unit, Event, Player)
 Unit:GossipCreateMenu(100, Player, 0)
-Unit:GossipMenuAddItem(0, "Go Down to Death's Breach", 1, 0)
+Unit:GossipMenuAddItem(0, "Go down to Death's Breach", 1, 0)
 Unit:GossipSendMenu(Player)
 end
 
@@ -22,7 +20,7 @@ end
 
 function GryphonUp_OnGossip(Unit, Event, Player)
 Unit:GossipCreateMenu(100, Player, 0)
-Unit:GossipMenuAddItem(0, "Go Up to Heart of Acherus", 1, 0)
+Unit:GossipMenuAddItem(0, "Go up to Heart of Acherus", 1, 0)
 Unit:GossipSendMenu(Player)
 end
 
