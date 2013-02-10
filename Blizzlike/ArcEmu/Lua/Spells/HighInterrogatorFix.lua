@@ -30,14 +30,16 @@ end
 
 RegisterServerHook(10, "OnCastPsychicScream")
 
---Shadow Shield (I was unable to come up with some logic for this right on the spot so you have to crit 200 for the spell to wear off)
+--Shadow Shield
 function OnCastShadowShield(event, plr, spellid)
 	plr:AddAura(12040, 30000)
+	local damageabsorb = 200
 end
 
 function AbsorbShadowShield(unit, event, attacker, amount)
 	if unit:HasAura(12040) then
-		if amount >= 200 then
+		local damageabsorb = damageabsorb-amount
+		if damageabsorg <= 0 then
 			unit:RemoveAura(12040)
 		end
 	end
