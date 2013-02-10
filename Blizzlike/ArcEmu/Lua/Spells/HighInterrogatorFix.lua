@@ -39,8 +39,11 @@ end
 function AbsorbShadowShield(unit, event, attacker, amount)
 	if unit:HasAura(12040) then
 		local damageabsorb = damageabsorb-amount
-		if damageabsorg <= 0 then
+		if damageabsorb <= 0 then
 			unit:RemoveAura(12040)
+		elseif damageabsorb >=1 then
+			local maxhp = unit:GetMaxHealth
+			unit:SetHealth(maxhp+amount)
 		end
 	end
 end
