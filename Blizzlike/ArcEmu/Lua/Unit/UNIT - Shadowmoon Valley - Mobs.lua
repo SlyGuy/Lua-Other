@@ -1,41 +1,15 @@
- --[[
-   ******************************************************************
-   *	 _____              ___                           _         *
-   *	(  _  )            (  _`\               _        ( )_       *
-   *	| (_) | _ __   ___ | (_(_)   ___  _ __ (_) _ _   | ,_)      *
-   *	|  _  |( '__)/'___)`\__ \  /'___)( '__)| |( '_`\ | |        *
-   *	| | | || |  ( (___ ( )_) |( (___ | |   | || (_) )| |_       *
-   *	(_) (_)(_)  `\____)`\____)`\____)(_)   (_)| ,__/'`\__)      *
-   *	                                          | |               *
-   *	                                          (_)               *
-   *	                                                            *
-   *	               OpenSource Scripting Team                    *
-   *	                <http://www.arcemu.org>                     *
-   *	                                                            *
-   ******************************************************************
-  
-   This software is provided as free and open source by the
-staff of The ArcScript Project, in accordance with 
-the GPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Staff of ArcScript Project, Feb 2008
-~~End of License Agreement
-
-#############################################################
-
--- ]]
-
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: ArcEmu; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function EclipsionSpawn(pUnit, Event)
-	x = pUnit:GetX();
-	y = pUnit:GetY();
-	z = pUnit:GetZ();
-	o = pUnit:GetO();
-	pUnit:SpawnCreature(21627, x, y, z, o, 23000);
+	pUnit:SpawnCreature(21627, pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), pUnit:GetO(), 23000);
 end
 
 function EclipsionDespawn(pUnit, Event)
@@ -46,56 +20,54 @@ RegisterUnitEvent(19806, 1, "EclipsionSpawn");
 RegisterUnitEvent(22018, 1, "EclipsionSpawn");
 RegisterUnitEvent(21627, 2, "EclipsionDespawn");
 
-function DoomWalker_Earthquake(unit)
-	unit:CastSpell(32686)
-	unit:SendChatMessage(12, 0, "Magnitude set. Release.")
-	unit:PlaySoundToSet (11345)
+function DoomWalker_Earthquake(Unit)
+	Unit:CastSpell(32686)
+	Unit:SendChatMessage(12, 0, "Magnitude set. Release.")
+	Unit:PlaySoundToSet(11345)
 end
 
-function DoomWalker_overrun(unit)
-	unit:CastSpell(32637)
-	unit:SendChatMessage(12, 0, "Trajectory Locked.")
-	unit:PlaySoundToSet (11347)
+function DoomWalker_overrun(Unit)
+	Unit:CastSpell(32637)
+	Unit:SendChatMessage(12, 0, "Trajectory Locked.")
+	Unit:PlaySoundToSet(11347)
 end
 
-function DoomWalker_ChainLightning(unit)
-local plr = unit:GetClosestPlayer()
-	if (plr ~= nil) then
-		unit:CastSpellOnTarget(33665, plr) 
-		unit:PlaySoundToSet (11346)
+function DoomWalker_ChainLightning(Unit)
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:CastSpellOnTarget(33665, Unit:GetClosestPlayer()) 
+		Unit:PlaySoundToSet(11346)
 	end
 end
 
-function DoomWalker_SunderArmor(unit)
-local plr = unit:GetClosestPlayer()
-	if (plr ~= nil) then
-		unit:FullCastSpellOnTarget(30901, plr) 
+function DoomWalker_SunderArmor(Unit)
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:FullCastSpellOnTarget(30901, Unit:GetClosestPlayer()) 
 	end
 end
 
-function DoomWalker_OnEnterCombat(unit)
-	unit:SendChatMessage(12, 0, "Do not proceed. You will be eliminated.")
-	unit:PlaySoundToSet (11344)
-	unit:RegisterEvent("DoomWalker_ChainLightning",23000, 0)
-	unit:RegisterEvent("DoomWalker_SunderArmor",10000, 0)
-	unit:RegisterEvent("DoomWalker_Earthquake",50000, 0)
-	unit:RegisterEvent("DoomWalker_overrun",120000, 0) 
+function DoomWalker_OnEnterCombat(Unit)
+	Unit:SendChatMessage(12, 0, "Do not proceed. You will be eliminated.")
+	Unit:PlaySoundToSet(11344)
+	Unit:RegisterEvent("DoomWalker_ChainLightning",23000, 0)
+	Unit:RegisterEvent("DoomWalker_SunderArmor",10000, 0)
+	Unit:RegisterEvent("DoomWalker_Earthquake",50000, 0)
+	Unit:RegisterEvent("DoomWalker_overrun",120000, 0) 
 end
 
-function DoomWalker_OnLeaveCombat(unit)
-	unit:RemoveEvents()
+function DoomWalker_OnLeaveCombat(Unit)
+	Unit:RemoveEvents()
 end
 
-function DoomWalker_KilledTarget(unit)
-	unit:SendChatMessage(12, 0, "Target Exterminated.")
-	unit:PlaySoundToSet (11351)
-	unit:RemoveEvents()
+function DoomWalker_KilledTarget(Unit)
+	Unit:SendChatMessage(12, 0, "Target Exterminated.")
+	Unit:PlaySoundToSet(11351)
+	Unit:RemoveEvents()
 end
 
-function DoomWalker_OnDied(unit)
-	unit:SendChatMessage(12, 0, "System failure in five....four....")
-	unit:PlaySoundToSet (11352)
-	unit:RemoveEvents()
+function DoomWalker_OnDied(Unit)
+	Unit:SendChatMessage(12, 0, "System failure in five....four....")
+	Unit:PlaySoundToSet(11352)
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(17711, 1, "DoomWalker_OnEnterCombat")

@@ -1,22 +1,19 @@
---[[
-***************************
-*      .-.                *
-*      `-.. ..-. + +      *
-*      `-''-'' '          *
-*  OpenSource Scripting   *
-*          Team           *
-* http://sunplusplus.info *
-*                         *
-***************************
-Created:Recon
--- ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Recon; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function gil_Died(Unit, event, player)
 	Unit:RemoveEvents()
 end
 
 function gil(Unit, event, player)
-	Unit:RegisterEvent("gil_Say",18000, 0)
+	Unit:RegisterEvent("gil_Say", 18000, 0)
 end
 
 function gil_Say(Unit, event, player)

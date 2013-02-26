@@ -4,13 +4,18 @@ team of The WoTD Team. This script was written and is
 protected by the GPL v2. Please give credit where credit
 is due, if modifying, redistributing and/or using this 
 software. Thank you.
-Thank: ArcEmu; for the Script
+Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
-function HoggerCharge(pUnit, Event)
-	pUnit:SendChatMessage(9, 0, "Hogger charges!");
-	pUnit:CastSpellOnTarget(6268, pUnit:GetClosestPlayer());
+local GoId = 180796
+
+function WinterWondervoltOnSpawn(event, player)
+	if(player:InFront() == true) then
+		if((player:GetDistance() <= 2) == true) then
+			player:CastSpell(26272)
+		end
+	end
 end
 
-RegisterUnitEvent(448, 1, "HoggerCharge");
+RegisterGameObjectEvent(GoId, 2, "WinterWondervoltOnSpawn")

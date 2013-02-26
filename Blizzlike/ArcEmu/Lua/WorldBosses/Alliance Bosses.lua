@@ -1,47 +1,26 @@
- --[[
-   ******************************************************************
-   *	 _____              ___                           _         *
-   *	(  _  )            (  _`\               _        ( )_       *
-   *	| (_) | _ __   ___ | (_(_)   ___  _ __ (_) _ _   | ,_)      *
-   *	|  _  |( '__)/'___)`\__ \  /'___)( '__)| |( '_`\ | |        *
-   *	| | | || |  ( (___ ( )_) |( (___ | |   | || (_) )| |_       *
-   *	(_) (_)(_)  `\____)`\____)`\____)(_)   (_)| ,__/'`\__)      *
-   *	                                          | |               *
-   *	                                          (_)               *
-   *	                                                            *
-   *	               OpenSource Scripting Team                    *
-   *	                <http://www.arcemu.org>                     *
-   *	                                                            *
-   ******************************************************************
-  
-   This software is provided as free and open source by the
-staff of The ArcScript Project, in accordance with 
-the GPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Staff of ArcScript Project, Feb 2008
-~~End of License Agreement
-
-#############################################################
-Made by: Recon
--- ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Recon; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 --Highlord Bolvar Fordragon--
 
 function highlordbolvarf_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("cleavee",7000, 0)
-	pUnit:RegisterEvent("justice",12000, 0)
-	pUnit:RegisterEvent("shield",17500, 0)
+	pUnit:RegisterEvent("cleavee", 7000, 0)
+	pUnit:RegisterEvent("justice", 12000, 0)
+	pUnit:RegisterEvent("shield", 17500, 0)
 end
 
 function cleavee(pUnit, Event)
-	pUnit:CastSpellOnTarget(20684,pUnit:GetClosestPlayer(0))
+	pUnit:CastSpellOnTarget(20684, pUnit:GetClosestPlayer(0))
 end
 
 function justice(pUnit, Event)
-	pUnit:CastSpellOnTarget(20683,pUnit:GetClosestPlayer(4))
+	pUnit:CastSpellOnTarget(20683, pUnit:GetClosestPlayer(4))
 end
 
 function shield(pUnit, Event)
@@ -54,7 +33,7 @@ end
 
 
 function highlordbolvarf_OnDied(pUnit, event, player)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(1748, 1, "highlordbolvarf_OnCombat")
@@ -63,19 +42,15 @@ RegisterUnitEvent(1748, 4, "highlordbolvarf_OnDied")
 
 --Archbishop Benedictus--
 function arcbishbened_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("buff",1, 1)
-	pUnit:RegisterEvent("bubi",10500, 0)
-	pUnit:RegisterEvent("smite",1500, 0)
-	pUnit:RegisterEvent("holynova",14500, 0)
-	pUnit:RegisterEvent("asummon",20500, 0)
-end
-
-function greetings(pUnit, Event)
-
+	pUnit:RegisterEvent("buff", 1, 1)
+	pUnit:RegisterEvent("bubi", 10500, 0)
+	pUnit:RegisterEvent("smite", 1500, 0)
+	pUnit:RegisterEvent("holynova", 14500, 0)
+	pUnit:RegisterEvent("asummon", 20500, 0)
 end
 
 function buff(pUnit, Event)
-	pUnit:SendChatMessage(12, 0,"Sacrilege! Defend the cathedral!")	
+	pUnit:SendChatMessage(12, 0, "Sacrilege! Defend the cathedral!")	
 	pUnit:PlaySoundToSet(58863)
 	pUnit:FullCastSpell(2791)
 end
@@ -85,7 +60,7 @@ function bubi(pUnit, Event)
 end
 
 function smite(pUnit, Event)
-	pUnit:CastSpellOnTarget(25364,pUnit:GetClosestPlayer(0))
+	pUnit:CastSpellOnTarget(25364, pUnit:GetClosestPlayer(0))
 end
 
 function holynova(pUnit, Event)
@@ -97,15 +72,13 @@ function asummon(pUnit, Event)
 	local y = pUnit:GetY()
 	local z = pUnit:GetZ()
 	local o = pUnit:GetO()
-	pUnit:SpawnCreature(68, x, y, z, o, 84, 60000) -- Summon allyance guard   after 60 sec  autom. despawn	
+	pUnit:SpawnCreature(68, x, y, z, o, 84, 60000)
 	pUnit:SpawnCreature(68, x, y, z, o, 84, 60000)
 end
-
 
 function arcbishbened_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()	
 end
-
 
 function arcbishbened_OnDied(pUnit, event, player)
 pUnit:RemoveEvents()
@@ -118,19 +91,19 @@ RegisterUnitEvent(1284, 4, "arcbishbened_OnDied")
 --Gelbin Mekkatorque--
 --little bugy--
 function gelbin_OnCombat(pUnit, Event)
-	pUnit:RegisterEvent("hali",1, 1)
-	pUnit:RegisterEvent("ShrinkRay",7500, 0)
-	pUnit:RegisterEvent("bomb",11500, 0)
-	pUnit:RegisterEvent("dargongun",15500, 0)
+	pUnit:RegisterEvent("hali", 1, 1)
+	pUnit:RegisterEvent("ShrinkRay", 7500, 0)
+	pUnit:RegisterEvent("bomb", 11500, 0)
+	pUnit:RegisterEvent("dargongun", 15500, 0)
 end
 
 function hali(pUnit, Event)
 	pUnit:PlaySoundToSet(5897)
-	pUnit:SendChatMessage(12, 0,"I won't stand for that!!")
+	pUnit:SendChatMessage(12, 0, "I won't stand for that!!")
 end
 
 function ShrinkRay(pUnit, Event)
-	pUnit:CastSpellOnTarget(22742,pUnit:GetClosestPlayer(0))
+	pUnit:CastSpellOnTarget(22742, pUnit:GetClosestPlayer(0))
 end
 
 function bomb(pUnit, Event)
@@ -138,13 +111,12 @@ function bomb(pUnit, Event)
 end
 
 function dargongun(pUnit, Event)
-	pUnit:CastSpellOnTarget(22739,pUnit:GetClosestPlayer(0))
-
+	pUnit:CastSpellOnTarget(22739, pUnit:GetClosestPlayer(0))
 end
 
 function gelbin_OnKilledTarget (pUnit, Event)
 	pUnit:PlaySoundToSet(7255)
-	pUnit:SendChatMessage(12, 0,"Pick on someone your own size!")
+	pUnit:SendChatMessage(12, 0, "Pick on someone your own size!")
 end
 
 function gelbin_OnLeaveCombat(pUnit, Event)
@@ -152,7 +124,7 @@ function gelbin_OnLeaveCombat(pUnit, Event)
 end
 
 function gelbin_OnDied(pUnit, event, player)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(7937, 1, "gelbin_OnCombat")
@@ -164,12 +136,12 @@ RegisterUnitEvent(7937, 4, "gelbin_OnDied")
 
 function magni_OnCombat(pUnit, Event)
 	pUnit:PlaySoundToSet(5896)
-	pUnit:RegisterEvent("avatar",15000, 0)
-	pUnit:RegisterEvent("knock",7500, 0)
-	pUnit:RegisterEvent("thunderclapp",20000, 0)
-	pUnit:RegisterEvent("summoniron",25000, 0)
-	if pUnit:GetHealthPct() < 10 then
-	pUnit:SetHealth(17000)
+	pUnit:RegisterEvent("avatar", 15000, 0)
+	pUnit:RegisterEvent("knock", 7500, 0)
+	pUnit:RegisterEvent("thunderclapp", 20000, 0)
+	pUnit:RegisterEvent("summoniron", 25000, 0)
+	if(pUnit:GetHealthPct() < 10) then
+		pUnit:SetHealth(17000)
 	end
 end
 
@@ -178,7 +150,7 @@ function thunderclapp(pUnit, Event)
 end
 
 function knock(pUnit, Event)
-	pUnit:CastSpellOnTarget(20686,pUnit:GetClosestPlayer(0))
+	pUnit:CastSpellOnTarget(20686, pUnit:GetClosestPlayer(0))
 end
 
 function summoniron(pUnit, Event)
@@ -186,7 +158,7 @@ function summoniron(pUnit, Event)
 	local y = pUnit:GetY()
 	local z = pUnit:GetZ()
 	local o = pUnit:GetO()
-	pUnit:SpawnCreature(5595, x, y, z, o, 84, 60000) -- Summon ironforge   after 60 sec  autom. despawn	
+	pUnit:SpawnCreature(5595, x, y, z, o, 84, 60000)
 	pUnit:SpawnCreature(5595, x, y, z, o, 84, 60000)
 end
 
@@ -199,22 +171,21 @@ function magni_OnLeaveCombat(pUnit, Event)
 end
 
 function magni_OnDied(pUnit, event, player)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(2784, 1, "magni_OnCombat")
 RegisterUnitEvent(2784, 2, "magni_OnLeaveCombat")
 RegisterUnitEvent(2784, 4, "magni_OnDied")
 
---Tyrande Whisperwind --
-
+--Tyrande Whisperwind
 function tyrande_OnCombat(pUnit, Event)
 	pUnit:PlaySoundToSet(5885)
-	pUnit:RegisterEvent("starfall",3000, 0)
+	pUnit:RegisterEvent("starfall", 3000, 0)
 end
 
 function starfall(pUnit, Event)
-	pUnit:CastSpellOnTarget(20687,pUnit:GetrandomPlayer(0))
+	pUnit:CastSpellOnTarget(20687, pUnit:GetrandomPlayer(0))
 end
 
 
@@ -222,25 +193,23 @@ function tyrande_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()	
 end
 
-
 function tyrande_OnDied(pUnit, event, player)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(7999, 1, "tyrande_OnCombat")
 RegisterUnitEvent(7999, 2, "tyrande_OnLeaveCombat")
 RegisterUnitEvent(7999, 4, "tyrande_OnDied")
 
---Prophet Velen--
-
+--Prophet Velen
 function velen_OnCombat(pUnit, Event)
 	pUnit:PlaySoundToSet(10154)
-	pUnit:RegisterEvent("prsmite",4000, 0)
-	pUnit:RegisterEvent("summonguard",35000, 0)
+	pUnit:RegisterEvent("prsmite", 4000, 0)
+	pUnit:RegisterEvent("summonguard", 35000, 0)
 end
 
 function prsmite(pUnit, Event)
-	pUnit:CastSpellOnTarget(36176,pUnit:GetrandomPlayer(0))
+	pUnit:CastSpellOnTarget(36176, pUnit:GetrandomPlayer(0))
 end
 
 function summonguard(pUnit, Event)
@@ -248,7 +217,7 @@ function summonguard(pUnit, Event)
 	local y = pUnit:GetY()
 	local z = pUnit:GetZ()
 	local o = pUnit:GetO()
-	pUnit:SpawnCreature(20674, x, y, z, o, 84, 60000) -- Summon guard   after 60 sec  autom. despawn	
+	pUnit:SpawnCreature(20674, x, y, z, o, 84, 60000)	
 	pUnit:SpawnCreature(20674, x, y, z, o, 84, 60000)
 	pUnit:SpawnCreature(20674, x, y, z, o, 84, 60000)
 end

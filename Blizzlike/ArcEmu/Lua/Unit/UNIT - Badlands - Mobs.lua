@@ -1,36 +1,13 @@
- --[[
-   ******************************************************************
-   *	 _____              ___                           _         *
-   *	(  _  )            (  _`\               _        ( )_       *
-   *	| (_) | _ __   ___ | (_(_)   ___  _ __ (_) _ _   | ,_)      *
-   *	|  _  |( '__)/'___)`\__ \  /'___)( '__)| |( '_`\ | |        *
-   *	| | | || |  ( (___ ( )_) |( (___ | |   | || (_) )| |_       *
-   *	(_) (_)(_)  `\____)`\____)`\____)(_)   (_)| ,__/'`\__)      *
-   *	                                          | |               *
-   *	                                          (_)               *
-   *	                                                            *
-   *	               OpenSource Scripting Team                    *
-   *	                <http://www.arcemu.org>                     *
-   *	                                                            *
-   ******************************************************************
-  
-   This software is provided as free and open source by the
-staff of The ArcScript Project, in accordance with 
-the GPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: ArcEmu; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-Staff of ArcScript Project, Feb 2008
-~~End of License Agreement
-
-#############################################################
-
--- ]]
-
--- http://www.wowhead.com/?zone=3
--- Total Units Complete = 9/90
 function AmbassadorInfernus_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AmbassadorInfernus_FireNova", 16000, 0)
 	pUnit:RegisterEvent("AmbassadorInfernus_FireShieldIV", 24000, 0)
@@ -46,10 +23,9 @@ function AmbassadorInfernus_FireShieldIV(pUnit,Event)
 end
 
 function AmbassadorInfernus_SearingFlames(pUnit,Event)
-	local searingCheck = pUnit:GetClosestPlayer()
-	if (searingCheck ~= nil) then
+	if(pUnit:GetClosestPlayer() ~= nil) then
 	else
-		pUnit:FullCastSpellOnTarget(9552,pUnit:GetClosestPlayer())
+		pUnit:FullCastSpellOnTarget(9552, pUnit:GetClosestPlayer())
 	end
 end
 
@@ -70,7 +46,7 @@ function Blacklash_OnEnterCombat(pUnit,Event)
 end
 
 function Blacklash_FlameBreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9573,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9573, pUnit:GetClosestPlayer())
 end
 
 function Blacklash_OnLeaveCombat(pUnit,Event)
@@ -90,7 +66,7 @@ function Buzzard_OnEnterCombat(pUnit,Event)
 end
 
 function Buzzard_InfectedWound(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(3427,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(3427, pUnit:GetClosestPlayer())
 end
 
 function Buzzard_OnLeaveCombat(pUnit,Event)

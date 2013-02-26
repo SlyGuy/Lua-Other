@@ -7,28 +7,28 @@ Please give credit where credit is due, if modifying,
 redistributing and/or using this software. Thank you.
 
 ~~End of License Agreement
--- AscendScripting Staff, February 27, 2009. ]]
+--AscendScripting Staff, February 27, 2009. ]]
 
 --// Crimson Hammersmith
-function Crimson_speak (unit, event)
+function Crimson_speak (Unit, Event)
 	unit:SendChatMessage(5, 0, "Who Dares Disturb Me?")
 end
 RegisterUnitEvent (11120, 1, "Crimson_speak")
 
 --// Lazy Peon
-function Lazypeon_sleep (unit, event)
+function Lazypeon_sleep (Unit, Event)
 	unit:CastSpell(18975)
 	unit:RegisterEvent("Lazypeon_sleep", math.random(180000,185000), 1)
 end
 RegisterUnitEvent (10556, 1, "Lazypeon_sleep")
 
 --// SavannahProwler ... 180000 = 3 minutes
-function Prowler_sleep (unit, event)
+function Prowler_sleep (Unit, Event)
 	unit:Emote(12)
 	unit:RegisterEvent("Prowler_sleep", math.random(180000,185000), 1)
 end
 
-function Prowler_onCombat(unit, event)
+function Prowler_onCombat(Unit, Event)
 	unit:RemoveEvents()
 end
 

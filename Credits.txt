@@ -1,27 +1,30 @@
 These people get a thanks from me (zdroid9770) who made some of the stuff in this repository.
 
-WoTD Team: (http://zarkmania.allalla.com/)
-| (Founder/Owner) zdroid9770 (Zarkmania.allalla.com / Zark / zdroid) | Zuel
-| (Administrator/Head Developer) Ronvenal (Bobmaster) 
-| (Head Moderator/Developer) SlyGuy 
-| (Emulators) TrinityCore | ArcEmu | Skyfire | ArcPro
+WoTD Team: (http://zarkmania.allalla.com/), (http://zarkmania.allalla.com/forum)
+| (Founder/Owner) zdroid9770 (Zarkmania.allalla.com / Zark / zdroid)
+| (Administrator/Head Developer) Ronvenal (Bobmaster)
+| (Emulators) TrinityCore | ArcEmu | ArcPro
 | (Database/Events) dev.landofelves.net | https://github.com/DarkAngel39/Events
+| (MVPs) Mathix
 
 Retired WoTD Team:
-| IOwnAPC | xenion64 | ifamous | EternallyMe | Yuki / Mayumi
+| IOwnAPC | xenion64 | ifamous | EternallyMe | Yuki / Mayumi | SlyGuy
 
-Other People/Projects:
-| QQRofl | xXDeathXx | stoneharry | Zoila (Method) | Mangos | Rochet2 | Eatos
-| Jeutie | Skyfire | HHScripts | LunarSCR | StrawberryCore | Myerz | Skreem
+Other #1 (People):
+| QQRofl | xXDeathXx | stoneharry | Zoila (Method) | Rochet2 | Eatos
+| Jeutie | Myerz | Skreem | Ramor | Succy | Syke | Dimie (Dimarxx)
 | slade1000 | eMaTriKs | Coreyduffel | Rasmuz | M@R!O | kadava | fast_elf
 | bonedeath6 | LordJedi | FrostTeam | Kenuvis | darkalex | Knaur | Neuz 
 | WIXXZI | Agger | CodeMonkey | Xzomblie | comstation11 (wraithx2)
-| CNA-WoW | yiera | Olabvii | Shady | Ascent | Utsjitimmie | Underseas
-| projectsilvermoon.net | RakkorZ | ZxOxZ | 2D | Norwegian Elite Team
-| HellSpawn | LUA++ | Grandelf | Double H Release | Marijnz | AC-Web.org
+| yiera | Olabvii | Shady | Ascent | Utsjitimmie | Underseas | Justin
+| RakkorZ | ZxOxZ | 2D | HellSpawn | Grandelf | Double H | Marijnz
 | Alvanaar | BrantX | Shorts | Reflexiz | Laurea| WoW-V | Kibblebit
-| rdn | DragonDev | RaxiCax | Gastricpenguin | Project eXa | Hungary
-| lasp-forumotion.com | Yerney | Azolex | Tally/`Angel | nymphx
-| Paroxysm | Morfeo | Celtus | Faddix | Rakkorz | Sysmis | Icefreze
-| Syke | Dimie (Dimarxx) | InfinityWoW | treetree | Katos | Ramor
-| Justin | BlackHer0 | 
+| rdn | DragonDev | RaxiCax | Gastricpenguin | Hungary | AC-Web.org
+| Yerney | Azolex | Tally/`Angel | nymphx | Rakkorz | Sysmis | Icefreze
+| Paroxysm | Morfeo | Celtus | Faddix | BlackHer0 | MikeBeck | Blua
+| treetree | Katos | Janni | Recon | Nandi | Foereaper | Runemaster
+
+Other #2 (Projects):
+| LunarSCR | HHScripts | Skyfire | StrawberryCore | Mangos | LUA++
+| Norwegian Elite Team | Holystone Productions | projectsilvermoon.net
+| CNA-WoW | lasp-forumotion.com | Project eXa | InfinityWoW | 
