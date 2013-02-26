@@ -1,9 +1,12 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright© zdroid9770					 --
--------------------------------------------------------------------
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Noxxion_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(16050, pUnit:GetRandomPlayer(0))
@@ -12,7 +15,7 @@ function Noxxion_OnCombat(pUnit, Event)
 end
 
 function Noxxionphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase3", 1000, 0)
 		pUnit:RegisterEvent("NoxxionSludgeNova", 5000, 0)
@@ -20,7 +23,7 @@ function Noxxionphase1(pUnit, Event)
 end
 
 function Noxxionphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase4", 1000, 0)
 		x = pUnit:GetX()
@@ -33,7 +36,7 @@ function Noxxionphase3(pUnit, Event)
 end
 
 function Noxxionphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase5", 1000, 0)
 		x = pUnit:GetX()
@@ -46,7 +49,7 @@ function Noxxionphase4(pUnit, Event)
 end
 
 function Noxxionphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(30035)
 		pUnit:RegisterEvent("Noxxionphase6", 1000, 0)
@@ -60,7 +63,7 @@ function Noxxionphase5(pUnit, Event)
 end
 
 function Noxxionphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("NoxxionSludgeNova", 5000, 0)
 		pUnit:CastSpell(41953)

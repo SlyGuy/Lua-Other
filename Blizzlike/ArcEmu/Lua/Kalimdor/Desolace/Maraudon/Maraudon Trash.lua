@@ -1,9 +1,12 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright© zdroid9770					 --
--------------------------------------------------------------------
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Deep_Borer_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(44030, pUnit:GetRandomPlayer(0))
@@ -12,7 +15,7 @@ function Deep_Borer_OnCombat(pUnit, Event)
 end
 
 function Deep_Borerphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26992)
 		pUnit:RegisterEvent("Deep_Borerphase2", 1000, 0)
@@ -21,7 +24,7 @@ function Deep_Borerphase1(pUnit, Event)
 end
 
 function Deep_Borerphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 24) then
+	if(pUnit:GetHealthPct() < 24) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(19364)
 	end
@@ -49,7 +52,7 @@ function Deeprot_Stomper_OnCombat(pUnit, Event)
 end
 
 function Deeprot_Stomperphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Stomperphase2", 1000, 0)
@@ -58,7 +61,7 @@ function Deeprot_Stomperphase1(pUnit, Event)
 end
 
 function Deeprot_Stomperphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Stomperphase3", 1000, 0)
@@ -66,7 +69,7 @@ function Deeprot_Stomperphase2(pUnit, Event)
 end
 
 function Deeprot_Stomperphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Stomperphase4", 1000, 0)
@@ -75,7 +78,7 @@ function Deeprot_Stomperphase3(pUnit, Event)
 end
 
 function Deeprot_Stomperphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Stomperphase5", 1000, 0)
@@ -84,7 +87,7 @@ function Deeprot_Stomperphase4(pUnit, Event)
 end
 
 function Deeprot_Stomperphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(27993)
 		pUnit:RegisterEvent("Deeprot_Stomperphase6", 1000, 0)
@@ -93,7 +96,7 @@ function Deeprot_Stomperphase5(pUnit, Event)
 end
 
 function Deeprot_Stomperphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 12) then
+	if(pUnit:GetHealthPct() < 12) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(27993)
 		pUnit:RegisterEvent("Deeprot_StomperStun", 15000, 0)
@@ -130,7 +133,7 @@ function Deeprot_Tangler_OnCombat(pUnit, Event)
 end
 
 function Deeprot_Tanglerphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Tanglerphase2", 1000, 0)
@@ -139,7 +142,7 @@ function Deeprot_Tanglerphase1(pUnit, Event)
 end
 
 function Deeprot_Tanglerphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Tanglerphase3", 1000, 0)
@@ -147,7 +150,7 @@ function Deeprot_Tanglerphase2(pUnit, Event)
 end
 
 function Deeprot_Tanglerphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Tanglerphase4", 1000, 0)
@@ -156,7 +159,7 @@ function Deeprot_Tanglerphase3(pUnit, Event)
 end
 
 function Deeprot_Tanglerphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(41953)
 		pUnit:RegisterEvent("Deeprot_Tanglerphase5", 1000, 0)
@@ -165,7 +168,7 @@ function Deeprot_Tanglerphase4(pUnit, Event)
 end
 
 function Deeprot_Tanglerphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(40363)
 		pUnit:RegisterEvent("Deeprot_Tanglerphase6", 1000, 0)
@@ -174,7 +177,7 @@ function Deeprot_Tanglerphase5(pUnit, Event)
 end
 
 function Deeprot_Tanglerphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 12) then
+	if(pUnit:GetHealthPct() < 12) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(40363)
 		pUnit:RegisterEvent("Deeprot_TanglerStun", 15000, 0)
@@ -211,7 +214,7 @@ function Diemetradon_OnCombat(pUnit, Event)
 end
 
 function Diemetradonphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(45772)
 		pUnit:RegisterEvent("Diemetradonphase2", 1000, 0)
@@ -220,7 +223,7 @@ function Diemetradonphase1(pUnit, Event)
 end
 
 function Diemetradonphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Diemetradonphase3", 1000, 0)
 		pUnit:RegisterEvent("DiemetradonMend", 10000, 0)
@@ -228,7 +231,7 @@ function Diemetradonphase2(pUnit, Event)
 end
 
 function Diemetradonphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Diemetradonphase4", 1000, 0)
 		pUnit:RegisterEvent("DiemetradonMark", 25000, 0)
@@ -237,7 +240,7 @@ function Diemetradonphase3(pUnit, Event)
 end
 
 function Diemetradonphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Diemetradonphase5", 1000, 0)
 		pUnit:RegisterEvent("DiemetradonMark", 25000, 0)
@@ -246,7 +249,7 @@ function Diemetradonphase4(pUnit, Event)
 end
 
 function Diemetradonphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(12734)
 		pUnit:RegisterEvent("Diemetradonphase6", 1000, 0)
@@ -256,7 +259,7 @@ function Diemetradonphase5(pUnit, Event)
 end
 
 function Diemetradonphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 17) then
+	if(pUnit:GetHealthPct() < 17) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(12734)
 		pUnit:RegisterEvent("DiemetradonMend", 6000, 0)
@@ -320,7 +323,7 @@ function Pre_Behemoth_OnCombat(pUnit, Event)
 end
 
 function Pre_Behemothphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26167)
 		pUnit:RegisterEvent("Pre_Behemothphase2", 1000, 0)
@@ -331,7 +334,7 @@ function Pre_Behemothphase1(pUnit, Event)
 end
 
 function Pre_Behemothphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(34716)
 		pUnit:RegisterEvent("Pre_Behemothphase3", 1000, 0)
@@ -341,7 +344,7 @@ function Pre_Behemothphase2(pUnit, Event)
 end
 
 function Pre_Behemothphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(34716)
 		pUnit:RegisterEvent("Pre_Behemothphase4", 1000, 0)
@@ -352,7 +355,7 @@ function Pre_Behemothphase3(pUnit, Event)
 end
 
 function Pre_Behemothphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(34716)
 		pUnit:RegisterEvent("Pre_Behemothphase5", 1000, 0)
@@ -363,7 +366,7 @@ function Pre_Behemothphase4(pUnit, Event)
 end
 
 function Pre_Behemothphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(12734)
 		pUnit:CastSpell(34716)
@@ -375,7 +378,7 @@ function Pre_Behemothphase5(pUnit, Event)
 end
 
 function Pre_Behemothphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 17) then
+	if(pUnit:GetHealthPct() < 17) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(12734)
 		pUnit:CastSpell(34716)
@@ -412,7 +415,7 @@ function Barbed_Lasher_OnCombat(pUnit, Event)
 end
 
 function Barbed_Lasherphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(29963)
 		pUnit:RegisterEvent("Barbed_Lasherphase2", 1000, 0)
@@ -421,7 +424,7 @@ function Barbed_Lasherphase1(pUnit, Event)
 end
 
 function Barbed_Lasherphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Barbed_Lasherphase3", 1000, 0)
 		pUnit:RegisterEvent("Barbed_LasherCyclone", 30000, 0)
@@ -429,7 +432,7 @@ function Barbed_Lasherphase2(pUnit, Event)
 end
 
 function Barbed_Lasherphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Barbed_Lasherphase4", 1000, 0)
 		pUnit:RegisterEvent("Barbed_LasherFaerieFire", 25000, 0)
@@ -437,7 +440,7 @@ function Barbed_Lasherphase3(pUnit, Event)
 end
 
 function Barbed_Lasherphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Barbed_Lasherphase5", 1000, 0)
 		pUnit:RegisterEvent("Barbed_LasherCyclone", 30000, 0)
@@ -445,7 +448,7 @@ function Barbed_Lasherphase4(pUnit, Event)
 end
 
 function Barbed_Lasherphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(29963)
 		pUnit:RegisterEvent("Barbed_Lasherphase6", 1000, 0)
@@ -454,7 +457,7 @@ function Barbed_Lasherphase5(pUnit, Event)
 end
 
 function Barbed_Lasherphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(27993)
 		pUnit:RegisterEvent("Barbed_LasherSwarm", 15000, 0)
@@ -491,7 +494,7 @@ function Constrictor_Vine_OnCombat(pUnit, Event)
 end
 
 function Constrictor_Vinephase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26992)
 		pUnit:RegisterEvent("Constrictor_Vinephase2", 1000, 0)
@@ -500,7 +503,7 @@ function Constrictor_Vinephase1(pUnit, Event)
 end
 
 function Constrictor_Vinephase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Constrictor_Vinephase3", 1000, 0)
 		pUnit:RegisterEvent("Constrictor_VineCyclone", 30000, 0)
@@ -508,7 +511,7 @@ function Constrictor_Vinephase2(pUnit, Event)
 end
 
 function Constrictor_Vinephase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Constrictor_Vinephase4", 1000, 0)
 		pUnit:RegisterEvent("Constrictor_VineFaerieFire", 25000, 0)
@@ -516,7 +519,7 @@ function Constrictor_Vinephase3(pUnit, Event)
 end
 
 function Constrictor_Vinephase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Constrictor_Vinephase5", 1000, 0)
 		pUnit:RegisterEvent("Constrictor_VineCyclone", 30000, 0)
@@ -524,7 +527,7 @@ function Constrictor_Vinephase4(pUnit, Event)
 end
 
 function Constrictor_Vinephase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(27993)
 		pUnit:RegisterEvent("Constrictor_Vinephase6", 1000, 0)
@@ -533,7 +536,7 @@ function Constrictor_Vinephase5(pUnit, Event)
 end
 
 function Constrictor_Vinephase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(27993)
 		pUnit:RegisterEvent("Constrictor_VineSwarm", 15000, 0)
@@ -570,7 +573,7 @@ function Creeping_Sludge_OnCombat(pUnit, Event)
 end
 
 function Creeping_Sludgephase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Creeping_Sludgephase3", 1000, 0)
 		pUnit:RegisterEvent("Creeping_SludgeAcidBite", 5000, 0)
@@ -578,7 +581,7 @@ function Creeping_Sludgephase2(pUnit, Event)
 end
 
 function Creeping_Sludgephase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(40102)
 		pUnit:RegisterEvent("Creeping_Sludgephase4", 1000, 0)
@@ -587,7 +590,7 @@ function Creeping_Sludgephase3(pUnit, Event)
 end
 
 function Creeping_Sludgephase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(28989)
 		pUnit:CastSpell(30109)
@@ -597,7 +600,7 @@ function Creeping_Sludgephase4(pUnit, Event)
 end
 
 function Creeping_Sludgephase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(30913)
 		pUnit:RegisterEvent("Creeping_Sludgephase6", 1000, 0)
@@ -606,7 +609,7 @@ function Creeping_Sludgephase5(pUnit, Event)
 end
 
 function Creeping_Sludgephase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(34268)
 		pUnit:RegisterEvent("Creeping_SludgeSludgeNova", 5000, 0)
@@ -633,14 +636,13 @@ RegisterUnitEvent(12222, 1, "Creeping_Sludge_OnCombat")
 RegisterUnitEvent(12222, 2, "Creeping_Sludge_OnLeaveCombat")
 RegisterUnitEvent(12222, 4, "Creeping_Sludge_OnDeath")
 
-
 function Cavern_Shambler_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(20699, pUnit:GetRandomPlayer(0))
 	pUnit:RegisterEvent("Cavern_Shamblerphase1", 1000, 0)
 end
 
 function Cavern_Shamblerphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(18944)
 		pUnit:RegisterEvent("Cavern_Shamblerphase2", 1000, 0)
@@ -649,7 +651,7 @@ function Cavern_Shamblerphase1(pUnit, Event)
 end
 
 function Cavern_Shamblerphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Cavern_Shamblerphase3", 1000, 0)
 		pUnit:RegisterEvent("Cavern_ShamblerArcSmash", 10000, 0)
@@ -657,7 +659,7 @@ function Cavern_Shamblerphase2(pUnit, Event)
 end
 
 function Cavern_Shamblerphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Cavern_ShamblerStomp", 10000, 0)
 	end
@@ -693,7 +695,7 @@ function Celebrian_Dryad_OnCombat(pUnit, Event)
 end
 
 function Celebrian_Dryadphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 66) then
+	if(pUnit:GetHealthPct() < 66) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(23537)
 		pUnit:RegisterEvent("Celebrian_Dryadphase2", 1000, 0)
@@ -702,7 +704,7 @@ function Celebrian_Dryadphase1(pUnit, Event)
 end
 
 function Celebrian_Dryadphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Celebrian_Dryadphase3", 1000, 0)
 		pUnit:RegisterEvent("Celebrian_DryadSwarm", 15000, 0)
@@ -710,7 +712,7 @@ function Celebrian_Dryadphase2(pUnit, Event)
 end
 
 function Celebrian_Dryadphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(18944)
 		pUnit:RegisterEvent("Celebrian_Dryadphase4", 1000, 0)
@@ -718,7 +720,7 @@ function Celebrian_Dryadphase3(pUnit, Event)
 end
 
 function Celebrian_Dryadphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Celebrian_Dryadphase5", 1000, 0)
 		pUnit:RegisterEvent("Celebrian_DryadSwarm", 15000, 0)
@@ -726,7 +728,7 @@ function Celebrian_Dryadphase4(pUnit, Event)
 end
 
 function Celebrian_Dryadphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(18944)
 		pUnit:RegisterEvent("Celebrian_DryadWrathSpeed", 6000, 0)
@@ -760,7 +762,6 @@ RegisterUnitEvent(11794, 1, "Celebrian_Dryad_OnCombat")
 RegisterUnitEvent(11794, 2, "Celebrian_Dryad_OnLeaveCombat")
 RegisterUnitEvent(11794, 4, "Celebrian_Dryad_OnDeath")
 
-
 function Meshlok_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(20699, pUnit:GetRandomPlayer(0))
 	pUnit:RegisterEvent("Meshlokphase1", 1000, 0)
@@ -769,7 +770,7 @@ function Meshlok_OnCombat(pUnit, Event)
 end
 
 function Meshlokphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(18944)
 		pUnit:RegisterEvent("Meshlokphase2", 1000, 0)
@@ -779,7 +780,7 @@ function Meshlokphase1(pUnit, Event)
 end
 
 function Meshlokphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Meshlokphase3", 1000, 0)
 		pUnit:RegisterEvent("MeshlokArcSmash", 10000, 0)
@@ -788,7 +789,7 @@ function Meshlokphase2(pUnit, Event)
 end
 
 function Meshlokphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Meshlokphase4", 1000, 0)
 		pUnit:RegisterEvent("MeshlokArcSmash", 10000, 0)
@@ -797,7 +798,7 @@ function Meshlokphase3(pUnit, Event)
 end
 
 function Meshlokphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 31) then
+	if(pUnit:GetHealthPct() < 31) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("MeshlokArcSmash", 10000, 0)
 		pUnit:RegisterEvent("MeshlokStomp", 15000, 0)
@@ -840,7 +841,6 @@ RegisterUnitEvent(12237, 1, "Meshlok_OnCombat")
 RegisterUnitEvent(12237, 2, "Meshlok_OnLeaveCombat")
 RegisterUnitEvent(12237, 4, "Meshlok_OnDeath")
 
-
 function Noxious_Slime_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(15475, pUnit:GetRandomPlayer(0))
 	pUnit:RegisterEvent("Noxious_Slimephase1", 1000, 0)
@@ -848,7 +848,7 @@ function Noxious_Slime_OnCombat(pUnit, Event)
 end
 
 function Noxious_Slimephase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26992)
 		pUnit:RegisterEvent("Noxious_Slimephase3", 1000, 0)
@@ -857,7 +857,7 @@ function Noxious_Slimephase1(pUnit, Event)
 end
 
 function Noxious_Slimephase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:FullCastSpellOnTarget(5208, pUnit:GetRandomPlayer(0))
 		pUnit:RegisterEvent("Noxious_Slimephase4", 1000, 0)
@@ -865,7 +865,7 @@ function Noxious_Slimephase3(pUnit, Event)
 end
 
 function Noxious_Slimephase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxious_Slimephase5", 1000, 0)
 		pUnit:RegisterEvent("Noxious_SlimeDebiPoison", 10000, 0)
@@ -873,7 +873,7 @@ function Noxious_Slimephase4(pUnit, Event)
 end
 
 function Noxious_Slimephase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(36619)
 		pUnit:RegisterEvent("Noxious_Slimephase6", 1000, 0)
@@ -881,7 +881,7 @@ function Noxious_Slimephase5(pUnit, Event)
 end
 
 function Noxious_Slimephase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(25198)
 	end
@@ -912,7 +912,7 @@ function Noxxion_OnCombat(pUnit, Event)
 end
 
 function Noxxionphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase3", 1000, 0)
 		pUnit:RegisterEvent("NoxxionSludgeNova", 5000, 0)
@@ -925,7 +925,7 @@ function Noxxionphase3(pUnit, Event)
 	y = pUnit:GetY()
 	z = pUnit:GetZ()
 	o = pUnit:GetO()
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase4", 1000, 0)
 		pUnit:SpawnCreature(12218, x + 4, y, z, o, 14, 100000)
@@ -939,7 +939,7 @@ function Noxxionphase4(pUnit, Event)
 	y = pUnit:GetY()
 	z = pUnit:GetZ()
 	o = pUnit:GetO()
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Noxxionphase5", 1000, 0)
 		pUnit:SpawnCreature(12218, x + 4, y, z, o, 14, 100000)
@@ -953,7 +953,7 @@ function Noxxionphase5(pUnit, Event)
 	y = pUnit:GetY()
 	z = pUnit:GetZ()
 	o = pUnit:GetO()
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(30035)
 		pUnit:RegisterEvent("Noxxionphase6", 1000, 0)
@@ -964,7 +964,7 @@ function Noxxionphase5(pUnit, Event)
 end
 
 function Noxxionphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("NoxxionSludgeNova", 5000, 0)
 		pUnit:CastSpell(41953)
@@ -1009,7 +1009,7 @@ function Corruptor_OnCombat(pUnit, Event)
 end
 
 function Poison_Spritephase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Poison_SpritePoisonBolt", 5000, 0)
 	end
@@ -1046,14 +1046,13 @@ RegisterUnitEvent(12217, 1, "Corruptor_OnCombat")
 RegisterUnitEvent(12217, 2, "Corruptor_OnLeaveCombat")
 RegisterUnitEvent(12217, 4, "Corruptor_OnDeath")
 
-
 function Putridus_Trickster_OnCombat(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(30741, pUnit:GetRandomPlayer(0))
 	pUnit:RegisterEvent("Putridus_Tricksterphase1", 1000, 0)
 end
 
 function Putridus_Tricksterphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26992)
 		pUnit:RegisterEvent("Putridus_Tricksterphase2", 1000, 0)
@@ -1062,7 +1061,7 @@ function Putridus_Tricksterphase1(pUnit, Event)
 end
 
 function Putridus_Tricksterphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Putridus_Tricksterphase3", 1000, 0)
 		pUnit:RegisterEvent("Putridus_TricksterCut", 6000, 0)
@@ -1070,7 +1069,7 @@ function Putridus_Tricksterphase2(pUnit, Event)
 end
 
 function Putridus_Tricksterphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Putridus_Tricksterphase4", 1000, 0)
 		pUnit:RegisterEvent("Putridus_TricksterSlice", 10000, 0)
@@ -1078,7 +1077,7 @@ function Putridus_Tricksterphase3(pUnit, Event)
 end
 
 function Putridus_Tricksterphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Putridus_Tricksterphase6", 1000, 0)
 		pUnit:RegisterEvent("Putridus_TricksterCut", 4000, 0)
@@ -1087,7 +1086,7 @@ function Putridus_Tricksterphase4(pUnit, Event)
 end
 
 function Putridus_Tricksterphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(15593)
 	end
@@ -1116,7 +1115,6 @@ RegisterUnitEvent(11790, 1, "Putridus_Trickster_OnCombat")
 RegisterUnitEvent(11790, 2, "Putridus_Trickster_OnLeaveCombat")
 RegisterUnitEvent(11790, 4, "Putridus_Trickster_OnDeath")
 
-
 function Spewed_Larva_OnCombat(pUnit, Event)
 	pUnit:CastSpell(19630)
 	pUnit:RegisterEvent("Spewed_Larvaphase1", 1000, 0)
@@ -1124,7 +1122,7 @@ function Spewed_Larva_OnCombat(pUnit, Event)
 end
 
 function Spewed_Larvaphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:FullCastSpellOnTarget(20420, pUnit:GetRandomPlayer(0))
 		pUnit:RegisterEvent("Spewed_Larvaphase2", 1000, 0)
@@ -1132,7 +1130,7 @@ function Spewed_Larvaphase1(pUnit, Event)
 end
 
 function Spewed_Larvaphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Spewed_Larvaphase5", 1000, 0)
 		pUnit:RegisterEvent("Spewed_LarvaFireball", 6000, 0)
@@ -1140,7 +1138,7 @@ function Spewed_Larvaphase2(pUnit, Event)
 end
 
 function Spewed_Larvaphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Spewed_LarvaFireShield", 4400, 0)
 		pUnit:RegisterEvent("Spewed_LarvaFireball", 6000, 0)
@@ -1171,7 +1169,6 @@ RegisterUnitEvent(13533, 1, "Spewed_Larva_OnCombat")
 RegisterUnitEvent(13533, 2, "Spewed_Larva_OnLeaveCombat")
 RegisterUnitEvent(13533, 4, "Spewed_Larva_OnDeath")
 
-
 function Vine_Larva_OnCombat(pUnit, Event)
 	pUnit:CastSpell(12278)
 	pUnit:RegisterEvent("Vine_Larvaphase1", 1000, 0)
@@ -1179,7 +1176,7 @@ function Vine_Larva_OnCombat(pUnit, Event)
 end
 
 function Vine_Larvaphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:FullCastSpellOnTarget(20420, pUnit:GetRandomPlayer(0))
 		pUnit:RegisterEvent("Vine_Larvaphase2", 1000, 0)
@@ -1187,7 +1184,7 @@ function Vine_Larvaphase1(pUnit, Event)
 end
 
 function Vine_Larvaphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Vine_Larvaphase5", 1000, 0)
 		pUnit:RegisterEvent("Vine_LarvaFireball", 6000, 0)
@@ -1195,7 +1192,7 @@ function Vine_Larvaphase2(pUnit, Event)
 end
 
 function Vine_Larvaphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Vine_LarvaFireShield", 15000, 0)
 		pUnit:RegisterEvent("Vine_LarvaFireball", 6000, 0)
@@ -1232,7 +1229,7 @@ function Pre_Behemoth_OnCombat(pUnit, Event)
 end
 
 function Pre_Behemothphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26167)
 		pUnit:RegisterEvent("Pre_Behemothphase2", 1000, 0)
@@ -1241,7 +1238,7 @@ function Pre_Behemothphase1(pUnit, Event)
 end
 
 function Pre_Behemothphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Pre_Behemothphase3", 1000, 0)
 		pUnit:RegisterEvent("Pre_BehemothCrush", 10000, 0)
@@ -1249,7 +1246,7 @@ function Pre_Behemothphase2(pUnit, Event)
 end
 
 function Pre_Behemothphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Pre_Behemothphase4", 1000, 0)
 		pUnit:RegisterEvent("Pre_BehemothStomp", 25000, 0)
@@ -1258,7 +1255,7 @@ function Pre_Behemothphase3(pUnit, Event)
 end
 
 function Pre_Behemothphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Pre_Behemothphase5", 1000, 0)
 		pUnit:RegisterEvent("Pre_BehemothStomp", 25000, 0)
@@ -1267,7 +1264,7 @@ function Pre_Behemothphase4(pUnit, Event)
 end
 
 function Pre_Behemothphase5(pUnit, Event)
-	if (pUnit:GetHealthPct() < 32) then
+	if(pUnit:GetHealthPct() < 32) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(12734)
 		pUnit:RegisterEvent("Pre_Behemothphase6", 1000, 0)
@@ -1277,7 +1274,7 @@ function Pre_Behemothphase5(pUnit, Event)
 end
 
 function Pre_Behemothphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 17) then
+	if(pUnit:GetHealthPct() < 17) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(12734)
 		pUnit:RegisterEvent("Pre_BehemothCrush", 6000, 0)
@@ -1310,7 +1307,7 @@ function Putridus_Shadowstalker_OnCombat(pUnit, Event)
 end
 
 function Putridus_Shadowstalkerphase1(pUnit, Event)
-	if (pUnit:GetHealthPct() < 89) then
+	if(pUnit:GetHealthPct() < 89) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(26992)
 		pUnit:RegisterEvent("Putridus_Shadowstalkerphase2", 1000, 0)
@@ -1319,7 +1316,7 @@ function Putridus_Shadowstalkerphase1(pUnit, Event)
 end
 
 function Putridus_Shadowstalkerphase2(pUnit, Event)
-	if (pUnit:GetHealthPct() < 75) then
+	if(pUnit:GetHealthPct() < 75) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Putridus_Shadowstalkerphase3", 1000, 0)
 		pUnit:RegisterEvent("Putridus_ShadowstalkerCut", 4000, 0)
@@ -1327,7 +1324,7 @@ function Putridus_Shadowstalkerphase2(pUnit, Event)
 end
 
 function Putridus_Shadowstalkerphase3(pUnit, Event)
-	if (pUnit:GetHealthPct() < 58) then
+	if(pUnit:GetHealthPct() < 58) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Putridus_Shadowstalkerphase4", 1000, 0)
 		pUnit:RegisterEvent("Putridus_ShadowstalkerSlice", 10000, 0)
@@ -1335,7 +1332,7 @@ function Putridus_Shadowstalkerphase3(pUnit, Event)
 end
 
 function Putridus_Shadowstalkerphase4(pUnit, Event)
-	if (pUnit:GetHealthPct() < 45) then
+	if(pUnit:GetHealthPct() < 45) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("Putridus_Shadowstalkerphase6", 1000, 0)
 		pUnit:RegisterEvent("Putridus_ShadowstalkerCut", 4000, 0)
@@ -1344,7 +1341,7 @@ function Putridus_Shadowstalkerphase4(pUnit, Event)
 end
 
 function Putridus_Shadowstalkerphase6(pUnit, Event)
-	if (pUnit:GetHealthPct() < 5) then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:RemoveEvents()
 		pUnit:CastSpell(15593)
 	end

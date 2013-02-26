@@ -1,22 +1,14 @@
---[[ Anetheron.Lua - Author: Shorts
-********************************
-*                                                            *
-* The LUA++ Scripting Project        *
-*                                                            *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The LUA++ Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: LUA++; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-~~End of License Agreement
--- LUA++ staff, April 15, 2008. ]]
-
-function Aneth_OnEnterCombat(pUnit, event)
+function Aneth_OnEnterCombat(pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "You are defenders of a doomed world! Flee here, and perhaps you will prolong your pathetic lives!")
 	pUnit:PlaySoundToSet(10977)
 	pUnit:RegisterEvent("AnethCS", math.random(11000, 15000), 0)
@@ -26,11 +18,11 @@ function Aneth_OnEnterCombat(pUnit, event)
 	pUnit:RegisterEvent("AnethEnrage", 600000, 0)
 end
 
-function Aneth_OnLeaveCombat(pUnit, event)
+function Aneth_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function Aneth_OnKilledTarget(pUnit, event)
+function Aneth_OnKilledTarget(pUnit, Event)
 	local AnethOKT = math.random(1,3)
 	if(AnethOKT == 1) then
 		pUnit:SendChatMessage(14, 0, "Your hopes are lost!")
@@ -44,12 +36,12 @@ function Aneth_OnKilledTarget(pUnit, event)
 	end
 end
 
-function Aneth_OnDeath(pUnit, event)
+function Aneth_OnDeath(pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "The clock... is still... ticking.")
 	pUnit:PlaySoundToSet(10982)
 end
 
-function AnethCS(pUnit, event)
+function AnethCS(pUnit, Event)
 	pUnit:CastSpell()
 	local AnethCSSpeech = math.random(1,2)
 	if(AnethCSSpeech == 1) then
@@ -61,7 +53,7 @@ function AnethCS(pUnit, event)
 	end
 end
 
-function AnethInferno(pUnit, event)
+function AnethInferno(pUnit, Event)
 	pUnit:CastSpell(31299)
 	local InfernoSpeech =  math.random(1,2)
 	if(InfernoSpeech == 1) then
@@ -73,7 +65,7 @@ function AnethInferno(pUnit, event)
 	end
 end
 
-function AnethSleep(pUnit, event)
+function AnethSleep(pUnit, Event)
 	pUnit:CastSpell()
 	local SleepSpeech =  math.random(1,2)
 	if(SleepSpeech == 1) then
@@ -85,11 +77,11 @@ function AnethSleep(pUnit, event)
 	end
 end
 
-function AnethAura(pUnit, event)
+function AnethAura(pUnit, Event)
 	pUnit:CastSpell(38196)
 end
 
-function AnethEnrage(pUnit, event)
+function AnethEnrage(pUnit, Event)
 	pUnit:CastSpell(26662)
 end
 

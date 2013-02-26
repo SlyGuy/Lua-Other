@@ -1,30 +1,22 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   kurinaxx.lua
-   Original Code by DARKI
-   Version 1
-========================================]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 local cleave = 0
 
 function KuriOnCombat(Unit, event)
-	--Unit:RegisterEvent("KuriSandTrap", 8000, 0)
+	Unit:RegisterEvent("KuriSandTrap", 14000, 0)
 	Unit:RegisterEvent("KuriCleave", 3500, 0)
 end
 
 function KuriCleave(Unit, event)
-	if cleave == 3 then
+	if(cleave == 3) then
 		Unit:ClearThreatList()
 	else
 	end
@@ -34,11 +26,8 @@ end
 
 function KuriSandTrap(Unit, event)
 local player = Unit:GetRandomPlayer(0)
-local Xpos = player:GetX()
-local Ypos = player:GetY()
-local Zpos = player:GetZ()
 	if(player ~= nil) then
-		Unit:SpawnCreature(90007, Xpos, Ypos, Zpos, 0, 168, 10000)
+		Unit:SpawnCreature(90007, player:GetX(), player:GetY(), player:GetZ(), 0, 168, 10000)
 	else
 	end
 end
@@ -74,5 +63,5 @@ end
 
 RegisterUnitEvent(90007, 6, "DummySandTrap")
 RegisterUnitEvent(15348, 1, "KuriOnCombat")
-RegisterUnitEvent(15348, 3, "KuriOnLeaveCombat")
+RegisterUnitEvent(15348, 2, "KuriOnLeaveCombat")
 RegisterUnitEvent(15348, 4, "KuriOnDied")

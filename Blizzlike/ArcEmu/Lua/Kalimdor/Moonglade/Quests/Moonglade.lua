@@ -9,8 +9,7 @@ Thank: zdroid9770; for the Script
 -- WoTD Team, Janurary 19, 2010. ]]
 
 function Moonglade_OnAccept(pUnit, Event)
-local player = pUnit:getClosestPlayer()
-	pUnit:CastSpellOnTarget(19027, player)
+	pUnit:CastSpellOnTarget(19027, pUnit:GetClosestPlayer())
 end
 
 RegisterQuestEvent(5921, 2, "Moonglade_OnAccept")

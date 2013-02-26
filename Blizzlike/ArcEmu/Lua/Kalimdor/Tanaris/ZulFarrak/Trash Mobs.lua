@@ -1,32 +1,23 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   Original Code by DARKI
-   Version 1
-========================================]]--
-	 
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 -- Karabor Sewers
-	 
 function AqueousSpawn_Nova(Unit, event, miscUnit, misc)
 	Unit:FullCastSpell(40103)
 end
 
 function AqueousSpawn_Heal(Unit, event, miscUnit, misc)
-	local heal = math.random(1, 10)
-	if (heal == 5) then
-		local plr = Unit:GetRandomFriend()
-		if plr then
-		Unit:FullCastSpellOnTarget(38588, plr)
+	local heal = math.random(1,10)
+	if(heal == 5) then
+		if(Unit:GetRandomFriend()) then
+			Unit:FullCastSpellOnTarget(38588, plr)
 		end
 	end
 end
@@ -58,9 +49,9 @@ function CoilskarWrangler_LightningProd(Unit, event, miscUnit, misc)
 end
 
 function CoilskarWrangler_Frenzy(Unit, event, miscUnit, misc)
-local buff = math.random(1, 5)
-	if (buff == 2) then
-	Unit:FullCastSpellOnTarget(27995, Unit:GetRandomFriend())
+local buff = math.random(1,5)
+	if(buff == 2) then
+		Unit:FullCastSpellOnTarget(27995, Unit:GetRandomFriend())
 	end
 end
 
@@ -92,12 +83,8 @@ end
 RegisterUnitEvent(230026, 1, "Leviathan_Combat")
 
 function AuqeousLord_Summon(Unit, event, miscUnit, misc)
-local x = Unit:GetX()
-local y = Unit:GetY()
-local z = Unit:GetZ()
-local o = Unit:GetO()
-	Unit:SpawnCreature(22883, x, y, z, o, 14, 0)
-	Unit:SpawnCreature(22883, x ,y, z, o, 14, 0)
+	Unit:SpawnCreature(22883, Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22883, Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
 end
 
 function AqueousLord_VileSlime(Unit, event, miscUnit, misc)
@@ -146,8 +133,7 @@ end
 	
 RegisterUnitEvent(230033, 1, "DragonTurtle_Combat")
 
--- Sanctuary of Shadow
-
+--Sanctuary of Shadow
 function AshtongueBattlelord_Cleave(Unit, event, miscUnit, misc)
 	Unit:FullCastSpellOnTarget(31043, Unit:GetClosestPlayer())
 end
@@ -211,16 +197,16 @@ RegisterUnitEvent(230014, 1, "AshtonguePrimalist_Combat")
 
 function AshtongueMystic_Flameshock(Unit, event, miscUnit, misc)
 	local DidIt = 0
-	local flag = math.random (1, 2)
-	if (flag == 1) and (DidIt == 0) then
+	local flag = math.random(1, 2)
+	if(flag == 1) and (DidIt == 0) then
 		Unit:FullCastSpellOnTarget(39590, Unit:GetRandomPlayer(0))
 		local DidIt = 1
 	end
 end
 
 function AshtongueMystic_FrostShock(Unit, event, miscUnit, misc)
-	if (flag == 2) and (DidIt == 1) then
-	Unit:FullCastSpellOnTarget(41116, Unit:GetRandomPlayer(0))
+	if(flag == 2) and (DidIt == 1) then
+		Unit:FullCastSpellOnTarget(41116, Unit:GetRandomPlayer(0))
 	end
 end
 
@@ -321,20 +307,16 @@ function IllidariNightlord_Fear(Unit, event, miscUnit, misc)
 end
 
 function IllidariNightlord_Shadowfiends(Unit, event, miscUnit, misc)
-local x = Unit:GetX()
-local y = Unit:GetY()
-local z = Unit:GetZ()
-local o = Unit:GetO()
-	Unit:SpawnCreature(22929, x, y, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x+3, y+3, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x+5, y, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x, y+5, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x+7, y, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x, y+7, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x+1, y, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x, y+6, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x+4, y, z, o, 14, 0)
-	Unit:SpawnCreature(22929, x, y+8, z, o, 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX()+3, Unit:GetY()+3, Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX()+5, Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX(), Unit:GetY()+5, Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX()+7, Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX(), Unit:GetY()+7, Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX()+1, Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX(), Unit:GetY()+6, Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX()+4, Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
+	Unit:SpawnCreature(22929, Unit:GetX(), Unit:GetY()+8, Unit:GetZ(), Unit:GetO(), 14, 0)
 end
 
 function IllidariNightlord_Combat(Unit, event, miscUnit, misc)
@@ -345,8 +327,7 @@ end
 
 RegisterUnitEvent(230006, 1, "IllidariNightlord_Combat")
 
--- Gorefiends Vigil
-
+--Gorefiends Vigil
 function ShadowmoonChampion_Whirlwind(Unit, event, miscUnit, misc)
 	Unit:FullCastSpellOnTarget(40236, Unit:GetClosestPlayer())
 end
@@ -369,11 +350,7 @@ end
 RegisterUnitEvent(230022, 1, "ShadowmoonRidinghound_Combat")
 
 function ShadowmoonDeathshaper_RaiseDead(Unit, event, miscUnit, misc)
-local x = Unit:GetX()
-local y = Unit:GetY()
-local z = Unit:GetZ()
-local o = Unit:GetO()
-	Unit:SpawnCreature(23371, x, y, z, o, 14, 0)
+	Unit:SpawnCreature(23371, Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14, 0)
 end
 
 function ShadowmoonDeathshaper_Dreadbolt(Unit, event, miscUnit, misc)
