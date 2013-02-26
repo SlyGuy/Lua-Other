@@ -10,8 +10,7 @@ with others in the emulation community.
 ~~End of License Agreement
 -- Azolex, August, 31th, 2008. ]]
 
--- Bloodmaul Shaman http://www.wowhead.com/?npc=19992
-
+-- Bloodmaul Shaman
 function BMShaman_OnEnterCombat(pUnit,Event)
 	pUnit:FullCastSpell(12550)
 	pUnit:RegisterEvent("BMWarlock_LShield", 15000, 1)
@@ -29,19 +28,18 @@ function BMShaman_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19992, 1, "BMShaman_OnEnterCombat")
-RegisterUnitEvent (19992, 2, "BMShaman_OnLeaveCombat")
-RegisterUnitEvent (19992, 4, "BMShaman_OnDied")
+RegisterUnitEvent(19992, 1, "BMShaman_OnEnterCombat")
+RegisterUnitEvent(19992, 2, "BMShaman_OnLeaveCombat")
+RegisterUnitEvent(19992, 4, "BMShaman_OnDied")
 
---Bloodmaul Geomancer http://www.wowhead.com/?npc=19952
-
+--Bloodmaul Geomancer
 function BMGeomancer_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpell(12544) --Frost armor :)
+	pUnit:FullCastSpell(12544)
 	pUnit:RegisterEvent("BMGeomancer_FireBolt", 9000, 2)
 end
 
 function BMGeomancer_KnockDown(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9053,pUnit:GetMainTank()) -- lol i dont understand Blizzard?
+	pUnit:FullCastSpellOnTarget(9053, pUnit:GetMainTank())
 end
 
 function BMGeomancer_OnLeaveCombat(pUnit,Event)
@@ -52,27 +50,26 @@ function BMGeomancer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19952, 1, "BMGeomancer_OnEnterCombat")
-RegisterUnitEvent (19952, 2, "BMGeomancer_OnLeaveCombat")
-RegisterUnitEvent (19952, 4, "BMGeomancer_OnDied")
+RegisterUnitEvent(19952, 1, "BMGeomancer_OnEnterCombat")
+RegisterUnitEvent(19952, 2, "BMGeomancer_OnLeaveCombat")
+RegisterUnitEvent(19952, 4, "BMGeomancer_OnDied")
 
--- Bloodmaul Goon http://www.wowhead.com/?npc=21294
-
+-- Bloodmaul Goon
 function BMGoon_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("BMGoon_KickFirst", 1000, 1)
 	pUnit:RegisterEvent("BMGoon_KickSecond", 1000, 1)
 end
 
 function BMGoon_KickFirst(pUnit,Event)
-     if pUnit:GetHealthPct() > 85 then
-	pUnit:FullCastSpellOnTarget(10966,pUnit:GetMainTank())
-end
+    if(pUnit:GetHealthPct() > 85) then
+		pUnit:FullCastSpellOnTarget(10966, pUnit:GetMainTank())
+	end
 end
 
 function BMGoon_KickSecond(pUnit,Event)
-     if pUnit:GetHealthPct() > 25 then
-	pUnit:FullCastSpellOnTarget(10966,pUnit:GetMainTank())
-end
+    if(pUnit:GetHealthPct() > 25) then
+		pUnit:FullCastSpellOnTarget(10966, pUnit:GetMainTank())
+	end
 end
 
 function BMGoon_OnLeaveCombat(pUnit,Event)
@@ -83,12 +80,11 @@ function BMGoon_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21294, 1, "BMGoon_OnEnterCombat")
-RegisterUnitEvent (21294, 2, "BMGoon_OnLeaveCombat")
-RegisterUnitEvent (21294, 4, "BMGoon_OnDied")
+RegisterUnitEvent(21294, 1, "BMGoon_OnEnterCombat")
+RegisterUnitEvent(21294, 2, "BMGoon_OnLeaveCombat")
+RegisterUnitEvent(21294, 4, "BMGoon_OnDied")
 
--- Bloodmaul Mauler http://www.wowhead.com/?npc=19993
-
+-- Bloodmaul Mauler
 function BMMauler_OnEnterCombat(pUnit,Event)
     pUnit:FullCastSpell(34932)
 	pUnit:RegisterEvent("BMMauler_Kick", 9000, 2)
@@ -96,13 +92,13 @@ function BMMauler_OnEnterCombat(pUnit,Event)
 end
 
 function BMMauler_Kick(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37592,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(37592, pUnit:GetMainTank())
 end
 
 function BMMauler_Enrage(pUnit,Event)
-     if pUnit:GetHealthPct() > 20 then
-    pUnit:FullCastSpell(37786)
-end
+    if(pUnit:GetHealthPct() > 20) then
+		pUnit:FullCastSpell(37786)
+	end
 end
 
 function BMMauler_OnLeaveCombat(pUnit,Event)
@@ -113,6 +109,6 @@ function BMMauler_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19993, 1, "BMMauler_OnEnterCombat")
-RegisterUnitEvent (19993, 2, "BMMauler_OnLeaveCombat")
-RegisterUnitEvent (19993, 4, "BMMauler_OnDied")
+RegisterUnitEvent(19993, 1, "BMMauler_OnEnterCombat")
+RegisterUnitEvent(19993, 2, "BMMauler_OnLeaveCombat")
+RegisterUnitEvent(19993, 4, "BMMauler_OnDied")

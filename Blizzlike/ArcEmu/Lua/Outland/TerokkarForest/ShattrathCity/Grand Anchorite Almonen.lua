@@ -1,33 +1,12 @@
- --[[
-   ******************************************************************
-   *	 _____              ___                           _         *
-   *	(  _  )            (  _`\               _        ( )_       *
-   *	| (_) | _ __   ___ | (_(_)   ___  _ __ (_) _ _   | ,_)      *
-   *	|  _  |( '__)/'___)`\__ \  /'___)( '__)| |( '_`\ | |        *
-   *	| | | || |  ( (___ ( )_) |( (___ | |   | || (_) )| |_       *
-   *	(_) (_)(_)  `\____)`\____)`\____)(_)   (_)| ,__/'`\__)      *
-   *	                                          | |               *
-   *	                                          (_)               *
-   *	                                                            *
-   *	               OpenSource Scripting Team                    *
-   *	                <http://www.arcemu.org>                     *
-   *	                                                            *
-   ******************************************************************
-  
-   This software is provided as free and open source by the
-staff of The ArcScript Project, in accordance with 
-the GPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Staff of ArcScript Project, Feb 2008
-~~End of License Agreement
-
-#############################################################
-Special thanks: Janni, Recon, Nandi.
--- ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: ArcEmu, Janni, Recon, Nandi; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Almonen_Talk(pUnit,Event)
 	pUnit:SendChatMessage(12, 0, "In accordance with my divine calling, I must share these revealed truths to all who would hear.")
@@ -38,7 +17,6 @@ function Almonen_Talk1(pUnit,Event)
 	pUnit:SendChatMessage(12, 0, "It has been made known to me that inside each of us, the Light resides...")
 	pUnit:RegisterEvent("Almonen_Talk2",80000, 1)
 end
-
 
 function Almonen_Talk2(pUnit,Event)
 	pUnit:SendChatMessage(12, 0, "...that it is a gift, given freely to all naturally born beings.")

@@ -1,12 +1,13 @@
---ok so i set the chat up all thats left is setting the waypoint in which the --chat info starts at and setting up all the waypoints but ill get it done    --anyone willing to help me can thanks guys XD
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Mager1794; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
---##############################
---#Lady Liadrin Shattrath Event#
---##############################
-
---###########
---#Mager1794#
---###########
 function Liadrin_GenChat(Unit)
 	Unit:SendChatMessage(11, 0, "Why do you suffer the presence of this despicable Lady Liadrin? She and her followers distort the Light and make a mockery of all we stand for")
 end
@@ -81,33 +82,30 @@ function Liadrin_AdalChat10(Unit)
 end
 
 function Adal_1(Unit, Event)
-	Unit:RegisterEvent("Liadrin_AdalChat1",1000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat2",8000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat3",10000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat4",14000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat5",16000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat6",19000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat7",22000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat8",25000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat9",33000,0)
-	Unit:RegisterEvent("Liadrin_AdalChat10",36000,0)
+	Unit:RegisterEvent("Liadrin_AdalChat1", 1000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat2", 8000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat3", 10000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat4", 14000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat5", 16000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat6", 19000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat7", 22000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat8", 25000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat9", 33000, 0)
+	Unit:RegisterEvent("Liadrin_AdalChat10", 36000, 0)
 end
 
 function Gen_1(Unit, Event)
-	Unit:RegisterEvent("Liadrin_GenChat1",500,0)
+	Unit:RegisterEvent("Liadrin_GenChat1", 500, 0)
 end
-
 
 function Liadrin_OnReachWaypoint(Unit, Event)
-	Unit:RegisterEvent("Gen_1",0,0)
-	Unit:RegisterEvent("Adal_1",0,0)
-	Unit:RegisterEvent("Liadrin_LiaChat1",2500,0)
-	Unit:RegisterEvent("Liadrin_LiaChat2",4000,0)
-	Unit:RegisterEvent("Liadrin_LiaChat3",6000,0)
-	Unit:RegisterEvent("Liadrin_LiaChat4",12500,0)
-	Unit:RegisterEvent("Liadrin_LiaChat5",27000,0)
-	Unit:RegisterEvent("Liadrin_LiaChat6",29000,0)
-	Unit:RegisterEvent("Liadrin_LiaChat7",31000,0)
+	Unit:RegisterEvent("Gen_1", 0, 0)
+	Unit:RegisterEvent("Adal_1", 0, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat1", 2500, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat2", 4000, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat3", 6000, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat4", 12500, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat5", 27000, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat6", 29000, 0)
+	Unit:RegisterEvent("Liadrin_LiaChat7", 31000, 0)
 end
-
-

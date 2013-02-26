@@ -1,9 +1,17 @@
---  [[ Coilfang Ambusher ]] --
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
+--Coilfang Ambusher
 function CoilfangAmbush_Multishot(Unit)
-	local plr = Unit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		Unit:FullCastSpellOnTarget(27021, plr)
+	if(Unit:GetRandomPlayer(0) ~= nil) then
+		Unit:FullCastSpellOnTarget(27021, Unit:GetRandomPlayer(0))
 	end
 end
 
@@ -13,19 +21,16 @@ end
 
 RegisterUnitEvent(21865, 1, "CoilfangAmbush_OnEnterCombat")
 
--- [[ Coilfang Fathom Witch ]] --
-
+--Coilfang Fathom Witch
 function CoilWitch_ShadowBolt(Unit)
-	local plr = Unit:GetClosestPlayer()
-	if(plr ~= nil) then
-		Unit:FullCastSpellOnTarget(27209, plr)
+	if(Unit:GetClosestPlayer() ~= nil) then
+		Unit:FullCastSpellOnTarget(27209, Unit:GetClosestPlayer())
 	end
 end
 
 function CoilWitch_Knockback(Unit)
-	local plr = Unit:GetRandomPlayer(1)
-	if(plr ~= nil) then
-		Unit:FullCastSpellOnTarget(34109, plr)
+	if(Unit:GetRandomPlayer(1) ~= nil) then
+		Unit:FullCastSpellOnTarget(34109, Unit:GetRandomPlayer(1))
 	end
 end
 
@@ -36,8 +41,7 @@ end
 
 RegisterUnitEvent(21299, 1, "CoilWitch_OnEnterCombat")
 
--- [[ CoilFang Guardian ]] --
-
+--CoilFang Guardian
 function CoilGuard_Cleave(Unit)
 	Unit:FullCastSpellOnTarget(38260, Unit:GetClosestPlayer())
 end
@@ -48,12 +52,10 @@ end
 
 RegisterUnitEvent(21873, 1, "CoilGuard_OnEnterCombat")
 
--- [[ Coilfang Priestess ]] --
-
+--Coilfang Priestess
 function CoilPriest_Holynova(Unit)
-	local plr = Unit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		Unit:FullCastSpellOnTarget(38589, plr)
+	if(Unit:GetRandomPlayer(0) ~= nil) then
+		Unit:FullCastSpellOnTarget(38589, Unit:GetRandomPlayer(0))
 	end
 end
 
@@ -70,7 +72,7 @@ end
 
 RegisterUnitEvent(21220, 1, "CoilPriest_OnEnterCombat")
 
--- [[ Coilfang Serpent Guard ]] --
+--Coilfang Serpent Guard
 function CoilSert_SpellReflect(Unit)
 	Unit:FullCastSpell(36096)
 end
@@ -88,8 +90,7 @@ end
 
 RegisterUnitEvent(21298, 1, "CoilSert_OnEnterCombat")
 
--- [[ Coilfang Shatterer ]] --
-
+--Coilfang Shatterer
 function CoilShat_ShatterArmor(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(38591, Unit:GetClosestPlayer())
@@ -102,8 +103,7 @@ end
 
 RegisterUnitEvent(21301, 1, "CoilShat_OnEnterCombat")
 
--- [[ Coilfang Strider ]] --
-
+--Coilfang Strider
 function CoilStride_PsychicScream(Unit)
 	Unit:FullCastSpell(36096)
 end
@@ -114,8 +114,7 @@ end
 
 RegisterUnitEvent(22056, 1, "CoilStride_OnEnterCombat")
 
--- [[ Fathom Guard Caribdis ]] --
-
+--Fathom Guard Caribdis
 function FathGuardCarb_WaterBolt(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(38335, Unit:GetClosestPlayer())
@@ -133,8 +132,7 @@ end
 
 RegisterUnitEvent(21964, 1, "FathGuardCarb_OnEnterCombat")
 
--- [[ Fathom Guard Sharkkis ]] --
-
+--Fathom Guard Sharkkis
 function FathGuardShark_Multishot(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(27021, Unit:GetClosestPlayer())
@@ -148,18 +146,17 @@ function FathGuardShark_Vipersting(Unit)
 end
 
 function FathGuardShark_OnEnterCombat(Unit)
-	local FathGuardSharkSpawn = math.random(2)
-	if(FathGuardSharkSpawn == 1) then
-		local x=Unit:GetX();
-		local y=Unit:GetY();
-		local z=Unit:GetZ();
-		Unit:SpawnCreature(21260, x, y, z, 0, 14, 360000);
-	end
-	if(FathGuardSharkSpawn == 2) then
-		local x=Unit:GetX();
-		local y=Unit:GetY();
-		local z=Unit:GetZ();
-		Unit:SpawnCreature(21246, x, y, z, 0, 14, 360000);
+	local spawn = math.random(1,2)
+	if(spawn == 1) then
+		local x= Unit:GetX();
+		local y= Unit:GetY();
+		local z= Unit:GetZ();
+		Unit:SpawnCreature(21260, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+	else
+		local x= Unit:GetX();
+		local y= Unit:GetY();
+		local z= Unit:GetZ();
+		Unit:SpawnCreature(21246, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
 	end
 	Unit:RegisterEvent("FathGuardShark_Multishot", 8000, 0)
 	Unit:RegisterEvent("FathGuardShark_Vipersting", 20000, 0)
@@ -167,14 +164,13 @@ end
 
 function FathGuardShark_OnLeaveCombat(Unit)
 	Unit:Despawn(1000, 0);
--- Unit:RemoveEvents()
+-- 	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(21966, 1, "FathGuardShark_OnEnterCombat")
 RegisterUnitEvent(21966, 2, "FathGuardShark_OnLeaveCombat")
 
--- [[ Fathom Guard Tidalves ]] --
-
+--Fathom Guard Tidalves
 function FathGuardTidal_Spitfire(Unit)
 	Unit:FullCastSpell(38236)
 end
@@ -194,12 +190,10 @@ function FathGuardTidal_OnEnterCombat(Unit)
 end
 RegisterUnitEvent(21965, 1, "FathGuardTidal_OnEnterCombat")
 
--- [[ GreyHeart Nether Mage ]] --
-
+--GreyHeart Nether Mage
 function GreyNetherMage_RainFire(Unit)
-	local plr = Unit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		Unit:FullCastSpellOnTarget(27212, plr)
+	if(Unit:GetRandomPlayer(0) ~= nil) then
+		Unit:FullCastSpellOnTarget(27212, Unit:GetRandomPlayer(0))
 	end
 end
 
@@ -236,8 +230,7 @@ function GreyNetherMage_OnEnterCombat(Unit)
 end
 RegisterUnitEvent(21230, 1, "GreyNetherMage_OnEnterCombat")
 
--- [[ Greyheart Shield Bearer ]]--
-
+--Greyheart Shield Bearer
 function GreyShieldBearer_AvengerShield(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(32700, Unit:GetClosestPlayer())
@@ -256,8 +249,7 @@ function GreyShieldBearer_OnEnterCombat(Unit)
 end
 RegisterUnitEvent(21231, 1, "GreyShieldBearer_OnEnterCombat")
 
--- [[ Greyheart TideCaller ]] --
-
+--Greyheart TideCaller
 function GreyTide_PoisonShield(Unit)
 	Unit:FullCastSpell(39027)
 end
@@ -280,8 +272,7 @@ end
 
 RegisterUnitEvent(21229, 1, "GreyTide_OnEnterCombat")
 
--- [[ Tidewalker Depth-Seer]] --
-
+--Tidewalker Depth-Seer
 function TideWalkerSeer_Tranquility(Unit)
 	Unit:FullCastSpell(26983)
 end
@@ -292,9 +283,7 @@ end
 
 RegisterUnitEvent(21224, 1, "TideWalkerSeer_OnEnterCombat")
 
-
---[[ Tidewalker Harpooner ]] --
-
+--Tidewalker Harpooner
 function TideWalkerHarp_Net(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(38661, Unit:GetClosestPlayer())
@@ -307,8 +296,7 @@ end
 
 RegisterUnitEvent(21227, 1, "TideWalkerHarp_OnEnterCombat")
 
---[[ Tidewalker Hydromancer ]] --
-
+--Tidewalker Hydromancer
 function TideWalkerHydro_Frostbolt(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(38697, Unit:GetClosestPlayer())
@@ -333,7 +321,7 @@ end
 
 RegisterUnitEvent(21228, 1, "TideWalkerHydro_OnEnterCombat")
 
--- [[ TideWalker Warrior]] --
+--TideWalker Warrior
 function TideWalkerWarrior_Cleave(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(38260, Unit:GetClosestPlayer())
@@ -355,10 +343,10 @@ function TideWalkerWarrior_OnEnterCombat(Unit)
 	Unit:RegisterEvent("TideWalkerWarrior_BloodThirst", 45000, 0)
 	Unit:RegisterEvent("TideWalkerWarrior_Frenzy", 20000, 0)
 end
+
 RegisterUnitEvent(21225, 1, "TideWalkerHydro_OnEnterCombat")
 
--- [[ Underbog Collosus ]] --
-
+--Underbog Collosus
 function UnderCollosus_Geyser(Unit)
 	if(Unit:GetClosestPlayer()) then
 		Unit:FullCastSpellOnTarget(37959, Unit:GetClosestPlayer())
@@ -399,30 +387,21 @@ function UnderCollosus_OnEnterCombat(Unit)
 end
 
 function UnderCollosus_OnDied(Unit)
-	local UnderCollosusSpawn = math.random(4)
+	local UnderCollosusSpawn = math.random(1,4)
 	if(UnderCollosusSpawn == 1) then
-		local x=Unit:GetX();
-		local y=Unit:GetY();
-		local z=Unit:GetZ();
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22352, x, y, z, 0, 14, 360000);
-	end
-	if(UnderCollosusSpawn == 2) then
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22352, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+	elseif(UnderCollosusSpawn == 2) then
 		Unit:FullCastSpell(38718)
-	end
-	if (UnderCollosusSpawn == 3) then
-		local x=Unit:GetX();
-		local y=Unit:GetY();
-		local z=Unit:GetZ();
-		Unit:SpawnCreature(22347, x, y, z, 0, 14, 360000);
-		Unit:SpawnCreature(22347, x, y, z, 0, 14, 360000);
-	end
-	if(UnderCollosusSpawn == 4) then
+	elseif(UnderCollosusSpawn == 3) then
+		Unit:SpawnCreature(22347, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+		Unit:SpawnCreature(22347, Unit:GetX(), Unit:GetY(), Unit:GetZ(), 0, 14, 360000);
+	else
 		Unit:FullCastSpell(38730)
 	end
 end

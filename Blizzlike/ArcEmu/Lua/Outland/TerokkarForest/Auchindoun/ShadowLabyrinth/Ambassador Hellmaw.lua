@@ -1,3 +1,13 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 local mod = getfenv(1)
 local self = getfenv(1)
 
@@ -6,8 +16,7 @@ function OnSpawn(Unit, Event)
 	if(cage) then
 		cage:Open()
 	end
-	local o = Unit:GetO()
-	Unit:CreateCustomWaypoint(1, Unit:GetX()+math.cos(o)*10, Unit:GetY()+math.sin(o)*10, Unit:GetZ(), Unit:GetO(), 0, 0x100)
+	Unit:CreateCustomWaypoint(1, Unit:GetX()+math.cos(Unit:GetO())*10, Unit:GetY()+math.sin(Unit:GetO())*10, Unit:GetZ(), Unit:GetO(), 0, 0x100)
 	Unit:MoveToWaypoint(1)
 	self[tostring(Unit)] = { }
 	Unit:PlaySoundToSet(10473)
@@ -20,7 +29,7 @@ function OnReachWp(Unit, Event, _, wp, foward)
 		vars.ritualists = {}
 		local rad = Unit:GetO()-(math.pi/2)
 		for i = 1,3 do
-			table.insert(vars.ritualists,Unit:SpawnCreature(18794, Unit:GetX()+math.cos(rad)*10, Unit:GetY()+math.sin(rad)*10, Unit:GetZ(), Unit:GetO(), 0, 0))
+			table.insert(vars.ritualists, Unit:SpawnCreature(18794, Unit:GetX()+math.cos(rad)*10, Unit:GetY()+math.sin(rad)*10, Unit:GetZ(), Unit:GetO(), 0, 0))
 			rad = rad+(math.pi/2)
 		end
 		for _,v in pairs(vars.ritualists) do
@@ -44,7 +53,7 @@ function OnReachWp(Unit, Event, _, wp, foward)
 end
 
 function OnCombat(Unit, Event)
-	local say = math.random(1, 3)
+	local say = math.random(1,3)
 	if(say == 1) then
 		Unit:PlaySoundToSet(10475)
 		Unit:SendChatMessage(14, 0, "Pathetic mortals! You will pay dearly!")
@@ -72,8 +81,8 @@ function OnWipe(Unit, Event)
 end
 
 function OnKill(Unit, Event)
-	local say = math.random(0,1)
-	if(say) then
+	local say = math.random(1,2)
+	if(say == 1) then
 		Unit:SendChatMessage(14, 0, "Do you fear death?")
 		Unit:PlaySoundToSet(10478)
 	else
@@ -94,8 +103,7 @@ function AIUpdate(Unit, Event)
 			Unit:RemoveAllAuras()
 			Unit:SetAttackable()
 			Unit:DisableCombat(false)
-			local o = Unit:GetO()
-			Unit:CreateCustomWaypoint(2, Unit:GetX()+math.cos(o)*15, Unit:GetY()+math.sin(o)*15, Unit:GetZ(), Unit:GetO(), 0, 0x100)
+			Unit:CreateCustomWaypoint(2, Unit:GetX()+math.cos(Unit:GetO())*15, Unit:GetY()+math.sin(Unit:GetO())*15, Unit:GetZ(), Unit:GetO(), 0, 0x100)
 			Unit:CreateCustomWaypoint(3, -139.871170, -20.563589, 8.072030, 4.633859, 0, 0x100)
 			Unit:CreateCustomWaypoint(4, -154.723740, -37.530266, 8.072030, 4.914246, 0, 0x100)
 			Unit:CreateCustomWaypoint(5, -143.254257, -65.023735, 8.072030, 4.207390, 0, 0x100)
@@ -121,7 +129,7 @@ function AIUpdate(Unit, Event)
 		vars.fear = 25
 	elseif(vars.acid <= 0) then
 		Unit:FullCastSpell(33551)
-		vars.acid = math.random(10, 20)
+		vars.acid = math.random(10,20)
 	elseif(vars.enrage ~= nil and vars.enrage <= 0) then
 		Unit:FullCastSpell(46587)
 		vars.enrage = nil
@@ -138,14 +146,14 @@ RegisterUnitEvent(18731, 19, "OnReachWp")
 
 function RitualistOnCombat(Unit, Event, _, mAggro)
 	self[tostring(Unit)] = {
-		addle = math.random(15, 30),
-		missile = math.random(2, 10),
-		blast = math.random(5, 15),
-		buffet = math.random(15, 30),
-		nova = math.random(15, 30),
-		bolt = math.random(5, 15),
+		addle = math.random(15,30),
+		missile = math.random(2,10),
+		blast = math.random(5,15),
+		buffet = math.random(15,30),
+		nova = math.random(15,30),
+		bolt = math.random(5,15),
 		dispel_cd = 0,
-		isHeroic = (mAggro:IsPlayer() and mAggro:IsHeroic() )
+		isHeroic = (mAggro:IsPlayer() and mAggro:IsHeroic())
 	}
 	Unit:RegisterAIUpdateEvent(1000)
 	Unit:StopChannel()
@@ -157,12 +165,10 @@ function RitualistOnWipe(Unit, Event)
 end
 
 function RitualistOnDeath(Unit, Event)
-	local hellmaw = Unit:GetCreator()
-	if(hellmaw) then
-		local ritualists = self[tostring(hellmaw)].ritualists
-		for k,v in pairs(ritualists) do
+	if(self[tostring(hellmaw)].ritualists) then
+		for k,v in pairs(self[tostring(hellmaw)].ritualists) do
 			if(tostring(Unit) == tostring(v) ) then
-				table.remove(ritualists,k)
+				table.remove(self[tostring(hellmaw)].ritualists,k)
 				break
 			end
 		end
@@ -170,7 +176,9 @@ function RitualistOnDeath(Unit, Event)
 end
 
 function RitualistAIUpdate(Unit, Event)
-	if(Unit:IsCasting()) then return end
+	if(Unit:IsCasting()) then
+		return
+	end
 	if(Unit:GetNextTarget() == nil) then 
 		Unit:WipeThreatList()
 		return
@@ -191,24 +199,24 @@ function RitualistAIUpdate(Unit, Event)
 			target = Unit:GetClosestEnemy()
 		end
 		Unit:FullCastSpellOnTarget(33487, target)
-		vars.addle = math.random(20, 30)
+		vars.addle = math.random(20,30)
 	elseif(vars.missile <= 0) then
 		if(vars.isHeroic) then
 			Unit:FullCastSpellOnTarget(38364, target)
 		else
 			Unit:FullCastSpellOnTarget(33833, target)
 		end
-		vars.missle = math.random(10, 15)
+		vars.missle = math.random(10,15)
 	elseif(vars.blast <= 0) then
 		if(vars.isHeroic) then
 			Unit:FullCastSpellOnTarget(20795, target)
 		else
 			Unit:FullCastSpellOnTarget(14145, target)
 		end
-		vars.blast = math.random(10, 15)
+		vars.blast = math.random(10,15)
 	elseif(vars.buffet <= 0) then
 		Unit:FullCastSpellOnTarget(9574, target)
-		vars.buffet = math.random(15, 30)
+		vars.buffet = math.random(15,30)
 	elseif(vars.nova <= 0) then
 		if(vars.isHeroic) then
 			Unit:FullCastSpell(15532)
@@ -222,10 +230,10 @@ function RitualistAIUpdate(Unit, Event)
 		else
 			Unit:FullCastSpellOnTarget(12675, target)
 		end
-		vars.bolt = math.random(5, 10)
-	elseif(vars.dispel_cd <= 0 and Unit:HasNegativeAura()) then
+		vars.bolt = math.random(5,10)
+	elseif(vars.dispel_cd <= 0 and 	Unit:HasNegativeAura()) then
 		Unit:FullCastSpell(17201)
-		vars.dispel_cd = math.random(10, 20)
+		vars.dispel_cd = math.random(10,20)
 	end
 end
 

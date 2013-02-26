@@ -1,15 +1,13 @@
---[[ AscendScripting Script - 
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The AscendScripting Team.This script was
-written and is protected by the GPL v2. The following
-script was released by a AscendScripting Staff Member.
-Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-~~End of License Agreement
-BrantX -- AscendScripting Staff, February 26, 2009. ]]
---[[
-Illidan Stormrage yells: Akama. Your duplicity is hardly surprising. I should have slaughtered you and your malformed brethren long ago.
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BrantX; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Illidan Stormrage yells: Akama. Your duplicity is hardly surprising. I should have slaughtered you and your malformed brethren long ago.
 Illidan Stormrage yells: Behold the power... of the demon within!
 Illidan Stormrage yells: Boldly said. But I remain... unconvinced.
 Illidan Stormrage yells: Feel the hatred of ten thousand years!
@@ -18,8 +16,7 @@ Illidan Stormrage yells: Maiev... How is it even possible?
 Illidan Stormrage yells: Stare into the eyes of the Betrayer!
 Illidan Stormrage yells: This is too easy!
 Illidan Stormrage yells: Who shall be next to taste my blades?
-Illidan Stormrage yells: You have won... Maiev. But the huntress... is nothing without the hunt. You... are nothing... without me.
---]]
+Illidan Stormrage yells: You have won... Maiev. But the huntress... is nothing without the hunt. You... are nothing... without me.]]
 
 function Illidan_OnSpawn(Unit,Event)
 	Unit:StopMovement(1)
@@ -49,18 +46,18 @@ end
 function Illidan_StartAttack(Unit,Event)
 	Unit:SetCombatMeleeCapable(0)
 	Unit:Emote(0)
-	Unit:SetUInt64Value(UnitField.Unit_FIELD_FLAGS,UnitFieldFlags.Unit_FLAG_UNKNOWN_1) -- Apparently lets him attackble?
+	Unit:SetUInt64Value(UnitField.Unit_FIELD_FLAGS,UnitFieldFlags.Unit_FLAG_UNKNOWN_1)
 	Unit:StopMovement(0)
 end
 
 function Illidan_CallMinion(Unit,Event)
 local X,Y,Z = Unit:GetX(),Unit:GetY(),Unit:GetZ()
 local Akama = Unit:GetCreatureNearestCoords(X,Y,Z,22990)
-	if Unit:GetHealthPct() == 95 then
+	if(Unit:GetHealthPct() == 95) then
 		Unit:RegisterEvent("Illidan_AkamaFlee", 5000, 1)
 		Unit:RegisterEvent("Illidan_AkamaTargetCheck", 1000, 1)
-		Unit:PlaySoundToSet(11465)
 		Unit:SendChatMessage(14, 0,"Come, my minions. Deal with this traitor as he deserves!")
+		Unit:PlaySoundToSet(11465)
 	end
 end
 
@@ -105,23 +102,19 @@ function Illidan_Phase1(Unit,Event)
 end
 
 function Illidan_Shear(Unit,Event)
-local tank = Unit:GetMainTank()
-local plr = Unit:GetClosestPlayer()
-	Unit:FullCastSpellOnTarget(41032,tank)
-	if tank == nil then
-		Unit:FullCastSpellOnTarget(41032,plr)
+	Unit:FullCastSpellOnTarget(41032, Unit:GetMainTank())
+	if(Unit:GetMainTank() == nil) then
+		Unit:FullCastSpellOnTarget(41032, Unit:GetClosestPlayer())
 	else
 		return
 	end
 end
 
 function Illidan_FlameCrash(Unit,Event)
-local tank = Unit:GetMainTank()
-local plr = Unit:GetClosestPlayer()
 local x,y,z,o = Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO()
-	Unit:FullCastSpellOnTarget(40832,tank)
-	if tank == nil then
-		Unit:FullCastSpellOnTarget(41032,plr)
+	Unit:FullCastSpellOnTarget(40832, Unit:GetMainTank())
+	if(Unit:GetMainTank() == nil) then
+		Unit:FullCastSpellOnTarget(41032, Unit:GetClosestPlayer())
 	else
 		return
 	end
@@ -133,21 +126,19 @@ function Illidan_ParasiticShadowfiend(Unit,Event)
 end
 
 function Illidan_DrawSoul(Unit,Event)
-local tank = Unit:GetMainTank()
-local plr = Unit:GetRandomPlayer(2)
-	Unit:FullCastSpellOnTarget(40904,tank)
-	if tank == nil then
-		Unit:FullCastSpellOnTarget(40904,plr)
+	Unit:FullCastSpellOnTarget(40904, Unit:GetMainTank())
+	if(Unit:GetMainTank() == nil) then
+		Unit:FullCastSpellOnTarget(40904, Unit:GetRandomPlayer(2))
 	else
 		return
 	end
 end
 
 function Illidan_Phase2(Unit,Event)
-	if Unit:GetHealthPct() <= 65 then
+	if(Unit:GetHealthPct() <= 65) then
 		Unit:RemoveEvents()
 		local X,Y,Z,O = Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO()
-		--Unit:SendChatMessage(14, 0,"I will not be touched by rabble such as you!") --Unknown Quote?
+--		Unit:SendChatMessage(14, 0,"I will not be touched by rabble such as you!")
 		Unit:PlaySoundToSet(11479)
 		Unit:EnableMoveFly(1)
 		Unit:SetFlying()
@@ -172,15 +163,13 @@ end
 function Illidan_Phase2Talk(Unit,Event)
 	Unit:SendChatMessage(ChatField.CHAT_MSG_MONSTER_YELL,LangField.LANG_UNIVERSAL,"Behold the Flames of Azzinoth!")
 	Unit:PlaySoundToSet(11480)
-	Unit:CastSpellAoF(676.717346, 322.445251, 354.153320,39635) -- Glaives
-	Unit:CastSpellAoF(677.368286, 285.374725, 354.242157,39849) -- Glaives
+	Unit:CastSpellAoF(676.717346, 322.445251, 354.153320,39635)
+	Unit:CastSpellAoF(677.368286, 285.374725, 354.242157,39849)
 	Unit:RegisterEvent("Illidan_Phase2Patrol",1000, 1)
 	Unit:RegisterEvent("Illidan_GlaiveSpawn", 1200, 1)
-	
 end
 
 function Illidan_GlaiveSpawn(Unit,Event)
--- Glaives and Flame of Azzinoth
 	Unit:SpawnCreature(229960, 676.717346, 322.445251, 354.153320, 5.732623,35,0)
 	Unit:SpawnCreature(229960, 677.368286, 285.374725, 354.242157, 5.645614,35,0)
 	Unit:SpawnCreature(229970, 672.039246, 326.748322, 354.206390, 0.207343,1825,0)
@@ -194,9 +183,7 @@ function Illidan_Phase2Patrol(Unit,Event)
 end
 
 function Illidan_Phase2Patrol2(Unit,Event)
-local x,y,z,o = Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO()
--- This is close to blizz-like. He patrols 3 main points when flying.
-local Choice = math.random(1, 3)
+local Choice = math.random(1,3)
 	if(Choice == 1) then
 		Unit:MoveTo(718.616, 305.474, 352.996, 3.140)
 	elseif(Choice == 2) then
@@ -215,29 +202,28 @@ end
 
 function Illidan_Fireball(Unit,Event)
 local plr = Unit:GetRandomPlayer(0)
-	if plr == nil then
+	if(Unit:GetRandomPlayer(0) == nil) then
 		return
 	else
 		Unit:CancelSpell()
-		Unit:FullCastSpellOnTarget(40598,plr)
+		Unit:FullCastSpellOnTarget(40598, Unit:GetRandomPlayer(0))
 	end
 end
 
 function Illidan_DarkBarrage(Unit,Event)
-local plr = Unit:GetRandomPlayer(0)
-	if plr == nil then
+	if(Unit:GetRandomPlayer(0) == nil) then
 		return
 	else
 		Unit:CancelSpell()
-		Unit:FullCastSpellOnTarget(40585,plr)
+		Unit:FullCastSpellOnTarget(40585, Unit:GetRandomPlayer(0))
 	end
 end
 
 function Illidan_EyeBeam(Unit,Event)
-local Trigger = Unit:SpawnCreature(230691,642.240601,297.297180,353.423401,6,35,0)
+local Trigger = Unit:SpawnCreature(230691, 642.240601, 297.297180, 353.423401, 6, 35, 0)
 	Unit:CancelSpell()
 	Unit:RemoveEvents()
-	Unit:SendChatMessage(14, 0,"Stare into the eyes of the Betrayer!")
+	Unit:SendChatMessage(14, 0, "Stare into the eyes of the Betrayer!")
 	Unit:PlaySoundToSet(11481)
 	Unit:SetUInt32Value(UnitField.Unit_FIELD_CHANNEL_OBJECT, Trigger:GetGUID())
 	Unit:SetUInt32Value(UnitField.Unit_CHANNEL_SPELL, 39908)
@@ -251,7 +237,7 @@ function Illidan_StopChannel(Unit,Event)
 end
 
 function EyeBeam_OnSpawn(Unit,Event)
-	local Choice = math.random(1, 3)
+	local Choice = math.random(1,3)
 	if(Choice == 1) then
 		Unit:RegisterEvent("EyeBeam_EyeBeamMove2", 3000, 1)
 	elseif(Choice == 2) then
@@ -262,40 +248,40 @@ function EyeBeam_OnSpawn(Unit,Event)
 end
 
 function EyeBeam_EyeBeamMove2(Unit,Event)
-	Unit:MoveTo(641.197449,314.330963,353.300262,6)
+	Unit:MoveTo(641.197449, 314.330963, 353.300262,6)
 	Unit:RegisterEvent("EyeBeam_EyeBeamMove3", 3000, 1)
 end
 
 function EyeBeam_EyeBeamMove3(Unit,Event)
-	Unit:MoveTo(657.239807,256.925568,352.996094,6)
+	Unit:MoveTo(657.239807, 256.925568, 352.996094,6)
 	Unit:RegisterEvent("EyeBeam_EyeBeamMove4", 3000, 1)
 end
 
 function EyeBeam_EyeBeamMove4(Unit,Event)
-	Unit:MoveTo(657.913330,353.562775,352.996185,6)
+	Unit:MoveTo(657.913330, 353.562775, 352.996185,6)
 end
 
 function EyeBeam_EyeBeamMove5(Unit,Event)
-	Unit:MoveTo(707.019043,270.441772,352.996063,6)
+	Unit:MoveTo(707.019043, 270.441772, 352.996063,6)
 	Unit:RegisterEvent("EyeBeam_EyeBeamMove6", 3000, 1)
 end
 
 function EyeBeam_EyeBeamMove6(Unit,Event)
-	Unit:MoveTo(706.592407,343.425568,352.996124,6)
+	Unit:MoveTo(706.592407, 343.425568, 352.996124,6)
 end
 
 function EyeBeam_EyeBeamMove7(Unit,Event)
-	Unit:MoveTo(706.593262,310.011475,353.693848,6)
+	Unit:MoveTo(706.593262, 310.011475, 353.693848,6)
 	Unit:RegisterEvent("EyeBeam_Move8", 3000, 1)
 end
 
 function EyeBeam_Move8(Unit,Event)
-	Unit:MoveTo(706.751343,298.312683,353.653809,6)
+	Unit:MoveTo(706.751343, 298.312683, 353.653809,6)
 	Unit:RegisterEvent("EyeBeam_Move9", 3000, 1)
 end
 
 function EyeBeam_Move9(Unit,Event)
-	Unit:MoveTo(642.240601,297.297180,353.423401,6)
+	Unit:MoveTo(642.240601, 297.297180, 353.423401,6)
 	Unit:Despawn(4000,0)
 end
 
@@ -324,7 +310,6 @@ local Blade2 = Unit:GetCreatureNearestCoords(677.368286, 285.374725, 354.242157,
 end
 
 function Illidan_Phase3Spells(Unit,Event)
--- Check --
 local Elem1 = Unit:GetCreatureNearestCoords(703.582, 290.075, 352.996, 229970)
 local Elem2 = Unit:GetCreatureNearestCoords(672.000, 327.000, 354.000, 229970)
 	if((Elem1:IsAlive() == false) and (Elem2:IsAlive() == false)) then
@@ -361,28 +346,28 @@ function Illidan_Phase4(Unit,Event)
 end
 
 function Illidan_Emotes(Unit,Event)
-	--Unit:Emote(403)
+--	Unit:Emote(403)
 	Unit:RegisterEvent("Illidan_Emote2", 1200, 1)
 end
 
 function Illidan_Emote2(Unit,Event)
-	--Unit:Emote(404)
+--	Unit:Emote(404)
 	Unit:RegisterEvent("Illidan_Turn", 2000, 1)
 end
 
 function Illidan_Turn(Unit,Event)
-	--Unit:Emote(405)
+--	Unit:Emote(405)
 	Unit:CastSpell(40506)
 end
 
 function Illidan_Deform(Unit,Event)
 	Unit:RemoveEvents()
-	--Unit:Emote(403) 
+--	Unit:Emote(403) 
 	Unit:RegisterEvent("Illidan_DeformMid1", 2000, 1)
 end
 
 function Illidan_DeformMid1(Unit,Event)
-	--Unit:Emote(404)
+--	Unit:Emote(404)
 	Unit:RegisterEvent("Illidan_Phase3Spells", 4500, 1)
 	Unit:RegisterEvent("Illidan_DeformCheck", 1200, 1)
 end
@@ -392,8 +377,8 @@ function Illidan_DeformCheck(Unit,Event)
 	Unit:SetModel(21135)
 	Unit:StopMovement(0)
 	Unit:SetCombatMeleeCapable(0)
-	--Unit:Emote(405)
-	--Unit:Emote(0)
+--	Unit:Emote(405)
+--	Unit:Emote(0)
 end
 
 function Illidan_Phase5(Unit,Event)
@@ -404,7 +389,7 @@ function Illidan_Phase5(Unit,Event)
 		Unit:SetCombatMeleeCapable(1)
 		Unit:SendChatMessage(14, 0,"Is this it, mortals? Is this all the fury you can muster?")
 		Unit:PlaySoundToSet(11476)
-		--Unit:Emote(6)
+--		Unit:Emote(6)
 		Unit:RegisterEvent("Illidan_SpawnMaiev", 8000, 1)
 		Unit:RegisterEvent("Illidan_MaievTalk1", 15000, 1)
 		if(Unit:GetModel() == 21322) then
@@ -417,28 +402,28 @@ end
 function Illidan_SpawnMaiev(Unit,Event)
 local X,Y,Z = Unit:GetX(),Unit:GetY(),Unit:GetZ()
 local O = Unit:GetO()
-local Maiev = Unit:SpawnCreature(231970,X,Y,Z+.5,2.177125,35,0)
-	--Unit:Emote(0)
+local Maiev = Unit:SpawnCreature(231970, X,Y,Z+.5, 2.177125, 35, 0)
+--	Unit:Emote(0)
 	if(Maiev:IsInWorld() == 1) then
-		Unit:MoveTo(X,Y,Z,O-2.177)
+		Unit:MoveTo(X,Y,Z, O-2.177)
 		Unit:SetNextTarget(Maiev)
 	else
 		if(Maiev:IsInWorld() == 1) then
-			Unit:MoveTo(X,Y,Z,O-2.177)
+			Unit:MoveTo(X,Y,Z, O-2.177)
 			Unit:SetNextTarget(Maiev)
 		end
 	end
 end
 
 function Illidan_MaievTalk1(Unit,Event)
-	Unit:SendChatMessage(14, 0,"Maiev... How is it even possible?")
+	Unit:SendChatMessage(14, 0, "Maiev... How is it even possible?")
 	Unit:PlaySoundToSet(11477)
 	Unit:RegisterEvent("Illidan_MaievAttack", 7000, 1)
 end
 
 function Illidan_MaievAttack(Unit,Event)
 local X,Y,Z,O = Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO()
-local Maiev = Unit:GetCreatureNearestCoords(X,Y,Z,231970)
+local Maiev = Unit:GetCreatureNearestCoords(X,Y,Z,O, 231970)
 	Unit:RegisterEvent("Illidan_Speak2Maiev", 35000, 0)
 	Unit:RegisterEvent("Illidan_OnCloseToDie", 35000, 0)
 	Unit:SetNextTarget(Maiev)
@@ -453,7 +438,7 @@ local Maiev = Unit:GetCreatureNearestCoords(X,Y,Z,231970)
 end
 
 function Illidan_Speak2Maiev(Unit,Event)
-	Unit:SendChatMessage(14, 0,"Feel the hatred of ten thousand years!")
+	Unit:SendChatMessage(14, 0, "Feel the hatred of ten thousand years!")
 	Unit:PlaySoundToSet(11470)
 end
 
@@ -461,7 +446,7 @@ function Illidan_OnCloseToDie(Unit,Event)
 	if(Unit:GetHealthPct() == 1) then
 		Unit:RemoveEvents()
 		Unit:StopMovement(1)
-		--Unit:Emote(EMOTE_ONESHOT_CUSTOMSPELL06)
+--		Unit:Emote(EMOTE_ONESHOT_CUSTOMSPELL06)
 		Unit:SetUInt32Value(UnitField.Unit_FIELD_FLAGS,UnitFieldFlags.Unit_FLAG_NOT_SELECTABLE+UnitFieldFlags.Unit_FLAG_NOT_ATTACKABLE_9)
 		Unit:SetCombatMeleeCapable(1)
 	end
@@ -479,13 +464,13 @@ function Illidan_OnLeaveCombat(Unit,Event)
 end
 
 function Illidan_OnKill(Unit,Event)
-	local Choice = math.random(1, 2)
+local Choice = math.random(1,2)
 	if(Choice == 1) then
-		Unit:PlaySoundToSet(11473)
 		Unit:SendChatMessage(14, 0,"Who shall be next to taste my blades?!")
+		Unit:PlaySoundToSet(11473)
 	elseif(Choice == 2) then
-		Unit:PlaySoundToSet(11472)
 		Unit:SendChatMessage(14, 0,"This is too easy!")
+		Unit:PlaySoundToSet(11472)
 	end
 end
 

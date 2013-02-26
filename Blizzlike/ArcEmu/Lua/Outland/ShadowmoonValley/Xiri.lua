@@ -1,3 +1,13 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 function Xiri_OnEnterCombat(Unit,Event)
 	Unit:RegisterEvent("Xiri_BlindingLight", 24000, 0)
 end
@@ -33,6 +43,6 @@ function Xiri_OnDied(Unit,Event)
 end
 
 RegisterUnitEvent(18528, 1, "Xiri_OnEnterCombat")
-RegisterUnitEvent(18528, 1, "Xiri_OnLeaveCombat")
+RegisterUnitEvent(18528, 2, "Xiri_OnLeaveCombat")
 RegisterUnitEvent(18528, 4, "Xiri_OnDied")
-RegisterUnitEvent(18528, 6, "Xiri_OnSpawn")
+RegisterUnitEvent(18528, 18, "Xiri_OnSpawn")

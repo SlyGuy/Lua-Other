@@ -1,8 +1,18 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 local mod = getfenv(1)
 local self = getfenv(1)
 
 function OnSpawn(Unit, Event)
-	local say  = math.random(1, 3)
+	local say = math.random(1,6)
 	if(say == 1) then
 		Unit:SendChatMessage(14, 0, "All flesh must burn!")
 		Unit:PlaySoundToSet(10482)
@@ -26,11 +36,11 @@ end
 
 function OnCombat(Unit, Event)
 	self[tostring(Unit)] = {
-		stomp = math.random(15, 30),
-		charge = math.random(15, 30),
+		stomp = math.random(15,30),
+		charge = math.random(15,30),
 		incite = 20
 	}
-	local say = math.random(1, 6)
+	local say = math.random(1,5)
 	if(say == 1) then
 		Unit:PlaySoundToSet(10486)
 		Unit:SendChatMessage(14, 0, "You'll be sorry!")
@@ -48,11 +58,9 @@ function OnCombat(Unit, Event)
 		Unit:SendChatMessage(14, 0, "YOU be dead people.")
 	end
 	Unit:RegisterAIUpdateEvent(1000)
-	local allies = Unit:GetInRangeFriends()
-	for _,v in pairs(allies) do
-		if(Unit:GetDistanceYards(v) <= 100) then
-			local target = v:GetRandomEnemy()
-			v:AttackReaction(target, 1, 0)
+	for _,v in pairs(Unit:GetInRangeFriends()) do
+		if( Unit:GetDistanceYards(v) <= 100) then
+			v:AttackReaction(v:GetRandomEnemy(), 1, 0)
 		end
 	end
 end
@@ -64,7 +72,7 @@ function OnWipe(Unit, Event)
 end
 
 function OnKill(Unit, Event)
-	local say = math.random(1, 4)
+	local say = math.random(1,4)
 	if(say == 1) then
 		Unit:PlaySoundToSet(10489)
 		Unit:SendChatMessage(14, 0, "NO coming back for you!")
@@ -81,7 +89,7 @@ function OnKill(Unit, Event)
 end
 
 function OnDeath(Unit, Event)
-	local say = math.random(1, 2)
+	local say = math.random(1,2)
 	if(say == 1) then
 		Unit:PlaySoundToSet(10491)
 		Unit:SendChatMessage(14, 0, "This no... good..")
@@ -100,20 +108,20 @@ function InciteEvent(Unit, Event, phase)
 		Unit:FullCastSpell(33676)
 		Unit:RegisterLuaEvent(InciteEvent, 3000, 0, 2)
 	elseif(phase == 2) then
-		local target = Unit:GetRandomEnemy()
-		Unit:SetNextTarget(target)
+		Unit:SetNextTarget(Unit:GetRandomEnemy())
 		Unit:Emote(LCF.EMOTE_ONESHOT_LAUGH,0)
 	else
 		Unit:RemoveEvents()
 		Unit:DisableMelee(false)
-		local enemy = Unit:GetRandomEnemy()
-		Unit:AttackReaction(enemy, 1, 0)
+		Unit:AttackReaction(Unit:GetRandomEnemy(), 1, 0)
 		Unit:RegisterAIUpdateEvent(1000)
 	end
 end
 
 function AIUpdate(Unit, Event)
-	if(Unit:IsCasting()) then return end
+	if(Unit:IsCasting()) then
+		return
+	end
 	if(Unit:GetNextTarget() == nil) then
 		Unit:WipeThreatList()
 		return
@@ -132,12 +140,11 @@ function AIUpdate(Unit, Event)
 		Unit:RegisterLuaEvent(InciteEvent, 15000, 1, 3)
 	elseif(vars.stomp <= 0) then
 		Unit:FullCastSpell(33707)
-		vars.stomp = math.random(20, 30)
+		vars.stomp = math.random(20,30)
 		vars.charge = 1
 	elseif(vars.charge <= 0) then
-		local target = Unit:GetRandomEnemy()
-		Unit:FullCastSpellOnTarget(33709, target)
-		vars.charge = math.random(20, 30)
+		Unit:FullCastSpellOnTarget(33709, Unit:GetRandomEnemy())
+		vars.charge = math.random(20,30)
 	end
 end
 
@@ -149,11 +156,9 @@ RegisterUnitEvent(18667, 4, "OnDeath")
 RegisterUnitEvent(18667, 21, "AIUpdate")
 
 function InciteChaosEffect(_, spell)
-	local caster = spell:GetCaster()
-	local enemies = caster:GetInRangeEnemies()
-	for _,v in pairs(enemies) do
-		caster:FullCastSpellOnTarget(33684, v)
-		if(v:IsPlayer() ) then
+	for _,v in pairs(spell:GetCaster():GetInRangeEnemies()) do
+		spell:GetCaster():FullCastSpellOnTarget(33684, v)
+		if(v:IsPlayer()) then
 			v:UseAI(true)
 		end
 		v:FlagFFA(true)

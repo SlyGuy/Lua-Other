@@ -1,24 +1,34 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 local mod = getfenv(1)
 local self = getfenv(1)
 
 function OnSpawn(Unit, Event)
 	Unit:SendChatMessage(14, 0, "Keep your minds focused for the days of reckoning are close at hand. Soon, the destroyer of worlds will return to make good on his promise. Soon the destruction of all that is will begin!")
 	Unit:PlaySoundToSet(10522)
-	Unit:RegisterEvent(RandomEmote, 3500,0)
+	Unit:RegisterEvent(RandomEmote, 3500, 0)
 end
 
 function OnCombat(Unit, Event, _, mAggro)
 	Unit:RemoveEvents()
 	self[tostring(Unit)] = {
-		draw = math.random(20, 30),
-		volley = math.random(2, 5),
+		draw = math.random(20,30),
+		volley = math.random(2,5),
 		rain = nil,
-		banish = math.random(15, 30),
+		banish = math.random(15,30),
 		rifts = {},
 		enrage = false,
 		isHeroic = (mAggro:IsPlayer() and mAggro:IsHeroic() )
 	}
-	local say = math.random(1, 3)
+	local say = math.random(1,3)
 	if(say == 1) then
 		Unit:PlaySoundToSet(10524)
 		Unit:SendChatMessage(14, 0, "I'll make an offering of your blood.")
@@ -30,17 +40,17 @@ function OnCombat(Unit, Event, _, mAggro)
 		Unit:PlaySoundToSet(10526)
 	end
 	Unit:RegisterAIUpdateEvent(1000)
-	Unit:RegisterEvent(SummonPortals, math.random(7, 9)*1000, 1)
+	Unit:RegisterEvent(SummonPortals, math.random(7,9)*1000, 1)
 	local allies = Unit:GetInRangeFriends()
 	for _,v in pairs(allies) do
-		if(Unit:GetDistanceYards(v) <= 100) then
+		if( Unit:GetDistanceYards(v) <= 100) then
 			v:AttackReaction(mAggro, 1, 0)
 		end
 	end
 end
 
 function RandomEmote(Unit, Event)
-	local emote_type = math.random(1, 4)
+	local emote_type = math.random(1,4)
 	if(emote_type == 1) then
 		Unit:Emote(LCF.EMOTE_ONESHOT_ROAR, 0)
 	elseif(emote_type == 2) then
@@ -77,8 +87,7 @@ end
 
 function TeleportPlayers(Unit, Event)
 	local x,y,z,o = Unit:GetSpawnLocation()
-	local enemies = Unit:GetInRangeEnemies()
-	for _,v in pairs(enemies) do
+	for _,v in pairs(Unit:GetInRangeEnemies()) do
 		if(v:IsCreature()) then
 			v:TeleportCreature(x,y,z,o)
 		else
@@ -91,8 +100,7 @@ end
 function OnWipe(Unit, Event)
 	self[tostring(Unit)] = nil
 	Unit:RemoveAIUpdateEvent()
-	local Units = Unit:GetInRangeUnits()
-	for _,v in pairs(Units) do
+	for _,v in pairs(Unit:GetInRangeUnits()) do
 		if(v:GetEntry() == 19226) then
 			v:Despawn(1, 0)
 		end
@@ -103,8 +111,8 @@ function OnWipe(Unit, Event)
 end
 
 function OnKill(Unit)
-	local say = math.random(0, 1)
-	if(say) then
+	local say = math.random(1,2)
+	if(say == 1) then
 		Unit:SendChatMessage(14, 0, "I serve with pride!")
 		Unit:PlaySoundToSet(10527)
 	else
@@ -123,8 +131,10 @@ function OnDeath(Unit)
 end
 
 function AIUpdate(Unit)
-	if(Unit:IsCasting()) then return end
-	if(Unit:GetNextTarget() == nil) then
+	if(	Unit:IsCasting()) then
+		return
+	end
+	if( Unit:GetNextTarget() == nil) then
 		Unit:WipeThreatList()
 		return
 	end
@@ -132,18 +142,17 @@ function AIUpdate(Unit)
 	vars.draw = vars.draw - 1
 	vars.volley = vars.volley - 1
 	vars.banish = vars.banish - 1
-	
-	if(vars.isHeroic and vars.banish <= 0) then
+	if((vars.isHeroic) and (vars.banish <= 0)) then
 		local enemy = Unit:GetRandomEnemy()
 		Unit:FullCastSpellOnTarget(38791, enemy)
-		vars.banish = math.random(15, 30)
+		vars.banish = math.random(15,30)
 	elseif(vars.draw <= 0) then
 		Unit:FullCastSpell(33563)
 		Unit:SendChatMessage(14, 0, "The darkness in your souls draws you ever closer...")
-		vars.draw = math.random(20, 30)
+		vars.draw = math.random(20,30)
 		vars.rain = 0
 		Unit:RegisterEvent(TeleportPlayers, 1000, 1)
-	elseif(vars.rain ~= nil and vars.rain <= 0) then
+	elseif((vars.rain ~= nil) and (vars.rain <= 0)) then
 		if(vars.isHeroic) then
 			Unit:FullCastSpell(39363)
 		else
@@ -152,7 +161,7 @@ function AIUpdate(Unit)
 		vars.rain = nil
 	elseif(vars.volley <= 0) then
 		Unit:FullCastSpell(33841)
-		vars.volley = math.random(10, 15)
+		vars.volley = math.random(10,15)
 	end
 end
 
@@ -165,7 +174,7 @@ RegisterUnitEvent(18732, 21, "AIUpdate")
 
 function VoidRift_OnSpawn(Unit, Event)
 	self[tostring(Unit)] = {
-		spawn_time = math.random(2, 5),
+		spawn_time = math.random(2,5),
 		reduce_timer = 45,
 		reduce_cnt = 0
 	}
@@ -180,7 +189,7 @@ end
 
 function VoidRift_Update(Unit, Event)
 	local vorpil = Unit:GetCreator()
-	if(vorpil:IsDead() or vorpil:IsInCombat() == false) then
+	if((vorpil:IsDead()) or (vorpil:IsInCombat() == false)) then
 		Unit:RemoveAIUpdateEvent()
 		self[tostring(Unit)] = nil
 		Unit:Despawn(1,0)
@@ -212,11 +221,10 @@ RegisterUnitEvent(19224, 21, "VoidRift_Update")
 function Traveller_OnSpawn(Unit)
 	Unit:DisableTargeting(true)
 	local portal = Unit:GetLocalCreature(19224)
-	local vorpil = portal:GetCreator()
-	if(vorpil) then
-		Unit:SetCreator(vorpil)
+	if(portal:GetCreator()) then
+		Unit:SetCreator(portal:GetCreator())
 		Unit:ModifyRunSpeed(3)
-		Unit:SetUnitToFollow(vorpil, 1, math.pi)
+		Unit:SetUnitToFollow(portal:GetCreator(), 1, math.pi)
 		Unit:RegisterAIUpdateEvent(500)
 	else
 		Unit:Despawn(1000, 0)
@@ -229,14 +237,13 @@ end
 
 function TravellerUpdate(Unit)
 	local vorpil = Unit:GetCreator()
-	if(vorpil:IsInCombat() == false or vorpil:IsDead() ) then
+	if((vorpil:IsInCombat() == false) or (vorpil:IsDead())) then
 		Unit:Kill(Unit)
 		Unit:Despawn(0, 0)
 		return
 	end
-	local heroic = self[tostring(vorpil)].isHeroic
 	if(Unit:GetDistanceYards(vorpil) <= 5) then
-		if(heroic) then
+		if(self[tostring(vorpil)].isHeroic) then
 			vorpil:FullCastSpell(39364)
 		else
 			vorpil:FullCastSpell(33783)

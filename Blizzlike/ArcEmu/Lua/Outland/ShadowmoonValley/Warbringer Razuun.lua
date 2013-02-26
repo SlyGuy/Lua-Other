@@ -1,14 +1,24 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 function WarbringerRazuun_OnEnterCombat(Unit,Event)
 	Unit:RegisterEvent("WarbringerRazuun_FelFireball", 3800, 0)
 	Unit:RegisterEvent("WarbringerRazuun_MindWarp", 45000, 1)
 end
 
 function WarbringerRazuun_FelFireball(Unit,Event)
-	Unit:FullCastSpellOnTarget(35913,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(35913, Unit:GetClosestPlayer())
 end
 
 function WarbringerRazuun_MindWarp(Unit,Event)
-	Unit:FullCastSpellOnTarget(38047,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(38047, Unit:GetClosestPlayer())
 end
 
 function WarbringerRazuun_OnLeaveCombat(Unit,Event)

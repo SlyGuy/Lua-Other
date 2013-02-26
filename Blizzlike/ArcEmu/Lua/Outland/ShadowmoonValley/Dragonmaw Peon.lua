@@ -1,8 +1,17 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 local cry_delay = 100000
 local announces = {}
 local announcei = 3
 local choice = 1
-
 
 announces[1] = "It put the mutton in the stomach!"
 announces[2] = "WHY IT PUT DA BOOTERANG ON DA SKIN?! WHY?!"

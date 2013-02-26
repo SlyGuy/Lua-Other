@@ -1,43 +1,37 @@
---[[ Netherstorm -- Parasitic Fleshbeast.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BlackHer0; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by BlackHer0 of the BLUA Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- BlackHer0, September, 29th, 2008. ]]
-
-function Beast_OnEnterCombat(Unit,Event)
-    Unit:RegisterEvent("Beast_Rend",15000,0)
-    Unit:RegisterEvent("Beast_Parasite_Spell",6000,0)
-    Unit:RegisterEvent("Beast_Parasite_Spawn",36000,0)
+function Beast_OnEnterCombat(Unit, Event)
+    Unit:RegisterEvent("Beast_Rend", 15000, 0)
+    Unit:RegisterEvent("Beast_Parasite_Spell", 6000, 0)
+    Unit:RegisterEvent("Beast_Parasite_Spawn", 36000, 0)
 end
 
-function Beast_Rend(Unit,Event)
-    Unit:FullCastSpellOnTarget(13443,Unit:GetMainTank())
+function Beast_Rend(Unit, Event)
+    Unit:FullCastSpellOnTarget(13443, Unit:MainTank())
 end
 
-function Beast_Parasite_Spell(Unit,Event)
-    Unit:FullCastSpellOnTarget(36469,Unit:GetRandomPlayer(0))
+function Beast_Parasite_Spell(Unit, Event)
+    Unit:FullCastSpellOnTarget(36469, Unit:RandomPlayer(0))
 end
 
-function Beast_Parasite_Spawn(Unit,Event)
-    local x = Unit:GetX()
-	local y = Unit:GetY()
-	local z = Unit:GetZ()
-	local o = Unit:GetO()
+function Beast_Parasite_Spawn(Unit, Event)
     Unit:CastSpell(36468)
-    Unit:SpawnCreature(21265, x-1, y, z, o, 14, o)
+    Unit:SpawnCreature(21265, Unit:GetX()-1, Unit:GetY(), Unit:GetZ(), Unit:GetO(), 14)
 end
 
-function Beast_OnLeaveCombat(Unit,Event)
+function Beast_OnLeaveCombat(Unit, Event)
     Unit:RemoveEvents()
 end
 
-function Beast_OnDied(Unit,Event)
+function Beast_OnDied(Unit, Event)
     Unit:RemoveEvents()
 end
 

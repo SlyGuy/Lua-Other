@@ -1,20 +1,12 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   BT - Essence of Anger.lua
-   Original Code by DARKI
-   Version 1
-========================================]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Essence_AngerOnCombat(pUnit, event)
 	setvars(pUnit, {dup=0,qtick=0,qactive=0});
@@ -41,7 +33,7 @@ function Rand_Quotes(pUnit, event)
 end
 
 function Rand_Quotespeech(pUnit, event)
-	-- math randies mite be inserted in here
+--	math randies might be inserted in here
 	local args = getvars(pUnit);
 	if (args.qactive == 1 and args.qtick == 1) then
 		args.qtick = args.qtick + 1;
@@ -52,7 +44,7 @@ function Rand_Quotespeech(pUnit, event)
 			pUnit:SendChatMessage(14, 0, "I won't be ignored!");
 		end
 		if(args.qtick == 115) then
-			pUnit:SendChatMessage(14, 0, "On your knees!"); --These quotes are Unknown
+			pUnit:SendChatMessage(14, 0, "On your knees!");
 		end]]
 		if(args.qtick == 145) then
 			args.qtick = 1;
@@ -66,27 +58,25 @@ function Ess_Seethe(pUnit, event)
 end
 
 function Ess_Spells(pUnit, event)
-	local RandSpellz = math.random(1, 2)
+	local RandSpellz = math.random(1,2)
 	if(RandSpellz == 1) then
-		local plr = pUnit:GetMainTank(0)
-		if(plr ~= nil) then
-			pUnit:CastSpellOnTarget(41545, plr)
+		if(pUnit:GetMainTank(0) ~= nil) then
+			pUnit:CastSpellOnTarget(41545, pUnit:GetMainTank(0))
 		end
 	elseif(RandzSpellz == 2) then
-		local plr = pUnit:GetRandomPlayer(0)
-		if(plr ~= nil) then
-			pUnit:FullCastSpellOnTarget(41377, plr)
+		if(pUnit:GetRandomPlayer(0) ~= nil) then
+			pUnit:FullCastSpellOnTarget(41377, pUnit:GetRandomPlayer(0))
 		end
 	end
 end
 
 function Essence_Killed(pUnit, event)
-	--local EssChat = math.random(1, 2)
-	--if(EssChat == 1) then
+--local EssChat = math.random(1,2)
+--	if(EssChat == 1) then
 		pUnit:SendChatMessage(14, 0, "Enough! No more!")
-	--[[elseif(EssChat == 2) then
-		pUnit:SendChatMessage(16, 0, "*Maniacal cackle*") --This emote is unknown
-	--end]]
+--[[elseif(EssChat == 2) then
+		pUnit:SendChatMessage(16, 0, "*Maniacal cackle*")
+	end]]
 end
 
 function Essence_LeaveCombat(pUnit, event)

@@ -1,3 +1,13 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 function Varedis_OnEnterCombat(Unit,Event)
 	Unit:RegisterEvent("Varedis_CurseOfFlames", 120000, 0)
 	Unit:RegisterEvent("Varedis_Evasion", 24000, 0)
@@ -5,7 +15,7 @@ function Varedis_OnEnterCombat(Unit,Event)
 end
 
 function Varedis_CurseOfFlames(Unit,Event)
-	Unit:FullCastSpellOnTarget(38010,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(38010, Unit:GetClosestPlayer())
 end
 
 function Varedis_Evasion(Unit,Event)
@@ -13,7 +23,7 @@ function Varedis_Evasion(Unit,Event)
 end
 
 function Varedis_ManaBurn(Unit,Event)
-	Unit:FullCastSpellOnTarget(39262,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(39262, Unit:GetClosestPlayer())
 end
 
 function Varedis_OnLeaveCombat(Unit,Event)

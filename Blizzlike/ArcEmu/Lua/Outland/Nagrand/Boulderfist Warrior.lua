@@ -1,21 +1,19 @@
---[[ Nagrand- Boulderfist Mage.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Succy; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by Succy of the BLUA Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- Succy, July, 18th, 2008. ]]
-
-function BoulderfistWarrior_Charge(Unit, event, miscunit, misc)
-	Unit:FullCastSpellOnTarget(31994,Unit:GetMainTank())
+function BoulderfistWarrior_Charge(Unit, Event, MiscUnit, Misc)
+	Unit:FullCastSpellOnTarget(31994, Unit:MainTank())
 end
 
-function BoulderfistWarrior(unit, event, miscunit, misc)
-	unit:RegisterEvent("BoulderfistWarrior_Charge",10000,0)
+function BoulderfistWarrior(Unit, Event, MiscUnit, Misc)
+	Unit:RegisterEvent("BoulderfistWarrior_Charge", 10000, 0)
 end
 
 function BoulderfistWarrior_Death(Unit)

@@ -1,33 +1,13 @@
- --[[
-   ******************************************************************
-   *	 _____              ___                           _         *
-   *	(  _  )            (  _`\               _        ( )_       *
-   *	| (_) | _ __   ___ | (_(_)   ___  _ __ (_) _ _   | ,_)      *
-   *	|  _  |( '__)/'___)`\__ \  /'___)( '__)| |( '_`\ | |        *
-   *	| | | || |  ( (___ ( )_) |( (___ | |   | || (_) )| |_       *
-   *	(_) (_)(_)  `\____)`\____)`\____)(_)   (_)| ,__/'`\__)      *
-   *	                                          | |               *
-   *	                                          (_)               *
-   *	                                                            *
-   *	               OpenSource Scripting Team                    *
-   *	                <http://www.arcemu.org>                     *
-   *	                                                            *
-   ******************************************************************
-  
-   This software is provided as free and open source by the
-staff of The ArcScript Project, in accordance with 
-the GPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Tally/`Angel; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-Staff of ArcScript Project, Feb 2008
-~~End of License Agreement
-
-#############################################################
-Made by: Tally/`Angel
--- ]]
 local motherPhase = 0
 local beamPhase = 0
 local beamTimes = 1
@@ -37,17 +17,15 @@ local round = 1
 local repeatAllow = 0
 local beamAllow = 0
 local aura = 0
-local lashTime = math.random(30000, 90000)
+local lashTime = math.random(30000,90000)
 local attAllow = 0
 
-------Introduction------
 function MotherIntro(pUnit, event)
 	pUnit:SendChatMessage(14, 0, "So... business or pleasure?")
 	pUnit:RegisterEvent("Mother_OnCombat", 1000, 0)
 	motherPhase = 0
 end
 
------COMBAT-------
 function Mother_OnCombat(pUnit, event)
 	if(motherPhase == 0) then
 		pUnit:FullCastSpellOnTarget(40879, pUnit)
@@ -59,9 +37,7 @@ function Mother_OnCombat(pUnit, event)
 	else
 	end
 end
-----------------
 
---------ABILITIES----------
 function Mother_BeamOne(pUnit, event)
 	if(beamPhase == 1) then
 	beamAllow = 0
@@ -197,23 +173,18 @@ function Mother_RestartBeams(pUnit, event)
 end
 
 function Mother_Auras(pUnit, event)
-local aura = math.random(1, 6)
+local aura = math.random(1,6)
 	if(aura == 1) then
 		pUnit:FullCastSpell(40880)
-	end
-	if(aura == 2) then
+	elseif(aura == 2) then
 		pUnit:FullCastSpell(40882)
-	end
-	if(aura == 3) then
+	elseif(aura == 3) then
 		pUnit:FullCastSpell(40883)
-	end	
-	if(aura == 4) then
+	elseif(aura == 4) then
 		pUnit:FullCastSpell(40891)
-	end
-	if(aura == 5) then
+	elseif(aura == 5) then
 		pUnit:FullCastSpell(40896)
-	end
-	if(aura == 6) then
+	elseif(aura == 6) then
 		pUnit:FullCastSpell(40897)
 	end
 end
@@ -241,7 +212,7 @@ function Mother_FatalAttraction(pUnit, event)
 end
 
 function Mother_OnTargetDied(pUnit, Event)
-	if(math.random(1, 2) == 1) then
+	if(math.random(1,2) == 1) then
 		pUnit:SendChatMessage(14, 0, "Easy come, easy go.")
 	else
 		pUnit:SendChatMeesage(14, 0, "So much for a happy ending.")

@@ -1,20 +1,12 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   Flames of Azzinoth.lua
-   Original Code by DARKI
-   Version 1
-========================================]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function FlameOfAzzinoth_OnSpawn(pUnit,Event)
 	pUnit:SetUInt64Value(UnitField.Unit_FIELD_FLAGS, 0)
@@ -26,9 +18,8 @@ function FlameOfAzzinoth_OnEnterCombat(pUnit,Event)
 end
 
 function FlameOfAzzinoth_FlameBlast(pUnit,Event)
-local plr = pUnit:GetRandomPlayer(0)
-	if(type(plr) == "userdata") then
-		pUnit:FullCastSpellOnTarget(40631, plr)
+	if(type(pUnit:GetRandomPlayer(0)) == "userdata") then
+		pUnit:FullCastSpellOnTarget(40631, pUnit:GetRandomPlayer(0))
 	end
 end
 

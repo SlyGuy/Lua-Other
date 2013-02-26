@@ -1,15 +1,12 @@
---[[ Outlands -- AllInOne.lua
-
-This script was written and is protected
-by the GPL v2. This script was released
-by The BLUA Scripting Project.
-Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- Blua, December 01, 2008. ]]
---[[ Only update this script IF you have finished a peice of Outlands ]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Blua; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Abjurist_OnEnterCombat(pUnit, Event)
     pUnit:RegisterEvent("Abjurist_Armor", 10000, 0)
@@ -21,7 +18,7 @@ function Abjurist_Armor(pUnit, Event)
 end
 
 function Abjurist_Missiles(pUnit, Event)
-    pUnit:FullCastSpellOnTarget(34447,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(34447, pUnit:GetClosestPlayer())
 end
 
 function Abjurist_OnLeaveCombat(pUnit,Event)
@@ -32,16 +29,16 @@ function Abjurist_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19546, 1, "Abjurist_OnEnterCombat")
-RegisterUnitEvent (19546, 2, "Abjurist_OnLeaveCombat")
-RegisterUnitEvent (19546, 4, "Abjurist_OnDied")
+RegisterUnitEvent(19546, 1, "Abjurist_OnEnterCombat")
+RegisterUnitEvent(19546, 2, "Abjurist_OnLeaveCombat")
+RegisterUnitEvent(19546, 4, "Abjurist_OnDied")
 
 function Ambassador_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Ambassador_Fireball", 3000, 0)
 end
 
 function Ambassador_Fireball(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9053,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9053, pUnit:GetClosestPlayer())
 end
 
 function Ambassador_OnLeaveCombat(pUnit,Event)
@@ -52,16 +49,16 @@ function Ambassador_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20163, 1, "Ambassador_OnEnterCombat")
-RegisterUnitEvent (20163, 2, "Ambassador_OnLeaveCombat")
-RegisterUnitEvent (20163, 4, "Ambassador_OnDied")
+RegisterUnitEvent(20163, 1, "Ambassador_OnEnterCombat")
+RegisterUnitEvent(20163, 2, "Ambassador_OnLeaveCombat")
+RegisterUnitEvent(20163, 4, "Ambassador_OnDied")
 
 function Honor_OnEnterCombat(pUnit, Event)
-    pUnit:RegisterEvent("Honor_Cleave",1000,0)
+    pUnit:RegisterEvent("Honor_Cleave", 1000, 0)
 end
 
 function Honor_Cleave(pUnit, Event)
-    pUnit:FullCastSpellOnTarget(15284,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15284, pUnit:GetClosestPlayer())
 end
 
 function Honor_OnLeaveCombat(pUnit,Event)
@@ -72,9 +69,9 @@ function Honor_OnDied(pUnit,Event)
     pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20199, 1, "Honor_OnEnterCombat")
-RegisterUnitEvent (20199, 2, "Honor_OnLeaveCombat")
-RegisterUnitEvent (20199, 4, "Honor_OnDied")
+RegisterUnitEvent(20199, 1, "Honor_OnEnterCombat")
+RegisterUnitEvent(20199, 2, "Honor_OnLeaveCombat")
+RegisterUnitEvent(20199, 4, "Honor_OnDied")
 
 function Anchorite_OnEnterCombat(pUnit, Event)
     pUnit:RegisterEvent("Anchorite_Heal", 3500, 0)
@@ -102,9 +99,9 @@ function Anchorite_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19467, 1, "Anchorite_OnEnterCombat")
-RegisterUnitEvent (19467, 2, "Anchorite_OnLeaveCombat")
-RegisterUnitEvent (19467, 4, "Anchorite_OnDied")
+RegisterUnitEvent(19467, 1, "Anchorite_OnEnterCombat")
+RegisterUnitEvent(19467, 2, "Anchorite_OnLeaveCombat")
+RegisterUnitEvent(19467, 4, "Anchorite_OnDied")
 
 function Angered_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Angered_Bolt", 1000, 0)
@@ -127,13 +124,13 @@ function Angered_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (17870, 1, "Angered_OnEnterCombat")
-RegisterUnitEvent (17870, 2, "Angered_OnLeaveCombat")
-RegisterUnitEvent (17870, 4, "Angered_OnDied")
+RegisterUnitEvent(17870, 1, "Angered_OnEnterCombat")
+RegisterUnitEvent(17870, 2, "Angered_OnLeaveCombat")
+RegisterUnitEvent(17870, 4, "Angered_OnDied")
 
 function Ardonis_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Ardonis_Shadows",10000,0)
-    pUnit:RegisterEvent("Ardonis_Desecration",1000,0)
+    pUnit:RegisterEvent("Ardonis_Shadows", 10000, 0)
+    pUnit:RegisterEvent("Ardonis_Desecration", 1000, 0)
 end
 
 function Ardonis_Shadows(pUnit,Event)
@@ -152,13 +149,13 @@ function Ardonis_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19830, 1, "Ardonis_OnEnterCombat")
-RegisterUnitEvent (19830, 2, "Ardonis_OnLeaveCombat")
-RegisterUnitEvent (19830, 4, "Ardonis_OnDied")
+RegisterUnitEvent(19830, 1, "Ardonis_OnEnterCombat")
+RegisterUnitEvent(19830, 2, "Ardonis_OnLeaveCombat")
+RegisterUnitEvent(19830, 4, "Ardonis_OnDied")
 
 function Arconus_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Arconus_Shadows",10000,0)
-    pUnit:RegisterEvent("Arconus_Desecration",1000,0)
+    pUnit:RegisterEvent("Arconus_Shadows", 10000, 0)
+    pUnit:RegisterEvent("Arconus_Desecration", 1000, 0)
 end
 
 function Arconus_Shadows(pUnit,Event)
@@ -177,12 +174,12 @@ function Arconus_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20554, 1, "Arconus_OnEnterCombat")
-RegisterUnitEvent (20554, 2, "Arconus_OnLeaveCombat")
-RegisterUnitEvent (20554, 4, "Arconus_OnDied")
+RegisterUnitEvent(20554, 1, "Arconus_OnEnterCombat")
+RegisterUnitEvent(20554, 2, "Arconus_OnLeaveCombat")
+RegisterUnitEvent(20554, 4, "Arconus_OnDied")
 
 function Ark_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Ark_Explosion",1500,0)
+    pUnit:RegisterEvent("Ark_Explosion", 1500, 0)
 end
 
 function Ark_Explosion(pUnit,Event)
@@ -197,13 +194,13 @@ function Ark_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19494, 1, "Ark_OnEnterCombat")
-RegisterUnitEvent (19494, 2, "Ark_OnLeaveCombat")
-RegisterUnitEvent (19494, 4, "Ark_OnDied")
+RegisterUnitEvent(19494, 1, "Ark_OnEnterCombat")
+RegisterUnitEvent(19494, 2, "Ark_OnLeaveCombat")
+RegisterUnitEvent(19494, 4, "Ark_OnDied")
 
 function Seeker_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Seeker_Burn",3000,0)
-    pUnit:RegisterEvent("Seeker_Lock",1000,0)
+    pUnit:RegisterEvent("Seeker_Burn", 3000, 0)
+    pUnit:RegisterEvent("Seeker_Lock", 1000, 0)
 end
 
 function Seeker_Burn(pUnit,Event)
@@ -222,13 +219,13 @@ function Ark_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19852, 1, "Seeker_OnEnterCombat")
-RegisterUnitEvent (19852, 2, "Seeker_OnLeaveCombat")
-RegisterUnitEvent (19852, 4, "Seeker_OnDied")
+RegisterUnitEvent(19852, 1, "Seeker_OnEnterCombat")
+RegisterUnitEvent(19852, 2, "Seeker_OnLeaveCombat")
+RegisterUnitEvent(19852, 4, "Seeker_OnDied")
 
 function Avatar_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Avatar_Rain",1000,0)
-    pUnit:RegisterEvent("Avatar_Bolt",3000,0)
+    pUnit:RegisterEvent("Avatar_Rain", 1000, 0)
+    pUnit:RegisterEvent("Avatar_Bolt", 3000, 0)
 end
 
 function Avatar_Rain(pUnit,Event)
@@ -247,12 +244,12 @@ function Avatar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21925, 1, "Avatar_OnEnterCombat")
-RegisterUnitEvent (21925, 2, "Avatar_OnLeaveCombat")
-RegisterUnitEvent (21925, 4, "Avatar_OnDied")
+RegisterUnitEvent(21925, 1, "Avatar_OnEnterCombat")
+RegisterUnitEvent(21925, 2, "Avatar_OnLeaveCombat")
+RegisterUnitEvent(21925, 4, "Avatar_OnDied")
 
 function Azure_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Azure_Screech", 1000,0)
+    pUnit:RegisterEvent("Azure_Screech", 1000, 0)
 end
 
 function Azure_Screech(pUnit,Event)
@@ -267,12 +264,12 @@ function Azure_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21005, 1, "Azure_OnEnterCombat")
-RegisterUnitEvent (21005, 2, "Azure_OnLeaveCombat")
-RegisterUnitEvent (21005, 4, "Azure_OnDied")
+RegisterUnitEvent(21005, 1, "Azure_OnEnterCombat")
+RegisterUnitEvent(21005, 2, "Azure_OnLeaveCombat")
+RegisterUnitEvent(21005, 4, "Azure_OnDied")
 
 function Crocolisk_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Crocolisk_Rip",1000,0)
+    pUnit:RegisterEvent("Crocolisk_Rip", 1000, 0)
 end
 
 function Crocolisk_Rip(pUnit,Event)
@@ -287,13 +284,13 @@ function Crocolisk_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20773, 1, "Crocolisk_OnEnterCombat")
-RegisterUnitEvent (20773, 2, "Crocolisk_OnLeaveCombat")
-RegisterUnitEvent (20773, 4, "Crocolisk_OnDied")
+RegisterUnitEvent(20773, 1, "Crocolisk_OnEnterCombat")
+RegisterUnitEvent(20773, 2, "Crocolisk_OnLeaveCombat")
+RegisterUnitEvent(20773, 4, "Crocolisk_OnDied")
 
 function Mage_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Mage_Blast", 6000,0)
-    pUnit:RegisterEvent("Mage_Flames",2500,0)
+    pUnit:RegisterEvent("Mage_Blast", 6000, 0)
+    pUnit:RegisterEvent("Mage_Flames", 2500, 0)
 end
 
 function Mage_Rip(pUnit,Event)
@@ -312,16 +309,16 @@ function Mage_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19543, 1, "Mage_OnEnterCombat")
-RegisterUnitEvent (19543, 2, "Mage_OnLeaveCombat")
-RegisterUnitEvent (19543, 4, "Mage_OnDied")
+RegisterUnitEvent(19543, 1, "Mage_OnEnterCombat")
+RegisterUnitEvent(19543, 2, "Mage_OnLeaveCombat")
+RegisterUnitEvent(19543, 4, "Mage_OnDied")
 
 function Bot_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Bot_Suicide",4000,1)
+    pUnit:RegisterEvent("Bot_Suicide", 4000, 1)
 end
 
 function Bot_Suicide(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(7,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(7, pUnit:GetClosestPlayer())
 	pUnit:CastSpell(7)
 end
 
@@ -333,14 +330,14 @@ function Bot_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19692, 1, "Bot_OnEnterCombat")
-RegisterUnitEvent (19692, 2, "Bot_OnLeaveCombat")
-RegisterUnitEvent (19692, 4, "Bot_OnDied")
+RegisterUnitEvent(19692, 1, "Bot_OnEnterCombat")
+RegisterUnitEvent(19692, 2, "Bot_OnLeaveCombat")
+RegisterUnitEvent(19692, 4, "Bot_OnDied")
 
 function Captain_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Captain_Summon",1000,1)
-    pUnit:RegisterEvent("Captain_Whirl",1000,0)
-    pUnit:RegisterEvent("Captain_Wind",2000,0)
+    pUnit:RegisterEvent("Captain_Summon", 1000, 1)
+    pUnit:RegisterEvent("Captain_Whirl", 1000, 0)
+    pUnit:RegisterEvent("Captain_Wind", 2000, 0)
 end
 
 function Captain_Summon(pUnit,Event)
@@ -348,11 +345,11 @@ function Captain_Summon(pUnit,Event)
 end
 
 function Captain_Whirl(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15576,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15576, pUnit:GetClosestPlayer())
 end
 
 function Capatain_Wind(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(17207,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(17207, pUnit:GetClosestPlayer())
 end
 
 function Captain_OnLeaveCombat(pUnit,Event)
@@ -363,16 +360,16 @@ function Captain_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19635, 1, "Captain_OnEnterCombat")
-RegisterUnitEvent (19635, 2, "Captain_OnLeaveCombat")
-RegisterUnitEvent (19635, 4, "Captain_OnDied")
+RegisterUnitEvent(19635, 1, "Captain_OnEnterCombat")
+RegisterUnitEvent(19635, 2, "Captain_OnLeaveCombat")
+RegisterUnitEvent(19635, 4, "Captain_OnDied")
 
 function Captain_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Captain_Cleave",1000,0)
+    pUnit:RegisterEvent("Captain_Cleave", 1000, 0)
 end
 
 function Captain_Cleave(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15576,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15576, pUnit:GetClosestPlayer())
 end
 
 function Capatain_OnLeaveCombat(pUnit,Event)
@@ -383,17 +380,17 @@ function Capatain_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20985, 1, "Captain_OnEnterCombat")
-RegisterUnitEvent (20985, 2, "Captain_OnLeaveCombat")
-RegisterUnitEvent (20985, 4, "Captain_OnDied")
+RegisterUnitEvent(20985, 1, "Captain_OnEnterCombat")
+RegisterUnitEvent(20985, 2, "Captain_OnLeaveCombat")
+RegisterUnitEvent(20985, 4, "Captain_OnDied")
 
 function Captain_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Captain_Cleave",1000,0)
-    pUnit:RegisterEvent("Captain_Toughen",1000,0)
+    pUnit:RegisterEvent("Captain_Cleave", 1000, 0)
+    pUnit:RegisterEvent("Captain_Toughen", 1000, 0)
 end
 
 function Captain_Cleave(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15576,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15576, pUnit:GetClosestPlayer())
 end
 
 function Captain_Thougen(pUnit,Event)
@@ -408,21 +405,21 @@ function Captain_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20727, 1, "Captain_OnEnterCombat")
-RegisterUnitEvent (20727, 2, "Captain_OnLeaveCombat")
-RegisterUnitEvent (20727, 4, "Captain_OnDied")
+RegisterUnitEvent(20727, 1, "Captain_OnEnterCombat")
+RegisterUnitEvent(20727, 2, "Captain_OnLeaveCombat")
+RegisterUnitEvent(20727, 4, "Captain_OnDied")
 
 function Captured_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Captured_Glaive",1000,0)
-    pUnit:RegisterEvent("Captured_Hamstring",10000,0)
+    pUnit:RegisterEvent("Captured_Glaive", 1000, 0)
+    pUnit:RegisterEvent("Captured_Hamstring", 10000, 0)
 end
 
 function Captured_Glaive(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36500,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36500, pUnit:GetClosestPlayer())
 end
 
 function Captured_Hamstring(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(31553,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(31553, pUnit:GetClosestPlayer())
 end
 
 function Captured_OnLeaveCombat(pUnit,Event)
@@ -433,16 +430,16 @@ function Captured_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20763, 1, "Captured_OnEnterCombat")
-RegisterUnitEvent (20763, 2, "Captured_OnLeaveCombat")
-RegisterUnitEvent (20763, 4, "Captured_OnDied")
+RegisterUnitEvent(20763, 1, "Captured_OnEnterCombat")
+RegisterUnitEvent(20763, 2, "Captured_OnLeaveCombat")
+RegisterUnitEvent(20763, 4, "Captured_OnDied")
 
 function Chief_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Chief_Glaive",1000,0)
+    pUnit:RegisterEvent("Chief_Glaive", 1000, 0)
 end
 
 function Chief_Glaive(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(38204,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(38204, pUnit:GetClosestPlayer())
 end
 
 function Chief_OnLeaveCombat(pUnit,Event)
@@ -453,22 +450,22 @@ function Chief_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18697, 1, "Chief_OnEnterCombat")
-RegisterUnitEvent (18697, 2, "Chief_OnLeaveCombat")
-RegisterUnitEvent (18697, 4, "Chief_OnDied")
+RegisterUnitEvent(18697, 1, "Chief_OnEnterCombat")
+RegisterUnitEvent(18697, 2, "Chief_OnLeaveCombat")
+RegisterUnitEvent(18697, 4, "Chief_OnDied")
 
 function Frost_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Frost_Nova",8000,0)
-    pUnit:RegisterEvent("Frost_Bolt",3000,0)
-    pUnit:RegisterEvent("Frost_Barrier",30000,0)
+    pUnit:RegisterEvent("Frost_Nova", 8000, 0)
+    pUnit:RegisterEvent("Frost_Bolt", 3000, 0)
+    pUnit:RegisterEvent("Frost_Barrier", 30000, 0)
 end
 
 function Frost_Nova(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(11831,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(11831, pUnit:GetClosestPlayer())
 end
 
 function Frost_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9672,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9672, pUnit:GetClosestPlayer())
 end
 
 function Frost_Barrier(pUnit,Event)
@@ -483,21 +480,21 @@ function Frost_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19545, 1, "Frost_OnEnterCombat")
-RegisterUnitEvent (19545, 2, "Frost_OnLeaveCombat")
-RegisterUnitEvent (19545, 4, "Frost_OnDied")
+RegisterUnitEvent(19545, 1, "Frost_OnEnterCombat")
+RegisterUnitEvent(19545, 2, "Frost_OnLeaveCombat")
+RegisterUnitEvent(19545, 4, "Frost_OnDied")
 
 function Commander_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Commander_Cleave",1000,0)
-    pUnit:RegisterEvent("Commander_Spellbreaker",1000,0)
+    pUnit:RegisterEvent("Commander_Cleave", 1000, 0)
+    pUnit:RegisterEvent("Commander_Spellbreaker", 1000, 0)
 end
 
 function Commander_Cleave(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35473,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35473, pUnit:GetClosestPlayer())
 end
 
 function Commander_Spellbreaker(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 
 function Commander_OnLeaveCombat(pUnit,Event)
@@ -508,17 +505,17 @@ function Commander_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19831, 1, "Commander_OnEnterCombat")
-RegisterUnitEvent (19831, 2, "Commander_OnLeaveCombat")
-RegisterUnitEvent (19831, 4, "Commander_OnDied")
+RegisterUnitEvent(19831, 1, "Commander_OnEnterCombat")
+RegisterUnitEvent(19831, 2, "Commander_OnLeaveCombat")
+RegisterUnitEvent(19831, 4, "Commander_OnDied")
 
 function Conjurer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Conjurer_Bolt",3000,0)
-    pUnit:RegisterEvent("Conjurer_Sword",30000,0)
+    pUnit:RegisterEvent("Conjurer_Bolt", 3000, 0)
+    pUnit:RegisterEvent("Conjurer_Sword", 30000, 0)
 end
 
 function Conjurer_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9532,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9532, pUnit:GetClosestPlayer())
 end
 
 function Conjurer_Sword(pUnit,Event)
@@ -533,13 +530,13 @@ function Conjurer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19544, 1, "Conjurer_OnEnterCombat")
-RegisterUnitEvent (19544, 2, "Conjurer_OnLeaveCombat")
-RegisterUnitEvent (19544, 4, "Conjurer_OnDied")
+RegisterUnitEvent(19544, 1, "Conjurer_OnEnterCombat")
+RegisterUnitEvent(19544, 2, "Conjurer_OnLeaveCombat")
+RegisterUnitEvent(19544, 4, "Conjurer_OnDied")
 
 function Basilisk_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Basilisk_Gaze",45000,0)
-    pUnit:RegisterEvent("Basilisk_Charge",1000,0)
+    pUnit:RegisterEvent("Basilisk_Gaze", 45000, 0)
+    pUnit:RegisterEvent("Basilisk_Charge", 1000, 0)
 end
 
 function Basilisk_Gaze(pUnit,Event)
@@ -558,12 +555,12 @@ function Basilisk_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20607, 1, "Basilisk_OnEnterCombat")
-RegisterUnitEvent (20607, 2, "Basilisk_OnLeaveCombat")
-RegisterUnitEvent (20607, 4, "Basilisk_OnDied")
+RegisterUnitEvent(20607, 1, "Basilisk_OnEnterCombat")
+RegisterUnitEvent(20607, 2, "Basilisk_OnLeaveCombat")
+RegisterUnitEvent(20607, 4, "Basilisk_OnDied")
 
 function Culuthas_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Culuthas_Felfire",3000,0)
+    pUnit:RegisterEvent("Culuthas_Felfire", 3000, 0)
 end
 
 function Culuthas_Felfire(pUnit,Event)
@@ -578,13 +575,13 @@ function Culuthas_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20138, 1, "Culuthas_OnEnterCombat")
-RegisterUnitEvent (20138, 2, "Culuthas_OnLeaveCombat")
-RegisterUnitEvent (20138, 4, "Culuthas_OnDied")
+RegisterUnitEvent(20138, 1, "Culuthas_OnEnterCombat")
+RegisterUnitEvent(20138, 2, "Culuthas_OnLeaveCombat")
+RegisterUnitEvent(20138, 4, "Culuthas_OnDied")
 
 function Forgelord_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Forgelord_Nova",2000,0)
-    pUnit:RegisterEvent("Forgelord_Enrage",120000,0)
+    pUnit:RegisterEvent("Forgelord_Nova", 2000, 0)
+    pUnit:RegisterEvent("Forgelord_Enrage", 120000, 0)
 end
 
 function Forgelord_Nova(pUnit,Event)
@@ -603,14 +600,14 @@ function Forgelord_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (16943, 1, "Forgelord_OnEnterCombat")
-RegisterUnitEvent (16943, 2, "Forgelord_OnLeaveCombat")
-RegisterUnitEvent (16943, 4, "Forgelord_OnDied")
+RegisterUnitEvent(16943, 1, "Forgelord_OnEnterCombat")
+RegisterUnitEvent(16943, 2, "Forgelord_OnLeaveCombat")
+RegisterUnitEvent(16943, 4, "Forgelord_OnDied")
 
 function Flames_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Flames_Dance",1000,0)
-    pUnit:RegisterEvent("Flames_Seduction",180000,0)
-    pUnit:RegisterEvent("Flames_Summon",1000,(1))
+    pUnit:RegisterEvent("Flames_Dance", 1000, 0)
+    pUnit:RegisterEvent("Flames_Seduction", 180000, 0)
+    pUnit:RegisterEvent("Flames_Summon", 1000, (1))
 end
 
 function Flames_Dance(pUnit,Event)
@@ -633,12 +630,12 @@ function Flames_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (25305, 1, "Flames_OnEnterCombat")
-RegisterUnitEvent (25305, 2, "Flames_OnLeaveCombat")
-RegisterUnitEvent (25305, 4, "Flames_OnDied")
+RegisterUnitEvent(25305, 1, "Flames_OnEnterCombat")
+RegisterUnitEvent(25305, 2, "Flames_OnLeaveCombat")
+RegisterUnitEvent(25305, 4, "Flames_OnDied")
 
 function Daughter_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Daughter_Nova",2000,0)
+    pUnit:RegisterEvent("Daughter_Nova", 2000, 0)
 end
 
 function Daughter_Nova(pUnit,Event)
@@ -653,14 +650,14 @@ function Daughter_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18860, 1, "Daughter_OnEnterCombat")
-RegisterUnitEvent (18860, 2, "Daughter_OnLeaveCombat")
-RegisterUnitEvent (18860, 4, "Daughter_OnDied")
+RegisterUnitEvent(18860, 1, "Daughter_OnEnterCombat")
+RegisterUnitEvent(18860, 2, "Daughter_OnLeaveCombat")
+RegisterUnitEvent(18860, 4, "Daughter_OnDied")
 
 function Dimensius_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Dimensius_Trick",1000,(1))
-    pUnit:RegisterEvent("Dimensius_Spiral",3000,0)
-    pUnit:RegisterEvent("Dimensius_Vault",1000,0)
+    pUnit:RegisterEvent("Dimensius_Trick", 1000, (1))
+    pUnit:RegisterEvent("Dimensius_Spiral", 3000, 0)
+    pUnit:RegisterEvent("Dimensius_Vault", 1000, 0)
 end
 
 function Dimensius_Trick(pUnit,Event)
@@ -668,11 +665,11 @@ function Dimensius_Trick(pUnit,Event)
 end
 
 function Dimensius_Spiral(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37500,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(37500, pUnit:GetClosestPlayer())
 end
 
 function Dimensius_Vault(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37412,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(37412, pUnit:GetClosestPlayer())
 end
 
 function Dimensius_OnLeaveCombat(pUnit,Event)
@@ -683,17 +680,17 @@ function Dimensius_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19554, 1, "Dimensius_OnEnterCombat")
-RegisterUnitEvent (19554, 2, "Dimensius_OnLeaveCombat")
-RegisterUnitEvent (19554, 4, "Dimensius_OnDied")
+RegisterUnitEvent(19554, 1, "Dimensius_OnEnterCombat")
+RegisterUnitEvent(19554, 2, "Dimensius_OnLeaveCombat")
+RegisterUnitEvent(19554, 4, "Dimensius_OnDied")
 
 function Exarch_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Exarch_Fortitude",2000,0)
-    pUnit:RegisterEvent("Exarch_Devotion",1000,0)
+    pUnit:RegisterEvent("Exarch_Fortitude", 2000, 0)
+    pUnit:RegisterEvent("Exarch_Devotion", 1000, 0)
 end
 
 function Exarch_Fortitude(pUnit,Event)
-    pUnit:CastSpellOnTarget(36004,pUnit:GetRandomFriend())
+    pUnit:CastSpellOnTarget(36004, pUnit:GetRandomFriend())
 end
 
 function Exarch_Devotion(pUnit,Event)
@@ -708,21 +705,21 @@ function Exarch_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21058, 1, "Exarch_OnEnterCombat")
-RegisterUnitEvent (21058, 2, "Exarch_OnLeaveCombat")
-RegisterUnitEvent (21058, 4, "Exarch_OnDied")
+RegisterUnitEvent(21058, 1, "Exarch_OnEnterCombat")
+RegisterUnitEvent(21058, 2, "Exarch_OnLeaveCombat")
+RegisterUnitEvent(21058, 4, "Exarch_OnDied")
 
 function Protector_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Protector_Strike",1000,0)
-    pUnit:RegisterEvent("Protector_Smite",2500,0)
+    pUnit:RegisterEvent("Protector_Strike", 1000, 0)
+    pUnit:RegisterEvent("Protector_Smite", 2500, 0)
 end
 
 function Protector_Strike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36647,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36647, pUnit:GetClosestPlayer())
 end
 
 function Protector_Smite(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9734,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9734, pUnit:GetClosestPlayer())
 end
 
 function Protector_OnLeaveCombat(pUnit,Event)
@@ -733,13 +730,13 @@ function Protector_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18873, 1, "Protector_OnEnterCombat")
-RegisterUnitEvent (18873, 2, "Protector_OnLeaveCombat")
-RegisterUnitEvent (18873, 4, "Protector_OnDied")
+RegisterUnitEvent(18873, 1, "Protector_OnEnterCombat")
+RegisterUnitEvent(18873, 2, "Protector_OnLeaveCombat")
+RegisterUnitEvent(18873, 4, "Protector_OnDied")
 
 function Vindicator_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Vindicator_Revenge",1000,0)
-    pUnit:RegisterEvent("Vindicator_Vindication",1000,0)
+    pUnit:RegisterEvent("Vindicator_Revenge", 1000, 0)
+    pUnit:RegisterEvent("Vindicator_Vindication", 1000, 0)
 end
 
 function Vindicator_Revenge(pUnit,Event)
@@ -747,7 +744,7 @@ function Vindicator_Revenge(pUnit,Event)
 end
 
 function Vindicator_Vindication(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36002,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36002, pUnit:GetClosestPlayer())
 end
 
 function Vindicator_OnLeaveCombat(pUnit,Event)
@@ -758,26 +755,26 @@ function Vindicator_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18872, 1, "Vindicator_OnEnterCombat")
-RegisterUnitEvent (18872, 2, "Vindicator_OnLeaveCombat")
-RegisterUnitEvent (18872, 4, "Vindicator_OnDied")
+RegisterUnitEvent(18872, 1, "Vindicator_OnEnterCombat")
+RegisterUnitEvent(18872, 2, "Vindicator_OnLeaveCombat")
+RegisterUnitEvent(18872, 4, "Vindicator_OnDied")
 
 function Doomclaw_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Doomclaw_Swipe",1000,0)
-    pUnit:RegisterEvent("Doomclaw_Claw",1100,0)
-    pUnit:RegisterEvent("Doomclaw_Slime",1000,0)
+    pUnit:RegisterEvent("Doomclaw_Swipe", 1000, 0)
+    pUnit:RegisterEvent("Doomclaw_Claw", 1100, 0)
+    pUnit:RegisterEvent("Doomclaw_Slime", 1000, 0)
 end
 
 function Doomclaw_Swipe(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36205,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36205, pUnit:GetClosestPlayer())
 end
 
 function Doomclaw_Claw(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36996,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36996, pUnit:GetClosestPlayer())
 end
 
 function Doomclaw_Slime(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(34261,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(34261, pUnit:GetClosestPlayer())
 end
 
 function Doomclaw_OnLeaveCombat(pUnit,Event)
@@ -788,16 +785,16 @@ function Doomclaw_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19738, 1, "Doomclaw_OnEnterCombat")
-RegisterUnitEvent (19738, 2, "Doomclaw_OnLeaveCombat")
-RegisterUnitEvent (19738, 4, "Doomclaw_OnDied")
+RegisterUnitEvent(19738, 1, "Doomclaw_OnEnterCombat")
+RegisterUnitEvent(19738, 2, "Doomclaw_OnLeaveCombat")
+RegisterUnitEvent(19738, 4, "Doomclaw_OnDied")
 
 function Boom_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Boom_Dynamite",1000,0)
+    pUnit:RegisterEvent("Boom_Dynamite", 1000, 0)
 end
 
 function Boom_Dynamite(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35276,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35276, pUnit:GetClosestPlayer())
 end
 
 function Boom_OnLeaveCombat(pUnit,Event)
@@ -808,21 +805,21 @@ function Boom_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20284, 1, "Boom_OnEnterCombat")
-RegisterUnitEvent (20284, 2, "Boom_OnLeaveCombat")
-RegisterUnitEvent (20284, 4, "Boom_OnDied")
+RegisterUnitEvent(20284, 1, "Boom_OnEnterCombat")
+RegisterUnitEvent(20284, 2, "Boom_OnLeaveCombat")
+RegisterUnitEvent(20284, 4, "Boom_OnDied")
 
 function Inquisitor_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Inquisitor_Weakness",1000,0)
-    pUnit:RegisterEvent("Inquisitor_Flamestrike",3000,0)
+    pUnit:RegisterEvent("Inquisitor_Weakness", 1000, 0)
+    pUnit:RegisterEvent("Inquisitor_Flamestrike", 3000, 0)
 end
 
 function Inquisitor_Weakness(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(11980,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(11980, pUnit:GetClosestPlayer())
 end
 
 function Inquisitor_Flamestrike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36040,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36040, pUnit:GetClosestPlayer())
 end
 
 function Inquisitor_OnLeaveCombat(pUnit,Event)
@@ -833,31 +830,31 @@ function Inquisitor_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19493, 1, "Inquisitor_OnEnterCombat")
-RegisterUnitEvent (19493, 2, "Inquisitor_OnEnterCombat")
-RegisterUnitEvent (19493, 4, "Inquisitor_OnEnterCombat")
+RegisterUnitEvent(19493, 1, "Inquisitor_OnEnterCombat")
+RegisterUnitEvent(19493, 2, "Inquisitor_OnEnterCombat")
+RegisterUnitEvent(19493, 4, "Inquisitor_OnEnterCombat")
 
 function Archon_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Archon_Flux",1000,0)
-    pUnit:RegisterEvent("Archon_Intangible",1000,0)
-    pUnit:RegisterEvent("Archon_Overspark",1000,0)
-    pUnit:RegisterEvent("Archon_Shadow",1000,0)
+    pUnit:RegisterEvent("Archon_Flux", 1000, 0)
+    pUnit:RegisterEvent("Archon_Intangible", 1000, 0)
+    pUnit:RegisterEvent("Archon_Overspark", 1000, 0)
+    pUnit:RegisterEvent("Archon_Shadow", 1000, 0)
 end
 
 function Archon_Flux(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35924,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35924, pUnit:GetClosestPlayer())
 end
 
 function Archon_Intangible(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36513,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36513, pUnit:GetClosestPlayer())
 end
 
 function Archon_Overspark(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35579,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35579, pUnit:GetClosestPlayer())
 end
 
 function Archon_Shadow(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36515,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36515, pUnit:GetClosestPlayer())
 end
 
 function Archon_OnLeaveCombat(pUnit,Event)
@@ -868,21 +865,21 @@ function Archon_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20458, 1, "Archon_OnEnterCombat")
-RegisterUnitEvent (20458, 2, "Archon_OnEnterCombat")
-RegisterUnitEvent (20458, 4, "Archon_OnEnterCombat")
+RegisterUnitEvent(20458, 1, "Archon_OnEnterCombat")
+RegisterUnitEvent(20458, 2, "Archon_OnEnterCombat")
+RegisterUnitEvent(20458, 4, "Archon_OnEnterCombat")
 
 function Assassin_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Assassin_Kick",1000,0)
-    pUnit:RegisterEvent("Assassin_Warp",1000,0)
+    pUnit:RegisterEvent("Assassin_Kick", 1000, 0)
+    pUnit:RegisterEvent("Assassin_Warp", 1000, 0)
 end
 
 function Assassin_Kick(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(34802,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(34802, pUnit:GetClosestPlayer())
 end
 
 function Assassin_Warp(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(32920,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(32920, pUnit:GetClosestPlayer())
 end
 
 function Assassin_OnLeaveCombat(pUnit,Event)
@@ -893,26 +890,26 @@ function Assassin_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20452, 1, "Assassin_OnEnterCombat")
-RegisterUnitEvent (20452, 2, "Assassin_OnEnterCombat")
-RegisterUnitEvent (20452, 4, "Assassin_OnEnterCombat")
+RegisterUnitEvent(20452, 1, "Assassin_OnEnterCombat")
+RegisterUnitEvent(20452, 2, "Assassin_OnEnterCombat")
+RegisterUnitEvent(20452, 4, "Assassin_OnEnterCombat")
 
 function Avenger_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Avenger_Shout",1000,0)
-    pUnit:RegisterEvent("Avenger_Charge",1000,0)
-    pUnit:RegisterEvent("Avenger_Weapons",1000,0)
+    pUnit:RegisterEvent("Avenger_Shout", 1000, 0)
+    pUnit:RegisterEvent("Avenger_Charge", 1000, 0)
+    pUnit:RegisterEvent("Avenger_Weapons", 1000, 0)
 end
 
 function Avenger_Charge(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(32064,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(32064, pUnit:GetClosestPlayer())
 end
 
 function Avenger_Intangible(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36509,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36509, pUnit:GetClosestPlayer())
 end
 
 function Avenger_Weapons(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(39489,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(39489, pUnit:GetClosestPlayer())
 end
 
 function Avenger_OnLeaveCombat(pUnit,Event)
@@ -923,26 +920,26 @@ function Avenger_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22821, 1, "Avenger_OnEnterCombat")
-RegisterUnitEvent (22821, 2, "Avenger_OnEnterCombat")
-RegisterUnitEvent (22821, 4, "Avenger_OnEnterCombat")
+RegisterUnitEvent(22821, 1, "Avenger_OnEnterCombat")
+RegisterUnitEvent(22821, 2, "Avenger_OnEnterCombat")
+RegisterUnitEvent(22821, 4, "Avenger_OnEnterCombat")
 
 function Gladiator_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Gladiator_Cleave",1000,0)
-    pUnit:RegisterEvent("Gladiator_Hamstring",1000,0)
-    pUnit:RegisterEvent("Gladiator_Strike",1000,0)
+    pUnit:RegisterEvent("Gladiator_Cleave", 1000, 0)
+    pUnit:RegisterEvent("Gladiator_Hamstring", 1000, 0)
+    pUnit:RegisterEvent("Gladiator_Strike", 1000, 0)
 end
 
 function Gladiator_Cleave(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15284,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15284, pUnit:GetClosestPlayer())
 end
 
 function Gladiator_Hamstring(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9080,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9080, pUnit:GetClosestPlayer())
 end
 
 function Gladiator_Strike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(16856,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(16856, pUnit:GetClosestPlayer())
 end
 
 function Gladiator_OnLeaveCombat(pUnit,Event)
@@ -953,12 +950,12 @@ function Gladiator_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20854, 1, "Gladiator_OnEnterCombat")
-RegisterUnitEvent (20854, 2, "Gladiator_OnEnterCombat")
-RegisterUnitEvent (20854, 4, "Gladiator_OnEnterCombat")
+RegisterUnitEvent(20854, 1, "Gladiator_OnEnterCombat")
+RegisterUnitEvent(20854, 2, "Gladiator_OnEnterCombat")
+RegisterUnitEvent(20854, 4, "Gladiator_OnEnterCombat")
 
 function Jailor_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Jailor_Presence",1000,0)
+    pUnit:RegisterEvent("Jailor_Presence", 1000, 0)
 end
 
 function Jailor_Presence(pUnit,Event)
@@ -973,17 +970,17 @@ function Jailor_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (23008, 1, "Jailor_OnEnterCombat")
-RegisterUnitEvent (23008, 2, "Jailor_OnEnterCombat")
-RegisterUnitEvent (23008, 4, "Jailor_OnEnterCombat")
+RegisterUnitEvent(23008, 1, "Jailor_OnEnterCombat")
+RegisterUnitEvent(23008, 2, "Jailor_OnEnterCombat")
+RegisterUnitEvent(23008, 4, "Jailor_OnEnterCombat")
 
 function Stalker_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Stalker_Shadowsurge",1000,0)
-    pUnit:RegisterEvent("Stalker_Shadowtouched",1000,0)
+    pUnit:RegisterEvent("Stalker_Shadowsurge", 1000, 0)
+    pUnit:RegisterEvent("Stalker_Shadowtouched", 1000, 0)
 end
 
 function Stalker_Shadowsurge(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36517,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36517, pUnit:GetClosestPlayer())
 end
 
 function Stalker_Shadowtouched(pUnit,Event)
@@ -998,12 +995,12 @@ function Stalker_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20474, 1, "Stalker_OnEnterCombat")
-RegisterUnitEvent (20474, 2, "Stalker_OnEnterCombat")
-RegisterUnitEvent (20474, 4, "Stalker_OnEnterCombat")
+RegisterUnitEvent(20474, 1, "Stalker_OnEnterCombat")
+RegisterUnitEvent(20474, 2, "Stalker_OnEnterCombat")
+RegisterUnitEvent(20474, 4, "Stalker_OnEnterCombat")
 
 function Nullifier_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Nullifier_Presence",1000,0)
+    pUnit:RegisterEvent("Nullifier_Presence", 1000, 0)
 end
 
 function Nullifier_Presence(pUnit,Event)
@@ -1018,19 +1015,19 @@ function Nullifier_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22822, 1, "Nullifier_OnEnterCombat")
-RegisterUnitEvent (22822, 2, "Nullifier_OnEnterCombat")
-RegisterUnitEvent (22822, 4, "Nullifier_OnEnterCombat")
+RegisterUnitEvent(22822, 1, "Nullifier_OnEnterCombat")
+RegisterUnitEvent(22822, 2, "Nullifier_OnEnterCombat")
+RegisterUnitEvent(22822, 4, "Nullifier_OnEnterCombat")
 
 function Overlord_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Overlord_Shout",1000,0)
-    pUnit:RegisterEvent("Overlord_Charge",1000,0)
-    pUnit:RegisterEvent("Overlord_Weapons",1000,0)
-    pUnit:RegisterEvent("Overlord_Shadowtouched",1000,0)
+    pUnit:RegisterEvent("Overlord_Shout", 1000, 0)
+    pUnit:RegisterEvent("Overlord_Charge", 1000, 0)
+    pUnit:RegisterEvent("Overlord_Weapons", 1000, 0)
+    pUnit:RegisterEvent("Overlord_Shadowtouched", 1000, 0)
 end
 
 function Overlord_Charge(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36509,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36509, pUnit:GetMainTank())
 end
 
 function Overlord_Shout(pUnit,Event)
@@ -1038,7 +1035,7 @@ function Overlord_Shout(pUnit,Event)
 end
 
 function Overlord_Weapons(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36510,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36510, pUnit:GetClosestPlayer())
 end
 
 function Overlord_Shadowtouched(pUnit,Event)
@@ -1053,12 +1050,12 @@ function Overlord_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20459, 1, "Overlord_OnEnterCombat")
-RegisterUnitEvent (20459, 2, "Overlord_OnLeaveCombat")
-RegisterUnitEvent (20459, 4, "Overlord_OnDied")
+RegisterUnitEvent(20459, 1, "Overlord_OnEnterCombat")
+RegisterUnitEvent(20459, 2, "Overlord_OnLeaveCombat")
+RegisterUnitEvent(20459, 4, "Overlord_OnDied")
 
 function Relay_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Relay_Shadowform",1000,0)
+    pUnit:RegisterEvent("Relay_Shadowform", 1000, 0)
 end
 
 function Relay_Shadowform(pUnit,Event)
@@ -1073,14 +1070,14 @@ function Relay_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20619, 1, "Relay_OnEnterCombat")
-RegisterUnitEvent (20619, 2, "Relay_OnLeaveCombat")
-RegisterUnitEvent (20619, 4, "Relay_OnDied")
+RegisterUnitEvent(20619, 1, "Relay_OnEnterCombat")
+RegisterUnitEvent(20619, 2, "Relay_OnLeaveCombat")
+RegisterUnitEvent(20619, 4, "Relay_OnDied")
 
 function Researcher_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Researcher_Energy",1000,0)
-    pUnit:RegisterEvent("Researcher_Surge",1000,0)
-    pUnit:RegisterEvent("Researcher_Bolt",3000,0)
+    pUnit:RegisterEvent("Researcher_Energy", 1000, 0)
+    pUnit:RegisterEvent("Researcher_Surge", 1000, 0)
+    pUnit:RegisterEvent("Researcher_Bolt", 3000, 0)
 end
 
 function Researcher_Energy(pUnit,Event)
@@ -1088,11 +1085,11 @@ function Researcher_Energy(pUnit,Event)
 end
 
 function Researcher_Surge(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36508,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36508, pUnit:GetClosestPlayer())
 end
 
 function Researcher_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9532,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9532, pUnit:GetClosestPlayer())
 end
 
 function Researcher_OnLeaveCombat(pUnit,Event)
@@ -1103,21 +1100,21 @@ function Researcher_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20456, 1, "Researcher_OnEnterCombat")
-RegisterUnitEvent (20456, 2, "Researcher_OnLeaveCombat")
-RegisterUnitEvent (20456, 4, "Researcher_OnDied")
+RegisterUnitEvent(20456, 1, "Researcher_OnEnterCombat")
+RegisterUnitEvent(20456, 2, "Researcher_OnLeaveCombat")
+RegisterUnitEvent(20456, 4, "Researcher_OnDied")
 
 function Shocktrooper_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Shocktrooper_Glaive",1000,0)
-    pUnit:RegisterEvent("Shocktrooper_Hamstring",1000,0)
+    pUnit:RegisterEvent("Shocktrooper_Glaive", 1000, 0)
+    pUnit:RegisterEvent("Shocktrooper_Hamstring", 1000, 0)
 end
 
 function Shocktrooper_Glaive(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36500,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36500, pUnit:GetClosestPlayer())
 end
 
 function Shocktrooper_Hamstring(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(31553,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(31553, pUnit:GetClosestPlayer())
 end
 
 function Shocktrooper_OnLeaveCombat(pUnit,Event)
@@ -1128,26 +1125,26 @@ function Shocktrooper_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20453, 1, "Shocktrooper_OnEnterCombat")
-RegisterUnitEvent (20453, 2, "Shocktrooper_OnLeaveCombat")
-RegisterUnitEvent (20453, 4, "Shocktrooper_OnDied")
+RegisterUnitEvent(20453, 1, "Shocktrooper_OnEnterCombat")
+RegisterUnitEvent(20453, 2, "Shocktrooper_OnLeaveCombat")
+RegisterUnitEvent(20453, 4, "Shocktrooper_OnDied")
 
 function Orelis_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Orelis_Shout",1000,0)
-    pUnit:RegisterEvent("Orelis_Strike",1000,0)
-    pUnit:RegisterEvent("Orelis_Rend",1000,0)
+    pUnit:RegisterEvent("Orelis_Shout", 1000, 0)
+    pUnit:RegisterEvent("Orelis_Strike", 1000, 0)
+    pUnit:RegisterEvent("Orelis_Rend", 1000, 0)
 end
 
 function Orelis_Shout(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(13730,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(13730, pUnit:GetClosestPlayer())
 end
 
 function Orelis_Strike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(29426,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(29426, pUnit:GetClosestPlayer())
 end
 
 function Orelis_Rend(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(16509,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(16509, pUnit:GetClosestPlayer())
 end
 
 function Orelis_OnLeaveCombat(pUnit,Event)
@@ -1158,16 +1155,16 @@ function Orelis_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19466, 1, "Orelis_OnEnterCombat")
-RegisterUnitEvent (19466, 2, "Orelis_OnLeaveCombat")
-RegisterUnitEvent (19466, 4, "Orelis_OnDied")
+RegisterUnitEvent(19466, 1, "Orelis_OnEnterCombat")
+RegisterUnitEvent(19466, 2, "Orelis_OnLeaveCombat")
+RegisterUnitEvent(19466, 4, "Orelis_OnDied")
 
 function Eye_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Eye_Bursts",1000,0)
+    pUnit:RegisterEvent("Eye_Bursts", 1000, 0)
 end
 
 function Eye_Bursts(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36414,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36414, pUnit:GetClosestPlayer())
 end
 
 function Eye_OnLeaveCombat(pUnit,Event)
@@ -1178,14 +1175,14 @@ function Eye_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20394, 1, "Eye_OnEnterCombat")
-RegisterUnitEvent (20394, 2, "Eye_OnLeaveCombat")
-RegisterUnitEvent (20394, 4, "Eye_OnDied")
+RegisterUnitEvent(20394, 1, "Eye_OnEnterCombat")
+RegisterUnitEvent(20394, 2, "Eye_OnLeaveCombat")
+RegisterUnitEvent(20394, 4, "Eye_OnDied")
 
 function Lasher_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Lasher_Enrage",1000,0)
-    pUnit:RegisterEvent("Lasher_Roots",1500,0)
-    pUnit:RegisterEvent("Lasher_Growth",500,0)
+    pUnit:RegisterEvent("Lasher_Enrage", 1000, 0)
+    pUnit:RegisterEvent("Lasher_Roots", 1500, 0)
+    pUnit:RegisterEvent("Lasher_Growth", 500, 0)
 end
 
 function Lasher_Enrage(pUnit,Event)
@@ -1193,11 +1190,11 @@ function Lasher_Enrage(pUnit,Event)
 end
 
 function Lasher_Roots(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(12747,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(12747, pUnit:GetClosestPlayer())
 end
 
 function Lasher_Growth(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36604,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36604, pUnit:GetClosestPlayer())
 end
 
 function Lasher_OnLeaveCombat(pUnit,Event)
@@ -1208,16 +1205,16 @@ function Lasher_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20774, 1, "Lasher_OnEnterCombat")
-RegisterUnitEvent (20774, 2, "Lasher_OnLeaveCombat")
-RegisterUnitEvent (20774, 4, "Lasher_OnDied")
+RegisterUnitEvent(20774, 1, "Lasher_OnEnterCombat")
+RegisterUnitEvent(20774, 2, "Lasher_OnLeaveCombat")
+RegisterUnitEvent(20774, 4, "Lasher_OnDied")
 
 function Imp_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Imp_Bolt",2000,0)
+    pUnit:RegisterEvent("Imp_Bolt", 2000, 0)
 end
 
 function Imp_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36227,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36227, pUnit:GetClosestPlayer())
 end
 
 function Imp_OnLeaveCombat(pUnit,Event)
@@ -1228,21 +1225,21 @@ function Imp_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21135, 1, "Imp_OnEnterCombat")
-RegisterUnitEvent (21135, 2, "Imp_OnLeaveCombat")
-RegisterUnitEvent (21135, 4, "Imp_OnDied")
+RegisterUnitEvent(21135, 1, "Imp_OnEnterCombat")
+RegisterUnitEvent(21135, 2, "Imp_OnLeaveCombat")
+RegisterUnitEvent(21135, 4, "Imp_OnDied")
 
 function Doomguard_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Doomguard_Strike",1000,0)
-    pUnit:RegisterEvent("Doomguard_Stomp",1000,0)
+    pUnit:RegisterEvent("Doomguard_Strike", 1000, 0)
+    pUnit:RegisterEvent("Doomguard_Stomp", 1000, 0)
 end
 
 function Doomguard_Strike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(32736,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(32736, pUnit:GetClosestPlayer())
 end
 
 function Doomguard_Stomp(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35238,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35238, pUnit:GetClosestPlayer())
 end
 
 function Doomguard_OnLeaveCombat(pUnit,Event)
@@ -1253,21 +1250,21 @@ function Doomguard_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19853, 1, "Doomguard_OnEnterCombat")
-RegisterUnitEvent (19853, 2, "Doomguard_OnLeaveCombat")
-RegisterUnitEvent (19853, 4, "Doomguard_OnDied")
+RegisterUnitEvent(19853, 1, "Doomguard_OnEnterCombat")
+RegisterUnitEvent(19853, 2, "Doomguard_OnLeaveCombat")
+RegisterUnitEvent(19853, 4, "Doomguard_OnDied")
 
 function Wraith_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Wraith_Bolt",1000,0)
-    pUnit:RegisterEvent("Wraith_Blast",6000,0)
+    pUnit:RegisterEvent("Wraith_Bolt", 1000, 0)
+    pUnit:RegisterEvent("Wraith_Blast", 6000, 0)
 end
 
 function Wraith_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(39337,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(39337, pUnit:GetClosestPlayer())
 end
 
 function Wraith_Blast(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(38205,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(38205, pUnit:GetClosestPlayer())
 end
 
 function Wraith_OnLeaveCombat(pUnit,Event)
@@ -1278,16 +1275,16 @@ function Wraith_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22408, 1, "Wraith_OnEnterCombat")
-RegisterUnitEvent (22408, 2, "Wraith_OnLeaveCombat")
-RegisterUnitEvent (22408, 4, "Wraith_OnDied")
+RegisterUnitEvent(22408, 1, "Wraith_OnEnterCombat")
+RegisterUnitEvent(22408, 2, "Wraith_OnLeaveCombat")
+RegisterUnitEvent(22408, 4, "Wraith_OnDied")
 
 function Engineer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Engineer_Dynamite",1000,0)
+    pUnit:RegisterEvent("Engineer_Dynamite", 1000, 0)
 end
 
 function Engineer_Dynamite(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(7978,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(7978, pUnit:GetClosestPlayer())
 end
 
 function Engineer_OnLeaveCombat(pUnit,Event)
@@ -1298,21 +1295,21 @@ function Engineer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (16948, 1, "Engineer_OnEnterCombat")
-RegisterUnitEvent (16948, 2, "Engineer_OnLeaveCombat")
-RegisterUnitEvent (16948, 4, "Engineer_OnDied")
+RegisterUnitEvent(16948, 1, "Engineer_OnEnterCombat")
+RegisterUnitEvent(16948, 2, "Engineer_OnLeaveCombat")
+RegisterUnitEvent(16948, 4, "Engineer_OnDied")
 
 function Mekgineer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Mekgineer_Drain",1000,0)
-    pUnit:RegisterEvent("Mekgineer_Steal",1000,0)
+    pUnit:RegisterEvent("Mekgineer_Drain", 1000, 0)
+    pUnit:RegisterEvent("Mekgineer_Steal", 1000, 0)
 end
 
 function Mekgineer_Drain(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36825,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36825, pUnit:GetClosestPlayer())
 end
 
 function Mekgineer_Steal(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36208,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36208, pUnit:GetClosestPlayer())
 end
 
 function Mekgineer_OnLeaveCombat(pUnit,Event)
@@ -1323,21 +1320,21 @@ function Mekgineer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (16949, 1, "Mekgineer_OnEnterCombat")
-RegisterUnitEvent (16949, 2, "Mekgineer_OnLeaveCombat")
-RegisterUnitEvent (16949, 4, "Mekgineer_OnDied")
+RegisterUnitEvent(16949, 1, "Mekgineer_OnEnterCombat")
+RegisterUnitEvent(16949, 2, "Mekgineer_OnLeaveCombat")
+RegisterUnitEvent(16949, 4, "Mekgineer_OnDied")
 
 function Tinker_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Tinker_Bomb",2000,0)
-    pUnit:RegisterEvent("Tinker_Steal",1000,0)
+    pUnit:RegisterEvent("Tinker_Bomb", 2000, 0)
+    pUnit:RegisterEvent("Tinker_Steal", 1000, 0)
 end
 
 function Tinker_Bomb(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36846,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36846, pUnit:GetClosestPlayer())
 end
 
 function Tinker_Steal(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36208,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36208, pUnit:GetClosestPlayer())
 end
 
 function Tinker_OnLeaveCombat(pUnit,Event)
@@ -1348,21 +1345,21 @@ function Tinker_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20285, 1, "Tinker_OnEnterCombat")
-RegisterUnitEvent (20285, 2, "Tinker_OnLeaveCombat")
-RegisterUnitEvent (20285, 4, "Tinker_OnDied")
+RegisterUnitEvent(20285, 1, "Tinker_OnEnterCombat")
+RegisterUnitEvent(20285, 2, "Tinker_OnLeaveCombat")
+RegisterUnitEvent(20285, 4, "Tinker_OnDied")
 
 function Hatecryer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Hatecryer_Curse",1000,0)
-    pUnit:RegisterEvent("Hatecryer_Rain",1000,0)
+    pUnit:RegisterEvent("Hatecryer_Curse", 1000, 0)
+    pUnit:RegisterEvent("Hatecryer_Rain", 1000, 0)
 end
 
 function Hatecryer_Curse(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36541,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36541, pUnit:GetClosestPlayer())
 end
 
 function Hatecryer_Rain(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(34017,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(34017, pUnit:GetClosestPlayer())
 end
 
 function Hatecryer_OnLeaveCombat(pUnit,Event)
@@ -1373,21 +1370,21 @@ function Hatecryer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20930, 1, "Hatecryer_OnEnterCombat")
-RegisterUnitEvent (20930, 2, "Hatecryer_OnLeaveCombat")
-RegisterUnitEvent (20930, 4, "Hatecryer_OnDied")
+RegisterUnitEvent(20930, 1, "Hatecryer_OnEnterCombat")
+RegisterUnitEvent(20930, 2, "Hatecryer_OnLeaveCombat")
+RegisterUnitEvent(20930, 4, "Hatecryer_OnDied")
 
 function Hound_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Hound_Breath",2500,0)
-    pUnit:RegisterEvent("Hound_Stomp",1000,0)
+    pUnit:RegisterEvent("Hound_Breath", 2500, 0)
+    pUnit:RegisterEvent("Hound_Stomp", 1000, 0)
 end
 
 function Hound_Breath(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36406,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36406, pUnit:GetClosestPlayer())
 end
 
 function Hound_Stomp(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36405,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36405, pUnit:GetClosestPlayer())
 end
 
 function Hound_OnLeaveCombat(pUnit,Event)
@@ -1398,22 +1395,22 @@ function Hound_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20141, 1, "Hound_OnEnterCombat")
-RegisterUnitEvent (20141, 2, "Hound_OnLeaveCombat")
-RegisterUnitEvent (20141, 4, "Hound_OnDied")
+RegisterUnitEvent(20141, 1, "Hound_OnEnterCombat")
+RegisterUnitEvent(20141, 2, "Hound_OnLeaveCombat")
+RegisterUnitEvent(20141, 4, "Hound_OnDied")
 
 function Forgelord_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Forgelord_Hammer",1000,0)
-    pUnit:RegisterEvent("Forgelord_Slam",1900,0)
-    pUnit:RegisterEvent("Forgelord_Toughen",1000,0)
+    pUnit:RegisterEvent("Forgelord_Hammer", 1000, 0)
+    pUnit:RegisterEvent("Forgelord_Slam", 1900, 0)
+    pUnit:RegisterEvent("Forgelord_Toughen", 1000, 0)
 end
 
 function Forgelord_Hammer(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36251,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36251, pUnit:GetClosestPlayer())
 end
 
 function Forgelord_Slam(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37179,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(37179, pUnit:GetClosestPlayer())
 end
 
 function Forgelord_Toughen(pUnit,Event)
@@ -1428,12 +1425,12 @@ function Forgelord_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20928, 1, "Forgelord_OnEnterCombat")
-RegisterUnitEvent (20928, 2, "Forgelord_OnLeaveCombat")
-RegisterUnitEvent (20928, 4, "Forgelord_OnDied")
+RegisterUnitEvent(20928, 1, "Forgelord_OnEnterCombat")
+RegisterUnitEvent(20928, 2, "Forgelord_OnLeaveCombat")
+RegisterUnitEvent(20928, 4, "Forgelord_OnDied")
 
 function Kaylaan_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Kaylaan_Ressurection",4000,0)
+    pUnit:RegisterEvent("Kaylaan_Ressurection", 4000, 0)
 end
 
 function Kaylaan_Ressurection(pUnit,Event)
@@ -1448,16 +1445,16 @@ function Kaylaan_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20780, 1, "Kaylaan_OnEnterCombat")
-RegisterUnitEvent (20780, 2, "Kaylaan_OnLeaveCombat")
-RegisterUnitEvent (20780, 4, "Kaylaan_OnDied")
+RegisterUnitEvent(20780, 1, "Kaylaan_OnEnterCombat")
+RegisterUnitEvent(20780, 2, "Kaylaan_OnLeaveCombat")
+RegisterUnitEvent(20780, 4, "Kaylaan_OnDied")
 
 function Apprentice_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Apprentice_Hammer",1500,0)
+    pUnit:RegisterEvent("Apprentice_Hammer", 1500, 0)
 end
 
 function Apprentice_Hammer(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37554,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(37554, pUnit:GetClosestPlayer())
 end
 
 function Apprentice_OnLeaveCombat(pUnit,Event)
@@ -1468,12 +1465,12 @@ function Apprentice_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20409, 1, "Apprentice_OnEnterCombat")
-RegisterUnitEvent (20409, 2, "Apprentice_OnLeaveCombat")
-RegisterUnitEvent (20409, 4, "Apprentice_OnDied")
+RegisterUnitEvent(20409, 1, "Apprentice_OnEnterCombat")
+RegisterUnitEvent(20409, 2, "Apprentice_OnLeaveCombat")
+RegisterUnitEvent(20409, 4, "Apprentice_OnDied")
 
 function Ghost_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Ghost_Soulbind",2000,0)
+    pUnit:RegisterEvent("Ghost_Soulbind", 2000, 0)
 end
 
 function Ghost_Soulbind(pUnit,Event)
@@ -1488,21 +1485,21 @@ function Ghost_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20409, 1, "Ghost_OnEnterCombat")
-RegisterUnitEvent (20409, 2, "Ghost_OnLeaveCombat")
-RegisterUnitEvent (20409, 4, "Ghost_OnDied")
+RegisterUnitEvent(20409, 1, "Ghost_OnEnterCombat")
+RegisterUnitEvent(20409, 2, "Ghost_OnLeaveCombat")
+RegisterUnitEvent(20409, 4, "Ghost_OnDied")
 
 function Spectre_OnEnterCombat(Unit,Event)
-    Unit:RegisterEvent("Spectre_Curse",1000,0)
-    Unit:RegisterEvent("Spectre_Bolt",3000,0)
+    Unit:RegisterEvent("Spectre_Curse", 1000, 0)
+    Unit:RegisterEvent("Spectre_Bolt", 3000, 0)
 end
 
 function Spectre_Curse(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(11980,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(11980, pUnit:GetClosestPlayer())
 end
 
 function Spectre_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function Spectre_OnLeaveCombat(pUnit,Event)
@@ -1513,21 +1510,21 @@ function Spectre_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20496, 1, "Spectre_OnEnterCombat")
-RegisterUnitEvent (20496, 2, "Spectre_OnLeaveCombat")
-RegisterUnitEvent (20496, 4, "Spectre_OnDied")
+RegisterUnitEvent(20496, 1, "Spectre_OnEnterCombat")
+RegisterUnitEvent(20496, 2, "Spectre_OnLeaveCombat")
+RegisterUnitEvent(20496, 4, "Spectre_OnDied")
 
 function Destroyer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Destroyer_Knock",1000,0)
-    pUnit:RegisterEvent("Destroyer_Strike",1000,0)
+    pUnit:RegisterEvent("Destroyer_Knock", 1000, 0)
+    pUnit:RegisterEvent("Destroyer_Strike", 1000, 0)
 end
 
 function Destroyer_Knock(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(11428,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(11428, pUnit:GetClosestPlayer())
 end
 
 function Destroyer_Strike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(13737,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(13737, pUnit:GetClosestPlayer())
 end
 
 function Destroyer_OnLeaveCombat(pUnit,Event)
@@ -1538,16 +1535,16 @@ function Destroyer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20403, 1, "Destroyer_OnEnterCombat")
-RegisterUnitEvent (20403, 2, "Destroyer_OnLeaveCombat")
-RegisterUnitEvent (20403, 4, "Destroyer_OnDied")
+RegisterUnitEvent(20403, 1, "Destroyer_OnEnterCombat")
+RegisterUnitEvent(20403, 2, "Destroyer_OnLeaveCombat")
+RegisterUnitEvent(20403, 4, "Destroyer_OnDied")
 
 function Cannon_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Cannon_Blast",3000,0)
+    pUnit:RegisterEvent("Cannon_Blast", 3000, 0)
 end
 
 function Cannon_Blast(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36238,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36238, pUnit:GetClosestPlayer())
 end
 
 function Cannon_OnLeaveCombat(pUnit,Event)
@@ -1558,16 +1555,16 @@ function Cannon_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21233, 1, "Cannon_OnEnterCombat")
-RegisterUnitEvent (21233, 2, "Cannon_OnLeaveCombat")
-RegisterUnitEvent (21233, 4, "Cannon_OnDied")
+RegisterUnitEvent(21233, 1, "Cannon_OnEnterCombat")
+RegisterUnitEvent(21233, 2, "Cannon_OnLeaveCombat")
+RegisterUnitEvent(21233, 4, "Cannon_OnDied")
 
 function Shocktrooper_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Shocktrooper_Rand",1000,0)
+    pUnit:RegisterEvent("Shocktrooper_Rand", 1000, 0)
 end
 
 function Shocktrooper_Rand(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35144,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35144, pUnit:GetClosestPlayer())
 end
 
 function Shocktrooper_OnLeaveCombat(pUnit,Event)
@@ -1578,12 +1575,12 @@ function Shocktrooper_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20402, 1, "Shocktrooper_OnEnterCombat")
-RegisterUnitEvent (20402, 2, "Shocktrooper_OnLeaveCombat")
-RegisterUnitEvent (20402, 4, "Shocktrooper_OnDied")
+RegisterUnitEvent(20402, 1, "Shocktrooper_OnEnterCombat")
+RegisterUnitEvent(20402, 2, "Shocktrooper_OnLeaveCombat")
+RegisterUnitEvent(20402, 4, "Shocktrooper_OnDied")
 
 function Mageslayer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Mageslayer_Reflection",8000,0)
+    pUnit:RegisterEvent("Mageslayer_Reflection", 8000, 0)
 end
 
 function Mageslayer_Reflection(pUnit,Event)
@@ -1598,16 +1595,16 @@ function Mageslayer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18866, 1, "Mageslayer_OnEnterCombat")
-RegisterUnitEvent (18866, 2, "Mageslayer_OnLeaveCombat")
-RegisterUnitEvent (18866, 4, "Mageslayer_OnDied")
+RegisterUnitEvent(18866, 1, "Mageslayer_OnEnterCombat")
+RegisterUnitEvent(18866, 2, "Mageslayer_OnLeaveCombat")
+RegisterUnitEvent(18866, 4, "Mageslayer_OnDied")
 
 function Beast_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Beast_Burn",1000,0)
+    pUnit:RegisterEvent("Beast_Burn", 1000, 0)
 end
 
 function Beast_Burn(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36484,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36484, pUnit:GetClosestPlayer())
 end
 
 function Beast_OnLeaveCombat(pUnit,Event)
@@ -1618,21 +1615,21 @@ function Beast_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21267, 1, "Beast_OnEnterCombat")
-RegisterUnitEvent (21267, 2, "Beast_OnLeaveCombat")
-RegisterUnitEvent (21267, 4, "Beast_OnDied")
+RegisterUnitEvent(21267, 1, "Beast_OnEnterCombat")
+RegisterUnitEvent(21267, 2, "Beast_OnLeaveCombat")
+RegisterUnitEvent(21267, 4, "Beast_OnDied")
 
 function Seeker_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Seeker_Burn",3000,0)
-    pUnit:RegisterEvent("Seeker_Slow",2000,0)
+    pUnit:RegisterEvent("Seeker_Burn", 3000, 0)
+    pUnit:RegisterEvent("Seeker_Slow", 2000, 0)
 end
 
 function Seeker_Burn(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(11981,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(11981, pUnit:GetClosestPlayer())
 end
 
 function Seeker_Slow(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36843,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36843, pUnit:GetClosestPlayer())
 end
 
 function Seeker_OnLeaveCombat(pUnit,Event)
@@ -1643,13 +1640,13 @@ function Seeker_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18867, 1, "Seeker_OnEnterCombat")
-RegisterUnitEvent (18867, 2, "Seeker_OnLeaveCombat")
-RegisterUnitEvent (18867, 4, "Seeker_OnDied")
+RegisterUnitEvent(18867, 1, "Seeker_OnEnterCombat")
+RegisterUnitEvent(18867, 2, "Seeker_OnLeaveCombat")
+RegisterUnitEvent(18867, 4, "Seeker_OnDied")
 
 function Snapper_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Snapper_DeMaterialize",1000,0)
-    pUnit:RegisterEvent("Snapper_Burn",1000,0)
+    pUnit:RegisterEvent("Snapper_DeMaterialize", 1000, 0)
+    pUnit:RegisterEvent("Snapper_Burn", 1000, 0)
 end
 
 function Snapper_DeMaterialize(pUnit,Event)
@@ -1657,7 +1654,7 @@ function Snapper_DeMaterialize(pUnit,Event)
 end
 
 function Snapper_Burn(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37176,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(37176, pUnit:GetMainTank())
 end
 
 function Snapper_OnLeaveCombat(pUnit,Event)
@@ -1668,16 +1665,16 @@ function Snapper_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18883, 1, "Snapper_OnEnterCombat")
-RegisterUnitEvent (18883, 2, "Snapper_OnLeaveCombat")
-RegisterUnitEvent (18883, 4, "Snapper_OnDied")
+RegisterUnitEvent(18883, 1, "Snapper_OnEnterCombat")
+RegisterUnitEvent(18883, 2, "Snapper_OnLeaveCombat")
+RegisterUnitEvent(18883, 4, "Snapper_OnDied")
 
 function Wraith_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Wraith_Mana",2000,0)
+    pUnit:RegisterEvent("Wraith_Mana", 2000, 0)
 end
 
 function Wraith_Mana(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(29054,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(29054, pUnit:GetClosestPlayer())
 end
 
 function Wraith_OnLeaveCombat(pUnit,Event)
@@ -1688,16 +1685,16 @@ function Wraith_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18864, 1, "Wraith_OnEnterCombat")
-RegisterUnitEvent (18864, 2, "Wraith_OnLeaveCombat")
-RegisterUnitEvent (18864, 4, "Wraith_OnDied")
+RegisterUnitEvent(18864, 1, "Wraith_OnEnterCombat")
+RegisterUnitEvent(18864, 2, "Wraith_OnLeaveCombat")
+RegisterUnitEvent(18864, 4, "Wraith_OnDied")
 
 function Markaru_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Markaru_Spit",2500,0)
+    pUnit:RegisterEvent("Markaru_Spit", 2500, 0)
 end
 
 function Markaru_Spit(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36627,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36627, pUnit:GetClosestPlayer())
 end
 
 function Markaru_OnLeaveCombat(pUnit,Event)
@@ -1708,26 +1705,26 @@ function Markaru_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20775, 1, "Markaru_OnEnterCombat")
-RegisterUnitEvent (20775, 2, "Markaru_OnLeaveCombat")
-RegisterUnitEvent (20775, 4, "Markaru_OnDied")
+RegisterUnitEvent(20775, 1, "Markaru_OnEnterCombat")
+RegisterUnitEvent(20775, 2, "Markaru_OnLeaveCombat")
+RegisterUnitEvent(20775, 4, "Markaru_OnDied")
 
 function Master_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Master_Arrow",1000,0)
-    pUnit:RegisterEvent("Master_Clip",1000,0)
-    pUnit:RegisterEvent("Master_Shoot",1000,0)
+    pUnit:RegisterEvent("Master_Arrow", 1000, 0)
+    pUnit:RegisterEvent("Master_Clip", 1000, 0)
+    pUnit:RegisterEvent("Master_Shoot", 1000, 0)
 end
 
 function Master_Arrow(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35964,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35964, pUnit:GetClosestPlayer())
 end
 
 function Master_Clip(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35963,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35963, pUnit:GetClosestPlayer())
 end
 
 function Master_Shoot(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(6660,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(6660, pUnit:GetClosestPlayer())
 end
 
 function Master_OnLeaveCombat(pUnit,Event)
@@ -1738,16 +1735,16 @@ function Master_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19705, 1, "Master_OnEnterCombat")
-RegisterUnitEvent (19705, 2, "Master_OnLeaveCombat")
-RegisterUnitEvent (19705, 4, "Master_OnDied")
+RegisterUnitEvent(19705, 1, "Master_OnEnterCombat")
+RegisterUnitEvent(19705, 2, "Master_OnLeaveCombat")
+RegisterUnitEvent(19705, 4, "Master_OnDied")
 
 function Doomsmith_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Doomsmith_Doomsaw",1300,0)
 end
 
 function Doomsmith_Doomsaw(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36200,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36200, pUnit:GetClosestPlayer())
 end
 
 function Doomsmith_OnLeaveCombat(pUnit,Event)
@@ -1758,16 +1755,16 @@ function Doomsmith_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (16944, 1, "Doomsmith_OnEnterCombat")
-RegisterUnitEvent (16944, 2, "Doomsmith_OnLeaveCombat")
-RegisterUnitEvent (16944, 4, "Doomsmith_OnDied")
+RegisterUnitEvent(16944, 1, "Doomsmith_OnEnterCombat")
+RegisterUnitEvent(16944, 2, "Doomsmith_OnLeaveCombat")
+RegisterUnitEvent(16944, 4, "Doomsmith_OnDied")
 
 function WarpMaster_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("WarpMaster_Spray",2000,0)
+    pUnit:RegisterEvent("WarpMaster_Spray", 2000, 0)
 end
 
 function WarpMaster_Spray(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36486,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36486, pUnit:GetClosestPlayer())
 end
 
 function WarpMaster_OnLeaveCombat(pUnit,Event)
@@ -1778,16 +1775,16 @@ function WarpMaster_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20326, 1, "WarpMaster_OnEnterCombat")
-RegisterUnitEvent (20326, 2, "WarpMaster_OnLeaveCombat")
-RegisterUnitEvent (20326, 4, "WarpMaster_OnDied")
+RegisterUnitEvent(20326, 1, "WarpMaster_OnEnterCombat")
+RegisterUnitEvent(20326, 2, "WarpMaster_OnLeaveCombat")
+RegisterUnitEvent(20326, 4, "WarpMaster_OnDied")
 
 function Lasher_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Lasher_Growth",1500,0)
+    pUnit:RegisterEvent("Lasher_Growth", 1500, 0)
 end
 
 function Lasher_Growth(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36604,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36604, pUnit:GetClosestPlayer())
 end
 
 function Lasher_OnLeaveCombat(pUnit,Event)
@@ -1798,21 +1795,21 @@ function Lasher_OnDied(Unit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20983, 1, "Lasher_OnEnterCombat")
-RegisterUnitEvent (20983, 2, "Lasher_OnLeaveCombat")
-RegisterUnitEvent (20983, 4, "Lasher_OnDied")
+RegisterUnitEvent(20983, 1, "Lasher_OnEnterCombat")
+RegisterUnitEvent(20983, 2, "Lasher_OnLeaveCombat")
+RegisterUnitEvent(20983, 4, "Lasher_OnDied")
 
 function Dragon_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Dragon_Presence",1000,0)
-    pUnit:RegisterEvent("Dragon_Netherbreath",2500,0)
+    pUnit:RegisterEvent("Dragon_Presence", 1000, 0)
+    pUnit:RegisterEvent("Dragon_Netherbreath", 2500, 0)
 end
 
 function Dragon_Presence(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36513,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36513, pUnit:GetClosestPlayer())
 end
 
 function Dragon_Netherbreath(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36631,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36631, pUnit:GetClosestPlayer())
 end
 
 function Dragon_OnLeaveCombat(pUnit,Event)
@@ -1823,16 +1820,16 @@ function Dragon_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20332, 1, "Dragon_OnEnterCombat")
-RegisterUnitEvent (20332, 2, "Dragon_OnLeaveCombat")
-RegisterUnitEvent (20332, 4, "Dragon_OnDied")
+RegisterUnitEvent(20332, 1, "Dragon_OnEnterCombat")
+RegisterUnitEvent(20332, 2, "Dragon_OnLeaveCombat")
+RegisterUnitEvent(20332, 4, "Dragon_OnDied")
 
 function Drake_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Drake_Presence",1000,0)
+    pUnit:RegisterEvent("Drake_Presence", 1000, 0)
 end
 
 function Drake_Presence(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36513,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36513, pUnit:GetClosestPlayer())
 end
 
 function Drake_OnLeaveCombat(pUnit,Event)
@@ -1843,26 +1840,26 @@ function Drake_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18877, 1, "Drake_OnEnterCombat")
-RegisterUnitEvent (18877, 2, "Drake_OnLeaveCombat")
-RegisterUnitEvent (18877, 4, "Drake_OnDied")
+RegisterUnitEvent(18877, 1, "Drake_OnEnterCombat")
+RegisterUnitEvent(18877, 2, "Drake_OnLeaveCombat")
+RegisterUnitEvent(18877, 4, "Drake_OnDied")
 
 function Ray_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Ray_Drain",1000,0)
-    pUnit:RegisterEvent("Ray_Shock",1000,0)
-    pUnit:RegisterEvent("Ray_Sting",1000,0)
+    pUnit:RegisterEvent("Ray_Drain", 1000, 0)
+    pUnit:RegisterEvent("Ray_Shock", 1000, 0)
+    pUnit:RegisterEvent("Ray_Sting", 1000, 0)
 end
 
 function Ray_Drain(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(17008,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(17008, pUnit:GetClosestPlayer())
 end
 
 function Ray_Shock(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35334,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35334, pUnit:GetClosestPlayer())
 end
 
 function Ray_Sting(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36659,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36659, pUnit:GetClosestPlayer())
 end
 
 function Ray_OnLeaveCombat(pUnit,Event)
@@ -1873,21 +1870,21 @@ function Ray_OnDied(Unit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18880, 1, "Ray_OnEnterCombat")
-RegisterUnitEvent (18880, 2, "Ray_OnLeaveCombat")
-RegisterUnitEvent (18880, 4, "Ray_OnDied")
+RegisterUnitEvent(18880, 1, "Ray_OnEnterCombat")
+RegisterUnitEvent(18880, 2, "Ray_OnLeaveCombat")
+RegisterUnitEvent(18880, 4, "Ray_OnDied")
 
 function Grindgarr_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Grindgarr_Flames",5000,0)
-    pUnit:RegisterEvent("Grindgarr_Stomp",4000,0)
+    pUnit:RegisterEvent("Grindgarr_Flames", 5000, 0)
+    pUnit:RegisterEvent("Grindgarr_Stomp", 4000, 0)
 end
 
 function Grindgarr_Flames(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36487,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36487, pUnit:GetClosestPlayer())
 end   
    
 function Grindgarr_Stomp(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35238,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35238, pUnit:GetClosestPlayer())
 end
     
 function Grindgarr_OnLeaveCombat(pUnit,Event)
@@ -1898,16 +1895,16 @@ function Grindgarr_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20803, 1, "Grindgarr_OnEnterCombat")
-RegisterUnitEvent (20803, 2, "Grindgarr_OnLeaveCombat")
-RegisterUnitEvent (20803, 4, "Grindgarr_OnDied")
+RegisterUnitEvent(20803, 1, "Grindgarr_OnEnterCombat")
+RegisterUnitEvent(20803, 2, "Grindgarr_OnLeaveCombat")
+RegisterUnitEvent(20803, 4, "Grindgarr_OnDied")
 
 function Athanel_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Athanel_Cleave",4000,0)
+    pUnit:RegisterEvent("Athanel_Cleave", 4000, 0)
 end
 
 function Athanel_Cleave(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15496,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(15496, pUnit:GetMainTank())
 end   
     
 function Athanel_OnLeaveCombat(pUnit,Event)
@@ -1918,12 +1915,12 @@ function Athanel_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20435, 1, "Athanel_OnEnterCombat")
-RegisterUnitEvent (20435, 2, "Athanel_OnLeaveCombat")
-RegisterUnitEvent (20435, 4, "Athanel_OnDied")
+RegisterUnitEvent(20435, 1, "Athanel_OnEnterCombat")
+RegisterUnitEvent(20435, 2, "Athanel_OnLeaveCombat")
+RegisterUnitEvent(20435, 4, "Athanel_OnDied")
 
 function Azarad_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Azarad_Rage",12000,0)
+    pUnit:RegisterEvent("Azarad_Rage", 12000, 0)
 end
 
 function Azarad_Rage(pUnit,Event)
@@ -1938,13 +1935,13 @@ function Azarad_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20685, 1, "Azarad_OnEnterCombat")
-RegisterUnitEvent (20685, 2, "Azarad_OnLeaveCombat")
-RegisterUnitEvent (20685, 4, "Azarad_OnDied")
+RegisterUnitEvent(20685, 1, "Azarad_OnEnterCombat")
+RegisterUnitEvent(20685, 2, "Azarad_OnLeaveCombat")
+RegisterUnitEvent(20685, 4, "Azarad_OnDied")
 
 function Seylanna_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Seylanna_Crystal",2000,0)
-    pUnit:RegisterEvent("Seylanna_Beam",4000,0)
+    pUnit:RegisterEvent("Seylanna_Crystal", 2000, 0)
+    pUnit:RegisterEvent("Seylanna_Beam", 4000, 0)
 end
 
 function Seylanna_Crystal(pUnit,Event)
@@ -1952,7 +1949,7 @@ function Seylanna_Crystal(pUnit,Event)
 end   
    
 function Seylanna_Beam(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35919,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35919, pUnit:GetClosestPlayer())
 end
     
 function Seylanna_OnLeaveCombat(pUnit,Event)
@@ -1963,21 +1960,21 @@ function Seylanna_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20397, 1, "Seylanna_OnEnterCombat")
-RegisterUnitEvent (20397, 2, "Seylanna_OnLeaveCombat")
-RegisterUnitEvent (20397, 4, "Seylanna_OnDied")
+RegisterUnitEvent(20397, 1, "Seylanna_OnEnterCombat")
+RegisterUnitEvent(20397, 2, "Seylanna_OnLeaveCombat")
+RegisterUnitEvent(20397, 4, "Seylanna_OnDied")
 
 function Theredis_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Theredis_Disarm",8000,0)
-    pUnit:RegisterEvent("Theredis_Breaker",9000,0)
+    pUnit:RegisterEvent("Theredis_Disarm", 8000, 0)
+    pUnit:RegisterEvent("Theredis_Breaker", 9000, 0)
 end
 
 function Theredis_Crystal(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(6713,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(6713, pUnit:GetMainTank())
 end   
    
 function Theredis_Breaker(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35871,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(35871, pUnit:GetMainTank())
 end
     
 function Theredis_OnLeaveCombat(pUnit,Event)
@@ -1988,31 +1985,27 @@ function Theredis_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20416, 1, "Theredis_OnEnterCombat")
-RegisterUnitEvent (20416, 2, "Theredis_OnLeaveCombat")
-RegisterUnitEvent (20416, 4, "Theredis_OnDied")
+RegisterUnitEvent(20416, 1, "Theredis_OnEnterCombat")
+RegisterUnitEvent(20416, 2, "Theredis_OnLeaveCombat")
+RegisterUnitEvent(20416, 4, "Theredis_OnDied")
 
 function Beast_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Beast_Rend",15000,0)
-    pUnit:RegisterEvent("Beast_Parasite_Spell",6000,0)
-    pUnit:RegisterEvent("Beast_Parasite_Spawn",36000,0)
+    pUnit:RegisterEvent("Beast_Rend", 15000, 0)
+    pUnit:RegisterEvent("Beast_Parasite_Spell", 6000, 0)
+    pUnit:RegisterEvent("Beast_Parasite_Spawn", 36000, 0)
 end
 
 function Beast_Rend(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(13443,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(13443, pUnit:GetMainTank())
 end
 
 function Beast_Parasite_Spell(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36469,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(36469, pUnit:GetRandomPlayer(0))
 end
 
 function Beast_Parasite_Spawn(pUnit,Event)
-    local x = pUnit:GetX()
-	local y = pUnit:GetY()
-	local z = pUnit:GetZ()
-	local o = pUnit:GetO()
     pUnit:CastSpell(36468)
-    pUnit:SpawnCreature(21265, x-1, y, z, o, 14, o)
+    pUnit:SpawnCreature(21265, pUnit:GetX()-1, pUnit:GetY(), pUnit:GetZ(), pUnit:GetO(), 14)
 end
 
 function Beast_OnLeaveCombat(pUnit,Event)
@@ -2028,7 +2021,7 @@ RegisterUnitEvent(20335,2,"Beast_OnLeaveCombat")
 RegisterUnitEvent(20335,4,"Beast_OnDied")
 
 function Pentatharon_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Pentatharon_Swarm",4000,0)
+    pUnit:RegisterEvent("Pentatharon_Swarm", 4000, 0)
 end
 
 function Pentatharon_Swarm(pUnit,Event)
@@ -2043,22 +2036,22 @@ function Pentatharon_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20215, 1, "Pentatharon_OnEnterCombat")
-RegisterUnitEvent (20215, 2, "Pentatharon_OnLeaveCombat")
-RegisterUnitEvent (20215, 4, "Pentatharon_OnDied")
+RegisterUnitEvent(20215, 1, "Pentatharon_OnEnterCombat")
+RegisterUnitEvent(20215, 2, "Pentatharon_OnLeaveCombat")
+RegisterUnitEvent(20215, 4, "Pentatharon_OnDied")
 
 function Hunter_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Hunter_DeMaterialize",8000,0)
-    pUnit:RegisterEvent("Hunter_ManaBurn",3000,0)
+    pUnit:RegisterEvent("Hunter_DeMaterialize", 8000, 0)
+    pUnit:RegisterEvent("Hunter_ManaBurn", 3000, 0)
 end
 
 function Hunter_DeMaterialize(pUnit,Event)
     pUnit:CastSpell(34814)
-    pUnit:RegisterEvent("Hunter_Materialize",3000,0)
+    pUnit:RegisterEvent("Hunter_Materialize", 3000, 0)
 end   
    
 function Hunter_ManaBurn(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(13321,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(13321, pUnit:GetClosestPlayer())
 end
 
 function Hunter_Materialize(pUnit,Event)
@@ -2073,9 +2066,9 @@ function Hunter_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18879, 1, "Hunter_OnEnterCombat")
-RegisterUnitEvent (18879, 2, "Hunter_OnLeaveCombat")
-RegisterUnitEvent (18879, 4, "Hunter_OnDied")
+RegisterUnitEvent(18879, 1, "Hunter_OnEnterCombat")
+RegisterUnitEvent(18879, 2, "Hunter_OnLeaveCombat")
+RegisterUnitEvent(18879, 4, "Hunter_OnDied")
 
 local cry_delay = 78000
 local announces = {}
@@ -2086,14 +2079,13 @@ RegisterUnitEvent(19776, 6, "ExperimentalPilot1_Setup")
 announces[1] = "All my bags are packed, I'm ready to go."
 
 function ExperimentalPilot1_Tick(pUnit, Event)
-   choice = math.random(1, announcei)
-   pUnit:SendChatMessage(12, 0, announces[choice])
+	choice = math.random(1, announcei)
+	pUnit:SendChatMessage(12, 0, announces[choice])
 end
 
 function ExperimentalPilot1_Setup(pUnit, Event)
-   pUnit:RegisterEvent("ExperimentalPilot1_Tick", cry_delay, 0)
+	pUnit:RegisterEvent("ExperimentalPilot1_Tick", cry_delay, 0)
 end
-
 
 local cry_delay = 86000
 local announces = {}
@@ -2104,14 +2096,13 @@ RegisterUnitEvent(19737, 6, "ExperimentalCrew1_Setup")
 announces[1] = "The ship's not ready yet. We still need to calibrate the fuse length to make sure that it doesn't burn out and leave you up there alone."
 
 function ExperimentalCrew1_Tick(pUnit, Event)
-   choice = math.random(1, announcei)
-   pUnit:SendChatMessage(12, 0, announces[choice])
+	choice = math.random(1, announcei)
+	pUnit:SendChatMessage(12, 0, announces[choice])
 end
 
 function ExperimentalCrew1_Setup(pUnit, Event)
-   pUnit:RegisterEvent("ExperimentalCrew1_Tick", cry_delay, 0)
+	pUnit:RegisterEvent("ExperimentalCrew1_Tick", cry_delay, 0)
 end
-
 
 local cry_delay = 94000
 local announces = {}
@@ -2122,14 +2113,13 @@ RegisterUnitEvent(19776, 6, "ExperimentalPilot2_Setup")
 announces[1] = "You need to do what? All this science, I don't understand ... Look, this is just my job, five days a week."
 
 function ExperimentalPilot2_Tick(pUnit, Event)
-   choice = math.random(1, announcei)
-   pUnit:SendChatMessage(12, 0, announces[choice])
+	choice = math.random(1, announcei)
+	pUnit:SendChatMessage(12, 0, announces[choice])
 end
 
 function ExperimentalPilot2_Setup(pUnit, Event)
-   pUnit:RegisterEvent("ExperimentalPilot2_Tick", cry_delay, 0)
+	pUnit:RegisterEvent("ExperimentalPilot2_Tick", cry_delay, 0)
 end
-
 
 local cry_delay = 102000
 local announces = {}
@@ -2165,7 +2155,6 @@ function ExperimentalPilot3_Setup(pUnit, Event)
    pUnit:RegisterEvent("ExperimentalPilot3_Tick", cry_delay, 0)
 end
 
-
 local cry_delay = 190000
 local announces = {}
 local announcei = 1 
@@ -2182,7 +2171,6 @@ end
 function ExperimentalCrew3_Setup(pUnit, Event)
    pUnit:RegisterEvent("ExperimentalCrew3_Tick", cry_delay, 0)
 end
-
 
 local cry_delay = 270000
 local announces = {}
@@ -2201,7 +2189,6 @@ function ExperimentalPilot4_Setup(pUnit, Event)
    pUnit:RegisterEvent("ExperimentalPilot4_Tick", cry_delay, 0)
 end
 
-
 local cry_delay = 350000
 local announces = {}
 local announcei = 1 
@@ -2218,7 +2205,6 @@ end
 function ExperimentalCrew4_Setup(pUnit, Event)
    pUnit:RegisterEvent("ExperimentalCrew4_Tick", cry_delay, 0)
 end
-
 
 local cry_delay = 430000
 local announces = {}
@@ -2238,11 +2224,11 @@ function ExperimentalPilot5_Setup(pUnit, Event)
 end
 
 function Porfus_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Porfus_Hamstring",5000,0)
+    pUnit:RegisterEvent("Porfus_Hamstring", 5000, 0)
 end
 
 function Porfus_Hamstring(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(31553,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(31553, pUnit:GetMainTank())
 end   
     
 function Porfus_OnLeaveCombat(pUnit,Event)
@@ -2253,16 +2239,16 @@ function Porfus_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20783, 1, "Porfus_OnEnterCombat")
-RegisterUnitEvent (20783, 2, "Porfus_OnLeaveCombat")
-RegisterUnitEvent (20783, 4, "Porfus_OnDied")
+RegisterUnitEvent(20783, 1, "Porfus_OnEnterCombat")
+RegisterUnitEvent(20783, 2, "Porfus_OnLeaveCombat")
+RegisterUnitEvent(20783, 4, "Porfus_OnDied")
 
 function Avenger_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Avenger_Claive",4000,0)
+    pUnit:RegisterEvent("Avenger_Claive", 4000, 0)
 end
 
 function Avenger_Claive(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36500,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36500, pUnit:GetMainTank())
 end   
     
 function Avenger_OnLeaveCombat(pUnit,Event)
@@ -2273,21 +2259,21 @@ function Avenger_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21805, 1, "Avenger_OnEnterCombat")
-RegisterUnitEvent (21805, 2, "Avenger_OnLeaveCombat")
-RegisterUnitEvent (21805, 4, "Avenger_OnDied")
+RegisterUnitEvent(21805, 1, "Avenger_OnEnterCombat")
+RegisterUnitEvent(21805, 2, "Avenger_OnLeaveCombat")
+RegisterUnitEvent(21805, 4, "Avenger_OnDied")
 
 function Defender_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Defender_Claive",4000,0)
-    pUnit:RegisterEvent("Defender_Hamstring",5000,0)
+    pUnit:RegisterEvent("Defender_Claive", 4000, 0)
+    pUnit:RegisterEvent("Defender_Hamstring", 5000, 0)
 end
 
 function Defender_Claive(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36500,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36500, pUnit:GetMainTank())
 end   
     
 function Defender_Hamstring(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(31553,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(31553, pUnit:GetMainTank())
 end 
     
 function Defender_OnLeaveCombat(pUnit,Event)
@@ -2298,12 +2284,12 @@ function Defender_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20984, 1, "Defender_OnEnterCombat")
-RegisterUnitEvent (20984, 2, "Defender_OnLeaveCombat")
-RegisterUnitEvent (20984, 4, "Defender_OnDied")
+RegisterUnitEvent(20984, 1, "Defender_OnEnterCombat")
+RegisterUnitEvent(20984, 2, "Defender_OnLeaveCombat")
+RegisterUnitEvent(20984, 4, "Defender_OnDied")
 
 function Regenerator_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Regenerator_Bolt",2500,0)
+    pUnit:RegisterEvent("Regenerator_Bolt", 2500, 0)
 end
 
 function Regenerator_Bolt(pUnit,Event)
@@ -2318,12 +2304,12 @@ function Regenerator_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21783, 1, "Regenerator_OnEnterCombat")
-RegisterUnitEvent (21783, 2, "Regenerator_OnLeaveCombat")
-RegisterUnitEvent (21783, 4, "Regenerator_OnDied")
+RegisterUnitEvent(21783, 1, "Regenerator_OnEnterCombat")
+RegisterUnitEvent(21783, 2, "Regenerator_OnLeaveCombat")
+RegisterUnitEvent(21783, 4, "Regenerator_OnDied")
 
 function Rhonsus_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Rhonsus_Smithery",4000,0)
+    pUnit:RegisterEvent("Rhonsus_Smithery", 4000, 0)
 end
 
 function Rhonsus_Smithery(pUnit,Event)
@@ -2338,14 +2324,14 @@ function Rhonsus_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20410, 1, "Rhonsus_OnEnterCombat")
-RegisterUnitEvent (20410, 2, "Rhonsus_OnLeaveCombat")
-RegisterUnitEvent (20410, 4, "Rhonsus_OnDied")
+RegisterUnitEvent(20410, 1, "Rhonsus_OnEnterCombat")
+RegisterUnitEvent(20410, 2, "Rhonsus_OnLeaveCombat")
+RegisterUnitEvent(20410, 4, "Rhonsus_OnDied")
 
 function Lynx_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Lynx_Dash",5000,0)
-    pUnit:RegisterEvent("Lynx_Rip",6000,0)
-    pUnit:RegisterEvent("Lynx_Swipe",5000,0)
+    pUnit:RegisterEvent("Lynx_Dash", 5000, 0)
+    pUnit:RegisterEvent("Lynx_Rip", 6000, 0)
+    pUnit:RegisterEvent("Lynx_Swipe", 5000, 0)
 end
 
 function Lynx_Dash(pUnit,Event)
@@ -2353,11 +2339,11 @@ function Lynx_Dash(pUnit,Event)
 end   
    
 function Lynx_Rip(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36590,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36590, pUnit:GetMainTank())
 end
 
 function Lynx_Swipe(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(31279,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(31279, pUnit:GetMainTank())
 end
     
 function Lynx_OnLeaveCombat(pUnit,Event)
@@ -2368,12 +2354,12 @@ function Lynx_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20671, 1, "Lynx_OnEnterCombat")
-RegisterUnitEvent (20671, 2, "Lynx_OnLeaveCombat")
-RegisterUnitEvent (20671, 4, "Lynx_OnDied")
+RegisterUnitEvent(20671, 1, "Lynx_OnEnterCombat")
+RegisterUnitEvent(20671, 2, "Lynx_OnLeaveCombat")
+RegisterUnitEvent(20671, 4, "Lynx_OnDied")
 
 function Raptor_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Raptor_Enrage",20000,0)
+    pUnit:RegisterEvent("Raptor_Enrage", 20000, 0)
 end
 
 function Raptor_Enrage(pUnit,Event)
@@ -2388,12 +2374,12 @@ function Raptor_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20634, 1, "Raptor_OnEnterCombat")
-RegisterUnitEvent (20634, 2, "Raptor_OnLeaveCombat")
-RegisterUnitEvent (20634, 4, "Raptor_OnDied")
+RegisterUnitEvent(20634, 1, "Raptor_OnEnterCombat")
+RegisterUnitEvent(20634, 2, "Raptor_OnLeaveCombat")
+RegisterUnitEvent(20634, 4, "Raptor_OnDied")
 
 function Sludge_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Sludge_Split",2500,0)
+    pUnit:RegisterEvent("Sludge_Split", 2500, 0)
 end
 
 function Sludge_Split(pUnit,Event)
@@ -2413,13 +2399,13 @@ function Sludge_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20501, 1, "Sludge_OnEnterCombat")
-RegisterUnitEvent (20501, 2, "Sludge_OnLeaveCombat")
-RegisterUnitEvent (20501, 4, "Sludge_OnDied")
+RegisterUnitEvent(20501, 1, "Sludge_OnEnterCombat")
+RegisterUnitEvent(20501, 2, "Sludge_OnLeaveCombat")
+RegisterUnitEvent(20501, 4, "Sludge_OnDied")
 
 function Defender_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Defender_Block",1000,(1))
-    pUnit:RegisterEvent("Defender_Strike",5000,0)
+    pUnit:RegisterEvent("Defender_Block", 1000, (1))
+    pUnit:RegisterEvent("Defender_Strike", 5000, 0)
 end
 
 function Defender_Block(pUnit,Event)
@@ -2427,7 +2413,7 @@ function Defender_Block(pUnit,Event)
 end   
 
 function Defender_Strike(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36093,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36093, pUnit:GetMainTank())
 end
 
 function Defender_OnLeaveCombat(pUnit,Event)
@@ -2438,13 +2424,13 @@ function Defender_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20934, 1, "Defender_OnEnterCombat")
-RegisterUnitEvent (20934, 2, "Defender_OnLeaveCombat")
-RegisterUnitEvent (20934, 4, "Defender_OnDied")
+RegisterUnitEvent(20934, 1, "Defender_OnEnterCombat")
+RegisterUnitEvent(20934, 2, "Defender_OnLeaveCombat")
+RegisterUnitEvent(20934, 4, "Defender_OnDied")
 
 function Spirit_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Spirit_Nova",10000,0)
-    pUnit:RegisterEvent("Spirit_Bolt",4000,0)
+    pUnit:RegisterEvent("Spirit_Nova", 10000, 0)
+    pUnit:RegisterEvent("Spirit_Bolt", 4000, 0)
 end
 
 function Spirit_Nova(pUnit,Event)
@@ -2452,7 +2438,7 @@ function Spirit_Nova(pUnit,Event)
 end   
 
 function Spirit_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(20822,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(20822, pUnit:GetMainTank())
 end
 
 function Spirit_OnLeaveCombat(pUnit,Event)
@@ -2463,12 +2449,12 @@ function Spirit_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19881, 1, "Spirit_OnEnterCombat")
-RegisterUnitEvent (19881, 2, "Spirit_OnLeaveCombat")
-RegisterUnitEvent (19881, 4, "Spirit_OnDied")
+RegisterUnitEvent(19881, 1, "Spirit_OnEnterCombat")
+RegisterUnitEvent(19881, 2, "Spirit_OnLeaveCombat")
+RegisterUnitEvent(19881, 4, "Spirit_OnDied")
 
 function Flayer_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Flayer_Skin",5000,0)
+    pUnit:RegisterEvent("Flayer_Skin", 5000, 0)
 end
 
 function Flayer_Skin(pUnit,Event)
@@ -2483,21 +2469,21 @@ function Flayer_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20210, 1, "Flayer_OnEnterCombat")
-RegisterUnitEvent (20210, 2, "Flayer_OnLeaveCombat")
-RegisterUnitEvent (20210, 4, "Flayer_OnDied")
+RegisterUnitEvent(20210, 1, "Flayer_OnEnterCombat")
+RegisterUnitEvent(20210, 2, "Flayer_OnLeaveCombat")
+RegisterUnitEvent(20210, 4, "Flayer_OnDied")
 
 function Moth_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Moth_Dust",10000,0)
-    pUnit:RegisterEvent("Moth_Buffet",2000,0)
+    pUnit:RegisterEvent("Moth_Dust", 10000, 0)
+    pUnit:RegisterEvent("Moth_Buffet", 2000, 0)
 end
 
 function Moth_Dust(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36592,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36592, pUnit:GetMainTank())
 end   
 
 function Moth_Buffet(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(32914,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(32914, pUnit:GetMainTank())
 end
 
 function Moth_OnLeaveCombat(pUnit,Event)
@@ -2508,16 +2494,16 @@ function Moth_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20611, 1, "Moth_OnEnterCombat")
-RegisterUnitEvent (20611, 2, "Moth_OnLeaveCombat")
-RegisterUnitEvent (20611, 4, "Moth_OnDied")
+RegisterUnitEvent(20611, 1, "Moth_OnEnterCombat")
+RegisterUnitEvent(20611, 2, "Moth_OnLeaveCombat")
+RegisterUnitEvent(20611, 4, "Moth_OnDied")
 
 function Stallion_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Stallion_Kick",5000,0)
+    pUnit:RegisterEvent("Stallion_Kick", 5000, 0)
 end
 
 function Stallion_Kick(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(11978,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(11978, pUnit:GetMainTank())
 end   
 
 function Stallion_OnLeaveCombat(pUnit,Event)
@@ -2528,16 +2514,16 @@ function Stallion_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20495, 1, "Stallion_OnEnterCombat")
-RegisterUnitEvent (20495, 2, "Stallion_OnLeaveCombat")
-RegisterUnitEvent (20495, 4, "Stallion_OnDied")
+RegisterUnitEvent(20495, 1, "Stallion_OnEnterCombat")
+RegisterUnitEvent(20495, 2, "Stallion_OnLeaveCombat")
+RegisterUnitEvent(20495, 4, "Stallion_OnDied")
 
 function Dimensius_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Dimensius_Feed",5000,0)
+    pUnit:RegisterEvent("Dimensius_Feed", 5000, 0)
 end
 
 function Dimensius_Feed(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37450,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(37450, pUnit:GetMainTank())
 end   
 
 function Dimensius_OnLeaveCombat(pUnit,Event)
@@ -2548,14 +2534,14 @@ function Dimensius_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21780, 1, "Dimensius_OnEnterCombat")
-RegisterUnitEvent (21780, 2, "Dimensius_OnLeaveCombat")
-RegisterUnitEvent (21780, 4, "Dimensius_OnDied")
+RegisterUnitEvent(21780, 1, "Dimensius_OnEnterCombat")
+RegisterUnitEvent(21780, 2, "Dimensius_OnLeaveCombat")
+RegisterUnitEvent(21780, 4, "Dimensius_OnDied")
 
 function Maryana_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Maryana_Blast",5000,0)
-    pUnit:RegisterEvent("Maryana_Fire",7000,0)
-    pUnit:RegisterEvent("Maryana_Intellect",1000,(1))
+    pUnit:RegisterEvent("Maryana_Blast", 5000, 0)
+    pUnit:RegisterEvent("Maryana_Fire", 7000, 0)
+    pUnit:RegisterEvent("Maryana_Intellect", 1000, (1))
 end
 
 function Maryana_Blast(pUnit,Event)
@@ -2578,21 +2564,21 @@ function Maryana_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19593, 1, "Maryana_OnEnterCombat")
-RegisterUnitEvent (19593, 2, "Maryana_OnLeaveCombat")
-RegisterUnitEvent (19593, 4, "Maryana_OnDied")
+RegisterUnitEvent(19593, 1, "Maryana_OnEnterCombat")
+RegisterUnitEvent(19593, 2, "Maryana_OnLeaveCombat")
+RegisterUnitEvent(19593, 4, "Maryana_OnDied")
 
 function Marathelle_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Marathelle_Tempest",4500,0)
-    pUnit:RegisterEvent("Marathelle_Ring",20000,0)
+    pUnit:RegisterEvent("Marathelle_Tempest", 4500, 0)
+    pUnit:RegisterEvent("Marathelle_Ring", 20000, 0)
 end
 
 function Marathelle_Tempest(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35843,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35843, pUnit:GetClosestPlayer())
 end   
 
 function Marathelle_Ring(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35831,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(35831, pUnit:GetRandomPlayer(0))
 end
 
 function Marathelle_OnLeaveCombat(pUnit,Event)
@@ -2603,26 +2589,26 @@ function Marathelle_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19926, 1, "Marathelle_OnEnterCombat")
-RegisterUnitEvent (19926, 2, "Marathelle_OnLeaveCombat")
-RegisterUnitEvent (19926, 4, "Marathelle_OnDied")
+RegisterUnitEvent(19926, 1, "Marathelle_OnEnterCombat")
+RegisterUnitEvent(19926, 2, "Marathelle_OnLeaveCombat")
+RegisterUnitEvent(19926, 4, "Marathelle_OnDied")
 
 function Summoner_Kanthin_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Summoner_Kanthin_Fireball", 4000, 0)
-pUnit:RegisterEvent("Summoner_Kanthin_Nova", 10000, 0)
-pUnit:RegisterEvent("Summoner_Kanthin_Pyroblast", 7000, 0)
+	pUnit:RegisterEvent("Summoner_Kanthin_Fireball", 4000, 0)
+	pUnit:RegisterEvent("Summoner_Kanthin_Nova", 10000, 0)
+	pUnit:RegisterEvent("Summoner_Kanthin_Pyroblast", 7000, 0)
 end
 
 function Summoner_Kanthin_OnLeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function Summoner_Kanthin_OnKillTarget(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function Summoner_Kanthin_OnDeath(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(19657, 1, "Summoner_Kanthin_OnCombat")
@@ -2631,134 +2617,105 @@ RegisterUnitEvent(19657, 3, "Summoner_Kanthin_OnKillTarget")
 RegisterUnitEvent(19657, 4, "Summoner_Kanthin_OnDeath")
 
 function Summoner_Kanthin_Fireball(pUnit, Event)
-pUnit:FullCastSpellOnTarget(19816,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(19816, pUnit:GetClosestPlayer())
 end
 
 function Summoner_Kanthin_Nova(pUnit, Event)
-pUnit:FullCastSpellOnTarget(19657,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(19657, pUnit:GetMainTank())
 end
 
 function Summoner_Kanthin_Pyroblast(pUnit, Event)
-pUnit:FullCastSpellOnTarget(17273,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17273, pUnit:GetClosestPlayer())
 end
 
 function Sundered_Rumbler_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Sundered_Rumbler_Summon_Sundered_Shard", 8000, 0)
+	pUnit:RegisterEvent("Sundered_Rumbler_Summon_Sundered_Shard", 8000, 0)
 end
 
 function Sundered_Rumbler_OnLeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
-end
-
-function Sundered_Rumbler_OnKillTarget(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function Sundered_Rumbler_OnDeath(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(18881, 1, "Sundered_Rumbler_OnCombat")
 RegisterUnitEvent(18881, 2, "Sundered_Rumbler_OnLeaveCombat")
-RegisterUnitEvent(18881, 3, "Sundered_Rumbler_OnKillTarget")
 RegisterUnitEvent(18881, 4, "Sundered_Rumbler_OnDeath")
 
 function Sundered_Rumbler_Summon_Sundered_Shard(pUnit, Event)
 pUnit:CastSpell(35310)
-local X = pUnit:GetX()
-local Y = pUnit:GetY()
-local Z = pUnit:GetZ()
-local O = pUnit:GetO()
-pUnit:SpawnCreature(20498, X, Y, Z, O, 35, 0)
+pUnit:SpawnCreature(20498, pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), pUnit:GetO(), 35, 0)
 end
 
-
 function Sundered_Thunderer_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Sundered_Thunderer_Summon_Sundered_Shard", 8000, 0)
-pUnit:RegisterEvent("Sundered_Thunderer_Thunder_Clap", 6000, 0)
+	pUnit:RegisterEvent("Sundered_Thunderer_Summon_Sundered_Shard", 8000, 0)
+	pUnit:RegisterEvent("Sundered_Thunderer_Thunder_Clap", 6000, 0)
 end
 
 function Sundered_Thunderer_OnLeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
-end
-
-function Sundered_Thunderer_OnKillTarget(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function Sundered_Thunderer_OnDeath(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(18882, 1, "Sundered_Thunderer_OnCombat")
 RegisterUnitEvent(18882, 2, "Sundered_Thunderer_OnLeaveCombat")
-RegisterUnitEvent(18882, 3, "Sundered_Thunderer_OnKillTarget")
 RegisterUnitEvent(18882, 4, "Sundered_Thunderer_OnDeath")
 
 function Sundered_Thunderer_Thunder_Clap(pUnit, Event)
-pUnit:FullCastSpellOnTarget(6000,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(6000, pUnit:GetMainTank())
 end
 
 function Sundered_Thunderer_Summon_Sundered_Shard(pUnit, Event)
-pUnit:CastSpell(35007)
-local X = pUnit:GetX()
-local Y = pUnit:GetY()
-local Z = pUnit:GetZ()
-local O = pUnit:GetO()
-pUnit:SpawnCreature(20498, X, Y, Z, O, 35, 0)
+	pUnit:CastSpell(35007)
+	pUnit:SpawnCreature(20498, pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), pUnit:GetO(), 35, 0)
 end
 
 function Sunfury_Arcanist_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Sunfury_Arcanist_Arcane_Missiles", 6000, 0)
-pUnit:RegisterEvent("Sunfury_Arcanist_Bloodcrystal_Surge", 10000, 0)
+	pUnit:RegisterEvent("Sunfury_Arcanist_Arcane_Missiles", 6000, 0)
+	pUnit:RegisterEvent("Sunfury_Arcanist_Bloodcrystal_Surge", 10000, 0)
 end
 
 function Sunfury_Arcanist_OnLeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
-end
-
-function Sunfury_Arcanist_OnKillTarget(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function Sunfury_Arcanist_OnDeath(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(20134, 1, "Sunfury_Arcanist_OnCombat")
 RegisterUnitEvent(20134, 2, "Sunfury_Arcanist_OnLeaveCombat")
-RegisterUnitEvent(20134, 3, "Sunfury_Arcanist_OnKillTarget")
 RegisterUnitEvent(20134, 4, "Sunfury_Arcanist_OnDeath")
 
 function Sunfury_Arcanist_Arcane_Missiles(pUnit, Event)
-pUnit:FullCastSpellOnTarget(34447,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(34447, pUnit:GetMainTank())
 end
 
 function Sunfury_Arcanist_Bloodcrystal_Surge(pUnit, Event)
-pUnit:CastSpell(35778)
+	pUnit:CastSpell(35778)
 end
 
 function Sunfury_Arch_Mage_OnCombat(pUnit, Event)
-pUnit:RegisterEvent("Sunfury_Arch_Mage_Nova", 10000, 0)
-pUnit:RegisterEvent("Sunfury_Arch_Mage_Fiery_Intellect", 1000, (1))
-pUnit:RegisterEvent("Sunfury_Arch_Mage_Fireball", 4000, 0)
+	pUnit:RegisterEvent("Sunfury_Arch_Mage_Nova", 10000, 0)
+	pUnit:RegisterEvent("Sunfury_Arch_Mage_Fiery_Intellect", 1000, (1))
+	pUnit:RegisterEvent("Sunfury_Arch_Mage_Fireball", 4000, 0)
 end
 
 function Sunfury_Arch_Mage_OnLeaveCombat(pUnit, Event)
-pUnit:RemoveEvents()
-end
-
-function Sunfury_Arch_Mage_OnKillTarget(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 function Sunfury_Arch_Mage_OnDeath(pUnit, Event)
-pUnit:RemoveEvents()
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(20135, 1, "Sunfury_Arch_Mage_OnCombat")
 RegisterUnitEvent(20135, 2, "Sunfury_Arch_Mage_OnLeaveCombat")
-RegisterUnitEvent(20135, 3, "Sunfury_Arch_Mage_OnKillTarget")
 RegisterUnitEvent(20135, 4, "Sunfury_Arch_Mage_OnDeath")
 
 function Sunfury_Arch_Mage_Nova(pUnit, Event)
@@ -2770,7 +2727,7 @@ pUnit:CastSpell(35917)
 end
 
 function Sunfury_Arch_Mage_Fireball(pUnit, Event)
-pUnit:FullCastSpellOnTarget(20823,pUnit:GetMainTank())
+pUnit:FullCastSpellOnTarget(20823, pUnit:GetMainTank())
 end
 
 function Sunfury_Archer_OnCombat(Unit, Event)
@@ -3777,17 +3734,17 @@ RegisterUnitEvent(19641, 3, "Nesaad_OnKilledTarget")
 RegisterUnitEvent(19641, 4, "Nesaad_OnDied")
 
 function Corpse_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Corpse_Rend",15000,0)
-    pUnit:RegisterEvent("Corpse_Parasite_Spell",6000,0)
-    pUnit:RegisterEvent("Corpse_Parasite_Spawn",36000,0)
+    pUnit:RegisterEvent("Corpse_Rend", 15000, 0)
+    pUnit:RegisterEvent("Corpse_Parasite_Spell", 6000, 0)
+    pUnit:RegisterEvent("Corpse_Parasite_Spawn", 36000, 0)
 end
 
 function Corpse_Rend(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(13443,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(13443, pUnit:GetMainTank())
 end
 
 function Corpse_Parasite_Spell(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36469,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(36469, pUnit:GetRandomPlayer(0))
 end
 
 function Corpse_Parasite_Spawn(pUnit,Event)
@@ -3937,7 +3894,7 @@ RegisterUnitEvent(19642, 3, "Stalker_OnKilledTarget")
 RegisterUnitEvent(19642, 4, "Stalker_OnDied")
 
 function Apex_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Apex_Thunderclap",1000,0)
+    pUnit:RegisterEvent("Apex_Thunderclap", 1000, 0)
 end
 
 function Apex_Thunderclap(pUnit,Event)
@@ -3952,13 +3909,13 @@ function Apex_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19940, 1, "Apex_OnEnterCombat")
-RegisterUnitEvent (19940, 2, "Apex_OnLeaveCombat")
-RegisterUnitEvent (19940, 4, "Apex_OnDied")
+RegisterUnitEvent(19940, 1, "Apex_OnEnterCombat")
+RegisterUnitEvent(19940, 2, "Apex_OnLeaveCombat")
+RegisterUnitEvent(19940, 4, "Apex_OnDied")
 
 function Annihilator_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Annihilator_Explosion",1500,0)
-    pUnit:RegisterEvent("Annihilator_Suppression",3000,0)
+    pUnit:RegisterEvent("Annihilator_Explosion", 1500, 0)
+    pUnit:RegisterEvent("Annihilator_Suppression", 3000, 0)
 end
 
 function Annihilator_Explosion(pUnit,Event)
@@ -3977,12 +3934,12 @@ function Annihilator_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18856, 1, "Annihilator_OnEnterCombat")
-RegisterUnitEvent (18856, 2, "Annihilator_OnLeaveCombat")
-RegisterUnitEvent (18856, 4, "Annihilator_OnDied")
+RegisterUnitEvent(18856, 1, "Annihilator_OnEnterCombat")
+RegisterUnitEvent(18856, 2, "Annihilator_OnLeaveCombat")
+RegisterUnitEvent(18856, 4, "Annihilator_OnDied")
 
 function Bruiser_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Bruiser_Net",1000,0)
+    pUnit:RegisterEvent("Bruiser_Net", 1000, 0)
 end
 
 function Bruiser_Net(pUnit,Event)
@@ -3997,12 +3954,12 @@ function Bruiser_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20484, 1, "Bruiser_OnEnterCombat")
-RegisterUnitEvent (20484, 2, "Bruiser_OnLeaveCombat")
-RegisterUnitEvent (20484, 4, "Bruiser_OnDied")
+RegisterUnitEvent(20484, 1, "Bruiser_OnEnterCombat")
+RegisterUnitEvent(20484, 2, "Bruiser_OnLeaveCombat")
+RegisterUnitEvent(20484, 4, "Bruiser_OnDied")
 
 function Machine_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Machine_Rocket",2000,0)
+    pUnit:RegisterEvent("Machine_Rocket", 2000, 0)
 end
 
 function Machine_Rocket(pUnit,Event)
@@ -4017,12 +3974,12 @@ function Machine_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21976, 1, "Machine_OnEnterCombat")
-RegisterUnitEvent (21976, 2, "Machine_OnLeaveCombat")
-RegisterUnitEvent (21976, 4, "Machine_OnDied")
+RegisterUnitEvent(21976, 1, "Machine_OnEnterCombat")
+RegisterUnitEvent(21976, 2, "Machine_OnLeaveCombat")
+RegisterUnitEvent(21976, 4, "Machine_OnDied")
 
 function Bruiser_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Bruiser_Net",1000,0)
+    pUnit:RegisterEvent("Bruiser_Net", 1000, 0)
 end
 
 function Bruiser_Net(pUnit,Event)
@@ -4037,16 +3994,16 @@ function Bruiser_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20485, 1, "Bruiser_OnEnterCombat")
-RegisterUnitEvent (20485, 2, "Bruiser_OnLeaveCombat")
-RegisterUnitEvent (20485, 4, "Bruiser_OnDied")
+RegisterUnitEvent(20485, 1, "Bruiser_OnEnterCombat")
+RegisterUnitEvent(20485, 2, "Bruiser_OnLeaveCombat")
+RegisterUnitEvent(20485, 4, "Bruiser_OnDied")
 
 function Bruiser_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Bruiser_Net",1000,0)
+    pUnit:RegisterEvent("Bruiser_Net", 1000, 0)
 end
 
 function Bruiser_Net(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(12024,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(12024, pUnit:GetClosestPlayer())
 end
 
 function Bruiser_OnLeaveCombat(pUnit,Event)
@@ -4057,9 +4014,9 @@ function Bruiser_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22494,1,"Bruiser_OnEnterCombat")
-RegisterUnitEvent (22494,2,"Bruiser_OnLeaveCombat")
-RegisterUnitEvent (22494,4,"Bruiser_OnDied")
+RegisterUnitEvent(22494,1,"Bruiser_OnEnterCombat")
+RegisterUnitEvent(22494,2,"Bruiser_OnLeaveCombat")
+RegisterUnitEvent(22494,4,"Bruiser_OnDied")
 
 function Cragskaar_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Cragskaar_Knock",45000,0)
@@ -4077,21 +4034,21 @@ function Cragskaar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20202, 1, "Cragskaar_OnEnterCombat")
-RegisterUnitEvent (20202, 2, "Cragskaar_OnLeaveCombat")
-RegisterUnitEvent (20202, 4, "Cragskaar_OnDied")
+RegisterUnitEvent(20202, 1, "Cragskaar_OnEnterCombat")
+RegisterUnitEvent(20202, 2, "Cragskaar_OnLeaveCombat")
+RegisterUnitEvent(20202, 4, "Cragskaar_OnDied")
 
 function Punisher_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Punisher_Explosion",1500,0)
-    pUnit:RegisterEvent("Punisher_Suppression",3000,0)
+    pUnit:RegisterEvent("Punisher_Explosion", 1500, 0)
+    pUnit:RegisterEvent("Punisher_Suppression", 3000, 0)
 end
 
 function Punisher_Explosion(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(33860,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(33860, pUnit:GetClosestPlayer())
 end
 
 function Punisher_Suppression(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35892,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35892, pUnit:GetClosestPlayer())
 end
 
 function Punisher_OnLeaveCombat(pUnit,Event)
@@ -4102,21 +4059,21 @@ function Punisher_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18698, 1, "Punisher_OnEnterCombat")
-RegisterUnitEvent (18698, 2, "Punisher_OnLeaveCombat")
-RegisterUnitEvent (18698, 4, "Punisher_OnDied")
+RegisterUnitEvent(18698, 1, "Punisher_OnEnterCombat")
+RegisterUnitEvent(18698, 2, "Punisher_OnLeaveCombat")
+RegisterUnitEvent(18698, 4, "Punisher_OnDied")
 
 function Morug_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Morug_Blade",1500,0)
-    pUnit:RegisterEvent("Morug_Spray",1000,0)
+    pUnit:RegisterEvent("Morug_Blade", 1500, 0)
+    pUnit:RegisterEvent("Morug_Spray", 1000, 0)
 end
 
 function Morug_Blade(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36228,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36228, pUnit:GetClosestPlayer())
 end
 
 function Morug_Spray(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(34261,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(34261, pUnit:GetClosestPlayer())
 end
 
 function Morug_OnLeaveCombat(pUnit,Event)
@@ -4127,39 +4084,39 @@ function Morug_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20800, 1, "Morug_OnEnterCombat")
-RegisterUnitEvent (20800, 2, "Morug_OnLeaveCombat")
-RegisterUnitEvent (20800, 4, "Morug_OnDied")
+RegisterUnitEvent(20800, 1, "Morug_OnEnterCombat")
+RegisterUnitEvent(20800, 2, "Morug_OnLeaveCombat")
+RegisterUnitEvent(20800, 4, "Morug_OnDied")
 
 function Kaylannl_OnEnterCombat(pUnit,Event)
     if pUnit:GetHealthPct() == 99 then
-    pUnit:RegisterEvent("Kaylannl_Phase1",1000,0)
+    pUnit:RegisterEvent("Kaylannl_Phase1", 1000, 0)
 end
 end
     
 function Kaylannl_Phase1(pUnit,Event)
-    pUnit:RegisterEvent("Kaylaanl_Ressurection",15000,0)
+    pUnit:RegisterEvent("Kaylaanl_Ressurection", 15000, 0)
     pUnit:RegisterEvent("Kaylaanl_Shield",18000,0)
-    pUnit:RegisterEvent("Kaylannl_Light",5000,0)
-    pUnit:RegisterEvent("Kaylannl_Power",6000,0)
-    pUnit:RegisterEvent("Kaylannl_Consecration",6000,0)
+    pUnit:RegisterEvent("Kaylannl_Light", 5000, 0)
+    pUnit:RegisterEvent("Kaylannl_Power", 6000, 0)
+    pUnit:RegisterEvent("Kaylannl_Consecration", 6000, 0)
     pUnit:RegisterEvent("Kaylannl_Shield2",25000,0)
-    pUnit:RegisterEvent("Kaylannl_Heal",7000,0)
-    pUnit:RegisterEvent("Kaylannl_Slam",7000,0)
+    pUnit:RegisterEvent("Kaylannl_Heal", 7000, 0)
+    pUnit:RegisterEvent("Kaylannl_Slam", 7000, 0)
     pUnit:RegisterEvent("Kaylannl_Wrath",25000,0)
-    pUnit:RegisterEvent("Kaylannl_Despawn",1000,0)
+    pUnit:RegisterEvent("Kaylannl_Despawn", 1000, 0)
 end
 
 function Kaylannl_Ressurection(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35599,pUnit:GetRandomFriend(0))
+    pUnit:FullCastSpellOnTarget(35599, pUnit:GetRandomFriend(0))
 end
 
 function Kaylannl_Shield(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37554,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(37554, pUnit:GetRandomPlayer(0))
 end
 
 function Kaylannl_Light(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37552,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(37552, pUnit:GetMainTank())
 end
 
 function Kaylannl_Power(pUnit,Event)
@@ -4178,15 +4135,15 @@ function Kaylannl_Shield2(pUnit,Event)
 end
 
 function Kaylannl_Heal(pUnit,Event)
-    pUnit:CastSpellOnTarget(37569,pUnit:GetRandomFriend(0))
+    pUnit:CastSpellOnTarget(37569, pUnit:GetRandomFriend(0))
 end
 
 function Kaylannl_Slam(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37572,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(37572, pUnit:GetMainTank())
 end
 
 function Kaylannl_Wrath(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35614,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(35614, pUnit:GetRandomPlayer(0))
 end
 
 function Kaylannl_Despawn(pUnit,Event)
@@ -4208,21 +4165,21 @@ function Kaylannl_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20794, 1, "Kaylannl_OnEnterCombat")
-RegisterUnitEvent (20794, 2, "Kaylannl_OnLeaveCombat")
-RegisterUnitEvent (20794, 4, "Kaylannl_OnDied")
+RegisterUnitEvent(20794, 1, "Kaylannl_OnEnterCombat")
+RegisterUnitEvent(20794, 2, "Kaylannl_OnLeaveCombat")
+RegisterUnitEvent(20794, 4, "Kaylannl_OnDied")
 
 function Naberius_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Naberius_Nova",1000,0)
-    pUnit:RegisterEvent("Naberius_Bolt",3000,0)
+    pUnit:RegisterEvent("Naberius_Nova", 1000, 0)
+    pUnit:RegisterEvent("Naberius_Bolt", 3000, 0)
 end
 
 function Naberius_Nova(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36148,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36148, pUnit:GetClosestPlayer())
 end
 
 function Naberius_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15497,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15497, pUnit:GetClosestPlayer())
 end
 
 function Naberius_OnLeaveCombat(pUnit,Event)
@@ -4233,27 +4190,27 @@ function Naberius_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20483, 1, "Naberius_OnEnterCombat")
-RegisterUnitEvent (20483, 2, "Naberius_OnLeaveCombat")
-RegisterUnitEvent (20483, 4, "Naberius_OnDied")
+RegisterUnitEvent(20483, 1, "Naberius_OnEnterCombat")
+RegisterUnitEvent(20483, 2, "Naberius_OnLeaveCombat")
+RegisterUnitEvent(20483, 4, "Naberius_OnDied")
 
 function Negatron_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("Negatron_Charge",1000,(1))
-    pUnit:RegisterEvent("Negatron_Demolish",1000,0)
-    pUnit:RegisterEvent("Negatron_Quake",1000,0)
-    pUnit:RegisterEvent("Negatron_Enrage",1000,0)
+    pUnit:RegisterEvent("Negatron_Demolish", 1000, 0)
+    pUnit:RegisterEvent("Negatron_Quake", 1000, 0)
+    pUnit:RegisterEvent("Negatron_Enrage", 1000, 0)
 end
 
 function Negatron_Charge(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35570,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35570, pUnit:GetClosestPlayer())
 end
 
 function Negatron_Demolish(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(34625,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(34625, pUnit:GetClosestPlayer())
 end
 
 function Negatron_Quake(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(35565,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(35565, pUnit:GetClosestPlayer())
 end
 
 function Negatron_Enrage(pUnit,Event)
@@ -4268,9 +4225,9 @@ function Negatron_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (19851, 1, "Negatron_OnEnterCombat")
-RegisterUnitEvent (19851, 2, "Negatron_OnLeaveCombat")
-RegisterUnitEvent (19851, 4, "Negatron_OnDied")
+RegisterUnitEvent(19851, 1, "Negatron_OnEnterCombat")
+RegisterUnitEvent(19851, 2, "Negatron_OnLeaveCombat")
+RegisterUnitEvent(19851, 4, "Negatron_OnDied")
 
 function Guard_OnCombat(pUnit, Event)
 pUnit:RegisterEvent("Guard_Cleave", 5000, 0)
@@ -4308,11 +4265,11 @@ pUnit:FullCastSpellOnTarget(16856, GetMainTank())
 end
 
 function Agent_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Agent_Shoot",1000,0)
+    pUnit:RegisterEvent("Agent_Shoot", 1000, 0)
 end
 
 function Agent_Shoot(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36246,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(36246, pUnit:GetClosestPlayer())
 end
 
 function Agent_OnLeaveCombat(Unit,Event)
@@ -4323,21 +4280,21 @@ function Agent_OnDied(Unit,Event)
 	Unit:RemoveEvents()
 end
 
-RegisterUnitEvent (19541, 1, "Agent_OnEnterCombat")
-RegisterUnitEvent (19541, 2, "Agent_OnLeaveCombat")
-RegisterUnitEvent (19541, 4, "Agent_OnDied")
+RegisterUnitEvent(19541, 1, "Agent_OnEnterCombat")
+RegisterUnitEvent(19541, 2, "Agent_OnLeaveCombat")
+RegisterUnitEvent(19541, 4, "Agent_OnDied")
 
 function King_OnEnterCombat(pUnit,Event)
     if Unit:GetHealthPct() == 99 then
-    pUnit:RegisterEvent("King_Phase1",1000,0)
+    pUnit:RegisterEvent("King_Phase1", 1000, 0)
 end
 end
 
 function King_Phase1(pUnit,Event)
     pUnit:RegisterEvent("King_Damagebuff",1000,(1))
-    pUnit:RegisterEvent("King_Gravity",2500,0)
-    pUnit:RegisterEvent("King_Statis",12000,0)
-    pUnit:RegisterEvent("King_Phase2",1000,0)
+    pUnit:RegisterEvent("King_Gravity", 2500, 0)
+    pUnit:RegisterEvent("King_Statis", 12000, 0)
+    pUnit:RegisterEvent("King_Phase2", 1000, 0)
 end
 
 function King_Dambagebuff(pUnit,Event)
@@ -4349,15 +4306,15 @@ function King_Gravity(pUnit,Event)
 end
 
 function King_Statis(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36527,pUnit:GetRandomPlayer(0))
-    pUnit:FullCastSpellOnTarget(36527,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(36527, pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(36527, pUnit:GetRandomPlayer(0))
 end
 
 function King_Phase2(pUnit,Event)
     if pUnit:GetHealthPct() == 50 then
     pUnit:RegisterEvent("King_Damagebuff",1000,(1))
-    pUnit:RegisterEvent("King_Gravity",2500,0)
-    pUnit:RegisterEvent("King_Statis",6000,0)
+    pUnit:RegisterEvent("King_Gravity", 2500, 0)
+    pUnit:RegisterEvent("King_Statis", 6000, 0)
     pUnit:RegisterEvent("King_Mirror1",1000,(1))
     pUnit:RegisterEvent("King_Mirror2",1000,(1))
 end
@@ -4390,13 +4347,13 @@ function King_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20454, 1, "King_OnEnterCombat")
-RegisterUnitEvent (20454, 2, "King_OnLeaveCombat")
-RegisterUnitEvent (20454, 4, "King_OnDied")
+RegisterUnitEvent(20454, 1, "King_OnEnterCombat")
+RegisterUnitEvent(20454, 2, "King_OnLeaveCombat")
+RegisterUnitEvent(20454, 4, "King_OnDied")
 
 function Silroth_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Silroth_Flames1",10000,0)
-    pUnit:RegisterEvent("Silroth_Flames2",2000,0)
+    pUnit:RegisterEvent("Silroth_Flames1", 10000, 0)
+    pUnit:RegisterEvent("Silroth_Flames2", 2000, 0)
 end
 
 function Silroth_Flames1(pUnit,Event)
@@ -4404,7 +4361,7 @@ function Silroth_Flames1(pUnit,Event)
 end   
 
 function Silroth_Flames2(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(36252,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(36252, pUnit:GetMainTank())
 end
 
 function Silroth_OnLeaveCombat(pUnit,Event)
@@ -4415,17 +4372,17 @@ function Silroth_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20801, 1, "Silroth_OnEnterCombat")
-RegisterUnitEvent (20801, 2, "Silroth_OnLeaveCombat")
-RegisterUnitEvent (20801, 4, "Silroth_OnDied")
+RegisterUnitEvent(20801, 1, "Silroth_OnEnterCombat")
+RegisterUnitEvent(20801, 2, "Silroth_OnLeaveCombat")
+RegisterUnitEvent(20801, 4, "Silroth_OnDied")
 
 function Socrethar_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Socrethar_Shield",10000,0)
-    pUnit:RegisterEvent("Socrethar_Backslash",5000,0)
-    pUnit:RegisterEvent("Socrethar_Cleave",6000,0)
-    pUnit:RegisterEvent("Socrethar_Barrage",10000,0)
+    pUnit:RegisterEvent("Socrethar_Shield", 10000, 0)
+    pUnit:RegisterEvent("Socrethar_Backslash", 5000, 0)
+    pUnit:RegisterEvent("Socrethar_Cleave", 6000, 0)
+    pUnit:RegisterEvent("Socrethar_Barrage", 10000, 0)
     pUnit:RegisterEvent("Socrethar_Protection",1000,(1))
-    pUnit:RegisterEvent("Socrethar_Bolt",3000,0)
+    pUnit:RegisterEvent("Socrethar_Bolt", 3000, 0)
 end
 
 function Socrethar_Shield(pUnit,Event)
@@ -4433,11 +4390,11 @@ function Socrethar_Shield(pUnit,Event)
 end
 
 function Socrethar_Backslash(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(37537,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(37537, pUnit:GetRandomPlayer(0))
 end
 
 function Socrethar_Cleave(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15496,pUnit:GetMainTank())
+    pUnit:FullCastSpellOnTarget(15496, pUnit:GetMainTank())
 end
 
 function Socrethar_Barrage(pUnit,Event)
@@ -4453,7 +4410,7 @@ function Socrethar_Protection(pUnit,Event)
 end
 
 function Socrethar_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(28448,pUnit:GetRandomPlayer(0))
+    pUnit:FullCastSpellOnTarget(28448, pUnit:GetRandomPlayer(0))
 end
 
 function Socrethar_OnLeaveCombat(pUnit,Event)
@@ -4464,22 +4421,22 @@ function Socrethar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20132, 1, "Socrethar_OnEnterCombat")
-RegisterUnitEvent (20132, 2, "Socrethar_OnLeaveCombat")
-RegisterUnitEvent (20132, 4, "Socrethar_OnDied")
+RegisterUnitEvent(20132, 1, "Socrethar_OnEnterCombat")
+RegisterUnitEvent(20132, 2, "Socrethar_OnLeaveCombat")
+RegisterUnitEvent(20132, 4, "Socrethar_OnDied")
 
 function Nuramoc_OnEnterCombat(pUnit,Event)
-    pUnit:RegisterEvent("Nuramoc_Lightning",2000,0)
-    pUnit:RegisterEvent("Nuramoc_Bolt",4000,0)
-    pUnit:RegisterEvent("Nuramoc_Shield",5000,0)
+    pUnit:RegisterEvent("Nuramoc_Lightning", 2000, 0)
+    pUnit:RegisterEvent("Nuramoc_Bolt", 4000, 0)
+    pUnit:RegisterEvent("Nuramoc_Shield", 5000, 0)
 end
 
 function Nuramoc_Lightning(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(15797,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(15797, pUnit:GetClosestPlayer())
 end   
    
 function Nuramoc_Bolt(pUnit,Event)
-    pUnit:FullCastSpellOnTarget(21971,pUnit:GetClosestPlayer())
+    pUnit:FullCastSpellOnTarget(21971, pUnit:GetClosestPlayer())
 end
 
 function Nuramoc_Shield(pUnit,Event)
@@ -4494,9 +4451,9 @@ function Nuramoc_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (20932, 1, "Nuramoc_OnEnterCombat")
-RegisterUnitEvent (20932, 2, "Nuramoc_OnLeaveCombat")
-RegisterUnitEvent (20932, 4, "Nuramoc_OnDied")
+RegisterUnitEvent(20932, 1, "Nuramoc_OnEnterCombat")
+RegisterUnitEvent(20932, 2, "Nuramoc_OnLeaveCombat")
+RegisterUnitEvent(20932, 4, "Nuramoc_OnDied")
 
 function Adal_OnCombat(Unit, Event)
 Unit:RegisterEvent("Adal_Ultimate", 1000, 1)
@@ -4819,11 +4776,11 @@ function AcientShadowmoonSpirit_Haste(pUnit,Event)
 end
 
 function AcientShadowmoonSpirit_DeathAndDecay(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37788,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37788, pUnit:GetClosestPlayer())
 end
 
 function AcientShadowmoonSpirit_TouchOfDarkness(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37727,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37727, pUnit:GetClosestPlayer())
 end
 
 function AcientShadowmoonSpirit_UnholyArmor(pUnit,Event)
@@ -4838,16 +4795,16 @@ function AcientShadowmoonSpirit_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21797, 1, "AcientShadowmoonSpirit_OnEnterCombat")
-RegisterUnitEvent (21797, 2, "AcientShadowmoonSpirit_OnLeaveCombat")
-RegisterUnitEvent (21797, 4, "AcientShadowmoonSpirit_OnDied")
+RegisterUnitEvent(21797, 1, "AcientShadowmoonSpirit_OnEnterCombat")
+RegisterUnitEvent(21797, 2, "AcientShadowmoonSpirit_OnLeaveCombat")
+RegisterUnitEvent(21797, 4, "AcientShadowmoonSpirit_OnDied")
 
 function Akama_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("Akama_Lightning", 1540, 0)
 end
 
 function Akama_Lightning(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39945,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39945, pUnit:GetClosestPlayer())
 end
 
 function Akama_OnLeaveCombat(pUnit,Event)
@@ -4858,9 +4815,9 @@ function Akama_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21700, 1, "Akama_OnEnterCombat")
-RegisterUnitEvent (21700, 2, "Akama_OnLeaveCombat")
-RegisterUnitEvent (21700, 4, "Akama_OnDied")
+RegisterUnitEvent(21700, 1, "Akama_OnEnterCombat")
+RegisterUnitEvent(21700, 2, "Akama_OnLeaveCombat")
+RegisterUnitEvent(21700, 4, "Akama_OnDied")
 
 function Alandien_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("Alandien_ShadowFury", 3000, 0)
@@ -4868,11 +4825,11 @@ function Alandien_OnEnterCombat(pUnit,Event)
 end
 
 function Alandien_ShadowFury(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39082,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39082, pUnit:GetClosestPlayer())
 end
 
 function Alandien_ManaBurn(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39262,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39262, pUnit:GetClosestPlayer())
 end
 
 function Alandien_OnLeaveCombat(pUnit,Event)
@@ -4883,16 +4840,16 @@ function Alandien_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21171, 1, "Alandien_OnEnterCombat")
-RegisterUnitEvent (21171, 2, "Alandien_OnLeaveCombat")
-RegisterUnitEvent (21171, 4, "Alandien_OnDied")
+RegisterUnitEvent(21171, 1, "Alandien_OnEnterCombat")
+RegisterUnitEvent(21171, 2, "Alandien_OnLeaveCombat")
+RegisterUnitEvent(21171, 4, "Alandien_OnDied")
 
 function AltarDefender_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AltarDefender_Shoot", 11000, 0)
 end
 
 function AltarDefender_Shoot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41440,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41440, pUnit:GetClosestPlayer())
 end
 
 function AltarDefender_OnLeaveCombat(pUnit,Event)
@@ -4903,16 +4860,16 @@ function AltarDefender_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (23453, 1, "AltarDefender_OnEnterCombat")
-RegisterUnitEvent (23453, 2, "AltarDefender_OnLeaveCombat")
-RegisterUnitEvent (23453, 4, "AltarDefender_OnDied")
+RegisterUnitEvent(23453, 1, "AltarDefender_OnEnterCombat")
+RegisterUnitEvent(23453, 2, "AltarDefender_OnLeaveCombat")
+RegisterUnitEvent(23453, 4, "AltarDefender_OnDied")
 
 function AltarOfShatar_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AltarOfShatar_Net", 20000, 0)
 end
 
 function AltarofShatar_Net(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12024,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12024, pUnit:GetClosestPlayer())
 end
 
 function AltarofShatar_OnLeaveCombat(pUnit,Event)
@@ -4923,9 +4880,9 @@ function AltarofShatar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21986, 1, "Alandien_OnEnterCombat")
-RegisterUnitEvent (21986, 2, "Alandien_OnLeaveCombat")
-RegisterUnitEvent (21986, 4, "Alandien_OnDied")
+RegisterUnitEvent(21986, 1, "Alandien_OnEnterCombat")
+RegisterUnitEvent(21986, 2, "Alandien_OnLeaveCombat")
+RegisterUnitEvent(21986, 4, "Alandien_OnDied")
 
 function Jerrikar_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("Jerrikar_DarkStrike", 4000, 0)
@@ -4953,9 +4910,9 @@ function Jerrikar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (18695, 1, "Alandien_OnEnterCombat")
-RegisterUnitEvent (18695, 2, "Alandien_OnLeaveCombat")
-RegisterUnitEvent (18695, 4, "Alandien_OnDied")
+RegisterUnitEvent(18695, 1, "Alandien_OnEnterCombat")
+RegisterUnitEvent(18695, 2, "Alandien_OnLeaveCombat")
+RegisterUnitEvent(18695, 4, "Alandien_OnDied")
 
 function AnchoriteCaalen_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AnchoriteCaalen_HolySmite", 1540, 0)
@@ -4963,11 +4920,11 @@ function AnchoriteCaalen_OnEnterCombat(pUnit,Event)
 end
 
 function AnchoriteCaalen_HolySmite(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36176,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36176, pUnit:GetClosestPlayer())
 end
 
 function AnchoriteCaalen_GreaterHeal(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35096,pUnit:GetRandomFriend())
+	pUnit:FullCastSpellOnTarget(35096, pUnit:GetRandomFriend())
 end
 
 function AnchoriteCaalen_OnLeaveCombat(pUnit,Event)
@@ -4978,9 +4935,9 @@ function AnchoriteCaalen_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22862, 1, "Alandien_OnEnterCombat")
-RegisterUnitEvent (22862, 2, "Alandien_OnLeaveCombat")
-RegisterUnitEvent (22862, 4, "Alandien_OnDied")
+RegisterUnitEvent(22862, 1, "Alandien_OnEnterCombat")
+RegisterUnitEvent(22862, 2, "Alandien_OnLeaveCombat")
+RegisterUnitEvent(22862, 4, "Alandien_OnDied")
 
 function ArcanoScorp_OnEnterCombat(pUnit,Event)
 	pUnit:CastSpell(37917) 
@@ -4990,11 +4947,11 @@ function ArcanoScorp_OnEnterCombat(pUnit,Event)
 end
 
 function ArcanoScorp_Dismantle(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37919,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37919, pUnit:GetClosestPlayer())
 end
 
 function ArcanoScorp_Pince(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37918,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37918, pUnit:GetClosestPlayer())
 end
 
 function ArcanoScorp_OnLeaveCombat(pUnit,Event)
@@ -5005,9 +4962,9 @@ function ArcanoScorp_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21909, 1, "ArcanoScorp_OnEnterCombat")
-RegisterUnitEvent (21909, 2, "ArcanoScorp_OnLeaveCombat")
-RegisterUnitEvent (21909, 4, "ArcanoScorp_OnDied")
+RegisterUnitEvent(21909, 1, "ArcanoScorp_OnEnterCombat")
+RegisterUnitEvent(21909, 2, "ArcanoScorp_OnLeaveCombat")
+RegisterUnitEvent(21909, 4, "ArcanoScorp_OnDied")
 
 function Arvoar_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("Arvoar_BellowingRoar", 30000, 0)
@@ -5016,11 +4973,11 @@ function Arvoar_OnEnterCombat(pUnit,Event)
 end
 
 function Arvoar_BellowingRoar(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(40636,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(40636, pUnit:GetClosestPlayer())
 end
 
 function Arvoar_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13443, pUnit:GetClosestPlayer())
 end
 
 function Arvoar_RockShell(pUnit,Event)
@@ -5035,9 +4992,9 @@ function Arvoar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (23267, 1, "Arvoar_OnEnterCombat")
-RegisterUnitEvent (23267, 2, "Arvoar_OnLeaveCombat")
-RegisterUnitEvent (23267, 4, "Arvoar_OnDied")
+RegisterUnitEvent(23267, 1, "Arvoar_OnEnterCombat")
+RegisterUnitEvent(23267, 2, "Arvoar_OnLeaveCombat")
+RegisterUnitEvent(23267, 4, "Arvoar_OnDied")
 
 function Asghar_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("Asghar_Cleave", 3300, 0)
@@ -5045,7 +5002,7 @@ function Asghar_OnEnterCombat(pUnit,Event)
 end
 
 function Asghar_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function Asghar_DarkMending(pUnit,Event)
@@ -5060,9 +5017,9 @@ function Asghar_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (22025, 1, "Asghar_OnEnterCombat")
-RegisterUnitEvent (22025, 2, "Asghar_OnLeaveCombat")
-RegisterUnitEvent (22025, 4, "Asghar_OnDied")
+RegisterUnitEvent(22025, 1, "Asghar_OnEnterCombat")
+RegisterUnitEvent(22025, 2, "Asghar_OnLeaveCombat")
+RegisterUnitEvent(22025, 4, "Asghar_OnDied")
 
 function AshtongueShaman_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AshtongueShaman_Bloodlust", 60000, 0)
@@ -5085,16 +5042,16 @@ function AshtongueShaman_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21453, 1, "AshtongueShaman_OnEnterCombat")
-RegisterUnitEvent (21453, 2, "AshtongueShaman_OnLeaveCombat")
-RegisterUnitEvent (21453, 4, "AshtongueShaman_OnDied")
+RegisterUnitEvent(21453, 1, "AshtongueShaman_OnEnterCombat")
+RegisterUnitEvent(21453, 2, "AshtongueShaman_OnLeaveCombat")
+RegisterUnitEvent(21453, 4, "AshtongueShaman_OnDied")
 
 function AshtongueWorker_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("AshtongueWorker_PierceArmor", 45000, 0)
 end
 
 function AshtongueWorker_PierceArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(6016,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(6016, pUnit:GetClosestPlayer())
 end
 
 function AshtongueWorker_OnLeaveCombat(pUnit,Event)
@@ -5105,9 +5062,9 @@ function AshtongueWorker_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (21455, 1, "AshtongueWorker_OnEnterCombat")
-RegisterUnitEvent (21455, 2, "AshtongueWorker_OnLeaveCombat")
-RegisterUnitEvent (21455, 4, "AshtongueWorker_OnDied")
+RegisterUnitEvent(21455, 1, "AshtongueWorker_OnEnterCombat")
+RegisterUnitEvent(21455, 2, "AshtongueWorker_OnLeaveCombat")
+RegisterUnitEvent(21455, 4, "AshtongueWorker_OnDied")
 
 function Azaloth_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("Azaloth_RainOfFire", 30000, 0)
@@ -5117,21 +5074,21 @@ function Azaloth_OnEnterCombat(pUnit,Event)
 end
 
 function Azaloth_RainOfFire(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38741,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38741, pUnit:GetClosestPlayer())
 end
 
 function Azaloth_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(40504,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(40504, pUnit:GetClosestPlayer())
 end
 
 
 function Azaloth_Cripple(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11443, pUnit:GetClosestPlayer())
 end
 
 
 function Azaloth_WarStomp(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38750,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38750, pUnit:GetClosestPlayer())
 end
 
 function Azaloth_OnLeaveCombat(pUnit,Event)
@@ -5153,15 +5110,15 @@ function Barash_OnEnterCombat(pUnit,Event)
 end
 
 function Barash_RockShell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33810,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33810, pUnit:GetClosestPlayer())
 end
 
 function Barash_BellowingRoar(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(40636,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(40636, pUnit:GetClosestPlayer())
 end
 
 function Barash_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13443, pUnit:GetClosestPlayer())
 end
 
 function Barash_OnLeaveCombat(pUnit,Event)
@@ -5177,12 +5134,12 @@ RegisterUnitEvent(23269, 2, "Barash_OnLeaveCombat")
 RegisterUnitEvent(23269, 4, "Barash_OnDied")
 
 function BatRiderGuard_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38066,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38066, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("BatRiderGuard_Spell", 25000, 0)
 end
 
 function BatRiderGuard_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38066,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38066, pUnit:GetClosestPlayer())
 end
 
 function BatRiderGuard_OnLeaveCombat(pUnit,Event)
@@ -5202,7 +5159,7 @@ function BBOD_OnEnterCombat(pUnit,Event)
 end
 
 function BBOD_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(7279,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(7279, pUnit:GetClosestPlayer())
 end
 
 function BBOD_OnLeaveCombat(pUnit,Event)
@@ -5213,16 +5170,16 @@ function BBOD_OnDied(pUnit,Event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent (23286, 1, "BBOD_OnEnterCombat")
-RegisterUnitEvent (23286, 2, "BBOD_OnLeaveCombat")
-RegisterUnitEvent (23286, 4, "BBOD_OnDied")
+RegisterUnitEvent(23286, 1, "BBOD_OnEnterCombat")
+RegisterUnitEvent(23286, 2, "BBOD_OnLeaveCombat")
+RegisterUnitEvent(23286, 4, "BBOD_OnDied")
 
 function BlackCat_OnEnterCombat(pUnit,Event)
 	pUnit:SendChatMessage(12, 0, "Meow!")
 end
 
 function BlackCat_OnDeath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39477,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39477, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(22816, 1, "BlackCat_OnEnterCombat")
@@ -5233,7 +5190,7 @@ function BWM_OnEnterCombat(pUnit,Event)
 end
 
 function BWM_SnapKick(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39477,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39477, pUnit:GetClosestPlayer())
 end
 
 function BWM_OnLeaveCombat(pUnit,Event)
@@ -5249,7 +5206,7 @@ RegisterUnitEvent(21245, 2, "BWM_OnLeaveCombat")
 RegisterUnitEvent(21245, 4, "BWM_OnDied")
 
 function BWMessenger_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35570,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35570, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(21244, 1, "BWMessenger_OnEnterCombat")
@@ -5260,11 +5217,11 @@ function Borak_OnEnterCombat(pUnit,Event)
 end
 
 function Borak_SliceAndDice(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(30470,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(30470, pUnit:GetClosestPlayer())
 end
 
 function Borak_Eviscerate(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(27611,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(27611, pUnit:GetClosestPlayer())
 end
 
 function Borak_OnLeaveCombat(pUnit,Event)
@@ -5284,7 +5241,7 @@ function Bron_OnEnterCombat(pUnit,Event)
 end
 
 function Bron_ThrowHammer(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33822,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33822, pUnit:GetClosestPlayer())
 end
 
 function Bron_OnLeaveCombat(pUnit,Event)
@@ -5304,7 +5261,7 @@ function WaterSpirit_OnEnterCombat(pUnit,Event)
 end
 
 function Waterspirit_WaterBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(31707,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(31707, pUnit:GetClosestPlayer())
 end
 
 function WaterSpirit_OnLeaveCombat(pUnit,Event)
@@ -5324,7 +5281,7 @@ function ChainOfShadows_OnEnterCombat(pUnit,Event)
 end
 
 function ChainOfShadows_Spell(pUnit,Event)
-	pUnit:FullCastSPellOnTarget(37784,pUnit:GetClosestPlayer())
+	pUnit:FullCastSPellOnTarget(37784, pUnit:GetClosestPlayer())
 end
 
 function ChainOfShadows_OnLeaveCombat(pUnit,Event)
@@ -5345,11 +5302,11 @@ function ChancellorBloodleaf_OnEnterCombat(pUnit,Event)
 end
 
 function ChancellorBloodleaf_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(34517,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(34517, pUnit:GetClosestPlayer())
 end
 
 function ChancellorBloodleaf_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15791,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15791, pUnit:GetClosestPlayer())
 end
 
 function ChancellorBloodleaf_OnLeaveCombat(pUnit,Event)
@@ -5369,7 +5326,7 @@ function Cobra_OnEnterCombat(pUnit,Event)
 end
 
 function Cobra_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38030,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38030, pUnit:GetClosestPlayer())
 end
 
 function Cobra_OnLeaveCombat(pUnit,Event)
@@ -5389,11 +5346,11 @@ function CDefender_OnEnterCombat(pUnit,Event)
 end
 
 function CDefender_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38233,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38233, pUnit:GetClosestPlayer())
 end
 
 function CDefender_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38031,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38031, pUnit:GetClosestPlayer())
 end
 
 function CDefender_OnLeaveCombat(pUnit,Event)
@@ -5433,7 +5390,7 @@ function CMyrmidon_OnEnterCombat(pUnit,Event)
 end
 
 function CMyrmidon_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38027,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38027, pUnit:GetClosestPlayer())
 end
 
 function CMyrmidon_OnLeaveCombat(pUnit,Event)
@@ -5455,11 +5412,11 @@ function CSiren_OnEnterCombat(pUnit,Event)
 end
 
 function CSiren_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38026,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38026, pUnit:GetClosestPlayer())
 end
 
 function CSiren_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32011,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32011, pUnit:GetClosestPlayer())
 end
 
 function CSiren_OnLeaveCombat(pUnit,Event)
@@ -5480,11 +5437,11 @@ function CSorceress_OnEnterCombat(pUnit,Event)
 end
 
 function CSorceress_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38026,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38026, pUnit:GetClosestPlayer())
 end
 
 function CSorceress_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32011,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32011, pUnit:GetClosestPlayer())
 end
 
 function CSorceress_OnLeaveCombat(pUnit,Event)
@@ -5500,18 +5457,18 @@ RegisterUnitEvent(19767,2,"CSorceress_OnLeaveCombat")
 RegisterUnitEvent(19767,4,"CSorceress_OnDied")
 
 function Collidus_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38932,pUnit:GetClosestPlayer())
-	pUnit:FullCastSpellOnTarget(36414,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38932, pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36414, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("Collidus_FocusedBursts", 40000, 0)
 	pUnit:RegisterEvent("Collidus_Scream", 40000, 0)
 end
 
 function Collidus_FocusedBursts(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36414,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36414, pUnit:GetClosestPlayer())
 end
 
 function Collidus_Scream(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(34322,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(34322, pUnit:GetClosestPlayer())
 end
 
 function Collidus_OnLeaveCombat(pUnit,Event)
@@ -5527,17 +5484,17 @@ RegisterUnitEvent(18694, 2, "Collidus_OnLeaveCombat")
 RegisterUnitEvent(18694, 4, "Collidus_OnDied")
 
 function Arcus_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41440,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41440, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("Arcus_Spell1", 10000, 0)
 	pUnit:RegisterEvent("Arcus_Spell2", 30000, 0)
 end
 
 function Arcus_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41448,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41448, pUnit:GetClosestPlayer())
 end
 
 function Arcus_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38370,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38370, pUnit:GetClosestPlayer())
 end
 
 function Arcus_OnLeaveCombat(pUnit,Event)
@@ -5553,17 +5510,17 @@ RegisterUnitEvent(23452, 2, "Arcus_OnLeaveCombat")
 RegisterUnitEvent(23452, 4, "Arcus_OnDied")
 
 function Hobb_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41440,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41440, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("Hobb_Spell1", 10000, 0)
 	pUnit:RegisterEvent("Hobb_Spell2", 30000, 0)
 end
 
 function Hobb_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41448,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41448, pUnit:GetClosestPlayer())
 end
 
 function Hobb_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38370,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38370, pUnit:GetClosestPlayer())
 end
 
 function Hobb_OnLeaveCombat(pUnit,Event)
@@ -5584,11 +5541,11 @@ function Corok_OnEnterCombat(pUnit,Event)
 end
 
 function Corok_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12612,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12612, pUnit:GetClosestPlayer())
 end
 
 function Corok_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15550,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15550, pUnit:GetClosestPlayer())
 end
 
 function Corok_OnLeaveCombat(pUnit,Event)
@@ -5609,7 +5566,7 @@ function CAE_OnEnterCombat(pUnit,Event)
 end
 
 function CAE_LBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9532,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9532, pUnit:GetClosestPlayer())
 end
 
 
@@ -5632,7 +5589,7 @@ function CFE_OnEnterCombat(pUnit,Event)
 end
 
 function CFE_Fball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9053,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9053, pUnit:GetClosestPlayer())
 end
 
 function CFE_OnLeaveCombat(pUnit,Event)
@@ -5653,7 +5610,7 @@ function CWE_OnEnterCombat(pUnit,Event)
 end
 
 function CWE_Fbolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9672,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9672, pUnit:GetClosestPlayer())
 end
 
 function CWE_OnLeaveCombat(pUnit,Event)
@@ -5743,15 +5700,15 @@ end
 end
 
 function Cyrukh_FinalSpell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39429,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(39429, pUnit:GetMainTank())
 end
 
 function Cyrukh_Trample(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39425,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(39425, pUnit:GetMainTank())
 end
 
 function Cyrukh_KnockAway(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(18945,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(18945, pUnit:GetMainTank())
 end
 
 function Cyrukh_Death(pUnit,Event)
@@ -5772,11 +5729,11 @@ function DCHarbinger_OnEnterCombat(pUnit,Event)
 end
 
 function DCHarbinger_Spell(pUnit,Event)
-	pUnit:FullCastSpelOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpelOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function DCHarbinger_Heal(pUnit,Event)
-	pUnit:FullCastSpelOnTarget(16588,pUnit:GetRandomFriend())
+	pUnit:FullCastSpelOnTarget(16588, pUnit:GetRandomFriend())
 end
 
 function DCHarbinger_Died(pUnit,Event)
@@ -5796,7 +5753,7 @@ function DCHawkeye_OnEnterCombat(pUnit,Event)
 end
 
 function DCHawkeye_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37974,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37974, pUnit:GetClosestPlayer())
 end
 
 function DCHawkeye_OnLeaveCombat(pUnit,Event)
@@ -5817,11 +5774,11 @@ function DCRavenguard_OnEnterCombat(pUnit,Event)
 end
 
 function DCRavenguard_Enrage(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(8599,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(8599, pUnit:GetClosestPlayer())
 end
 
 function DCRavenguard_Howl(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(23600,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(23600, pUnit:GetClosestPlayer())
 end
 
 function DCRavenguard_OnDied(pUnit,Event)
@@ -5841,7 +5798,7 @@ function DCScorncrow_OnEnterCombat(pUnit,Event)
 end
 
 function DCScorncrow_Frostbolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9672,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9672, pUnit:GetClosestPlayer())
 end
 
 
@@ -5863,11 +5820,11 @@ function DCShadowmancer_OnEnterCombat(pUnit,Event)
 end
 
 function DCShadowmancer_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpelOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpelOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function DCShadowmancer_DarkMending(pUnit,Event)
-	pUnit:FullCastSpelOnTarget(16588,pUnit:GetRandomFriend())
+	pUnit:FullCastSpelOnTarget(16588, pUnit:GetRandomFriend())
 end
 
 function DCShadowmancer_Died(pUnit,Event)
@@ -5888,12 +5845,12 @@ function DCTalonite_OnEnterCombat(pUnit,Event)
 end
 
 function DCTalonite_ColdTouch(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39230,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39230, pUnit:GetClosestPlayer())
 end
 
 
 function DCTalonite_TalonOfJustice(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39229,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39229, pUnit:GetClosestPlayer())
 end
 
 function DCTalonite_OnDied(pUnit,Event)
@@ -5914,11 +5871,11 @@ function DGuardian_OnEnterCombat(pUnit,Event)
 end
 
 function DGuardian_Strike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37998,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37998, pUnit:GetClosestPlayer())
 end
 
 function DGuardian_Bash(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11972,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11972, pUnit:GetClosestPlayer())
 end
 
 function DGuardian_OnDied(pUnit,Event)
@@ -5938,7 +5895,7 @@ function Dimp_OnEnterCombat(pUnit,Event)
 end
 
 function Dimp_Firebolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36227,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36227, pUnit:GetClosestPlayer())
 end
 
 function Dimp_OnDied(pUnit,Event)
@@ -5974,7 +5931,7 @@ function Dmine_LeaveCombat(pUnit,Event)
 end
 
 function Dmine_OnDied(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38108,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(38108, pUnit:GetMainTank())
 end
 
 RegisterUnitEvent(22315, 2, "Dmine_OnEnterCombat")
@@ -5987,11 +5944,11 @@ function DSmith_OnEnterCombat(pUnit,Event)
 end
 
 function DSmith_ChaosNova(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36225,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36225, pUnit:GetClosestPlayer())
 end
 
 function DSmith_DrillArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37580,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37580, pUnit:GetClosestPlayer())
 end
 
 function DSmith_LeaveCombat(pUnit,Event)
@@ -6012,11 +5969,11 @@ function DSummoner_OnEnterCombat(pUnit,Event)
 end
 
 function DSummoner_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function DSummoner_FelImmolate(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37628,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37628, pUnit:GetClosestPlayer())
 end
 
 function DSummoner_OnDeath(pUnit,Event)
@@ -6036,7 +5993,7 @@ function DTinkerer_OnEnterCombat(pUnit,Event)
 end
 
 function DTinkerer_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38753,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38753, pUnit:GetClosestPlayer())
 end
 
 function DTinkerer_LeaveCombat(pUnit,Event)
@@ -6058,7 +6015,7 @@ function DHInitiate_OnEnterCombat(pUnit,Event)
 end
 
 function DHInitiate_SpellBreaker(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 
 function DHInitiate_LeaveCombat(pUnit,Event)
@@ -6119,7 +6076,7 @@ RegisterUnitEvent(21316, 6, "DDPeon_Start")
 
 function DFelboar_OnEnterCombat(pUnit,Event)
 	pUnit:CastSpell(36462)
-	pUnit:FullCastSpellOnTarget(22120,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(22120, pUnit:GetClosestPlayer())
 end
 
 function DFelboar_OnDied(pUnit,Event)
@@ -6141,15 +6098,15 @@ function DAscendant_OnEnterCombat(pUnit,Event)
 end
 
 function DAscendant_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function DAscendant_MortalStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17547,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17547, pUnit:GetClosestPlayer())
 end
 
 function DAscendant_Uppercut(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(10966,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(10966, pUnit:GetClosestPlayer())
 end
 
 function DAscendant_LeaveCombat(pUnit,Event)
@@ -6165,7 +6122,7 @@ RegisterUnitEvent(22253, 2, "DAscendant_LeaveCombat")
 RegisterUnitEvent(22253, 4, "DAscendant_OnDied")
 
 function DDrakeRider_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(6660,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(6660, pUnit:GetClosestPlayer())
 end
 
 function DDrakeRider_LeaveCombat(pUnit,Event)
@@ -6181,17 +6138,17 @@ RegisterUnitEvent(21719, 2, "DDrakeRider_LeaveCombat")
 RegisterUnitEvent(21719, 4, "DDrakeRider_OnDied")
 
 function DElite_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38858,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38858, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("DElite_Spell1", 36000, 0)
 	pUnit:RegisterEvent("DElite_Spell2", 50000, 0)
 end
 
 function DElite_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38861,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38861, pUnit:GetClosestPlayer())
 end
 
 function DElite_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38859,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38859, pUnit:GetClosestPlayer())
 end
 
 function DElite_LeaveCombat(pUnit,Event)
@@ -6211,7 +6168,7 @@ function DNetherDrake_OnEnterCombat(pUnit,Event)
 end
 
 function DNetherDrake_ArcaneBlast(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38344,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38344, pUnit:GetClosestPlayer())
 end
 
 function DNetherDrake_LeaveCombat(pUnit,Event)
@@ -6231,7 +6188,7 @@ function DNPeon_OnEnterCombat(pUnit,Event)
 end
 
 function DNPeon_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15572,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15572, pUnit:GetClosestPlayer())
 end
 
 function DNPeon_LeaveCombat(pUnit,Event)
@@ -6292,17 +6249,17 @@ RegisterUnitEvent(21720, 2, "DShaman_OnLeaveCombat")
 RegisterUnitEvent(21720, 4, "DShaman_OnDied")
 
 function DSkybreaker_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38858,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38858, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("DSkybreaker_Spell1", 24000, 0)
 	pUnit:RegisterEvent("DSkybreaker_Spell2", 11000, 0)
 end
 
 function DSkybreaker_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38861,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38861, pUnit:GetClosestPlayer())
 end
 
 function DSkybreaker_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41448,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41448, pUnit:GetClosestPlayer())
 end
 
 function DSkybreaker_OnLeaveCombat(pUnit,Event)
@@ -6318,12 +6275,12 @@ RegisterUnitEvent(22274, 2, "DSkybreaker_OnLeaveCombat")
 RegisterUnitEvent(22274, 4, "DSkybreaker_OnDied")
 
 function DSubjugator_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("DSubjugator_Shadowbolt", 9000, 0)
 end
 
 function DSubjugator_Shadowbolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function DSubjugator_OnLeaveCombat(pUnit,Event)
@@ -6338,17 +6295,17 @@ RegisterUnitEvent(21718, 2, "DSubjugator_OnLeaveCombat")
 RegisterUnitEvent(21718, 4, "DSubjugator_OnDied")
 
 function DTransporter_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38858,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38858, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("DTransporter_Spell1Shoot", 33000, 0)
 	pUnit:RegisterEvent("DTransporter_Spell2Shoot", 20000, 0)
 end
 
 function DTransporter_Spell1Shoot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38861,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38861, pUnit:GetClosestPlayer())
 end
 
 function DTransporter_Spell2Shoot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38859,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38859, pUnit:GetClosestPlayer())
 end
 
 function DTransporter_OnDeath(pUnit,Event)
@@ -6369,7 +6326,7 @@ function DWrangler_OnEnterCombat(pUnit,Event)
 end
 
 function DWrangler_Net(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38338,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38338, pUnit:GetClosestPlayer())
 end
 
 function DWrangler_Enrage(pUnit,Event)
@@ -6396,11 +6353,11 @@ function Dreadwarden_OnEnterCombat(pUnit,Event)
 end
 
 function Dreadwarden_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11443, pUnit:GetClosestPlayer())
 end
 
 function Dreadwarden_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32736,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32736, pUnit:GetClosestPlayer())
 end
 
 function Dreadwarden_OnLeaveCombat(pUnit,Event)
@@ -6422,15 +6379,15 @@ function EArchmage_OnEnterCombat(pUnit,Event)
 end
 
 function EArchmage_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37986,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37986, pUnit:GetClosestPlayer())
 end
 
 function EArchmage_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11829,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11829, pUnit:GetClosestPlayer())
 end
 
 function EArchmage_Spell3(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13878,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13878, pUnit:GetClosestPlayer())
 end
 
 function EArchmage_OnLeaveCombat(pUnit,Event)
@@ -6451,7 +6408,7 @@ function EBloodwarder_OnEnterCombat(pUnit,Event)
 end
 
 function EBloodwarder_BloodLeech(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37838,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37838, pUnit:GetClosestPlayer())
 end
 
 function EBloodwarder_OnLeaveCombat(pUnit,Event)
@@ -6499,7 +6456,7 @@ end
 
 
 function ECenturion_SpellBreaker(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 
 function ECenturion_Bloodheal(pUnit,Event)
@@ -6525,7 +6482,7 @@ function EDragonhawk_OnEnterCombat(pUnit,Event)
 end
 
 function EDragonhawk_Firebreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37985,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37985, pUnit:GetClosestPlayer())
 end
 
 function EDragonhawk_OnLeaveCombat(pUnit,Event)
@@ -6568,7 +6525,7 @@ function ESpellbinder_SummonArcane(pUnit,Event)
 end
 
 function ESpellbinder_ArcaneMissle(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(34447,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(34447, pUnit:GetClosestPlayer())
 end
 
 function ESpellbinder_OnLeaveCombat(pUnit,Event)
@@ -6609,11 +6566,11 @@ function AirSpirit_OnEnterCombat(pUnit,Event)
 end
 
 function AirSpirit_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12058,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12058, pUnit:GetClosestPlayer())
 end
 
 function AirSpirit_Spell2(punit,Event)
-	pUnit:FullCastSpellOnTarget(32717,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32717, pUnit:GetClosestPlayer())
 end
 
 function AirSpirit_OnLeaveCombat(pUnit,Event)
@@ -6634,7 +6591,7 @@ function EarthSpirit_OnEnterCombat(pUnit,Event)
 end
 
 function EarthSpirit_Boulder(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38498,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38498, pUnit:GetClosestPlayer())
 end
 
 function EarthSpirit_OnLeaveCombat(pUnit,Event)
@@ -6662,7 +6619,7 @@ end
 end
 
 function FireSpirit_FelFireball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36247,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36247, pUnit:GetClosestPlayer())
 end
 
 function FireSpirit_OnLeaveCombat(pUnit,Event)
@@ -6688,7 +6645,7 @@ function WaterSpirit_OnEnterCombat(pUnit,Event)
 end
 
 function WaterSpirit_Stormbolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38032,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38032, pUnit:GetClosestPlayer())
 end
 
 function WaterSpirit_OnLeaveCombat(pUnit,Event)
@@ -6709,7 +6666,7 @@ function ENDrake_OnEnterCombat(pUnit,Event)
 end
 
 function ENDrake_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36513,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36513, pUnit:GetClosestPlayer())
 end
 
 function ENDrake_OnLeaveCombat(pUnit,Event)
@@ -6729,7 +6686,7 @@ function ENWhelp_OnEnterCombat(pUnit,Event)
 end
 
 function ENWhelp_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38340,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38340, pUnit:GetClosestPlayer())
 end
 
 function ENWhelp_OnLeaveCombat(pUnit,Event)
@@ -6755,7 +6712,7 @@ function Eykenen_EarthShield(pUnit,Event)
 end
 
 function Eykenen_EarthShock(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13281,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13281, pUnit:GetClosestPlayer())
 end
 
 function Eykenen_OnLeaveCombat(pUnit,Event)
@@ -6777,11 +6734,11 @@ function FRSentinel_OnEnterCombat(pUnit,Event)
 end
 
 function FRSentinel_Boom(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38052,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38052, pUnit:GetClosestPlayer())
 end
 
 function FRSentinel_WorldBreaker(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38052,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38052, pUnit:GetClosestPlayer())
 end
 
 function FRSentinel_OnLeaveCombat(pUnit,Event)
@@ -6797,7 +6754,7 @@ RegisterUnitEvent(21949, 1, "FRSentinel_OnLeaveCombat")
 RegisterUnitEvent(21949, 1, "FRSentinel_OnDeath")
 
 function FelBoar_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35570,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35570, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(21878, 1, "FelBoar_OnEnterCombat")
@@ -6807,7 +6764,7 @@ function FDiemetradon_OnEnterCombat(pUnit,Event)
 end
 
 function FDiemetradon_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37941,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37941, pUnit:GetClosestPlayer())
 end
 
 function FDiemetradon_OnLeaveCombat(pUnit,Event)
@@ -6828,11 +6785,11 @@ function Felspine_OnEnterCombat(pUnit,Event)
 end
 
 function Felspine_FelFlames(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38356,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38356, pUnit:GetClosestPlayer())
 end
 
 function Felspine_FlamingWound(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37941,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37941, pUnit:GetClosestPlayer())
 end
 
 function Felspine_OnLeaveCombat(pUnit,Event)
@@ -6854,11 +6811,11 @@ function GFDiemetradon_OnEnterCombat(pUnit,Event)
 end
 
 function GFDiemetradon_FelFireball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37945,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37945, pUnit:GetClosestPlayer())
 end
 
 function GFDiemetradon_FlamingWound(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37941,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37941, pUnit:GetClosestPlayer())
 end
 
 function GFDiemetradon_OnLeaveCombat(pUnit,Event)
@@ -6874,7 +6831,7 @@ RegisterUnitEvent(21462, 2, "GFDiemetradon_OnLeaveCombat")
 RegisterUnitEvent(21462, 4, "GFDiemetradon_OnDied")
 
 function Gromtor_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(26281,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(26281, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("Gromtor_SunderArmor", 120000, 0)
 	pUnit:RegisterEvent("Gromtor_ShieldWall", 22000, 0)
 	pUnit:RegisterEvent("Gromtor_ShieldBlock", 40000, 0)
@@ -6883,23 +6840,23 @@ function Gromtor_OnEnterCombat(pUnit,Event)
 end
 
 function Gromtor_SunderArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(16145,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(16145, pUnit:GetClosestPlayer())
 end
 
 function Gromtor_ShieldWall(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15062,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15062, pUnit:GetClosestPlayer())
 end
 
 function Gromtor_ShieldBlock(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12169,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12169, pUnit:GetClosestPlayer())
 end
 
 function Gromtor_HeroicStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(29426,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(29426, pUnit:GetClosestPlayer())
 end
 
 function Gromtor_BattleShout(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(31403,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(31403, pUnit:GetClosestPlayer())
 end
 
 function Gromtor_OnLeaveCombat(pUnit,Event)
@@ -6915,7 +6872,7 @@ RegisterUnitEvent(21291, 2, "Gromtor_OnLeaveCombat")
 RegisterUnitEvent(21291, 4, "Gromtor_OnDied")
 
 function GRGuard_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38182,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38182, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(15241, 1, "GRGuard_OnEnterCombat")
@@ -6937,11 +6894,11 @@ function Haalum_OnEnterCombat(pUnit,Event)
 end
 
 function Haalum_Chain(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12058,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12058, pUnit:GetClosestPlayer())
 end
 
 function Haalum_LBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9532,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9532, pUnit:GetClosestPlayer())
 end
 
 function Haalum_OnLeaveCombat(pUnit,Event)
@@ -6961,7 +6918,7 @@ function IAgonizer_OnEnterCombat(pUnit,Event)
 end
 
 function IAgonizer_Firebolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36227,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36227, pUnit:GetClosestPlayer())
 end
 
 function IAgonizer_OnLeaveCombat(pUnit,Event)
@@ -6978,7 +6935,7 @@ RegisterUnitEvent(19801, 4, "IAgonizer_OnDied")
 
 function IDreadbringer_OnEnterCombat(pUnit,Event)
  if pUnit:GetHealthPct() == 91 then
-	pUnit:FullCastSpellOnTarget(38167,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38167, pUnit:GetClosestPlayer())
 end
 end
 
@@ -6991,15 +6948,15 @@ function IDreadlord_OnEnterCombat(pUnit,Event)
 end
 
 function IDreadlord_PsychicScream(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13704,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13704, pUnit:GetClosestPlayer())
 end
 
 function IDreadlord_MindBlast(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17287,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17287, pUnit:GetClosestPlayer())
 end
 
 function IDreadlord_Sleep(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12098,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12098, pUnit:GetClosestPlayer())
 end
 
 function IDreadlord_OnLeaveCombat(pUnit,Event)
@@ -7021,17 +6978,17 @@ function IHighlord_OnEnterCombat(pUnit,Event)
 end
 
 function IHighlord_Curseofflames(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38010,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38010, pUnit:GetClosestPlayer())
 end
 
 function IHighlord_Spell(pUnit,Event)
  if pUnit:GetHealthPct() == 92 then 
-	pUnit:FullCastSpellOnTarget(38010,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38010, pUnit:GetClosestPlayer())
 end
 end
 
 function IHighlord_Flamestrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(16102,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(16102, pUnit:GetClosestPlayer())
 end
 
 function IHighlord_OnLeaveCombat(pUnit,Event)
@@ -7051,7 +7008,7 @@ function IJailor_OnEnterCombat(pUnit,Event)
 end
 
 function IJailor_FelShackles(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38051,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38051, pUnit:GetClosestPlayer())
 end
 
 function IJailor_OnLeaveCombat(pUnit,Event)
@@ -7074,15 +7031,15 @@ function IMBreaker_OnEnterCombat(pUnit,Event)
 end
 
 function IMBreaker_Spell1(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38985,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38985, pUnit:GetClosestPlayer())
 end
 
 function IMBreaker_Spell2(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17194,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17194, pUnit:GetClosestPlayer())
 end
 
 function IMBreaker_Spell3(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(22884,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(22884, pUnit:GetClosestPlayer())
 end
 
 function IMBreaker_OnLeaveCombat(pUnit,Event)
@@ -7103,11 +7060,11 @@ function IOverseer_OnEnterCombat(pUnit,Event)
 end
 
 function IOverseer_MortalStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32736,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32736, pUnit:GetClosestPlayer())
 end
 
 function IOverseer_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11977,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11977, pUnit:GetClosestPlayer())
 end
 
 function IOverseer_OnLeaveCombat(pUnit,Event)
@@ -7127,7 +7084,7 @@ function IPainlasher_OnEnterCombat(pUnit,Event)
 end
 
 function IPainlasher_LashOfPain(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15968,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15968, pUnit:GetClosestPlayer())
 end
 
 function IPainlasher_OnLeaveCombat(pUnit,Event)
@@ -7143,18 +7100,18 @@ RegisterUnitEvent(19800, 2, "IPainlasher_OnLeaveCombat")
 RegisterUnitEvent(19800, 4, "IPainlasher_OnDied")
 
 function IRavager_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33645,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33645, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("IRavager_Cleave", 22000, 0)
 	pUnit:RegisterEvent("IRavager_Cutdown", 9000, 0)
 	pUnit:RegisterEvent("IRavager_Shout", 60000, 0)
 end
 
 function IRavager_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function IRavager_Cutdown(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32009,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32009, pUnit:GetClosestPlayer())
 end
 
 function IRavager_Shout(pUnit,Event)
@@ -7175,7 +7132,7 @@ RegisterUnitEvent(22857, 4, "IRavager_OnDied")
 
 function ISatyr_OnEnterCombat(pUnit,Event)
  if pUnit:GetHealthPct() == 97 then
-	pUnit:FullCastSpellOnTarget(38048,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38048, pUnit:GetClosestPlayer())
 end
 end
 
@@ -7188,16 +7145,16 @@ function IShadowlord_OnEnterCombat(pUnit,Event)
 end
 
 function IShadowlord_Sleep(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12098,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12098, pUnit:GetClosestPlayer())
 end
 
 function IShadowlord_CarrionSwarm(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39942,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39942, pUnit:GetClosestPlayer())
 end
 
 function IShadowlord_Inferno(pUnit,Event)
  if pUnit:GetHealthPct() == 64 then
-	pUnit:FullCastSpellOnTarget(39942,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39942, pUnit:GetClosestPlayer())
 end
 end
 
@@ -7214,12 +7171,12 @@ RegisterUnitEvent(22988, 2, "IShadowlord_OnLeaveCombat")
 RegisterUnitEvent(22988, 4, "IShadowlord_OnDied")
 
 function IShadowstalker_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(7159,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(7159, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("IShadowstalker_Backstab", 8000, 0)
 end
 
 function IShadowstalker_Backstab(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(7159,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(7159, pUnit:GetClosestPlayer())
 end
 
 function IShadowstalker_Stealth(pUnit,Event)
@@ -7240,12 +7197,12 @@ RegisterUnitEvent(21337, 2, "IShadowstalker_OnLeaveCombat")
 RegisterUnitEvent(21337, 4, "IShadowstalker_OnDied")
 
 function IShocktrooper_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(22120,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(22120, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("IShocktrooper_Cleave", 31000, 0)
 end
 
 function IShocktrooper_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function IShocktrooper_OnLeaveCombat(pUnit,Event)
@@ -7261,14 +7218,14 @@ RegisterUnitEvent(19802, 2, "IShocktrooper_OnLeaveCombat")
 RegisterUnitEvent(19802, 4, "IShocktrooper_OnDied")
 
 function ISlayer_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35570,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35570, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(21639, 1, "ISlayer_OnEnterCombat")
 
 function ISoldier_OnEnterCombat(pUnit,Event)
  if pUnit:GetHealthPct() == 92 then
-	pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 end
 
@@ -7279,7 +7236,7 @@ function IWatcher_OnEnterCombat(pUnit,Event)
 end
 
 function IWatcher_MStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32736,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32736, pUnit:GetClosestPlayer())
 end
 
 function IWatcher_OnLeaveCombat(pUnit,Event)
@@ -7315,7 +7272,7 @@ RegisterUnitEvent(19757, 2, "ISoul_OnLeaveCombat")
 RegisterUnitEvent(19757, 4, "ISoul_OnDied")
 
 function Karsius_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37789,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37789, pUnit:GetClosestPlayer())
 end
 
 function Karsius_OnLeaveCombat(pUnit,Event)
@@ -7335,7 +7292,7 @@ function KotCistern_OnEnterCombat(pUnit,Event)
 end
 
 function KotCistern_Waterbolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32011,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32011, pUnit:GetClosestPlayer())
 end
 
 function KotCistern_OnLeaveCombat(pUnit,Event)
@@ -7355,7 +7312,7 @@ function KDefender_OnEnterCombat(pUnit,Event)
 end
 
 function KDefender_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetMainTank())
 end
 
 function KDefender_OnLeaveCombat(pUnit,Event)
@@ -7376,11 +7333,11 @@ function KRider_OnEnterCombat(pUnit,Event)
 end
 
 function KRider_SnapKick(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15618,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15618, pUnit:GetClosestPlayer())
 end
 
 function KRider_MortalStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(19643,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(19643, pUnit:GetClosestPlayer())
 end
 
 function KRider_OnLeaveCombat(pUnit,Event)
@@ -7401,11 +7358,11 @@ function LadyShavRar_OnEnterCombat(pUnit,Event)
 end
 
 function LadyShavRar_ArcaneBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13901,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13901, pUnit:GetClosestPlayer())
 end
 
 function LadyShavRar_Freeze(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38035,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38035, pUnit:GetClosestPlayer())
 end
 
 function LadyShavRar_OnLeaveCombat(pUnit,Event)
@@ -7425,7 +7382,7 @@ function Lakaan_OnEnterCombat(pUnit,Event)
 end
 
 function Lakaan_WaterBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32011,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32011, pUnit:GetClosestPlayer())
 end
 
 function Lakaan_OnLeaveCombat(pUnit,Event)
@@ -7442,7 +7399,7 @@ RegisterUnitEvent(21416, 4, "Lakaan_OnDied")
 
 function LFCannon_OnEnterCombat(pUnit,Event)
  if pUnit:GetHealthPct() == 70 then
-	pUnit:FullCastSpellOnTarget(36238,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36238, pUnit:GetClosestPlayer())
 end
 end
 
@@ -7450,23 +7407,23 @@ RegisterUnitEvent(21233, 1, "LFCannon_OnEnterCombat")
 
 function LERider_OnEnterCombat(pUnit,Event)
 	pUnit:CastSpell(39782)
-	pUnit:CastSpellOnTarget(31888,pUnit:GetClosestPlayer())
+	pUnit:CastSpellOnTarget(31888, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(22966, 1, "LERider_OnEnterCombat")
 
 function LVindicator_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13005,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13005, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("LVindicator_Exorcism", 11000, 0)
 	pUnit:RegisterEvent("LVindicator_HolyLight", 16000, 0)
 end
 
 function LVindicator_Exorcism(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33632,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33632, pUnit:GetClosestPlayer())
 end
 
 function LVindicator_HolyLight(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13952,pUnit:GetRandomFriend(0))
+	pUnit:FullCastSpellOnTarget(13952, pUnit:GetRandomFriend(0))
 end
 
 function LVindicator_OnLeaveCombat(pUnit,Event)
@@ -7474,7 +7431,7 @@ function LVindicator_OnLeaveCombat(pUnit,Event)
 end
 
 function LVindicator_OnDied(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13903,pUnit:GetRandomFriend(0))
+	pUnit:FullCastSpellOnTarget(13903, pUnit:GetRandomFriend(0))
 end
 
 RegisterUnitEvent(22861, 1, "LVindicator_OnEnterCombat")
@@ -7486,7 +7443,7 @@ function Lothros_OnEnterCombat(pUnit,Event)
 end
 
 function Lothros_Spell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38167,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38167, pUnit:GetClosestPlayer())
 end
 
 function Lothros_OnLeaveCombat(pUnit,Event)
@@ -7508,15 +7465,15 @@ function Makazradon_OnEnterCombat(pUnit,Event)
 end
 
 function Makazradon_Cripple(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11443, pUnit:GetClosestPlayer())
 end
 
 function Makazradon_FelCleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38742,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38742, pUnit:GetClosestPlayer())
 end
 
 function Makazradon_RainOfFire(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38741,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38741, pUnit:GetClosestPlayer())
 end
 
 function Makazradon_OnLeaveCombat(pUnit,Event)
@@ -7538,11 +7495,11 @@ function MatureNetherwingDrake_OnEnterCombat(pUnit,Event)
 end
 
 function MatureNetherwingDrake_IntangiblePresence(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36513,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36513, pUnit:GetClosestPlayer())
 end
 
 function MatureNetherwingDrake_Netherbreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38467,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38467, pUnit:GetClosestPlayer())
 end
 
 function MatureNetherwingDrake_OnLeaveCombat(pUnit,Event)
@@ -7563,11 +7520,11 @@ function MoArgWeaponsmith_OnEnterCombat(pUnit,Event)
 end
 
 function MoArgWeaponsmith_ChemicalFlames(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36253,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36253, pUnit:GetClosestPlayer())
 end
 
 function MoArgWeaponsmith_DrillArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37580,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37580, pUnit:GetClosestPlayer())
 end
 
 function MoArgWeaponsmith_OnLeaveCombat(pUnit,Event)
@@ -7588,7 +7545,7 @@ function Mordenai_OnEnterCombat(pUnit,Event)
 end
 
 function Mordenai_Shoot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38372,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38372, pUnit:GetClosestPlayer())
 end
 
 function Mordenai_Start(pUnit,Eevnt)
@@ -7600,11 +7557,11 @@ end
 end
 
 function Mordenai_AimedShot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38370,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38370, pUnit:GetClosestPlayer())
 end
 
 function Mordenai_ArcaneShot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36623,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36623, pUnit:GetClosestPlayer())
 end
 
 function Mordenai_OnLeaveCombat(pUnit,Event)
@@ -7626,15 +7583,15 @@ function Morgroron_OnEnterCombat(pUnit,Event)
 end
 
 function Morgroron_MortalCleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(22859,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(22859, pUnit:GetClosestPlayer())
 end
 
 function Morgroron_RainOfFire(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38741,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38741, pUnit:GetClosestPlayer())
 end
 
 function Morgroron_WarStomp(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38750,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38750, pUnit:GetClosestPlayer())
 end
 
 function Morgroron_OnLeaveCombat(pUnit,Event)
@@ -7655,7 +7612,7 @@ function MutantHorror_OnEnterCombat(pUnit,Event)
 end
 
 function MutantHorror_MutatedBlood(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37950,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37950, pUnit:GetClosestPlayer())
 end
 
 function MutantHorror_OnLeaveCombat(pUnit,Event)
@@ -7678,15 +7635,15 @@ function Netharel_OnEnterCombat(pUnit,Event)
 end
 
 function Netharel_DebilitatingStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39135,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39135, pUnit:GetClosestPlayer())
 end
 
 function Netharel_Evasion(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37683,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37683, pUnit:GetClosestPlayer())
 end
 
 function Netharel_ManaBurn(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39262,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39262, pUnit:GetClosestPlayer())
 end
 
 function Netharel_Metamorphosis(pUnit,Event)
@@ -7712,7 +7669,7 @@ function NethermineBurster_OnEnterCombat(pUnit,Event)
 end
 
 function NethermineBurster_Poison(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(31747,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(31747, pUnit:GetClosestPlayer())
 end
 
 function NethermineBurster_OnLeaveCombat(pUnit,Event)
@@ -7734,11 +7691,11 @@ function NethermineFlayer_OnEnterCombat(pUnit,Event)
 end
 
 function NethermineFlayer_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13443, pUnit:GetClosestPlayer())
 end
 
 function NethermineFlayer_ShredArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(40770,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(40770, pUnit:GetClosestPlayer())
 end
 
 function NethermineFlayer_OnLeaveCombat(pUnit,Event)
@@ -7759,11 +7716,11 @@ function NethermineRavager_OnEnterCombat(pUnit,Event)
 end
 
 function NethermineRavager_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13443, pUnit:GetClosestPlayer())
 end
 
 function NethermineRavager_RockShell(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33810,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33810, pUnit:GetClosestPlayer())
 end
 
 function NethermineRavager_OnLeaveCombat(pUnit,Event)
@@ -7785,12 +7742,12 @@ end
 
 function Netherskate_DrainMana(pUnit,Event)
  if pUnit:GetManaPct() == 92 then
-	pUnit:FullCastSpellOnTarget(17008,pUnit:GetRandomPlayer(4))
+	pUnit:FullCastSpellOnTarget(17008, pUnit:GetRandomPlayer(4))
 end
 end
 
 function Netherskate_TailSting(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36659,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36659, pUnit:GetClosestPlayer())
 end
 
 function Netherskate_OnLeaveCombat(pUnit,Event)
@@ -7812,12 +7769,12 @@ end
 
 function NetherwingRay_DrainMana(pUnit,Event)
  if pUnit:GetManaPct() == 92 then
-	pUnit:FullCastSpellOnTarget(17008,pUnit:GetRandomPlayer(4))
+	pUnit:FullCastSpellOnTarget(17008, pUnit:GetRandomPlayer(4))
 end
 end
 
 function NetherwingRay_TailSting(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36659,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36659, pUnit:GetClosestPlayer())
 end
 
 function NetherwingRay_OnLeaveCombat(pUnit,Event)
@@ -7839,15 +7796,15 @@ function OrkaosTheInsane_OnEnterCombat(pUnit,Event)
 end
 
 function OrkaosTheInsane_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function OrkaosTheInsane_MortalStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17547,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17547, pUnit:GetClosestPlayer())
 end
 
 function OrkaosTheInsane_Uppercut(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(10966,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(10966, pUnit:GetClosestPlayer())
 end
 
 function OrkaosTheInsane_OnLeaveCombat(pUnit,Event)
@@ -7869,15 +7826,15 @@ function OronokTornheart_OnEnterCombat(pUnit,Event)
 end
 
 function OronokTornheart_ChainLightning(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(16006,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(16006, pUnit:GetClosestPlayer())
 end
 
 function OronokTornheart_FrostShock(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12548,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12548, pUnit:GetClosestPlayer())
 end
 
 function OronokTornheart_HealingWave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12491,pUnit:GetRandomFriend())
+	pUnit:FullCastSpellOnTarget(12491, pUnit:GetRandomFriend())
 end
 
 function OronokTornheart_OnLeaveCombat(pUnit,Event)
@@ -7903,7 +7860,7 @@ function OronuTheElder_GroundingTotem(pUnit,Event)
 end
 
 function OronuTheElder_HealingWave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11986,pUnit:GetRandomFriend())
+	pUnit:FullCastSpellOnTarget(11986, pUnit:GetRandomFriend())
 end
 
 function OronuTheElder_LightningShield(pUnit,Event)
@@ -7928,7 +7885,7 @@ function OvermineFlayer_OnEnterCombat(pUnit,Event)
 end
 
 function OvermineFlayer_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13443,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13443, pUnit:GetClosestPlayer())
 end
 
 function OvermineFlayer_RockShell(pUnit,Event)
@@ -7953,11 +7910,11 @@ function OverseerRipsaw_OnEnterCombat(pUnit,Event)
 end
 
 function OverseerRipsaw_GushingWound(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35321,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35321, pUnit:GetClosestPlayer())
 end
 
 function OverseerRipsaw_SawBlade(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32735,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32735, pUnit:GetClosestPlayer())
 end
 
 function OverseerRipsaw_OnLeaveCombat(pUnit,Event)
@@ -7977,7 +7934,7 @@ function PainmistressGabrissa_OnEnterCombat(pUnit,Event)
 end
 
 function PainmistressGabrissa_CurseOfPain(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38048,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38048, pUnit:GetClosestPlayer())
  if pUnit:GetHealthPct() == 50 then 
 	pUnit:RemoveEvents()
 end
@@ -7996,13 +7953,13 @@ RegisterUnitEvent(21309, 2, "PainmistressGabrissa_OnLeaveCombat")
 RegisterUnitEvent(21309, 4, "PainmistressGabrissa_OnDied")
 
 function ProphetessCavrylin_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36656,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36656, pUnit:GetClosestPlayer())
 	pUnit:CastSpell(37997)
 	pUnit:RegisterEvent("ProphetessCavrylin_MeltFlesh", 15000, 0)
 end
 
 function ProphetessCavrylin_MeltFlesh(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37629,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37629, pUnit:GetClosestPlayer())
 end
 
 function ProphetessCavrylin_OnLeaveCombat(pUnit,Event)
@@ -8023,7 +7980,7 @@ function RavenousFlayerMatriarch_OnEnterCombat(pUnit,Event)
 end
 
 function RavenousFlayerMatriarch_GushingWound(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38363,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38363, pUnit:GetClosestPlayer())
 end
 
 function RavenousFlayerMatriarch_OnLeaveCombat(pUnit,Event)
@@ -8067,7 +8024,7 @@ function RocknailFlayer_OnEnterCombat(pUnit,Event)
 end
 
 function RocknailFlayer_FlayedFlesh(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37937,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37937, pUnit:GetClosestPlayer())
 end
 
 function RocknailFlayer_OnLeaveCombat(pUnit,Event)
@@ -8087,7 +8044,7 @@ function RocknailRipper_OnEnterCombat(pUnit,Event)
 end
 
 function RocknailRipper_Rip(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37937,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37937, pUnit:GetClosestPlayer())
 end
 
 function RocknailRipper_OnLeaveCombat(pUnit,Event)
@@ -8114,11 +8071,11 @@ end
 end
 
 function RuulTheDarkener_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15284,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15284, pUnit:GetClosestPlayer())
 end
 
 function RuulTheDarkener_Spellbreaker(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 
 function RuulTheDarkener_OnLeaveCombat(pUnit,Event)
@@ -8135,13 +8092,13 @@ RegisterUnitEvent(21315, 2, "RuulTheDarkener_OnLeaveCombat")
 RegisterUnitEvent(21315, 4, "RuulTheDarkener_OnDied")
 
 function RuulsNetherdrake_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38344,pUnit:GetClosestPlayer())
-	pUnit:FullCastSpellOnTarget(36513,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38344, pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36513, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("RuulsNetherdrake_ArcaneBlast", 000, 0)
 end
 
 function RuulsNetherdrake_ArcaneBlast(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38344,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38344, pUnit:GetClosestPlayer())
 end
 
 function RuulsNetherdrake_OnDied(pUnit,Event)
@@ -8157,7 +8114,7 @@ RegisterUnitEvent(22106, 2, "RuulsNetherdrake_OnLeaveCombat")
 RegisterUnitEvent(22106, 4, "RuulsNetherdrake_OnDied")
 
 function SanctumDefender_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(41440,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(41440, pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(23435, 1, "SanctumDefender_OnEnterCombat")
@@ -8167,7 +8124,7 @@ function ScorchshellPincer_OnEnterCombat(pUnit,Event)
 end
 
 function ScorchshellPincer_BurningPoison(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15284,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15284, pUnit:GetClosestPlayer())
 end
 
 function ScorchshellPincer_OnLeaveCombat(pUnit,Event)
@@ -8212,7 +8169,7 @@ function ScryerCavalier_OnEnterCombat(pUnit,Event)
 end
 
 function ScryerCavalier_Spellbreaker(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 
 function ScryerCavalier_OnLeaveCombat(pUnit,Event)
@@ -8234,15 +8191,15 @@ function ScryerGuardian_OnEnterCombat(pUnit,Event)
 end
 
 function ScryerGuardian_Fireball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15228,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15228, pUnit:GetClosestPlayer())
 end
 
 function ScryerGuardian_Scorch(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17195,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17195, pUnit:GetClosestPlayer())
 end
 
 function ScryerGuardian_Slow(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11436,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11436, pUnit:GetClosestPlayer())
 end
 
 function ScryerGuardian_OnLeaveCombat(pUnit,Event)
@@ -8262,7 +8219,7 @@ function SeasonedMagister_OnEnterCombat(pUnit,Event)
 end
 
 function SeasonedMagister_Fireball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15228,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15228, pUnit:GetClosestPlayer())
 end
 
 function SeasonedMagister_OnLeaveCombat(pUnit,Event)
@@ -8284,11 +8241,11 @@ function ShadowCouncilWarlock_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowCouncilWarlock_DrainLife(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37992,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37992, pUnit:GetClosestPlayer())
 end
 
 function ShadowCouncilWarlock_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function ShadowCouncilWarlock_OnLeaveCombat(pUnit,Event)
@@ -8311,11 +8268,11 @@ function ShadowhoofAssassin_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowhoofAssassin_DebilitatingStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37577,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37577, pUnit:GetClosestPlayer())
 end
 
 function ShadowhoofAssassin_SinisterStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(14873,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(14873, pUnit:GetClosestPlayer())
 end
 
 function ShadowhoofAssassin_OnLeaveCombat(pUnit,Event)
@@ -8337,11 +8294,11 @@ function ShadowhoofSummoner_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowhoofSummoner_CurseOfTongues(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13338,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13338, pUnit:GetClosestPlayer())
 end
 
 function ShadowhoofSummoner_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function ShadowhoofSummoner_OnLeaveCombat(pUnit,Event)
@@ -8367,23 +8324,23 @@ function ShadowlordDeathwail_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowlordDeathwail_DeathCoil(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32709,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32709, pUnit:GetClosestPlayer())
 end
 
 function ShadowlordDeathwail_Fear(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(27641,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(27641, pUnit:GetClosestPlayer())
 end
 
 function ShadowlordDeathwail_FelFireball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38312,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38312, pUnit:GetClosestPlayer())
 end
 
 function ShadowlordDeathwail_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12471,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12471, pUnit:GetClosestPlayer())
 end
 
 function ShadowlordDeathwail_ShadowBoltVolley(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15245,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15245, pUnit:GetClosestPlayer())
 end
 
 function ShadowlordDeathwail_OnLeaveCombat(pUnit,Event)
@@ -8404,12 +8361,12 @@ function ShadowmoonChosen_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowmoonChosen_Uppercut(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(10966,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(10966, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonChosen_Whirlwind(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38619,pUnit:GetClosestPlayer())
-	pUnit:FullCastSpellOnTarget(38618,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38619, pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38618, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonChosen_OnLeaveCombat(pUnit,Event)
@@ -8432,19 +8389,19 @@ function ShadowmoonDarkweaver_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowmoonDarkweaver_Immolate(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(11962,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(11962, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonDarkweaver_NetherInfusion(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38446,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38446, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonDarkweaver_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonDarkweaver_Shadowfury(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35373,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35373, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonDarkweaver_OnLeaveCombat(pUnit,Event)
@@ -8469,7 +8426,7 @@ function ShadowmoonRetainer_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowmoonRetainer_Shoot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15547,pUnit:GetRandomPlayer(3))
+	pUnit:FullCastSpellOnTarget(15547, pUnit:GetRandomPlayer(3))
 end
 
 function ShadowmoonRetainer_OnLeaveCombat(pUnit,Event)
@@ -8485,12 +8442,12 @@ RegisterUnitEvent(22102, 2, "ShadowmoonRetainer_OnLeaveCombat")
 RegisterUnitEvent(22102, 4, "ShadowmoonRetainer_OnDied")
 
 function ShadowmoonSlayer_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(3019,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(3019, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("ShadowmoonSlayer_DebilitatingStrike", 20000, 0)
 end
 
 function ShadowmoonSlayer_DebilitatingStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37577,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37577, pUnit:GetClosestPlayer())
 end
 
 function ShadowmoonSlayer_OnLeaveCombat(pUnit,Event)
@@ -8512,15 +8469,15 @@ function ShadowswornDrakonid_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowswornDrakonid_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function ShadowswornDrakonid_MortalStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17547,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(17547, pUnit:GetClosestPlayer())
 end
 
 function ShadowswornDrakonid_SunderArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(16145,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(16145, pUnit:GetClosestPlayer())
 end
 
 function ShadowswornDrakonid_OnLeaveCombat(pUnit,Event)
@@ -8540,7 +8497,7 @@ function ShadowwingOwl_OnEnterCombat(pUnit,Event)
 end
 
 function ShadowwingOwl_EagleClaw(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function ShadowwingOwl_OnLeaveCombat(pUnit,Event)
@@ -8556,12 +8513,12 @@ RegisterUnitEvent(22265, 2, "ShadowwingOwl_OnLeaveCombat")
 RegisterUnitEvent(22265, 4, "ShadowwingOwl_OnDied")
 
 function SkethylOwl_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38254,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38254, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("SkethylOwl_TerrifyingScreech", 14000, 0)
 end
 
 function SkethylOwl_TerrifyingScreech(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38021,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38021, pUnit:GetClosestPlayer())
 end
 
 function SkethylOwl_OnLeaveCombat(pUnit,Event)
@@ -8582,11 +8539,11 @@ function SmithGorlunk_OnEnterCombat(pUnit,Event)
 end
 
 function SmithGorlunk_Rend(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13445,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13445, pUnit:GetClosestPlayer())
 end
 
 function SmithGorlunk_SunderArmor(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13444,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(13444, pUnit:GetClosestPlayer())
 end
 
 function SmithGorlunk_OnLeaveCombat(pUnit,Event)
@@ -8602,12 +8559,12 @@ RegisterUnitEvent(22037, 2, "SmithGorlunk_OnLeaveCombat")
 RegisterUnitEvent(22037, 4, "SmithGorlunk_OnDied")
 
 function SonOfCorok_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12612,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12612, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("SonOfCorok_Stomp", 15000, 0)
 end
 
 function SonOfCorok_Stomp(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12612,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12612, pUnit:GetClosestPlayer())
 end
 
 function SonOfCorok_OnLeaveCombat(pUnit,Event)
@@ -8623,7 +8580,7 @@ RegisterUnitEvent(19824, 2, "SonOfCorok_OnLeaveCombat")
 RegisterUnitEvent(19824, 4, "SonOfCorok_OnDied")
 
 function SpawnOfUvuros_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36405,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36405, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("SpawnOfUvuros_Bite", 4000, 0)
 	pUnit:RegisterEvent("SpawnOfUvuros_DoubleBreath", 15000, 0)
 	pUnit:RegisterEvent("SpawnOfUvuros_Growl", 1000, 1)
@@ -8632,23 +8589,23 @@ function SpawnOfUvuros_OnEnterCombat(pUnit,Event)
 end
 
 function SpawnOfUvuros_Bite(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(27050,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(27050, pUnit:GetClosestPlayer())
 end
 
 function SpawnOfUvuros_DoubleBreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36406,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36406, pUnit:GetClosestPlayer())
 end
 
 function SpawnOfUvuros_Growl(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(14921,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(14921, pUnit:GetClosestPlayer())
 end
 
 function SpawnOfUvuros_LavaBreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(58610,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(58610, pUnit:GetClosestPlayer())
 end
 
 function SpawnOfUvuros_Stomp(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36405,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36405, pUnit:GetClosestPlayer())
 end
 
 function SpawnOfUvuros_OnLeaveCombat(pUnit,Event)
@@ -8669,11 +8626,11 @@ function SpellboundTerrorguard_OnEnterCombat(pUnit,Event)
 end
 
 function SpellboundTerrorguard_FelFlames(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37488,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37488, pUnit:GetClosestPlayer())
 end
 
 function SpellboundTerrorguard_Hamstring(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(31553,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(31553, pUnit:GetClosestPlayer())
 end
 
 function SpellboundTerrorguard_OnLeaveCombat(pUnit,Event)
@@ -8694,11 +8651,11 @@ function SummonerSkartax_OnEnterCombat(pUnit,Event)
 end
 
 function SummonerSkartax_Incinerate(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38401,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38401, pUnit:GetClosestPlayer())
 end
 
 function SummonerSkartax_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(12471,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(12471, pUnit:GetClosestPlayer())
 end
 
 function SummonerSkartax_OnLeaveCombat(pUnit,Event)
@@ -8719,11 +8676,11 @@ function SunfuryBloodLord_OnEnterCombat(pUnit,Event)
 end
 
 function SunfuryBloodLord_DebilitatingStrike(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37577,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37577, pUnit:GetClosestPlayer())
 end
 
 function SunfuryBloodLord_TorrentOfFlames(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(36104,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(36104, pUnit:GetClosestPlayer())
 end
 
 function SunfuryBloodLord_OnLeaveCombat(pUnit,Event)
@@ -8744,7 +8701,7 @@ function SunfuryEradicator_OnEnterCombat(pUnit,Event)
 end
 
 function SunfuryEradicator_FlashHeal(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(17137,pUnit:GetRandomFriend())
+	pUnit:FullCastSpellOnTarget(17137, pUnit:GetRandomFriend())
 end
 
 function SunfuryEradicator_OnLeaveCombat(pUnit,Event)
@@ -8766,7 +8723,7 @@ function SunfurySummoner_OnEnterCombat(pUnit,Event)
 end
 
 function SunfurySummoner_ArcaneBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(13901,pUnit:GetRandomFriend())
+	pUnit:FullCastSpellOnTarget(13901, pUnit:GetRandomFriend())
 end
 
 function SunfurySummoner_Blink(pUnit,Event)
@@ -8793,11 +8750,11 @@ function SunfuryWarlock_OnEnterCombat(pUnit,Event)
 end
 
 function SunfuryWarlock_Incinerate(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32707,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32707, pUnit:GetClosestPlayer())
 end
 
 function SunfuryWarlock_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(9613,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(9613, pUnit:GetClosestPlayer())
 end
 
 function SunfuryWarlock_OnLeaveCombat(pUnit,Event)
@@ -8818,11 +8775,11 @@ function Terrormaster_OnEnterCombat(pUnit,Event)
 end
 
 function Terrormaster_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15496,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15496, pUnit:GetClosestPlayer())
 end
 
 function Terrormaster_Fear(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38154,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38154, pUnit:GetClosestPlayer())
 end
 
 function Terrormaster_OnLeaveCombat(pUnit,Event)
@@ -8844,7 +8801,7 @@ function Theras_OnEnterCombat(pUnit,Event)
 end
 
 function Theras_ManaBurn(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39262,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39262, pUnit:GetClosestPlayer())
 end
 
 function Theras_Metamorphosis(pUnit,Event)
@@ -8854,7 +8811,7 @@ end
 end
 
 function Theras_Spellbreaker(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35871,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35871, pUnit:GetClosestPlayer())
 end
 
 function Theras_OnLeaveCombat(pUnit,Event)
@@ -8876,11 +8833,11 @@ function TorlothTheMagnificent_OnEnterCombat(pUnit,Event)
 end
 
 function TorlothTheMagnificent_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15284,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15284, pUnit:GetClosestPlayer())
 end
 
 function TorlothTheMagnificent_Shadowfury(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39082,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39082, pUnit:GetClosestPlayer())
 end
 
 function TorlothTheMagnificent_SpellReflection(pUnit,Event)
@@ -8905,11 +8862,11 @@ function Umberhowl_OnEnterCombat(pUnit,Event)
 end
 
 function Umberhowl_ChillingHowl(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32918,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32918, pUnit:GetClosestPlayer())
 end
 
 function Umberhowl_Snarl(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(32919,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(32919, pUnit:GetClosestPlayer())
 end
 
 function Umberhowl_OnLeaveCombat(pUnit,Event)
@@ -8933,23 +8890,23 @@ function Uvuros_OnEnterCombat(pUnit,Event)
 end
 
 function Uvuros_Bite(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(27050,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(27050, pUnit:GetClosestPlayer())
 end
 
 function Uvuros_DoubleBreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38361,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38361, pUnit:GetClosestPlayer())
 end
 
 function Uvuros_Growl(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(27047,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(27047, pUnit:GetClosestPlayer())
 end
 
 function Uvuros_LavaBreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(58610,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(58610, pUnit:GetClosestPlayer())
 end
 
 function Uvuros_TerrifyingRoar(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(37939,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(37939, pUnit:GetClosestPlayer())
 end
 
 function Uvuros_OnLeaveCombat(pUnit,Event)
@@ -8970,11 +8927,11 @@ function Uylaru_OnEnterCombat(pUnit,Event)
 end
 
 function Uylaru_CorruptedSearingTotem(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38581,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38581, pUnit:GetClosestPlayer())
 end
 
 function Uylaru_FlameShock(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15039,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15039, pUnit:GetClosestPlayer())
 end
 
 function Uylaru_OnLeaveCombat(pUnit,Event)
@@ -8994,7 +8951,7 @@ function ValzareqTheConqueror_OnEnterCombat(pUnit,Event)
 end
 
 function ValzareqTheConqueror_Shoot(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38094,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38094, pUnit:GetClosestPlayer())
 end
 
 function ValzareqTheConqueror_OnLeaveCombat(pUnit,Event)
@@ -9016,7 +8973,7 @@ function Varedis_OnEnterCombat(pUnit,Event)
 end
 
 function Varedis_CurseOfFlames(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38010,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38010, pUnit:GetClosestPlayer())
 end
 
 function Varedis_Evasion(pUnit,Event)
@@ -9024,7 +8981,7 @@ function Varedis_Evasion(pUnit,Event)
 end
 
 function Varedis_ManaBurn(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(39262,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(39262, pUnit:GetClosestPlayer())
 end
 
 function Varedis_OnLeaveCombat(pUnit,Event)
@@ -9051,11 +9008,11 @@ function VilewingChimaera_OnEnterCombat(pUnit,Event)
 end
 
 function VilewingChimaera_FroststormBreath(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(55491,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(55491, pUnit:GetClosestPlayer())
 end
 
 function VilewingChimaera_VenomSpit(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(16552,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(16552, pUnit:GetClosestPlayer())
 end
 
 function VilewingChimaera_OnLeaveCombat(pUnit,Event)
@@ -9076,11 +9033,11 @@ function WarbringerRazuun_OnEnterCombat(pUnit,Event)
 end
 
 function WarbringerRazuun_FelFireball(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(35913,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(35913, pUnit:GetClosestPlayer())
 end
 
 function WarbringerRazuun_MindWarp(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38047,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38047, pUnit:GetClosestPlayer())
 end
 
 function WarbringerRazuun_OnLeaveCombat(pUnit,Event)
@@ -9096,13 +9053,13 @@ RegisterUnitEvent(21287, 2, "WarbringerRazuun_OnLeaveCombat")
 RegisterUnitEvent(21287, 4, "WarbringerRazuun_OnDied")
 
 function WildhammerScout_OnEnterCombat(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33808,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33808, pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("WildhammerScout_ThrowHammer", 6000, 0)
 end
 
 function WildhammerScout_ThrowHammer(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33805,pUnit:GetClosestPlayer())
-	pUnit:FullCastSpellOnTarget(33806,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33805, pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33806, pUnit:GetClosestPlayer())
 end
 
 function WildhammerScout_OnLeaveCombat(pUnit,Event)
@@ -9122,7 +9079,7 @@ function Wrathstalker_OnEnterCombat(pUnit,Event)
 end
 
 function Wrathstalker_Cleave(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(33805,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(33805, pUnit:GetClosestPlayer())
 end
 
 function Wrathstalker_OnLeaveCombat(pUnit,Event)
@@ -9181,7 +9138,7 @@ function Zandras_OnEnterCombat(pUnit,Event)
 end
 
 function Zandras_FelShackles(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(38051,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(38051, pUnit:GetClosestPlayer())
 end
 
 function Zandras_OnLeaveCombat(pUnit,Event)

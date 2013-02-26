@@ -1,5 +1,15 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 function Gromtor_OnEnterCombat(Unit,Event)
-	Unit:FullCastSpellOnTarget(26281,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(26281, Unit:GetClosestPlayer())
 	Unit:RegisterEvent("Gromtor_SunderArmor", 120000, 0)
 	Unit:RegisterEvent("Gromtor_ShieldWall", 22000, 0)
 	Unit:RegisterEvent("Gromtor_ShieldBlock", 40000, 0)
@@ -8,23 +18,23 @@ function Gromtor_OnEnterCombat(Unit,Event)
 end
 
 function Gromtor_SunderArmor(Unit,Event)
-	Unit:FullCastSpellOnTarget(16145,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(16145, Unit:GetClosestPlayer())
 end
 
 function Gromtor_ShieldWall(Unit,Event)
-	Unit:FullCastSpellOnTarget(15062,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(15062, Unit:GetClosestPlayer())
 end
 
 function Gromtor_ShieldBlock(Unit,Event)
-	Unit:FullCastSpellOnTarget(12169,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(12169, Unit:GetClosestPlayer())
 end
 
 function Gromtor_HeroicStrike(Unit,Event)
-	Unit:FullCastSpellOnTarget(29426,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(29426, Unit:GetClosestPlayer())
 end
 
 function Gromtor_BattleShout(Unit,Event)
-	Unit:FullCastSpellOnTarget(31403,Unit:GetClosestPlayer())
+	Unit:FullCastSpellOnTarget(31403, Unit:GetClosestPlayer())
 end
 
 function Gromtor_OnLeaveCombat(Unit,Event)

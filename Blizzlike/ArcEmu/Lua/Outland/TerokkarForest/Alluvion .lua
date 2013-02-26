@@ -1,48 +1,32 @@
---[[ Terokkar Forest -- Accursed Apparition.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Mager; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by Mager of the BLUA Scripting Project. 
-Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- Mager, July, 27th, 2008. ]]
-
--- Note all the randomizations of my scripts
--- Randomizing to simulate the non garunteed spell casting
--- Such as the way blizzard npcs dont cast everything the 
--- ever 3 secs its always random
-
-
-function Aluvion_FrostNova(Unit) -- Frost nova spell
-	local casting = Unit:IsCasting()
-	if(casting == false) then
+function Aluvion_FrostNova(Unit)
+	if(Unit:IsCasting() == false) then
 		Unit:CastSpell(15063)
-	end
-	if(casting == true) then
-		Unit:CancelSpell(38669) -- This may or may not work im unsure never used this command
-	end
-end
-
-function Aluvion_WaterBolt(Unit) -- WaterBolt Spell
-	local casting = Unit:IsCasting()
-	if(casting == false) then
-		Unit:FullCastSpellOnTarget(38669)
-	end
-	if(casting == true) then
-		print("Spell Interupted due to Frostnova is casting")
+	elseif(Unit:IsCasting() == true) then
 		Unit:CancelSpell(38669)
 	end
 end
 
---Time to Randomize
-function Aluvion_OnEnterCombat(Unit, event)
-	local frost = math.random(5300,7200)
-	local water = math.random(2600,5700)
-	Unit:RegisterEvent("Aluvion_FrostNova", frost, 0)
-	Unit:RegisterEvent("Aluvion_WaterBolt", water, 0)
+function Aluvion_WaterBolt(Unit)
+	if(Unit:IsCasting() == false) then
+		Unit:FullCastSpellOnTarget(38669)
+	elseif(Unit:IsCasting() == true) then
+		Unit:CancelSpell(38669)
+	end
+end
+
+function Aluvion_OnEnterCombat(Unit, Event)
+	Unit:RegisterEvent("Aluvion_FrostNova", math.random(5300,7200), 0)
+	Unit:RegisterEvent("Aluvion_WaterBolt", math.random(2600,5700), 0)
 	Unit:FullCastSpellOnTarget(38669)
 end
 

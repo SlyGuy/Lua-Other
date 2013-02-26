@@ -1,31 +1,29 @@
---[[ Netherstorm -- Porfus the Gem Gorger.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BlackHer0; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by BlackHer0 of the BLUA Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- BlackHer0, September, 30th, 2008. ]]
-
-function Porfus_OnEnterCombat(Unit,Event)
-    Unit:RegisterEvent("Porfus_Hamstring",5000,0)
+function Porfus_OnEnterCombat(Unit, Event)
+    Unit:RegisterEvent("Porfus_Hamstring", 5000, 0)
 end
 
-function Porfus_Hamstring(Unit,Event)
-    Unit:FullCastSpellOnTarget(31553,Unit:GetMainTank())
+function Porfus_Hamstring(Unit, Event)
+    Unit:FullCastSpellOnTarget(31553, Unit:MainTank())
 end   
     
-function Porfus_OnLeaveCombat(Unit,Event)
+function Porfus_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function Porfus_OnDied(Unit,Event)
+function Porfus_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-RegisterUnitEvent (20783, 1, "Porfus_OnEnterCombat")
-RegisterUnitEvent (20783, 2, "Porfus_OnLeaveCombat")
-RegisterUnitEvent (20783, 4, "Porfus_OnDied")
+RegisterUnitEvent(20783, 1, "Porfus_OnEnterCombat")
+RegisterUnitEvent(20783, 2, "Porfus_OnLeaveCombat")
+RegisterUnitEvent(20783, 4, "Porfus_OnDied")

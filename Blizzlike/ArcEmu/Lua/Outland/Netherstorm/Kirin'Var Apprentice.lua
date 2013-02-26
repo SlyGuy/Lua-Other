@@ -1,31 +1,29 @@
---[[ Netherstorm -- Kirin'Var Apprentice.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BlackHer0; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by BlackHer0 of the BLUA Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- BlackHer0, August, 2th, 2008. ]]
-
-function Apprentice_OnEnterCombat(Unit,Event)
-    Unit:RegisterEvent("Apprentice_Hammer",1500,0)
+function Apprentice_OnEnterCombat(Unit, Event)
+    Unit:RegisterEvent("Apprentice_Hammer", 1500, 0)
 end
 
-function Apprentice_Hammer(Unit,Event)
-    Unit:FullCastSpellOnTarget(37554,Unit:GetClosestPlayer())
+function Apprentice_Hammer(Unit, Event)
+    Unit:FullCastSpellOnTarget(37554, Unit:ClosestPlayer())
 end
 
-function Apprentice_OnLeaveCombat(Unit,Event)
+function Apprentice_OnLeaveCombat(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-function Apprentice_OnDied(Unit,Event)
+function Apprentice_OnDied(Unit, Event)
 	Unit:RemoveEvents()
 end
 
-RegisterUnitEvent (20409, 1, "Apprentice_OnEnterCombat")
-RegisterUnitEvent (20409, 2, "Apprentice_OnLeaveCombat")
-RegisterUnitEvent (20409, 4, "Apprentice_OnDied")
+RegisterUnitEvent(20409, 1, "Apprentice_OnEnterCombat")
+RegisterUnitEvent(20409, 2, "Apprentice_OnLeaveCombat")
+RegisterUnitEvent(20409, 4, "Apprentice_OnDied")
