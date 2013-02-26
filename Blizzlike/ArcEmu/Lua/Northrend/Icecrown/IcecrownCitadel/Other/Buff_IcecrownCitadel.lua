@@ -1,20 +1,22 @@
---//////////////////////////////////
---////   Holystone Productions  ////
---////       Copy Right         ////
---////  Blizzlike Repack v 1.0  ////
---//////////////////////////////////
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Holystone Productions; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function ICC_Buffs(event, plr)
 	pRace = plr:GetPlayerRace()
-
-	if pRace == 2 or pRace == 5 or pRace == 6 or pRace == 8 or pRace == 10 then
+	if((pRace == 2) or (pRace == 5) or (pRace == 6) or (pRace == 8) or (pRace == 10)) then
 		pRace = "H"
 	else
 		pRace = "A"
 	end
-
-	if (plr:GetMapId() == 631) then
-		if (plr:HasAura(69127) == false) then
+	if(plr:GetMapId() == 631) then
+		if(plr:HasAura(69127) == false) then
 			plr:CastSpell(69127)
 			if(pRace == "H") then
 				plr:CastSpell(73822)
@@ -23,8 +25,8 @@ function ICC_Buffs(event, plr)
 			end
 		end
 	else
-		if (plr:GetMapId() ~= 631) then
-			if (plr:HasAura(69127) == true) then
+		if(plr:GetMapId() ~= 631) then
+			if(plr:HasAura(69127) == true) then
 				plr:RemoveAura(69127)
 				if(pRace == "H") then
 					plr:RemoveAura(73822)

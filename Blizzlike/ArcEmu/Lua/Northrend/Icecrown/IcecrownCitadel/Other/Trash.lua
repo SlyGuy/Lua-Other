@@ -1,3 +1,13 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 INSTANCEID = {}
 
 function TheDamned_OnCombat(pUnit, event)
@@ -32,8 +42,7 @@ end
 
 function ShieldBash(pUnit, event)
 	INSTANCEID[tostring(pUnit)] = pUnit
-	local tank = pUnit:GetMainTank()
-	pUnit:FullCastSpellOnTarget(70964, tank)
+	pUnit:FullCastSpellOnTarget(70964, pUnit:GetMainTank())
 end
 
 function SkeletalSoldier_OnLeaveCombat(pUnit, event)
@@ -57,8 +66,7 @@ end
 
 function GlacialBlast(pUnit, event)
 	INSTANCEID[tostring(pUnit)] = pUnit
-	local tank = pUnit:GetMainTank()
-	pUnit:FullcastSpellOnTarget(71029, tank)
+	pUnit:FullcastSpellOnTarget(71029, pUnit:GetMainTank())
 end
 
 function Servant_OnLeaveCombat(pUnit, event)
@@ -84,14 +92,13 @@ WARDEN = {
 
 function Deathbound_Declare(pUnit, event)
 	local SpawnId = pUnit:GetSpawnId()
-	
-	if SpawnId == 134153 then
+	if(SpawnId == 134153) then
 		WARDEN[A] = GetLocalCreature(37007):GetSpawnId(134153)
-	elseif SpawnId == 134154 then
+	elseif(SpawnId == 134154) then
 		WARDEN[B] = GetLocalCreature(37007):GetSpawnId(134154)
-	elseif SpawnId == 134155 then
+	elseif(SpawnId == 134155) then
 		WARDEN[C] = GetLocalCreature(37007):GetSpawnId(134155)
-	elseif SpawnId == 134156 then
+	elseif(SpawnId == 134156) then
 		WARDEN[D] = GetLocalCreature(37007):GetSpawnId(134156)
 	end
 end
@@ -134,27 +141,27 @@ TRAP = {
 function Traps_Declare(pMisc, event)
 	pMisc:SetUInt32Value(0x0006+0x0003,0x1)
 	local spawnid = pMisc:GetSpawnId()
-	if SpawnId == 53349 then
+	if(SpawnId == 53349) then
 		TRAP[A] = GetLocalGameObject(201814):GetSpawnId(80968)
-	elseif SpawnId == 53350 then
+	elseif(SpawnId == 53350) then
 		TRAP[B] = GetLocalGameObject(201814):GetSpawnId(80969)
-	elseif SpawnId == 53351 then
+	elseif(SpawnId == 53351) then
 		TRAP[C] = GetLocalGameObject(201814):GetSpawnId(58613)
-	RegisterTimedEvent("Traps_CheckDistance", 1000, 0)
 	end
+	RegisterTimedEvent("Traps_CheckDistance", 1000, 0)
 end
 
 function Traps_CheckDistance(...)
 	for _,v in pairs(GetPlayersInMap(631)) do
-		if v:GetDistance(TRAP[A]) <= 3 then
+		if(v:GetDistance(TRAP[A]) <= 3) then
 			WARDEN[A]:MoveToUnit(v)
 			TRAP[A]:Activate()
 			TRAP[A]:Despawn(0, 12000)
-		elseif v:GetDistance(TRAP[B]) <= 3 then
+		elseif(v:GetDistance(TRAP[B]) <= 3) then
 			WARDEN[B]:MoveToUnit(v)
 			TRAP[B]:Activate()
 			TRAP[B]:Despawn(0, 12000)
-		elseif v:GetDistance(TRAP[C]) <= 3 then
+		elseif(v:GetDistance(TRAP[C]) <= 3) then
 			WARDEN[C]:MoveToUnit(v)
 			WARDEN[D]:MoveToUnit(v)
 			TRAP[C]:Activate()

@@ -1,4 +1,12 @@
---[[
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]--[[
 17268	IC_Deathwhisper_Event01B
 17269	IC_Deathwhisper_Event01C
 17270	IC_Deathwhisper_Event02A
@@ -38,8 +46,7 @@ Lady Deathwhisper yells: Through our Master, all things are possible. His power 
 Lady Deathwhisper yells: What is this disturbance? You dare trespass upon this hallowed ground? This shall be your final resting place!
 Lady Deathwhisper yells: You are weak, powerless to resist my will!
 Lady Deathwhisper yells: You can see through the fog that hangs over this world like a shroud, and grasp where true power lies.
-Lady Deathwhisper yells: You have found your way here, because you are among the few gifted with true vision in a world cursed with blindness.
-]]--
+Lady Deathwhisper yells: You have found your way here, because you are among the few gifted with true vision in a world cursed with blindness.]]--
 
 function Ladydeathwhisper_OnCombat (pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "What is this Disturbance? You dare trespass on this hallowed ground? This shall be your final resting place!")
@@ -56,21 +63,17 @@ function Ladydeathwhisper_Shadowbolt (pUnit, Event)
 end
 
 function Ladydeathwhisper_Deathdecay(pUnit, Event)
-local plr = pUnit:GetRandomPlayer(0)
-local x = plr:GetX()
-local y = plr:GetY()
-local z = plr:GetZ()
-	pUnit:CastSpellAoF(x, y, z,71001)
+	pUnit:CastSpellAoF(pUnit:GetRandomPlayer(0):GetX(), pUnit:GetRandomPlayer(0):GetY(), pUnit:GetRandomPlayer(0):GetZ(),71001)
 end
 	
 function Ladydeathwhisper_Adds (pUnit, Event)
-local Addsspawn = math.random (1, 2)
-	if (Addsspawn== 1) then
+local Addsspawn = math.random (1,2)
+	if(Addsspawn == 1) then
 		pUnit:SpawnCreature(37890, -578.671448, 2159.502441, 50.848782, o, 14,80000)
 		pUnit:SpawnCreature(37890, -619.650757, 2156.278076, 50.847198, o, 14,80000)
 		pUnit:SpawnCreature(37949, -598.325012, 2157.934570, 50.848740, o, 14,80000)
 		pUnit:SendChatMessage(42, 0, "Two Cult Fanatics and a Cult Adherent join the fight!")
-	elseif (Addsspawn== 2) then
+	elseif(Addsspawn == 2) then
 		pUnit:SpawnCreature(37949,-578.049744,2264.405518,50.848717, o, 14,80000)
 		pUnit:SpawnCreature(37890,-598.825073,2264.582764,50.848755, o, 14,80000)
 		pUnit:SpawnCreature(37949,-619.350220,2263.978516,50.848755, o, 14,80000)
@@ -79,7 +82,7 @@ local Addsspawn = math.random (1, 2)
 end
 
 function Ladydeathwhisper_Changeover(pUnit, Event)
-	if pUnit:GetHealthPct() < 5 then
+	if(pUnit:GetHealthPct() < 5) then
 		pUnit:SendChatMessage(42, 0, "The Mana Barrier fades!")
 		pUnit:SendChatMessage(14, 0, "This charade has gone on long enough!")
 		pUnit:RemoveEvents()
@@ -93,27 +96,21 @@ function Ladydeathwhisper_Changeover(pUnit, Event)
 	end
 end
 
-	
-	
 function Ladydeathwhisper_Deathdecay2(pUnit, Event)
-local plr = pUnit:GetRandomPlayer(0)
-local x = plr:GetX()
-local y = plr:GetY()
-local z = plr:GetZ()
-	pUnit:CastSpellAoF(x, y, z,71001)
+	pUnit:CastSpellAoF(pUnit:GetRandomPlayer(0):GetX(), pUnit:GetRandomPlayer(0):GetY(), pUnit:GetRandomPlayer(0):GetZ(),71001)
 end
 
-function Ladydeathwhisper_Frostbolt (pUnit, Event)
-	pUnit:FullCastSpellOnTarget(71420,pUnit:GetMainTank())
+function Ladydeathwhisper_Frostbolt(pUnit, Event)
+	pUnit:FullCastSpellOnTarget(71420, pUnit:GetMainTank())
 end	
 
 function Ladydeathwhisper_Agrocurse(pUnit, Event)
-	pUnit:FullCastSpellOnTarget(71204,pUnit:GetMainTank())
+	pUnit:FullCastSpellOnTarget(71204, pUnit:GetMainTank())
 end 
 
-function Ladydeathwhisper_OnKillPlr (pUnit, Event)
-local chance = math.random(1, 2)
-	if (chance == 1) then
+function Ladydeathwhisper_OnKillPlr(pUnit, Event)
+local chance = math.random(1,2)
+	if(chance == 1) then
 		pUnit:SendChatMessage(14, 0, "Embrace the darkness... darkness eternal.")
 		pUnit:PlaySoundToSet(16942)
 	else
@@ -121,25 +118,23 @@ local chance = math.random(1, 2)
 	end
 end
 	
-function Ladydeathwhisper_OnDeath (pUnit, Event)
+function Ladydeathwhisper_OnDeath(pUnit, Event)
 	pUnit:RemoveEvents()
 	pUnit:RemoveAllAuras()
 	pUnit:SendChatMessage(14, 0, "All part of the Master's plan.... Your end is inevitable....")
 end
 
-function Ladydeathwhisper_OnLeaveCombat (pUnit, Event)
+function Ladydeathwhisper_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 	pUnit:RemoveAllAuras()
 	pUnit:SetMana(3346800)
 end
 
 function Deathwhisper_ManaBarrier(pUnit, Event, player, damage)
-local mana = pUnit:GetMana()
-local hp = pUnit:GetHealth()
-	if pUnit:HasAura(70842) then --Checks if she has Mana Barrier
-		pUnit:SetHealth(hp + damage)
-		pUnit:SetMana(mana - damage)
-		if pUnit:GetManaPct() == 0 then
+	if(pUnit:HasAura(70842)) then
+		pUnit:SetHealth(pUnit:GetHealth() + damage)
+		pUnit:SetMana(pUnit:GetMana() - damage)
+		if(pUnit:GetManaPct() == 0) then
 			pUnit:RemoveAura(70842)
 		end
 	end

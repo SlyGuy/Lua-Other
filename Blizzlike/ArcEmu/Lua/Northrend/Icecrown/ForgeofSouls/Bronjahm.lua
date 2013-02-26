@@ -1,4 +1,14 @@
-function Bronjahm_OnCombat (pUnit, Event)
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
+function Bronjahm_OnCombat(pUnit, Event)
 	pUnit:SendChatMessage(12, 0, "Finally a captive audience!")
 	pUnit:PlaySoundToSet(16595)
 	pUnit:RegisterEvent("Bronjahm_Magicbane", 5000, 0)
@@ -6,17 +16,17 @@ function Bronjahm_OnCombat (pUnit, Event)
 	pUnit:RegisterEvent("Bronjahm_Phase1", 1000, 1)
 end
 
-function Bronjahm_Magicbane (pUnit, Event)
+function Bronjahm_Magicbane(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(68793, pUnit:GetMainTank())
 end
 
-function Bronjahm_Corruptsoul (pUnit, Event)
-	pUnit:FullCastSpellOnTarget (68839, pUnit:GetRandomPlayer(0))
-	pUnit:SendChatMessage (12, 0, "I will sever your soul from your body!")
+function Bronjahm_Corruptsoul(pUnit, Event)
+	pUnit:FullCastSpellOnTarget(68839, pUnit:GetRandomPlayer(0))
+	pUnit:SendChatMessage(12, 0, "I will sever your soul from your body!")
 end
 
 function Bronjahm_Phase1(pUnit, Event)
-	if pUnit:GetHealthPct() < 30 then
+	if(pUnit:GetHealthPct() < 30) then
 		pUnit:RemoveEvents()
 		pUnit:SendChatMessage(12, 0, "The vortex of the harvested calls to you!")
 		pUnit:RegisterEvent("Bronjahm_Teleport", 1000, 1)
@@ -40,17 +50,17 @@ function Bronjahm_Shadowbolt(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(70043, pUnit:GetMainTank())
 end
 
-function Bronjahm_OnKillPlr (pUnit, Event)
-	pUnit:SendChatMessage (12, 0, "Fodder for the engine!")
+function Bronjahm_OnKillPlr(pUnit, Event)
+	pUnit:SendChatMessage(12, 0, "Fodder for the engine!")
 	pUnit:PlaySoundToSet(16596)
 end
 
-function Bronjahm_OnDeath (pUnit, Event)
+function Bronjahm_OnDeath(pUnit, Event)
 	pUnit:RemoveEvents()
 	pUnit:PlaySoundToSet(16598)
 end
 
-function Bronjahm_OnLeaveCombat (pUnit, Event)
+function Bronjahm_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 

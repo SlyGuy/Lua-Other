@@ -1,4 +1,12 @@
---[[
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]--[[
 Highlord Tirion Fordring yells: A mighty blow has been dealt to the Lich King! You have proven yourselves as able bodied champions of the Argent Crusade. Together we will strike against Icecrown Citadel and destroy what remains of the Scourge! There is no challenge that we cannot face united!
 Highlord Tirion Fordring yells: A shallow and tragic victory. We are weaker as a whole from the losses suffered today. Who but the Lich King could benefit from such foolishness? Great warriors have lost their lives. And for what? The true threat looms ahead - the Lich King awaits us all in death.
 Highlord Tirion Fordring yells: Arthas! You are hopelessly outnumbered! Lay down Frostmourne and I will grant you a just death.
@@ -24,18 +32,14 @@ Highlord Tirion Fordring yells: Well done. You have proven yourself today-
 Highlord Tirion Fordring yells: Well fought! Your next challenge comes from the Crusade's own ranks. You will be tested against their considerable prowess.
 Highlord Tirion Fordring yells: What is the meaning of this?
 Highlord Tirion Fordring yells: You may begin!
-Highlord Tirion Fordring yells: You will first be facing three of the Grand Champions of the Tournament! These fierce contenders have beaten out all others to reach the pinnacle of skill in the joust.
-]]--
+Highlord Tirion Fordring yells: You will first be facing three of the Grand Champions of the Tournament! These fierce contenders have beaten out all others to reach the pinnacle of skill in the joust.]]--
 
-
-function Tirion_OnSpawn(pUnit, event)
+function Tirion_OnSpawn(pUnit, Event)
 	pUnit:PlaySoundToSet(16036)
 	pUnit:SendChatMessage(12, 0, "Welcome champions, you have heard the call of the Argent Crusade and you have boldly answered. It is here in the Crusaders Coliseum thatll you face your greatest challenges. Those of you that survive the riggers of the coliseum will join the Argent Crusade on its march to Icecrown Citadel.")
 end
 
-
 RegisterUnitEvent(34996, 18, "Tirion_OnSpawn")
-	
 
 function Arelas_OnGossipTalk(pUnit, event, player)
 	pUnit:GossipCreateMenu(1, player, 0)
@@ -50,9 +54,8 @@ function Arelas_OnGossipSelect(pUnit, event, player, id, intid, pmisc)
 	player:GossipComplete()
 	pUnit:SpawnLocalCreature(35604, 35, 0)
 	pUnit:Despawn(100, 0)
-	local team = player:GetTeam()
-	if(team == 0) then
-		local choice = math.random(1, 3)
+	if(player:GetTeam() == 0) then
+		local choice = math.random(1,3)
 		if(choice == 1) then
 			pUnit:SpawnCreature(12009, 737.817810, 664.172607, 412.395111, 4.754529, 14, 0)
 			pUnit:SpawnCreature(12006, 746.825989, 662.499084, 411.712555, 4.686143, 14, 0)
@@ -65,11 +68,9 @@ function Arelas_OnGossipSelect(pUnit, event, player, id, intid, pmisc)
 			pUnit:SpawnCreature(12007, 737.817810, 664.172607, 412.395111, 4.754529, 14, 0)
 			pUnit:SpawnCreature(12006, 746.825989, 662.499084, 411.712555, 4.686143, 14, 0)
 			pUnit:SpawnCreature(12005, 756.921082, 663.784058, 412.394165, 4.616966, 14, 0)
-			end
-end
-
-		if(team == 1) then
-			local weird = math.random(1, 3)
+		end
+	elseif(player:GetTeam() == 1) then
+			local weird = math.random(1,3)
 			if(weird == 1) then
 				pUnit:SpawnCreature(12000, 737.817810, 664.172607, 412.395111, 4.754529, 14, 0)
 				pUnit:SpawnCreature(12001, 746.825989, 662.499084, 411.712555, 4.686143, 14, 0)
@@ -82,40 +83,37 @@ end
 				pUnit:SpawnCreature(12002, 737.817810, 664.172607, 412.395111, 4.754529, 14, 0)
 				pUnit:SpawnCreature(12004, 746.825989, 662.499084, 411.712555, 4.686143, 14, 0)
 				pUnit:SpawnCreature(12000, 756.921082, 663.784058, 412.394165, 4.616966, 14, 0)
-			        end
-	  end
-end
-
+			end
+		end
+	end
 	if(intid == 2) then
 		player:GossipComplete()
-		end
+	end
 end
 
 RegisterUnitGossipEvent(35005, 1, "Arelas_OnGossipTalk")
 RegisterUnitGossipEvent(35005, 2, "Arelas_OnGossipSelect")
 
-function Ambrose_OnSpawn(pUnit, event)
-	local dungeon = pUnit:GetDungeonDifficulty()
-		if(dungeon == 0) then
-			pUnit:SetMaxHealth(189000)
-			pUnit:SetHealth(189000)
-			pUnit:SetMaxMana(159760)
-			pUnit:SetMana(159760)
-		elseif(dungeon == 1) then
-			pUnit:SetMaxHealth(315000)
-			pUnit:SetHealth(315000)
-			end
+function Ambrose_OnSpawn(pUnit, Event)
+	if(pUnit:GetDungeonDifficulty() == 0) then
+		pUnit:SetMaxHealth(189000)
+		pUnit:SetHealth(189000)
+		pUnit:SetMaxMana(159760)
+		pUnit:SetMana(159760)
+	elseif(pUnit:GetDungeonDifficulty() == 1) then
+		pUnit:SetMaxHealth(315000)
+		pUnit:SetHealth(315000)
+	end
 end
-			
+
 RegisterUnitEvent(12000, 18, "Ambrose_OnSpawn")
 
-function DummyArelas_OnSpawn(pUnit, event)
+function DummyArelas_OnSpawn(pUnit, Event)
 	pUnit:RegisterEvent("DummyArelas_Move", 20000, 1)
-	-- yell stuff --
 	pUnit:MoveTo(698.035217, 600.620911, 412.390625, 0.400121)
 end
 
-function DummyArelas_Move(pUnit, event)
+function DummyArelas_Move(pUnit, Event)
 	pUnit:MoveTo(704.810669, 603.286804, 412.391998, 0.449600)
 end
 

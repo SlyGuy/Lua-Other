@@ -1,23 +1,22 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2011 - 2012 
-
-          The Violet Hold
-
-
-]]
-
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 OBJECT_END = 0x0006
 UNIT_FIELD_FLAGS = OBJECT_END + 0x0034
 UNIT_FLAG_NOT_SELECTABLE = 0x02000000
 HH_VH = {}
 HH_VH.coordsDB = {}
+
 local function GetUnit(pUnit, entry)
 	for k,v in pairs(pUnit:GetInRangeUnits()) do
-		if (v:GetEntry() == entry) then
+		if(v:GetEntry() == entry) then
 			return v
 		end
 	end
@@ -35,15 +34,14 @@ local ALEX  = 48118
 local KRASS = 30658
 local K_END = 48119
 local MASTR = 48046
---Bosses--
 local LDB   = 48048
 local PSB   = 48115
 local FDB   = 48117
-----------
 
 function HH_VH.DeclareAlex(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz = pUnit
 end
+
 function HH_VH.DeclareKrasEnd(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd = pUnit
 	pUnit:SendChatMessage(14, 0, "Champions! I have returned as I promised! My queen has come to our aid.")
@@ -64,14 +62,12 @@ RegisterUnitEvent(COL1+1, 18, "HH_VH.Collection")
 RegisterUnitEvent(COL1+2, 18, "HH_VH.Collection")
 RegisterUnitEvent(COL1+3, 18, "HH_VH.Collection")
 RegisterUnitEvent(COL1+4, 18, "HH_VH.Collection")
-
 RegisterUnitEvent(ALEX, 18, "HH_VH.DeclareAlex")
 RegisterUnitEvent(K_END, 18, "HH_VH.DeclareKrasEnd")
------------------
 
 function HH_VH.DeclareMaster(pUnit, event)
 	local iid = pUnit:GetInstanceID()
-	if (HH_VH[iid] == nil) then
+	if(HH_VH[iid] == nil) then
 		HH_VH[iid] = {}
 	end
 	HH_VH[iid].Master = pUnit
@@ -96,7 +92,7 @@ function HH_VH.KrasusVisualCandy(pUnit, event)
 	HH_VH.coordsDB.K.Z = pUnit:GetZ()
 	HH_VH.coordsDB.K.O = pUnit:GetO()
 	for k,v in pairs(pUnit:GetInRangeUnits()) do
-		if (v:GetEntry() >= COL1 and v:GetEntry() <= COL1+4 and v:GetEntry() ~= COL1+3) then
+		if((v:GetEntry() >= COL1) and (v:GetEntry() <= COL1+4) and (v:GetEntry() ~= COL1+3)) then
 			v:ChannelSpell(47855, pUnit)
 		end
 	end
@@ -111,23 +107,23 @@ function HH_VH.KrasusSpeak(pUnit, event, player)
 end
 
 function HH_VH.KrasusSelect(pUnit, event, player, id, intid, code)
-	if (intid == 10) then
+	if(intid == 10) then
 		pUnit:GossipCreateMenu(70016, player, 0)
 		pUnit:GossipMenuAddItem(4, "I Accept", 11, 0)
 		pUnit:GossipMenuAddItem(4, "I Decline", 21, 0)
 		pUnit:GossipSendMenu(player)
-	elseif (intid == 11) then
+	elseif(intid == 11) then
 		pUnit:RegisterEvent("HH_VH.HH_VH.StartInstance", 2000, 1)
 		pUnit:StopChannel()
 		for k,v in pairs(pUnit:GetInRangeUnits()) do
-			if (v:GetEntry() >= COL1 and v:GetEntry() <= COL1+4) then
+			if((v:GetEntry() >= COL1) and (v:GetEntry() <= COL1+4)) then
 				v:StopChannel()
 			end
 		end
 		pUnit:SendChatMessage(12, 0, "Very well, I shall return champions you have my word!")
 		pUnit:SetUInt64Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE)
 		player:GossipComplete()
-	elseif (intid == 20 or intid == 21) then
+	elseif((intid == 20) or (intid == 21)) then
 		local name = player:GetName()
 		pUnit:SendChatMessage(12, 0, "Very well "..name..", I will hold off what I can until you are ready.")
 		player:GossipComplete()
@@ -142,7 +138,7 @@ RegisterUnitEvent(KRASS, 18, "HH_VH.KrasusVisualCandy")
 function HH_VH.StartInstance(pUnit, event)
 	local iid = pUnit:GetInstanceID()
 	pUnit:SendChatMessage(16, 0, "You can feel a dark energy fill the room.")
-	HH_VH[iid].LichKing = pUnit:SpawnCreature(48034, 1876.880005, 805.305725, 38.609207, 3.165159, 7, 0)
+	HH_VH[iid].LichKing = p	Unit:SpawnCreature(48034, 1876.880005, 805.305725, 38.609207, 3.165159, 7, 0)
 	HH_VH[iid].LichKing:Emote(11, 1)
 	HH_VH[iid].LichKing:SetUInt64Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE)
 	pUnit:PlaySoundToSet(14820)
@@ -204,19 +200,17 @@ function HH_VH.StartInstance8(pUnit, event)
 	pUnit:Despawn(7000, 0)
 	HH_VH[iid].Master:RegisterEvent("HH_VH.Wave1", 5000, 1)
 end
---////////////////////////////////////////////////////--
---                       Waves of the Instance                               --
---////////////////////////////////////////////////////--
+
 function HH_VH.Instance_Reset_Check(pUnit, event)
 	local iid = pUnit:GetInstanceID()
 	local isSomeoneAlive = false
 	for k,v in pairs(pUnit:GetInRangePlayers()) do
-		if (v:IsAlive() == true) then
+		if(v:IsAlive() == true) then
 			isSomeoneAlive = true
 			break
 		end
 	end
-	if (isSomeoneAlive == false or HH_VH[iid].resetMe == true) then
+	if((isSomeoneAlive == false) or (HH_VH[iid].resetMe == true)) then
 		pUnit:RemoveEvents()
 		pUnit:SpawnCreature(KRASS, HH_VH.coordsDB.K.X, HH_VH.coordsDB.K.Y, HH_VH.coordsDB.K.Z, HH_VH.coordsDB.K.O, 35, 0)
 		pUnit:RegisterEvent("HH_VH.Enemy_Reset_Despawn", 2000, 1)
@@ -228,25 +222,25 @@ end
 function HH_VH.Enemy_Reset_Despawn(pUnit, event)
 	local e = v:GetEntry()
     	for k,v in pairs(pUnit:GetInRangeUnits()) do
-    		if (e == SS or e == SC or e == DK or e == DKC or e == PG or e == DS) then
+    		if((e == SS) or (e == SC) or (e == DK) or (e == DKC) or (e == PG) or (e == DS)) then
 			v:Despawn(2000, 0)
 		end
-    	end
+    end
 end
 
 function HH_VH.Wave1(pUnit, event)
 	local iid = pUnit:GetInstanceID()
 	pUnit:SpawnGameObject(8000028, HH_VH.coordsDB[1].x, HH_VH.coordsDB[1].y, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 5000)
 	local mobPick = math.random(1, 3)
-	if (mobPick == 1) then
+	if(mobPick == 1) then
 		pUnit:SpawnCreature(SS, HH_VH.coordsDB[1].x + 2, HH_VH.coordsDB[1].y + 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0)
 		pUnit:SpawnCreature(SS, HH_VH.coordsDB[1].x - 2, HH_VH.coordsDB[1].y - 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0)
 		pUnit:SpawnCreature(SC, HH_VH.coordsDB[1].x + 2, HH_VH.coordsDB[1].y - 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0) --, 40345
-	elseif (mobPick == 2) then
+	elseif(mobPick == 2) then
 		pUnit:SpawnCreature(DK, HH_VH.coordsDB[1].x + 2, HH_VH.coordsDB[1].y + 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0) --,  38237
 		pUnit:SpawnCreature(DK, HH_VH.coordsDB[1].x - 2, HH_VH.coordsDB[1].y - 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0) -- , 38237
 		pUnit:SpawnCreature(DKC, HH_VH.coordsDB[1].x + 2, HH_VH.coordsDB[1].y - 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0)-- , 40343
-	elseif (mobPick == 3) then
+	elseif(mobPick == 3) then
 		pUnit:SpawnCreature(PG, HH_VH.coordsDB[1].x + 2, HH_VH.coordsDB[1].y + 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0)
 		pUnit:SpawnCreature(DS, HH_VH.coordsDB[1].x - 2, HH_VH.coordsDB[1].y - 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0)
 		pUnit:SpawnCreature(PG, HH_VH.coordsDB[1].x + 2, HH_VH.coordsDB[1].y - 2, HH_VH.coordsDB[1].z, HH_VH.coordsDB[1].o, 14, 0)
@@ -262,15 +256,15 @@ end
 function HH_VH.Waves(pUnit, event)
 	local iid = pUnit:GetInstanceID()
 	HH_VH[iid].WavesCounter = HH_VH[iid].WavesCounter + 1
-	if (HH_VH[iid].WavesCounter == 5) then
+	if(HH_VH[iid].WavesCounter == 5) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("HH_VH.Instance_Reset_Check", 5000, 0)
 		HH_VH.BossWave1(pUnit, event)
-	elseif (HH_VH[iid].WavesCounter == 11) then
+	elseif(HH_VH[iid].WavesCounter == 11) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("HH_VH.Instance_Reset_Check", 5000, 0)
 		HH_VH.BossWave2(pUnit, event)
-	elseif (HH_VH[iid].WavesCounter == 17) then
+	elseif(HH_VH[iid].WavesCounter == 17) then
 		pUnit:RemoveEvents()
 		pUnit:RegisterEvent("HH_VH.Instance_Reset_Check", 5000, 0)
 		HH_VH.BossWave3(pUnit, event)
@@ -279,17 +273,17 @@ function HH_VH.Waves(pUnit, event)
 		local WaveSelection = math.random(1, 5)
 		local mobSelection = math.random(1, 3)
 		pUnit:SpawnGameObject(8000028, HH_VH.coordsDB[WaveSelection].x, HH_VH.coordsDB[WaveSelection].y, HH_VH.coordsDB[WaveSelection].z + 4, HH_VH.coordsDB[WaveSelection].o, 5000)
-		if (mobSelection == 1) then
+		if(mobSelection == 1) then
 			pUnit:SpawnCreature(SS, HH_VH.coordsDB[WaveSelection].x + 2, HH_VH.coordsDB[WaveSelection].y + 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0)
 			pUnit:SpawnCreature(SS, HH_VH.coordsDB[WaveSelection].x - 2, HH_VH.coordsDB[WaveSelection].y - 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0)
 			pUnit:SpawnCreature(SC, HH_VH.coordsDB[WaveSelection].x + 2, HH_VH.coordsDB[WaveSelection].y - 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0, 40345)
 			pUnit:RegisterEvent("HH_VH.Enemy_Movement", 1000, 1)
-		elseif (mobSelection == 2) then
+		elseif(mobSelection == 2) then
 			pUnit:SpawnCreature(DK, HH_VH.coordsDB[WaveSelection].x + 2, HH_VH.coordsDB[WaveSelection].y + 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0,  38237)
 			pUnit:SpawnCreature(DK, HH_VH.coordsDB[WaveSelection].x - 2, HH_VH.coordsDB[WaveSelection].y - 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0,  38237)
 			pUnit:SpawnCreature(DKC, HH_VH.coordsDB[WaveSelection].x + 2, HH_VH.coordsDB[WaveSelection].y - 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0, 40343)
 			pUnit:RegisterEvent("HH_VH.Enemy_Movement", 1000, 1)
-		elseif (mobSelection == 3) then
+		elseif(mobSelection == 3) then
 			pUnit:SpawnCreature(PG, HH_VH.coordsDB[WaveSelection].x + 2, HH_VH.coordsDB[WaveSelection].y + 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0)
 			pUnit:SpawnCreature(DS, HH_VH.coordsDB[WaveSelection].x - 2, HH_VH.coordsDB[WaveSelection].y - 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0)
 			pUnit:SpawnCreature(PG, HH_VH.coordsDB[WaveSelection].x + 2, HH_VH.coordsDB[WaveSelection].y - 2, HH_VH.coordsDB[WaveSelection].z, HH_VH.coordsDB[WaveSelection].o, 14, 0)
@@ -321,15 +315,15 @@ end
 --Violet Hold NPC Boss Scripts--
 function HH_VH.InstanceLDB_PrimeAbility(pUnit, event)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		local selection = math.random(1 , 4)
-		if (selection == 1) then
+		if(selection == 1) then
 			pUnit:FullCastSpellOnTarget(38836, target)
-		elseif (selection == 2) then
+		elseif(selection == 2) then
 			pUnit:FullCastSpellOnTarget(38534, target)
-		elseif (selection == 3) then
+		elseif(selection == 3) then
 			pUnit:FullCastSpellOnTarget(59016, target)
-		elseif (selection == 4) then
+		elseif(selection == 4) then
 			pUnit:FullCastSpellOnTarget(62249, target)
 		end
 	end
@@ -346,15 +340,14 @@ function HH_VH.InstanceLDB_Start(pUnit, event)
 	pUnit:RegisterEvent("HH_VH.InstanceLDB_BlastNova", 24000, 0)
 	pUnit:RegisterEvent("HH_VH.InstanceLDB_Phase2", 1000, 0)
 end
----
----
+
 function HH_VH.InstanceLDB_Explosion(pUnit, event)
 	pUnit:SendChatMessage(14, 0, "I will be your demise!")
 	pUnit:FullCastSpell(37106)
 end
 
 function HH_VH.InstanceLDB_Phase2(pUnit, event)
-	if (pUnit:GetHealthPct() <= 70) then
+	if(pUnit:GetHealthPct() <= 70) then
 		pUnit:RemoveEvents()
 		pUnit:PlaySoundToSet(13177)
 		pUnit:SendChatMessage(14, 0, "Surely you can see the futility of it all?")
@@ -367,14 +360,14 @@ end
 
 function HH_VH.InstanceLDB_Lightning(pUnit, event)
 	local light = pUnit:GetMainTank()
-	if (light ~= nil) then
+	if(light ~= nil) then
 		pUnit:FullCastSpellOnTarget(46479, light)
 	end
 end
 
 function HH_VH.InstanceLDB_SpecialChill(pUnit, event)
 	local chillTarg = pUnit:GetRandomPlayer(0)
-	if (chillTarg ~= nil) then
+	if(chillTarg ~= nil) then
 		pUnit:PlaySoundToSet(13173)
 		pUnit:SendChatMessage(14, 0, "The chill you feel is the herald of your doom.")
 		pUnit:CastSpellAoF(chillTarg:GetX(), chillTarg:GetY(), chillTarg:GetZ(), 28547)
@@ -382,7 +375,7 @@ function HH_VH.InstanceLDB_SpecialChill(pUnit, event)
 end
 
 function HH_VH.InstanceLDB_Phase3(pUnit, event)
-	if (pUnit:GetHealthPct() <= 40) then
+	if(pUnit:GetHealthPct() <= 40) then
 		pUnit:RemoveEvents()
 		pUnit:PlaySoundToSet(13178)
 		pUnit:SendChatMessage(14, 0, "Just give up and die already!")
@@ -403,7 +396,7 @@ end
 
 function HH_VH.InstanceLDB_Leaves(pUnit, event)
 	pUnit:RemoveEvents()
-	if (HH_VH[iid].bossDied == 1) then
+	if(HH_VH[iid].bossDied == 1) then
 		HH_VH.Instance_Reset_Check(pUnit, event)
 	end
 end
@@ -411,11 +404,10 @@ end
 RegisterUnitEvent(LDB, 1, "HH_VH.InstanceLDB_Start")
 RegisterUnitEvent(LDB, 2, "HH_VH.InstanceLDB_Leaves")
 RegisterUnitEvent(LDB, 4, "HH_VH.InstanceLDB_Dies")
--------------------------------------------------------------------
--------------------------------------------------------------------
+
 function HH_VH.InstancePSB_Frostshock(pUnit, event)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(29666, target)
 	end
 end
@@ -431,24 +423,23 @@ function HH_VH.InstancePSB_Aggro(pUnit, event)
 	pUnit:RegisterEvent("HH_VH.InstancePSB_FrostVolley", 15000, 0)
 	pUnit:RegisterEvent("HH_VH.InstancePSB_Phase2", 1000, 0)
 end
-----
-----
+
 function HH_VH.InstancePSB_FrostBreath(pUnit, event)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(44799, target)
 	end
 end
 
 function HH_VH.InstancePSB_FrostCleave(pUnit, event)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(51857, target)
 	end
 end
 
 function HH_VH.InstancePSB_Phase2(pUnit, event)
-	if (pUnit:GetHealthPct() <= 75) then
+	if(pUnit:GetHealthPct() <= 75) then
 		pUnit:RemoveEvents()
 		pUnit:PlaySoundToSet(13953)
 		pUnit:SendChatMessage(14, 0, "Dalaran will fall!")
@@ -457,8 +448,7 @@ function HH_VH.InstancePSB_Phase2(pUnit, event)
 		pUnit:RegisterEvent("HH_VH.InstancePSB_Phase3", 1000, 0)
 	end
 end
-----
-----
+
 function HH_VH.InstancePSB_Blizzard(pUnit, event)
 	pUnit:PlaySoundToSet(13950)
 	pUnit:SendChatMessage(14, 0, "Who among you can withstand my power!")
@@ -469,7 +459,7 @@ function HH_VH.InstancePSB_BlizzardGo(pUnit, event)
 end
 
 function HH_VH.InstancePSB_Phase3(pUnit, event)
-	if (pUnit:GetHealthPct() <= 50) then
+	if(pUnit:GetHealthPct() <= 50) then
 		pUnit:RemoveEvents()
 		pUnit:PlaySoundToSet(13948)
 		pUnit:SendChatMessage(14, 0, "Shiver and die!")
@@ -479,8 +469,6 @@ function HH_VH.InstancePSB_Phase3(pUnit, event)
 		pUnit:RegisterEvent("HH_VH.InstancePSB_Phase4", 1000, 0)
 	end
 end
-----
-----
 
 function HH_VH.InstancePSB_SpecialFinal4(pUnit, event)
 	pUnit:RemoveEvents()
@@ -494,15 +482,17 @@ function HH_VH.InstancePSB_SpecialFinal4(pUnit, event)
 	pUnit:RegisterEvent("HH_VH.InstancePSB_Phase4Return", 9000, 1)
 	pUnit:RegisterEvent("HH_VH.InstancePSB_Phase4Moves", 10000, 1)
 end
+
 function HH_VH.InstancePSB_SpecialAbility4Cast(pUnit, event)
 	pUnit:FullCastSpell(38837)
 end
+
 function HH_VH.InstancePSB_Phase4Return(pUnit, event)
 	pUnit:MoveTo(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ() - 10, pUnit:GetO())
 end
 
 function HH_VH.InstancePSB_Phase4(pUnit, event)
-	if (pUnit:GetHealthPct() <= 30) then
+	if(pUnit:GetHealthPct() <= 30) then
 		pUnit:RemoveEvents()
 		pUnit:PlaySoundToSet(13952)
 		pUnit:SendChatMessage(14, 0, "I will end the Kirin'Tor!")
@@ -531,7 +521,7 @@ end
 
 function HH_VH.InstancePSB_Leaves(pUnit, event)
 	pUnit:RemoveEvents()
-	if (HH_VH[iid].bossDied == 2) then
+	if(HH_VH[iid].bossDied == 2) then
 		HH_VH.Instance_Reset_Check(pUnit, event)
 	end
 end
@@ -546,15 +536,11 @@ RegisterUnitEvent(PSB, 1, "HH_VH.InstancePSB_Aggro")
 RegisterUnitEvent(PSB, 2, "HH_VH.InstancePSB_Leaves")
 RegisterUnitEvent(PSB, 3, "HH_VH.InstancePSB_Slay")
 RegisterUnitEvent(PSB, 4, "HH_VH.InstancePSB_Dies")
--------------------------------------------------------------------
--- Final Encounter
--------------------------------------------------------------------
 
 function HH_VH.InstanceFDB_ShadowVolley(pUnit, event)
 	pUnit:FullCastSpell(38840)
 end
 
-----------------------CINEMATIC FOR THE FINAL BATTLE-------------------------------
 function HH_VH.InstanceEnterAlexKrasus(pUnit, event)
 	pUnit:SpawnCreature(ALEX, 1804.175049, 804.329712, 44.365353, 3.115675, 1719, 0)
 	pUnit:SpawnCreature(K_END, 1804.175049, 804.329712 + 6, 44.365353, 3.115675, 1719, 0, 39291)
@@ -656,10 +642,10 @@ function HH_VH.CypxDragonForm(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "This is the hour of our greatest triumph!")
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDB_Phase1", 1000, 1)
 end
-----------------------CINEMATIC END-----------------------------------------
+
 function HH_VH.CypxShadowBreath(pUnit, event)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil) then
+	if(target ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpellOnTarget(59126, target)
 	end
 end
@@ -680,8 +666,7 @@ function HH_VH.InstanceFDB_Phase1(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDB_ShadowVolley", 7000, 0)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDB_Phase2", 1000, 0)
 end
---
---
+
 function HH_VH.KrasusFlamestrike(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:CastSpellAoF(HH_VH[pUnit:GetInstanceID()].Cypx:GetX(), HH_VH[pUnit:GetInstanceID()].Cypx:GetY(), HH_VH[pUnit:GetInstanceID()].Cypx:GetZ(), 41481)
 end
@@ -698,7 +683,7 @@ end
 
 function HH_VH.InstanceFDB_Darkness(pUnit, event)
 	local target = HH_VH[pUnit:GetInstanceID()].Cypx:GetRandomPlayer(0)
-	if (target ~= pUnit:GetMainTank()) then
+	if(target ~= pUnit:GetMainTank()) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(13413)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "There is no future...for you.")
 		HH_VH[pUnit:GetInstanceID()].Cypx:CastSpellAoF(target:GetX(), target:GetY(), target:GetZ(), 45996)
@@ -708,7 +693,7 @@ function HH_VH.InstanceFDB_Darkness(pUnit, event)
 end
 
 function HH_VH.InstanceFDB_Phase2(pUnit, event)
-	if (HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 80) then
+	if(HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 80) then
 		pUnit:RemoveEvents()
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(13412)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Lets get this over with..")
@@ -722,10 +707,9 @@ function HH_VH.InstanceFDB_Phase2(pUnit, event)
 		HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDB_Phase3", 1000, 0)
 	end
 end
-----
-----
+
 function HH_VH.InstanceFDB_Phase3(pUnit, event)
-	if (HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 65) then
+	if(HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 65) then
 		pUnit:RemoveEvents()
 		HH_VH[pUnit:GetInstanceID()].Cypx:SetFlying()
 		HH_VH[pUnit:GetInstanceID()].Cypx:MoveTo(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ() + 20, pUnit:GetO())
@@ -748,8 +732,7 @@ function HH_VH.InstanceKrasusSpeak(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:SetCombatMeleeCapable(1)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:RegisterEvent("HH_VH.InstanceFDB_Phase3Go", 2000, 1)
 end
---
---
+
 function HH_VH.InstanceAlexFlameBreath(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:FullCastSpellOnTarget(29953, HH_VH[pUnit:GetInstanceID()].Cypx)
 end
@@ -760,7 +743,7 @@ end
 
 function HH_VH.InstanceFDB_Flameshock(pUnit, event)
 	local flameShock = pUnit:GetRandomPlayer(0)
-	if (flameShock ~= nil) then
+	if(flameShock ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpellOnTarget(41115, flameShock)
 	end
 end
@@ -789,18 +772,17 @@ function HH_VH.InstanceFDB_Phase3Go(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:RegisterEvent("HH_VH.InstanceKrasusCleave", 8000, 0)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBPhase4", 1000, 0)
 end
---
---
+
 function HH_VH.InstanceFDB_LegionLight(pUnit, event)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpellOnTarget(38634, target)
 	end
 end
 
 function HH_VH.InstanceFDB_FlameBreath(pUnit, event)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil) then
+	if(target ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpellOnTarget(56908, target)
 	end
 end
@@ -812,10 +794,9 @@ end
 function HH_VH.InstanceKrasusFlame(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:FullCastSpellOnTarget(56908, HH_VH[pUnit:GetInstanceID()].Cypx)
 end
-----
-----
+
 function HH_VH.InstanceFDBPhase4(pUnit, event)
-	if (HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 50) then
+	if(HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 50) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:RemoveEvents()
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10442)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Why do you persist? Surely you can see the futility of it all... It's not to late. You may still leave with your lives!")
@@ -833,11 +814,10 @@ function HH_VH.InstanceFDBPhase4(pUnit, event)
 		HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBPhase5", 1000, 0)
 	end
 end
-----
-----
+
 function HH_VH.InstanceFDBSingleFire(pUnit, event)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpellOnTarget(29953, target)
 	end
 end
@@ -846,7 +826,7 @@ function HH_VH.InstanceFDBSpecialFire(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10446)
 	HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Your days are done....")
 	local FireRain = pUnit:GetRandomPlayer(0)
-	if (FireRain ~= nil) then
+	if(FireRain ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:CastSpellAoF(FireRain:GetX(), FireRain:GetY(), FireRain:GetZ(), 58936)
 	end
 	HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpell(38836)
@@ -854,16 +834,15 @@ end
 
 function HH_VH.InstanceFDBPyroDeath(pUnit, event)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(13415)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Lets get this over with.")
 		HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpellOnTarget(64698, target)
 	end
 end
 
-
 function HH_VH.InstanceFDBPhase5(pUnit, event)
-	if (HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 40) then
+	if(HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 40) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:RemoveEvents()
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10402)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Let us see what fate has in store..")
@@ -875,13 +854,11 @@ function HH_VH.InstanceFDBPhase5(pUnit, event)
 		HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBPhase6", 1000, 0)
 	end
 end
-----
-----
+
 function HH_VH.InstanceFDBFireBarrageFinal(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:FullCastSpell(38836)
 end
 
---Final Special--
 function HH_VH.InstanceFDBFinalSpecial6_1(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RemoveEvents()
 	HH_VH[pUnit:GetInstanceID()].Cypx:CastSpell(40647)
@@ -891,6 +868,7 @@ function HH_VH.InstanceFDBFinalSpecial6_1(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:MoveTo(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ() + 20, pUnit:GetO())
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_2", 5000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_2(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(42, 0, "Chrysophylax begins to power a massive spell")
 	HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10424)
@@ -899,27 +877,32 @@ function HH_VH.InstanceFDBFinalSpecial6_2(pUnit, event)
 	pUnit:CastSpell(54141)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_3", 2000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_3(pUnit, event)
 	GetUnit(pUnit,COL1):ChannelSpell(46906, pUnit)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:SendChatMessage(14, 0, "Do not worry champions I will give my life for you if the need come!")
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_4", 3000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_4(pUnit, event)
 	GetUnit(pUnit,COL1+1):ChannelSpell(46906, pUnit)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:SendChatMessage(14, 0, "Nor will I allow you to perish my friends, we have come to far!")
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_5", 3000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_5(pUnit, event)
 	GetUnit(pUnit,COL1+2):ChannelSpell(46906, pUnit)
 	HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(13415)
 	HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "You were destined to fail!")
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_6", 2000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_6(pUnit, event)
 	GetUnit(pUnit,COL1+3):ChannelSpell(46906, pUnit)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:SendChatMessage(14, 0, "I WILL NOT allow you to take...control...OF.....THIS PLACE!")
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_7", 2000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_7(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:SendChatMessage(42, 0, "Alexstraza breaks the bindings of the Twilight Master")
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:RemoveAura(40647)
@@ -928,17 +911,20 @@ function HH_VH.InstanceFDBFinalSpecial6_7(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:RegisterEvent("HH_VH.InstancePlayerPrisonBreakStart", 1000, 1)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_8", 2000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_8(pUnit, event)
 	GetUnit(pUnit,COL1):ChannelSpell(46906, pUnit)
 	HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10421)
 	HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Enough! I will erase your very existence!")
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_9", 3000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_9(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(42, 0, "Chrysophylax gets ready to unleash his ultimate ability.")
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:RegisterEvent("HH_VH.InstancePlayerProtectionStart", 1000, 1)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBFinalSpecial6_10", 2000, 1)
 end
+
 function HH_VH.InstanceFDBFinalSpecial6_9(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:CastSpell(56397)
 	GetUnit(pUnit,COL1):StopChannel()
@@ -950,14 +936,14 @@ function HH_VH.InstanceFDBFinalSpecial6_9(pUnit, event)
 	pUnit:RemoveAura(54141)
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceReturnFinalSpecial6", 2000, 1)
 end
+
 function HH_VH.InstanceReturnFinalSpecial6(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Cypx:MoveTo(HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnX(), HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnY(), HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnZ(), HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnO())
 	HH_VH[pUnit:GetInstanceID()].Cypx:RegisterEvent("HH_VH.InstanceFDBPhase6Start", 3000, 1)
 end
---Final Special End--
 
 function HH_VH.InstanceFDBPhase6(pUnit, event)
-	if (HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 20) then
+	if(HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 20) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:RemoveEvents()
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10444)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "So be it... You were warned...")
@@ -975,7 +961,7 @@ function HH_VH.InstanceFDBPhase6Start(pUnit, event)
 end
 
 function HH_VH.InstanceFDBAssureLootDrop(pUnit, event)
-	if (HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 2) then
+	if(HH_VH[pUnit:GetInstanceID()].Cypx:GetHealthPct() <= 2) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:RemoveEvents()
 		HH_VH[pUnit:GetInstanceID()].Cypx:Land()
 		HH_VH[pUnit:GetInstanceID()].Cypx:MoveTo(HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnX(), HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnY(), HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnZ(), HH_VH[pUnit:GetInstanceID()].Cypx:GetSpawnO())
@@ -1008,16 +994,16 @@ end
 
 function HH_VH.InstanceFDB_Slay(pUnit, event)
 	local slayerSpeak = math.random(1, 4)
-	if (slayerSpeak == 1) then
+	if(slayerSpeak == 1) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10403)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "One less obstacle in our way.")
-	elseif (slayerSpeak == 2) then
+	elseif(slayerSpeak == 2) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10416)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "Leaving so soon?")
-	elseif (slayerSpeak == 3) then
+	elseif(slayerSpeak == 3) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(13413)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "There is no future for you!")
-	elseif (slayerSpeak == 4) then
+	elseif(slayerSpeak == 4) then
 		HH_VH[pUnit:GetInstanceID()].Cypx:PlaySoundToSet(10425)
 		HH_VH[pUnit:GetInstanceID()].Cypx:SendChatMessage(14, 0, "You are irrelevant!")
 	end
@@ -1026,7 +1012,7 @@ end
 
 function HH_VH.InstanceFDB_Leaves(pUnit, event)
 	pUnit:RemoveEvents()
-	if (HH_VH[pUnit:GetInstanceID()].bossDied == 3) then
+	if(HH_VH[pUnit:GetInstanceID()].bossDied == 3) then
 		pUnit:RegisterEvent("HH_VH.Instance_Reset_Check", 5000, 0)
 		HH_VH[pUnit:GetInstanceID()].Cypx:Despawn(2000, 0)
 		HH_VH[pUnit:GetInstanceID()].Alexstraz:Despawn(2000, 0)
@@ -1075,16 +1061,11 @@ end
 
 RegisterUnitEvent(ALEX, 4, "HH_VH.InstanceFDB_KillAlexstraz")
 RegisterUnitEvent(K_END, 4, "HH_VH.InstanceFDB_KillKrasus")
-----
-----
-
-
 RegisterUnitEvent(FDB, 1, "HH_VH.InstanceFDB_Aggro")
 RegisterUnitEvent(FDB, 2, "HH_VH.InstanceFDB_Leaves")
 RegisterUnitEvent(FDB, 3, "HH_VH.InstanceFDB_Slay")
 RegisterUnitEvent(FDB, 4, "HH_VH.InstanceFDB_Dies")
 RegisterUnitEvent(FDB, 18, "HH_VH.InstanceFDB_Start")
-------HANDLE PLAYER FLYING-------------
 
 function HH_VH.InstancePlayerFlightStart(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].Alexstraz:SendChatMessage(14, 0, "Champions! I have imbued you with a portion of power that will allow you to take flight! Come and help put an end to this fiend!")
@@ -1098,8 +1079,6 @@ function HH_VH.InstancePlayerFlightStart(pUnit, event)
 	end
 end
 
-------HANDLE PRISON BREAK-------------
-
 function HH_VH.InstancePlayerPrisonBreakStart(pUnit, event)
 	for k,playersP in pairs(pUnit:GetInRangePlayers()) do
 		playersP:RemoveAura(40647)
@@ -1108,15 +1087,11 @@ function HH_VH.InstancePlayerPrisonBreakStart(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:RemoveAura(40647)
 end
 
-------HANDLE ULTIMATE PROTECT-------------
-
 function HH_VH.InstancePlayerProtectionStart(pUnit, event)
 	for k,v in pairs(pUnit:GetInRangePlayers()) do
 		HH_VH[pUnit:GetInstanceID()].Alexstraz:FullCastSpellOnTarget(31901, v)
 	end
 end
-
-------HANDLE DISABLE FLIGHT AND MORPH-------------
 
 function HH_VH.DisableFlightMorph(pUnit, event)
 	for k,playersFlight in pairs(pUnit:GetInRangePlayers()) do
@@ -1130,7 +1105,6 @@ function HH_VH.DisableFlightMorph(pUnit, event)
 	end
 end
 
----GRAND CINEMATIC ENDING---
 function HH_VH.InstanceGrandCinematic_1(pUnit, event)
 	local iid = pUnit:GetInstanceID()
 	pUnit:CastSpell(63660)
@@ -1166,72 +1140,68 @@ function HH_VH.InstanceGrandCinematic_3(pUnit, event)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:CastSpell(7077)
 	HH_VH[pUnit:GetInstanceID()].KrasusEnd:Despawn(2000, 0)
 end
--------------------------------------------------------------------------
----                             VIOLET HOLD TRASH			          ---
--------------------------------------------------------------------------
 
 --Deathknight Captain
-
---Strikes
 function HH_VH.Instance_DKCStrike(pUnit, event)
 	local timer = math.random(5000, 8000)
 	local strikeSelection = math.random(1, 3)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil and strikeSelection == 1) then
+	if(target ~= nil and strikeSelection == 1) then
 		pUnit:FullCastSpellOnTarget(59130, target)
-	elseif (target ~= nil and strikeSelection == 2) then
+	elseif(target ~= nil and strikeSelection == 2) then
 		pUnit:FullCastSpellOnTarget(55255, target)
-	elseif (target ~= nil and strikeSelection == 3) then
+	elseif(target ~= nil and strikeSelection == 3) then
 		pUnit:FullCastSpellOnTarget(60951, target)
 	end
 	pUnit:RegisterEvent("HH_VH.Instance_DKCStrike2", timer, 1)
 end
+
 function HH_VH.Instance_DKCStrike2(pUnit, event)
 	local timer = math.random(5000, 8000)
 	local strikeSelection = math.random(1, 3)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil and strikeSelection == 1) then
+	if(target ~= nil and strikeSelection == 1) then
 		pUnit:FullCastSpellOnTarget(59130, target)
-	elseif (target ~= nil and strikeSelection == 2) then
+	elseif(target ~= nil and strikeSelection == 2) then
 		pUnit:FullCastSpellOnTarget(55255, target)
-	elseif (target ~= nil and strikeSelection == 3) then
+	elseif(target ~= nil and strikeSelection == 3) then
 		pUnit:FullCastSpellOnTarget(60951, target)
 	end
 	pUnit:RegisterEvent("HH_VH.Instance_DKCStrike", timer, 1)
 end
 
---Icy Touch
 function HH_VH.Instance_DKCIceTouch(pUnit, event)
 	local timer = math.random(10000, 12000)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(59011, target)
 	end
 	pUnit:RegisterEvent("HH_VH.Instance_DKCIceTouch2", timer, 1)
 end
+
 function HH_VH.Instance_DKCIceTouch2(pUnit, event)
 	local timer = math.random(10000, 12000)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(59011, target)
 	end
 	pUnit:RegisterEvent("HH_VH.Instance_DKCIceTouch", timer, 1)
 end
 
---Death Grip
 function HH_VH.Instance_DKCDeathGrip(pUnit, event)
 	local timer = math.random(15000, 19000)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(57602, target)
 		pUnit:Attack(target)
 	end
 	pUnit:RegisterEvent("HH_VH.Instance_DKCDeathGrip2", timer, 1)
 end
+
 function HH_VH.Instance_DKCDeathGrip2(pUnit, event)
 	local timer = math.random(15000, 19000)
 	local target = pUnit:GetRandomPlayer(0)
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(57602, target)
 		pUnit:Attack(target)
 	end
@@ -1240,9 +1210,9 @@ end
 
 function HH_VH.Instance_DKCAggro(pUnit, event)
 	local auraSelect = math.random(1, 3)
-	if (auraSelect == 1) then
+	if(auraSelect == 1) then
 		pUnit:CastSpell(50689)
-	elseif (auraSelect == 2) then
+	elseif(auraSelect == 2) then
 		pUnit:CastSpell(48263)
 	else
 		pUnit:CastSpell(49772)
@@ -1263,12 +1233,11 @@ end
 RegisterUnitEvent(DKC, 1, "HH_VH.Instance_DKCAggro")
 RegisterUnitEvent(DKC, 2, "HH_VH.Instance_DKCLeave")
 RegisterUnitEvent(DKC, 4, "HH_VH.Instance_DKCDeath")
----------------------------------------------------
 
 --Skeletal Captain
 function HH_VH.Instance_SCStrike(pUnit, event)
 	local target = pUnit:GetMainTank()
-	if (target ~= nil) then
+	if(target ~= nil) then
 		pUnit:FullCastSpellOnTarget(32736, target)
 	end
 end
@@ -1279,7 +1248,7 @@ end
 
 function HH_VH.Instance_SCShout(pUnit, event)
 	local shoutSelect = math.random(1, 2)
-	if (shoutSelect == 1) then
+	if(shoutSelect == 1) then
 		pUnit:CastSpell(59614)
 	else
 		pUnit:CastSpell(19778)
@@ -1303,7 +1272,6 @@ end
 RegisterUnitEvent(SC, 1, "HH_VH.Instance_SCAggro")
 RegisterUnitEvent(SC, 2, "HH_VH.Instance_SCLeave")
 RegisterUnitEvent(SC, 4, "HH_VH.Instance_SCDeath")
----------------------------------------------------
 
 --Darkshade
 function HH_VH.Instance_DSVolley(pUnit, event)
@@ -1330,7 +1298,7 @@ end
 function HH_VH.Instance_DodgeSecurity(pUnit, event)
 	local dodgeTank = pUnit:GetMainTank()
 	local dodgeProc = math.random(1, 10)
-	if (dodgeProc >= 5 and dodgeTank ~= nil) then
+	if((dodgeProc >= 5) and (dodgeTank ~= nil)) then
 		pUnit:FullCastSpellOnTarget(16448, dodgeTank)
 		pUnit:FullCastSpellOnTarget(31651, dodgeTank)
 	end
@@ -1344,8 +1312,6 @@ RegisterUnitEvent(DKC, 6, "HH_VH.Instance_DodgeSecurity")
 RegisterUnitEvent(LDB, 6, "HH_VH.Instance_DodgeSecurity")
 RegisterUnitEvent(PSB, 6, "HH_VH.Instance_DodgeSecurity")
 RegisterUnitEvent(FDB, 6, "HH_VH.Instance_DodgeSecurity")
-
-
 RegisterUnitEvent(DS, 1, "HH_VH.Instance_DSAggro")
 RegisterUnitEvent(DS, 2, "HH_VH.Instance_DSLeave")
 RegisterUnitEvent(DS, 4, "HH_VH.Instance_DSDeath")

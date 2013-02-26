@@ -1,15 +1,18 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 local UNIT_FLAG_NOT_ATTACKABLE_1 = 320
 local UNIT_FLAG_IS_ATTACKABLE_1 = 0
 local UNIT_FLAG_NOT_SELECTABLE = 33554432
 
-
-
-
---------------
---   INTRO  --
---------------
-
-function Dread_OnSpawn(pUnit, event)
+function Dread_OnSpawn(pUnit, Event)
 	pUnit:SetFaction(16)
 	pUnit:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_1)
 	pUnit:SetCombatCapable(1)
@@ -23,7 +26,7 @@ end
 RegisterUnitEvent(34799, 18, "Dread_OnSpawn")
 RegisterUnitEvent(54799, 18, "Dread_OnSpawn")
 
-function Dread_Attack(pUnit, event)
+function Dread_Attack(pUnit, Event)
 	pUnit:SetFaction(16)
 	pUnit:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_IS_ATTACKABLE_1)
 	pUnit:SetCombatCapable(0)
@@ -33,13 +36,12 @@ function Dread_Attack(pUnit, event)
 	pUnit:SetCombatTargetingCapable(0)
 	pUnit:SpawnCreature(35144, 546.329, 167.369, 394.667, 5.046088, 16, 0)
 	pUnit:ModifyWalkSpeed(8)
-		local plr=pUnit:GetClosestPlayer()
-		if plr ~= nil then
-			pUnit:MoveTo(plr:GetX(), plr:GetY(), plr:GetZ(), plr:GetO())
-		end
+	if(pUnit:GetClosestPlayer() ~= nil) then
+		pUnit:MoveTo(pUnit:GetClosestPlayer():GetX(), pUnit:GetClosestPlayer():GetY(), pUnit:GetClosestPlayer():GetZ(), pUnit:GetClosestPlayer():GetO())
+	end
 end
 
-function Dread_OnCombat(pUnit, event)
+function Dread_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("Dread_PoisonCloud", 10000, 0)
 	pUnit:RegisterEvent("Dread_MoltenSpew", 22000, 0)
 	pUnit:RegisterEvent("Dread_BurningBite", 30000, 0)
@@ -49,14 +51,7 @@ end
 RegisterUnitEvent(34799, 1, "Dread_OnCombat")
 RegisterUnitEvent(54799, 1, "Dread_OnCombat")
 
-
-
-
---------------------------------------------
---  Switch between mobile and stationary  --
---------------------------------------------
-
-function Dread_SwitchToStationary(pUnit, event)
+function Dread_SwitchToStationary(pUnit, Event)
 	pUnit:Root()
 	pUnit:RemoveEvents()
 	pUnit:SetModel(26935)
@@ -67,7 +62,7 @@ function Dread_SwitchToStationary(pUnit, event)
 	pUnit:RegisterEvent("Dread_SwitchBackToMobile", 70000, 1)
 end
 
-function Dread_SwitchBackToMobile(pUnit, event)
+function Dread_SwitchBackToMobile(pUnit, Event)
 	pUnit:Unroot()
 	pUnit:RemoveEvents()
 	pUnit:SetModel(24564)
@@ -78,60 +73,41 @@ function Dread_SwitchBackToMobile(pUnit, event)
 	pUnit:RegisterEvent("Dread_SwitchToStationary", 70000, 1)
 end
 
-
-
-
---------------
---  spells  --
---------------
-
-function Dread_MoltenSpew(pUnit, event)
-	local maintank=pUnit:GetMainTank()
-	if maintank ~= nil then
-		pUnit:FullCastSpellOnTarget(66820, maintank)
+function Dread_MoltenSpew(pUnit, Event)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(66820, pUnit:GetMainTank())
 	end
 end
 
-function Dread_BurningBite(pUnit, event)
-	local randomplr_0 = pUnit:GetRandomPlayer(0)
-	if randomplr_0 ~= nil then
-		pUnit:CastSpellOnTarget(66879, randomplr_0)
+function Dread_BurningBite(pUnit, Event)
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
+		pUnit:CastSpellOnTarget(66879, pUnit:GetRandomPlayer(0))
 	end
 end
 
-function Dread_FireSpit(pUnit, event)
-	local maintank = pUnit:GetMainTank()
-	if maintank ~= nil then
-		pUnit:FullCastSpellOnTarget(66796, maintank)
+function Dread_FireSpit(pUnit, Event)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(66796, pUnit:GetMainTank())
 	end
 end
 
-function Dread_BurningSpray(pUnit, event)
-	local randomplr_0 = pUnit:GetRandomPlayer(0)
-	if randomplr_0 ~= nil then
-		pUnit:FullCastSpellOnTarget(66902, randomplr_0)
+function Dread_BurningSpray(pUnit, Event)
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
+		pUnit:FullCastSpellOnTarget(66902, pUnit:GetRandomPlayer(0))
 	end
 end
 
-function Dread_Sweep(pUnit, event)
-	local maintank = pUnit:GetMainTank()
-	if maintank ~= nil then
-		pUnit:FullCastSpellOnTarget(66794, maintank)
+function Dread_Sweep(pUnit, Event)
+	if(pUnit:GetMainTank() ~= nil) then
+		pUnit:FullCastSpellOnTarget(66794, pUnit:GetMainTank())
 	end
 end
 
-
-
----------------------
---  Poison Clouds  --
----------------------
-
-function Dread_PoisonCloud(pUnit, event)
-    local x, y, z, o=pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), pUnit:GetO();
-	pUnit:SpawnCreature(34802, x, y, z, o, 16, 30000)
+function Dread_PoisonCloud(pUnit, Event)
+	pUnit:SpawnCreature(34802, pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), pUnit:GetO(), 16, 30000)
 end
 
-function PoisonCloud_OnSpawn(pUnit, event)
+function PoisonCloud_OnSpawn(pUnit, Event)
 	pUnit:SetCombatCapable(1)
 	pUnit:SetCombatMeleeCapable(1)
 	pUnit:SetCombatRangedCapable(1)
@@ -141,16 +117,16 @@ function PoisonCloud_OnSpawn(pUnit, event)
 	pUnit:Root()
 end
 
-function PoisonCloud_PoisonNova(pUnit, event)
+function PoisonCloud_PoisonNova(pUnit, Event)
 	pUnit:CastSpell(59842, pUnit:GetRandomPlayer(0))
 end
 
-function PoisonCloud_OnLeaveCombat(pUnit, event)
+function PoisonCloud_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 	pUnit:Despawn(1, 0)
 end
 
-function PoisonCloud_OnDeath(pUnit, event)
+function PoisonCloud_OnDeath(pUnit, Event)
 	pUnit:RemoveEvents()
 	pUnit:Despawn(1, 0)
 end
@@ -159,16 +135,9 @@ RegisterUnitEvent(34802, 18, "PoisonCloud_OnSpawn")
 RegisterUnitEvent(34802, 2, "PoisonCloud_OnLeaveCombat")
 RegisterUnitEvent(34802, 4, "PoisonCloud_OnDeath")
 
-
-
------------------------
--- Other Unit Events --
------------------------
-
-function Dread_OnAllianceDeath(pUnit, event, Acid)
-	local X,Y,Z = pUnit:GetX(),pUnit:GetY(),pUnit:GetZ()
-	local Acid = pUnit:GetCreatureNearestCoords(X,Y,Z,35144)
-		if Acid ~= nil and Acid:IsAlive() == false then
+function Dread_OnAllianceDeath(pUnit, Event)
+	local Acid = pUnit:GetCreatureNearestCoords(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), 35144)
+		if((Acid ~= nil) and (Acid:IsAlive() == false)) then
 			Acid:Despawn(1, 0)
 			pUnit:SpawnCreature(360953, 563, 78, 419, 4.4070, 35, 0)
 			pUnit:SpawnCreature(34797, 563, 173, 394.339, 4.740840, 16, 0)
@@ -177,10 +146,9 @@ function Dread_OnAllianceDeath(pUnit, event, Acid)
 	pUnit:RemoveEvents()
 end
 
-function Dread_OnAllianceLeaveCombat(pUnit, event, Acid)
-	local X,Y,Z = pUnit:GetX(),pUnit:GetY(),pUnit:GetZ()
-	local Acid = pUnit:GetCreatureNearestCoords(X,Y,Z,35144)
-		if Acid ~= nil and Acid:IsAlive() == false then
+function Dread_OnAllianceLeaveCombat(pUnit, Event)
+	local Acid = pUnit:GetCreatureNearestCoords(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), 35144)
+		if((Acid ~= nil) and (Acid:IsAlive() == false)) then
 			Acid:Despawn(1, 0)
 			pUnit:SpawnCreature(34816, 563, 173, 394.339, 4.740840, 16, 0)
 			pUnit:Despawn(1, 0)
@@ -188,10 +156,9 @@ function Dread_OnAllianceLeaveCombat(pUnit, event, Acid)
 	pUnit:RemoveEvents()
 end
 
-function Dread_OnHordeLeaveCombat(pUnit, event, Acid)
-	local X,Y,Z = pUnit:GetX(),pUnit:GetY(),pUnit:GetZ()
-	local Acid = pUnit:GetCreatureNearestCoords(X,Y,Z,55144)
-		if Acid ~= nil and Acid:IsAlive() == false then
+function Dread_OnHordeLeaveCombat(pUnit, Event)
+	local Acid = pUnit:GetCreatureNearestCoords(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), 55144)
+		if((Acid ~= nil) and (Acid:IsAlive() == false)) then
 			Acid:Despawn(1, 0)
 			pUnit:SpawnCreature(34816, 563, 173, 394.339, 4.740840, 16, 0)
 			pUnit:Despawn(1, 0)
@@ -199,10 +166,10 @@ function Dread_OnHordeLeaveCombat(pUnit, event, Acid)
 	pUnit:RemoveEvents()
 end
 
-function Dread_OnHordeDeath(pUnit, event, Acid)
+function Dread_OnHordeDeath(pUnit, Event)
 	local X,Y,Z = pUnit:GetX(),pUnit:GetY(),pUnit:GetZ()
-	local Acid = pUnit:GetCreatureNearestCoords(X,Y,Z,55144)
-		if Acid ~= nil and Acid:IsAlive() == false then
+	local Acid = pUnit:GetCreatureNearestCoords(pUnit:GetX(), pUnit:GetY(), pUnit:GetZ(), 55144)
+		if((Acid ~= nil) and (Acid:IsAlive() == false)) then
 			Acid:Despawn(1, 0)
 			pUnit:SpawnCreature(360953, 563, 78, 419, 4.4070, 35, 0)
 			pUnit:SpawnCreature(34797, 563, 173, 394.339, 4.740840, 16, 0)
@@ -213,6 +180,5 @@ end
 
 RegisterUnitEvent(34799, 2, "Dread_OnAllianceLeaveCombat")
 RegisterUnitEvent(34799, 4, "Dread_OnAllianceDeath")
-
 RegisterUnitEvent(54799, 2, "Dread_OnHordeLeaveCombat")
 RegisterUnitEvent(54799, 4, "Dread_OnHordeDeath")

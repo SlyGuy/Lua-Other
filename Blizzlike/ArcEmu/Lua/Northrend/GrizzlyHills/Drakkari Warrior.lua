@@ -1,32 +1,29 @@
---[[
-
-	This is created by zdroid9770  :D
-
-	© Copyright 2012
-
-]]
-
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function DrakkariWarrior_OnCombat(Unit, Event)
-Unit:RegisterEvent("DrakkariWarrior_WarriorsWill", 4000, 1)
+	Unit:RegisterEvent("DrakkariWarrior_WarriorsWill", 4000, 1)
 end
 
 function DrakkariWarrior_WarriorsWill(Unit, Event) 
-Unit:CastSpell(52309) 
+	Unit:CastSpell(52309) 
 end
 
 function DrakkariWarrior_OnLeaveCombat(Unit, Event) 
-Unit:RemoveEvents() 
+	Unit:RemoveEvents() 
 end
 
 function DrakkariWarrior_OnDied(Unit, Event) 
-Unit:RemoveEvents()
-end
-
-function DrakkariWarrior_OnKilledTarget(Unit, Event) 
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(26425, 1, "DrakkariWarrior_OnCombat")
 RegisterUnitEvent(26425, 2, "DrakkariWarrior_OnLeaveCombat")
-RegisterUnitEvent(26425, 3, "DrakkariWarrior_OnKilledTarget")
 RegisterUnitEvent(26425, 4, "DrakkariWarrior_OnDied")

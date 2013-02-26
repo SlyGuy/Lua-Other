@@ -1,118 +1,109 @@
---//////////////////////////////////
---//// © Holystone Productions  ////
---////     Cronic & Warfrost    ////
---////       Copy Right         ////
---////  Blizzlike Repack v 2.5  ////
---//////////////////////////////////
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Holystone Productions; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 local General = 28586
 local Stormforged = 29240
 
-function General_OnCombat(punit, event)
-   punit:RegisterEvent("General_SpawnAdd", 400, 1)
-   punit:RegisterEvent("General_BattleStance", 500, 1)
+function General_OnCombat(pUnit, Event)
+	   pUnit:RegisterEvent("General_SpawnAdd", 400, 1)
+	   pUnit:RegisterEvent("General_BattleStance", 500, 1)
 end
 
-function General_BattleStance(punit, event)
-  punit:RemoveEvents()
-   punit:AddAura(41106, 0)
-    punit:RegisterEvent("General_Cleave", 5000, 0)
-	punit:RegisterEvent("General_BerserkerStance", 20000, 1)
+function General_BattleStance(pUnit, Event)
+	pUnit:RemoveEvents()
+	pUnit:AddAura(41106, 0)
+	pUnit:RegisterEvent("General_Cleave", 5000, 0)
+	pUnit:RegisterEvent("General_BerserkerStance", 20000, 1)
 end
 
-function General_Cleave(punit, event)
-   local target = punit:GetClosestEnemy()
-    punit:CastSpellOnTarget(15284, target)
+function General_Cleave(pUnit, Event)
+	pUnit:CastSpellOnTarget(15284, pUnit:GetClosestEnemy())
 end
 
-function General_BerserkerStance(punit, event)
-  punit:RemoveEvents()
-   punit:RemoveAura(41106)
-    punit:AddAura(41107, 0)
-	 punit:RegisterEvent("General_MortalStrike", 4000, 0)
-	 punit:RegisterEvent("General_Whirlwind", 8000, 1)
-	 punit:RegisterEvent("General_DefensiveStance", 20000, 1)
+function General_BerserkerStance(pUnit, Event)
+	pUnit:RemoveEvents()
+	pUnit:RemoveAura(41106)
+    pUnit:AddAura(41107, 0)
+	pUnit:RegisterEvent("General_MortalStrike", 4000, 0)
+	pUnit:RegisterEvent("General_Whirlwind", 8000, 1)
+	pUnit:RegisterEvent("General_DefensiveStance", 20000, 1)
 end
 
-function General_MortalStrike(punit, event)
-  local target = punit:GetClosestEnemy()
-    punit:CastSpellOnTarget(16856, target)
+function General_MortalStrike(pUnit, Event)
+    pUnit:CastSpellOnTarget(16856, pUnit:GetClosestEnemy())
 end
 
-function General_Whirlwind(punit, event)
-  punit:FullCastSpell(52027)
-  punit:Root()
-  punit:RegisterEvent("General_UnRoot", 8000, 1)
+function General_Whirlwind(pUnit, Event)
+	  pUnit:FullCastSpell(52027)
+	  pUnit:Root()
+	  pUnit:RegisterEvent("General_UnRoot", 8000, 1)
 end
 
-function General_UnRoot(punit, event)
-  punit:UnRoot()
+function General_UnRoot(pUnit, Event)
+	pUnit:UnRoot()
 end
 
-function General_DefensiveStance(punit, event)
- punit:RemoveEvents()
-  punit:RemoveAura(41107)
-   punit:AddAura(41105, 0)
-    punit:RegisterEvent("General_Intercept", 4000, 0)
-	punit:RegisterEvent("General_KnockAway", 7000, 0)
-	punit:RegisterEvent("General_SpellReflection", 10000, 0)
-	punit:RegisterEvent("General_BattleStance", 20000, 1)
+function General_DefensiveStance(pUnit, Event)
+	pUnit:RemoveEvents()
+	pUnit:RemoveAura(41107)
+	pUnit:AddAura(41105, 0)
+    pUnit:RegisterEvent("General_Intercept", 4000, 0)
+	pUnit:RegisterEvent("General_KnockAway", 7000, 0)
+	pUnit:RegisterEvent("General_SpellReflection", 10000, 0)
+	pUnit:RegisterEvent("General_BattleStance", 20000, 1)
 end
 
-function General_Intercept(punit, event)
-  local plr = punit:GetRandomPlayer(0)
-    punit:CastSpellOnTarget(58769, plr)
-     plr:AddAura(58747, 3000)
+function General_Intercept(pUnit, Event)
+    pUnit:CastSpellOnTarget(58769, pUnit:GetRandomPlayer(0))
+    pUnit:GetRandomPlayer(0):AddAura(58747, 3000)
 end
 
-function General_KnockAway(punit, event)
-   local plr = punit:GetClosestEnemy()
-	   punit:CastSpellOnTarget(52029, plr)
-  end
-
-function General_SpellReflection(punit, event)
-  punit:CastSpell(36096)
-    punit:AddAura(36096, 8000)
+function General_KnockAway(pUnit, Event)
+	pUnit:CastSpellOnTarget(52029, pUnit:GetClosestEnemy())
 end
 
-function General_SpawnAdd(punit, event)
-  local plr = punit:GetRandomPlayer(0)
-    local x = plr:GetX()
-	local y = plr:GetY()
-	local z = plr:GetZ()
-	local o = plr:GetO()
-   punit:SpawnCreature(29240, x+4, y, z, o, 14, 360000)
-   punit:SpawnCreature(29240, x, y+4, z, o, 14, 360000)
+function General_SpellReflection(pUnit, Event)
+  pUnit:CastSpell(36096)
+    pUnit:AddAura(36096, 8000)
 end
 
-function StormforgedLieutenant_OnCombat(punit, event)
-   punit:RegisterEvent("Stormforged_ArcWeld", 10000, 0)
-   punit:RegisterEvent("Stormforged_RenewSteel", 7000, 0)
+function General_SpawnAdd(pUnit, Event)
+local plr = pUnit:GetRandomPlayer(0)
+	pUnit:SpawnCreature(29240, plr:GetX()+4, plr:GetY(), plr:GetZ(), plr:GetO(), 14, 360000)
+	pUnit:SpawnCreature(29240, plr:GetX(), plr:GetY()+4, plr:GetZ(), plr:GetO(), 14, 360000)
 end
 
-function Stormforged_ArcWeld(punit, event)
-  local target = punit:GetRandomPlayer(0)
-   punit:CastSpellOnTarget(59085, target)
-    target:AddAura(59086, 10000)
-   --target:Root()
-   --punit:RegisterEvent("Target_UnRoot", 10000, 1)
+function StormforgedLieutenant_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Stormforged_ArcWeld", 10000, 0)
+	pUnit:RegisterEvent("Stormforged_RenewSteel", 7000, 0)
 end
 
-function Target_UnRoot(punit, event)
-   local target = punit:GetAITargets()
-	target:Unroot()
-end
-	   
-
-function Stormforged_RenewSteel(punit, event)
-  local friend = punit:GetClosestFriend()
-   if friend == 28586 then
-    punit:CastSpellOnTarget(52774, friend)
-  end
+function Stormforged_ArcWeld(pUnit, Event)
+	pUnit:CastSpellOnTarget(59085, pUnit:GetRandomPlayer(0))
+    pUnit:GetRandomPlayer(0):AddAura(59086, 10000)
+--	pUnit:GetRandomPlayer(0):Root()
+--	pUnit:RegisterEvent("Target_UnRoot", 10000, 1)
 end
 
-function General_OnLeaveCombat(punit, event)
-  punit:RemoveEvents()
+function Target_UnRoot(pUnit, Event)
+	pUnit:GetAITargets():Unroot()
+end
+
+function Stormforged_RenewSteel(pUnit, Event)
+	if(pUnit:GetClosestFriend() == 28586) then
+		pUnit:CastSpellOnTarget(52774, pUnit:GetClosestFriend())
+	end
+end
+
+function General_OnLeaveCombat(pUnit, Event)
+	pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(General, 1, "General_OnCombat")
