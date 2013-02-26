@@ -1,14 +1,12 @@
---[[ Boss - Muru.lua
-
-This script was written and is protected
-by the GPL v2. This script was released
-by Azolex of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-~~End of License Agreement
--- Azolex, August 24, 2008. ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Azolex; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Muru_OnEnterCombat(Unit, Event)
 	Unit:SetCombatMeleeCapable(1) 
@@ -20,11 +18,11 @@ function Muru_OnEnterCombat(Unit, Event)
 	Unit:StopMovement()
 end
 
-function Muru_NegativeEnergy(Unit, event)
+function Muru_NegativeEnergy(Unit, Event)
    Unit:CastSpellOnTarget(46008, Unit:GetRandomPlayer(0))
 end
 
-function Muru_Darkness(Unit, event)
+function Muru_Darkness(Unit, Event)
    Unit:CastSpell(45996)
 end
 
@@ -33,7 +31,7 @@ function Muru_Enrage(Unit, Event)
 end
 
 function Muru_Summonset(Unit, Event)
-local Choice = math.random(1, 2)
+local Choice = math.random(1,2)
 	if(Choice == 1) then
 		Unit:SpawnCreature(25798, 1781.98, 665.4370, 71.2, 5.23, 16,0)
         Unit:SpawnCreature(25798, 1777.76, 662.8, 71.2, 5.21, 16,0)
@@ -46,7 +44,7 @@ local Choice = math.random(1, 2)
 end
 
 function Muru_VoidSentinel(Unit, Event)
-local Choice = math.random(1, 2)
+local Choice = math.random(1,2)
 	if(Choice == 1) then
 		Unit:SpawnCreature(25772, 1796.94 ,605.072, 71.203, 0.67, 16,0)  
 	elseif(Choice == 2) then
@@ -71,13 +69,13 @@ RegisterUnitEvent(25741, 4, "Muru_OnDied")
 
 --Entropius
 function Entropius_OnEnterCombat(Unit, Event)
-Unit:RegisterEvent("Entropius_NegativeEnergy",4000,0)
-Unit:RegisterEvent("Entropius_Darkness",45000,0)
-Unit:RegisterEvent("Entropius_BlackHole",150000,0)
-Unit:RegisterEvent("Entropius_Enrage",6000000,0)
+	Unit:RegisterEvent("Entropius_NegativeEnergy",4000,0)
+	Unit:RegisterEvent("Entropius_Darkness",45000,0)
+	Unit:RegisterEvent("Entropius_BlackHole",150000,0)
+	Unit:RegisterEvent("Entropius_Enrage",6000000,0)
 end
 
-function Entropius_NegativeEnergy(Unit, event)
+function Entropius_NegativeEnergy(Unit, Event)
    Unit:CastSpellOnTarget(46289, Unit:GetRandomPlayer(0))
    Unit:CastSpellOnTarget(46289, Unit:GetRandomPlayer(0))
    Unit:CastSpellOnTarget(46289, Unit:GetRandomPlayer(0))
@@ -104,11 +102,11 @@ function Entropius_BlackHole(Unit, Event)
 end
 
 function Entropius_OnLeaveCombat(Unit, Event)
-Unit:RemoveEvents()
+	Unit:RemoveEvents()
 end
 
 function Entropius_OnDied(Unit, Event)
-Unit:RemoveEvents()
+	Unit:RemoveEvents()
 end
 
 RegisterUnitEvent(25840, 1, "Entropius_OnEnterCombat")
@@ -154,7 +152,7 @@ function VoidSentinel1_spawndisplay(Unit, Event)
 end
 
 function VoidSentinel1_moveset(Unit)   
-    Unit:RegisterEvent("VoidSentinel1_spawndisplay",1000,1)
+   Unit:RegisterEvent("VoidSentinel1_spawndisplay",1000,1)
    Unit:RegisterEvent("VoidSentinel1_move",4000,0)
 end
 
@@ -203,11 +201,11 @@ end
 RegisterUnitEvent(25798, 1, "SummonFuryMage_OnEnterCombat")
 RegisterUnitEvent(25798, 4, "SummonFuryMage_OnDied")
 
-function SummonBerserk_OnEnterCombat(Unit, event)
+function SummonBerserk_OnEnterCombat(Unit, Event)
 	Unit:RegisterEvent("SummonBerserk_Flurry", math.random(25000, 30000),0)
 end
 
-function SummonBerserk_Flurry(Unit, event)
+function SummonBerserk_Flurry(Unit, Event)
    pUnit:CastSpell(46160)
 end
 

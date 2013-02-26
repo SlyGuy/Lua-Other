@@ -1,23 +1,14 @@
---[[ EredarTwins.Lua - Author: Shorts
-********************************
-*                                                            *
-* The LUA++ Scripting Project        *
-*                                                            *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The LUA++ Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-~~End of License Agreement
--- LUA++ staff, April 15, 2008. ]]
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Shorts; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 --Lady Sacrolash AI Script
-
 function Lady_OnCombat(pUnit, Event)
 	setvars(pUnit, {AlyDead=0, LadyDead=0});
 	pUnit:RegisterEvent("Confounding_Blow", 30000, 0)
@@ -28,7 +19,7 @@ function Lady_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("LadyEnrage", 360000, 1)
 end
 
-function LadyPhase2(pUnit, event)
+function LadyPhase2(pUnit, Event)
 	local args = getvars(pUnit);
 	if(args.AlyDead == 1) then
 		pUnit:SendChatMessage(14, 0, "Alythess! Your fire burns within me!")
@@ -86,11 +77,11 @@ function DarkTouched(pUnit, Event)
 	pUnit:CastSpellOnTarget(45347, pUnit:GetRandomTarget(0))	
 end
 
-function LadyConflag(pUnit, event)
+function LadyConflag(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(45342, pUnit:GetMainTank())
 end
 
-function LadyEnrage(pUnit, event)
+function LadyEnrage(pUnit, Event)
 	pUnit:CastSpell(26662)
 end		
 
@@ -100,7 +91,6 @@ RegisterUnitEvent(25165, 3, "Lady_OnKilledTarget")
 RegisterUnitEvent(25165, 4, "Lady_OnDied")
 
 --Grand Warlock Alythess AI Script
-
 function Warlock_OnCombat(pUnit, Event)
 	setvars(pUnit, {AlyDead=0, LadyDead=0});
 	pUnit:RegisterEvent("Flame_Touched", 15000, 0)
@@ -111,7 +101,7 @@ function Warlock_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("AlyEnrage", 360000, 1)
 end
 
-function WarlockPhase2(pUnit, event)
+function WarlockPhase2(pUnit, Event)
 	local args = getvars(pUnit);
 	if(args.LadyDead == 1) then
 		pUnit:SendChatMessage(14, 0, "Sacrolash!")
@@ -166,7 +156,7 @@ function AlyShadowNova(pUnit, Event)
 end
 
 
-function AlyEnrage(pUnit, event)
+function AlyEnrage(pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "Edir harach!")
 	pUnit:CastSpell(26662)
 end

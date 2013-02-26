@@ -1,25 +1,13 @@
---[[ Brutallus.lua  Author: Rewritten by Shorts
-********************************
-*                                                            *
-* The LUA++ Scripting Project        *
-*                                                            *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The LUA++ Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-~~End of License Agreement
--- LUA++ staff, March 26, 2008. ]]
-
-
---[[Brutallus Script AI
-
-Brutallus yells: Bagh! Your magic is weak!
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Shorts; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Brutallus yells: Bagh! Your magic is weak!
 Brutallus yells: Come try your luck!
 Brutallus yells: Puny lizard! Death is the only answer you'll find here!
 Brutallus yells: That was fun, but I still await a true challenge!]]
@@ -75,9 +63,9 @@ function Burn(pUnit, Event)
 	pUnit:CastSpellOnTarget(46394, pUnit:GetRandomPlayer(0))	
 end
 
---function Meteor_Slash(pUnit, Event)
---pUnit:FullCastSpell(45150)
---end
+--[[function Meteor_Slash(pUnit, Event)
+	pUnit:FullCastSpell(45150)
+end]]
 
 function Combat_Talk(pUnit, Event)
 	local Choice = math.random(1, 3)

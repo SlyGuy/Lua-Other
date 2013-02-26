@@ -1,22 +1,12 @@
---[[ Boss -- Selin Fireheart.lua
-
-This script was written and is protected
-by the GPL v2. This script was released
-by BrantX of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-~~End of License Agreement
--- BrantX, February 01, 2009. ]]
---[[
-__--Sound Files--__
-Unit:PlaySoundToSet(12378) - You only waste my time!
-Unit:PlaySoundToSet(12382) - Yes! I am a god!
-Unit:PlaySoundToSet(12383) - No! More...I must have more!
-Unit:PlaySoundToSet(12381) - My hunger knows no bounds!
-Unit:PlaySoundToSet(12388) - Enough distractions!
---]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BrantX; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 local X = Unit:GetX()
 local Y = Unit:GetY()
@@ -40,11 +30,11 @@ local plr = Unit:GetClosestPlayer()
 		return
 	else
 		Unit:SetCombatMeleeCapable(1)
-		-- Crystal 1 should be left (on stage)
-		-- Crystal 2 should be middle (on stage)
-		-- Crystal 3 should be right (on stage)
-		-- Crystal 4 should be left (on floor)
-		-- Crystal 5 should be right (on floor)
+		--Crystal 1 should be left (on stage)
+		--Crystal 2 should be middle (on stage)
+		--Crystal 3 should be right (on stage)
+		--Crystal 4 should be left (on floor)
+		--Crystal 5 should be right (on floor)
 local Choice = math.random(1, 5)
 		if(Choice == 1) then
 			Unit:MoveTo(X, Y, Z, O)

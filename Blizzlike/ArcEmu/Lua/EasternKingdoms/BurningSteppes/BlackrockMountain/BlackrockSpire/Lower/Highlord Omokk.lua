@@ -1,20 +1,13 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
---[[
-Omokk's head, when placed on a [Roughshod Pike], can be used to challenge Urok Doomhowl.
-----Quotes
-Highlord Omokk says: I'll crush you!
-Highlord Omokk says: Me smash! You die!
-Highlord Omokk says: Raaar!!! Me smash blood elf!
-Highlord Omokk says: Raaar!!! Me smash human!
-----Spells-ID
-Frenzy-8269
-Knock Away-10101
-]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Omokk's head, when placed on a [Roughshod Pike], can be used to challenge Urok Doomhowl.]]--
 
 function HO_OnCombat(pUnit, Event)
 local combat = math.random(1,3)
@@ -23,14 +16,14 @@ local combat = math.random(1,3)
 	elseif(combat == 2) then
 		pUnit:SendChatMessage(12, 0, "Me smash! You die!")
 	elseif(combat == 3) then
-		if (player:GetPlayerRace() == 1) then
+		if(player:GetPlayerRace() == 1) then
 			pUnit:SendChatMessage(12, 0, "Raaar!!! Me smash human!")
-		elseif (player:GetPlayerRace() == 10) then
+		elseif(player:GetPlayerRace() == 10) then
 			pUnit:SendChatMessage(12, 0, "Raaar!!! Me smash blood elf!")
 		else
 			if(combat == 1) then
 				pUnit:SendChatMessage(12, 0, "I'll crush you!")
-			elseif(combat == 2) then
+			elseif(combat == 2 or 3) then
 				pUnit:SendChatMessage(12, 0, "Me smash! You die!")
 			end
 		end

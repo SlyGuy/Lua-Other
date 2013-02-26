@@ -1,15 +1,12 @@
---[[
-This script was written and is protected
-by the GPL v2. This script was released
-by Performer of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-Credits to GregPohlod of Hypnotic-wow.com
-
-~~End of License Agreement
--- Performer, November 1st, 2008. ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Performer, GregPohlod; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 --[[Nalorakk yells: Da Amani gonna rule again!
 Nalorakk yells: Get da move on, guards! It be killin' time!
 Nalorakk yells: Guards, go already! Who you more afraid of, dem... or me?

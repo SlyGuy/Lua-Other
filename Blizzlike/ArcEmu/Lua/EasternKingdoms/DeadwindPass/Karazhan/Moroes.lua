@@ -1,3 +1,22 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Moroes yells: Hm, unannounced visitors. Preparations must be made...
+Moroes yells: How terribly clumsy of me.
+Moroes yells: Now, where was I? Oh, yes...
+Moroes yells: Oh, I've gone and made a mess...
+Moroes yells: You rang?
+Moroes says: The master has business in the rooms above.
+Moroes says: The Master is deep in study.
+Moroes says: The master is meeting with his apprentice.
+Moroes says: The Master will return from Stormwind soon....]]
+
 function Moroes_Enrage(Unit, event, miscUnit, misc)
 	if((Unit:GetHealthPct() < 30) and (Didthat == 0)) then
 		Unit:FullCastSpell(44779)
@@ -30,14 +49,14 @@ function Moroes(Unit, event, miscUnit, misc)
 	Unit:RegisterEvent("Moroes_Garrote", 75000, 0)
 end
 
-RegisterUnitEvent(15687, 1, "Moroes")
+function Moroes_OnLeaveCombat(pUnit, Event)
+    pUnit:RemoveEvents()
+end
 
---[[Moroes yells: Hm, unannounced visitors. Preparations must be made...
-Moroes yells: How terribly clumsy of me.
-Moroes yells: Now, where was I? Oh, yes...
-Moroes yells: Oh, I've gone and made a mess...
-Moroes yells: You rang?
-Moroes says: The master has business in the rooms above.
-Moroes says: The Master is deep in study.
-Moroes says: The master is meeting with his apprentice.
-Moroes says: The Master will return from Stormwind soon....]]
+function Moroes_OnDeath(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+RegisterUnitEvent(15687, 2, "Moroes_OnLeaveCombat")
+RegisterUnitEvent(15687, 4, "Moroes_OnDeath")
+RegisterUnitEvent(15687, 1, "Moroes")

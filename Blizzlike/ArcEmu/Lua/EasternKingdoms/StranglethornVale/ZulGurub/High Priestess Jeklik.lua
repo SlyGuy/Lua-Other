@@ -1,21 +1,12 @@
---[[ HighPriestessJeklik.lua
-********************************
-*                                                            *
-* The LUA++ Scripting Project        *
-*                                                            *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The LUA++ Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-~~End of License Agreement
--- LUA++ staff, March 26, 2008. ]]
-
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: LUA++; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 --Jeklik begins the encounter in bat form. In this form she has an AoE silence that also damages. 
 --She randomly charges people in the group, and summons 6-8 bloodseeker bats once per minute. (Added the 6-8 Spawns, Please correct the spawn part if wrong (Deathdude)
 --When she drops below 50% HP, she reverts to priest form. 
@@ -115,7 +106,7 @@ RegisterUnitEvent(14517,2,"Jeklik_OnLeaveCombat")
 RegisterUnitEvent(14517,4,"Jeklik_OnDied")
 
 --Bloodseeker Bats move AI.
-function BloodseekerBat_PositionCheck(pUnit, event)
+function BloodseekerBat_PositionCheck(pUnit, Event)
      if pUnit:IsCreatureMoving() == true then
 		local tbl = pUnit:GetInRangeFriends()
 		for k,v in pairs(tbl) do
@@ -128,7 +119,7 @@ function BloodseekerBat_PositionCheck(pUnit, event)
 	end
 end  
 
-function BloodseekerBat_OnSpawn(pUnit, event)
+function BloodseekerBat_OnSpawn(pUnit, Event)
      local tbl = pUnit:GetInRangeFriends()
      for k,v in pairs(tbl) do
 		if (v:GetEntry() == 14517) then
@@ -141,7 +132,7 @@ end
 
 RegisterUnitEvent(14965, 18, "BloodseekerBat_OnSpawn")
 
-function BloodseekerBat_OnWipe(pUnit, event)
+function BloodseekerBat_OnWipe(pUnit, Event)
      if (pUnit:IsAlive() == true) then
 		pUnit:RemoveEvents()
 		pUnit:Despawn(100, 0)

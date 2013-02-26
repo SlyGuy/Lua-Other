@@ -1,3 +1,21 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Prince Malchezaar yells: All realities, all dimensions are open to me!
+Prince Malchezaar yells: How can you hope to stand against such overwhelming power?
+Prince Malchezaar yells: I refuse to concede defeat! I am a prince of the Eredar! I... am...
+Prince Malchezaar yells: Madness has brought you here to me. I shall be your undoing!
+Prince Malchezaar yells: Simple fools! Time is the fire in which you'll burn!
+Prince Malchezaar yells: You are but a plaything. Unfit even to amuse.
+Prince Malchezaar yells: You face not Malchezaar alone, but the legions I command!
+Prince Malchezaar yells: Your greed, your foolishness has brought you to this end.]]
+
 function Malchezaar_Hellfire(Unit, event, miscUnit, misc)
 	Unit:FullCastSpellOnTarget(43465, Unit:GetClosestPlayer())
 end
@@ -88,13 +106,14 @@ function Malchezaar(Unit, event, miscUnit, misc)
 	end
 end
 
-RegisterUnitEvent(15690, 1, "Malchezaar")
+function Malchezaar_OnLeaveCombat(pUnit, Event)
+    pUnit:RemoveEvents()
+end
 
---[[Prince Malchezaar yells: All realities, all dimensions are open to me!
-Prince Malchezaar yells: How can you hope to stand against such overwhelming power?
-Prince Malchezaar yells: I refuse to concede defeat! I am a prince of the Eredar! I... am...
-Prince Malchezaar yells: Madness has brought you here to me. I shall be your undoing!
-Prince Malchezaar yells: Simple fools! Time is the fire in which you'll burn!
-Prince Malchezaar yells: You are but a plaything. Unfit even to amuse.
-Prince Malchezaar yells: You face not Malchezaar alone, but the legions I command!
-Prince Malchezaar yells: Your greed, your foolishness has brought you to this end.]]
+function Malchezaar_OnDeath(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+RegisterUnitEvent(15690, 2, "Malchezaar_OnLeaveCombat")
+RegisterUnitEvent(15690, 4, "Malchezaar_OnDeath")
+RegisterUnitEvent(15690, 1, "Malchezaar")

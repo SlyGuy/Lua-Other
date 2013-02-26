@@ -1,23 +1,14 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
----------------------
---       		   --
--- Warder Stilgiss --
---       		   --
----------------------
---[[
-----Spells-ID
-Chilled-6136
-Frost Armor-12544
-Frost Nova-12674
-Frost Ward-15044
-Frostbolt-12675
-]]--
+--Warder Stilgiss
 function FDV_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("FrostArmor", 7000, 0)
 	pUnit:RegisterEvent("Chilled", 14000, 0)
@@ -58,16 +49,7 @@ RegisterUnitEvent(9041, 1, "FDV_OnCombat")
 RegisterUnitEvent(9041, 2, "FDV_OnLeaveCombat")
 RegisterUnitEvent(9041, 4, "FDV_OnDeath")
 
------------
---       --
--- Verek --
---       --
------------
---[[
-----Spells-ID
-Curse of Blood-15042
-Enrage-8599
-]]--
+--Verek
 function Verek_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("CurseOfBlood", 7000, 0)
 	pUnit:RegisterEvent("Enrage", 14000, 0)

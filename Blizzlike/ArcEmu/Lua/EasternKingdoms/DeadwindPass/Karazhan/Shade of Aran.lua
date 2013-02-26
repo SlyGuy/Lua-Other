@@ -1,3 +1,26 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Shade of Aran yells: At last the nightmare is over...
+Shade of Aran yells: Back to the cold dark with you!
+Shade of Aran yells: Burn, you hellish fiends!
+Shade of Aran yells: I am not some simple jester! I am Nielas Aran!
+Shade of Aran yells: I want this nightmare to be over!
+Shade of Aran yells: I'll freeze you all!
+Shade of Aran yells: I'll not be tortured again!
+Shade of Aran yells: I'll show you: this beaten dog still has some teeth!
+Shade of Aran yells: Please, no more! My son... he's gone mad!
+Shade of Aran yells: Torment me no more!
+Shade of Aran yells: Who are you? What do you want? Stay away from me!
+Shade of Aran yells: Yes, yes my son is quite powerful... but I have powers of my own!
+Shade of Aran says: I'm not finished yet! No, I have a few more tricks up my sleeve...]]
+
 function Aran_Water_Elementals(Unit, event, miscUnit, misc)
 	if((Unit:GetHealthPct() < 40) and (Didthat == 0)) then
 		Unit:SpawnCreature(21160, -11167.2, -1914.13, 232.009, 0, 18, 96000000);
@@ -73,17 +96,14 @@ function Aran(Unit, event, miscUnit, misc)
 	Unit:RegisterEvent("Aran_Arcane_Explosion", 91000, 0)
 end
 
+function Aran_OnLeaveCombat(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+function Aran_OnDeath(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+RegisterUnitEvent(16524, 2, "Aran_OnLeaveCombat")
+RegisterUnitEvent(16524, 4, "Aran_OnDeath")
 RegisterUnitEvent(16524, 1, "Aran")
---[[Shade of Aran yells: At last the nightmare is over...
-Shade of Aran yells: Back to the cold dark with you!
-Shade of Aran yells: Burn, you hellish fiends!
-Shade of Aran yells: I am not some simple jester! I am Nielas Aran!
-Shade of Aran yells: I want this nightmare to be over!
-Shade of Aran yells: I'll freeze you all!
-Shade of Aran yells: I'll not be tortured again!
-Shade of Aran yells: I'll show you: this beaten dog still has some teeth!
-Shade of Aran yells: Please, no more! My son... he's gone mad!
-Shade of Aran yells: Torment me no more!
-Shade of Aran yells: Who are you? What do you want? Stay away from me!
-Shade of Aran yells: Yes, yes my son is quite powerful... but I have powers of my own!
-Shade of Aran says: I'm not finished yet! No, I have a few more tricks up my sleeve...]]

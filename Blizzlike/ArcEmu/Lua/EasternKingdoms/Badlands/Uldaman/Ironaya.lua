@@ -1,34 +1,18 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   Boss_Ironaya.lua
-   Original Code by DARKI
-   Version 1
-========================================]]--
--- % Completed: 5
--- Comments: This script will be ready soon
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 -- [[ Global Variables ]] --
 local knocked = 0
 local wstomp = 0
 
--- [[ Spells ]] --
-local ARCINGSMASH = 39144
-local KNOCKAWAY = 22893
-local WSTOMP = 16727
-
 function Ironaya_OnCombat(Unit, Event)
-local arcing = 3000+math.random(1, 10000)
 	Unit:SendChatMessage(12, 0, "Nobody steals the secrets of the Creator!") 
 	Unit:PlaySoundToSet(5851)	
 	Unit:RegisterEvent("Ironaya_Knockaway", 1000, 0)	
@@ -37,19 +21,18 @@ end
 
 function Ironaya_Knockaway(Unit, Event)
 	if((Unit:GetHealthPct() < 50) and (knocked == 0)) then
-		Target=Unit:GetRandomPlayer()
-		Unit:FullCastSpellOnTarget(KNOCKAWAY, Target)
+		Unit:FullCastSpellOnTarget(22893, Unit:GetRandomPlayer())
 		local knocked = 1
 	end
 end
 
 function Ironaya_Arcing(Unit, Event)	
-	Unit:CastSpell(ARCINGSMASH)
+	Unit:CastSpell(39144)
 end
 
 function Ironaya_Wstomp(Unit, Event)	
 	if((Unit:GetHealthPct() < 25) and (wstomp == 0)) then
-		Unit:CastSpell(WSTOMP)
+		Unit:CastSpell(16727)
 		local wstomp = 1
 	end
 end

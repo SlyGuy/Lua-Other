@@ -1,14 +1,12 @@
---[[ Boss -- Salramm the Fleshcrafter.lua
-
-This script was written and is protected
-by the GPL v2. This script was released
-by BrantX of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation community.
-
-~~End of License Agreement
--- BrantX, September 23, 2008. ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BrantX; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Salramm_OnEnterCombat(pUnit,Event)
 	pUnit:SendChatMessage(14, 0, "Ah, the entertainment has arrived!")
@@ -23,14 +21,14 @@ function Salramm_OnSpawn(pUnit,Event)
 end
 
 function Salramm_OnKill(pUnit,Event)
-	local Choice=math.random(1, 3)
-		if Choice==1 then
-			pUnit:SendChatMessage(14, 0, "The fun is just beginning!")
-		elseif Choice==2 then
-			pUnit:SendChatMessage(14, 0, "Aah, quality materials!")
-		elseif Choice==3 then
-			pUnit:SendChatMessage(14, 0, "Don't worry, I'll make good use of you.")
-end
+	local Choice = math.random(1,3)
+	if(Choice == 1) then
+		pUnit:SendChatMessage(14, 0, "The fun is just beginning!")
+	elseif(Choice == 2) then
+		pUnit:SendChatMessage(14, 0, "Aah, quality materials!")
+	elseif(Choice == 3) then
+		pUnit:SendChatMessage(14, 0, "Don't worry, I'll make good use of you.")
+	end
 end
 
 function Salramm_OnDied(pUnit,Event)
@@ -43,43 +41,43 @@ function Salramm_OnLeaveCombat(pUnit,Event)
 end
 
 function Salramm_ShadowBolt(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(15232,pUnit:GetClosestPlayer())
+	pUnit:FullCastSpellOnTarget(15232, pUnit:GetClosestPlayer())
 end
 
 function Salramm_StealFlesh(pUnit,Event)
-	pUnit:FullCastSpellOnTarget(52708,pUnit:GetClosestPlayer())
-	local Choice=math.random(1, 3)
-		if Choice==1 then
+	pUnit:FullCastSpellOnTarget(52708, pUnit:GetClosestPlayer())
+	local Choice = math.random(1,3)
+		if(Choice == 1) then
 			pUnit:SendChatMessage(14, 0, "I want a sample...")
-		elseif Choice==2 then
+		elseif(Choice == 2) then
 			pUnit:SendChatMessage(14, 0, "Such strength... it must be mine!")
-		elseif Choice==3 then
+		elseif(Choice == 3) then
 			pUnit:SendChatMessage(14, 0, "Your flesh betrays you.")
-end
+	end
 end
 
 function Salramm_ExplodeGhouls(pUnit,Event)
 	pUnit:CastSpell(52480)
-	local Choice=math.random(1, 2)
-		if Choice==1 then
-			pUnit:SendChatMessage(14, 0, "BOOM! Hahahahah...")
-		elseif Choice==2 then
-			pUnit:SendChatMessage(14, 0, "Blood... destruction... EXHILARATING!")
-end
+	local Choice = math.random(1,2)
+	if(Choice == 1) then
+		pUnit:SendChatMessage(14, 0, "BOOM! Hahahahah...")
+	elseif(Choice == 2) then
+		pUnit:SendChatMessage(14, 0, "Blood... destruction... EXHILARATING!")
+	end
 end
 
 function Salramm_SummonGhouls(pUnit,Event)
 	pUnit:CastSpell(52451)
-	local Choice=math.random(1, 2)
-		if Choice==1 then
-			pUnit:SendChatMessage(14, 0, "Say hello to some friends of mine.")
-		elseif Choice==2 then
-			pUnit:SendChatMessage(14, 0, "Come, citizen of Stratholme! Meet your saviors.")
-end
+	local Choice = math.random(1,2)
+	if(Choice == 1) then
+		pUnit:SendChatMessage(14, 0, "Say hello to some friends of mine.")
+	elseif(Choice == 2) then
+		pUnit:SendChatMessage(14, 0, "Come, citizen of Stratholme! Meet your saviors.")
+	end
 end
 
 RegisterUnitEvent(26530, 1, "Salramm_OnEnterCombat")
-RegisterUnitEvent(26530, 6, "Salramm_OnSpawn")
+RegisterUnitEvent(26530, 18, "Salramm_OnSpawn")
 RegisterUnitEvent(26530, 3, "Salramm_OnKill")
 RegisterUnitEvent(26530, 4, "Salramm_OnDied")
 RegisterUnitEvent(26530, 2, "Salramm_OnLeaveCombat")

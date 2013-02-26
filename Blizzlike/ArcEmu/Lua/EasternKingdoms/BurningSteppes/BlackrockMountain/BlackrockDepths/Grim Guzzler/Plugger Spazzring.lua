@@ -1,42 +1,22 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
---[[
-----Quotes
-Plugger Spazzring yells: Hey! Get away from that!
-Plugger Spazzring yells: Hey! Stop that!
-Plugger Spazzring yells: Hey, my pockets were picked!
-Plugger Spazzring yells: No stealing the goods!
-Plugger Spazzring yells: That's it! No more beer until this mess is sorted out!
-Plugger Spazzring yells: That's it! You're going down!
-Plugger Spazzring yells: What are you doing over there?
-Plugger Spazzring says: Drink up! There's more where that came from!
-Plugger Spazzring says: Enjoy! You won't find better ale anywhere!
-Plugger Spazzring says: Have you tried the Dark Iron Ale? It's the best!
-Plugger Spazzring says: Try the boar! It's my new recipe!
-----Spells-ID
-Banish-8994
-Curse of Tongues-13338
-Demon Armor-13787
-Immolate-12742
-Shadow Bolt-12739
-]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function PSR_OnSpawn(pUnit, Event)
 local chance = math.random(1,4)
 	if(chance == 1) then
 		pUnit:SendChatMessage(12, 0, "Drink up! There's more where that came from!")
-	end
-	if(chance == 2) then
+	elseif(chance == 2) then
 		pUnit:SendChatMessage(12, 0, "Enjoy! You won't find better ale anywhere!")
-	end
-	if(chance == 3) then
+	elseif(chance == 3) then
 		pUnit:SendChatMessage(12, 0, "Have you tried the Dark Iron Ale? Its the best!")
-	end
-	if(chance == 4) then
+	else
 		pUnit:SendChatMessage(12, 0, "Try the boar! It's my new recipe!")
 	end
 end
@@ -45,23 +25,17 @@ function PSR_OnCombat(pUnit, Event)
 local chance = math.random(1,7)
 	if(chance == 1) then
 		pUnit:SendChatMessage(14, 0, "That's it! No more beer until this mess is sorted out!")
-	end
-	if(chance == 2) then
-		pUnit:SendChatMessage(14, 0, "That's it! You're going donw!")
-	end
-	if(chance == 3) then
+	elseif(chance == 2) then
+		pUnit:SendChatMessage(14, 0, "That's it! You're going down!")
+	elseif(chance == 3) then
 		pUnit:SendChatMessage(14, 0, "What are you doing over there?")
-	end
-	if(chance == 4) then
+	elseif(chance == 4) then
 		pUnit:SendChatMessage(14, 0, "No Stealing the goods!")
-	end
-	if(chance == 5) then
+	elseif(chance == 5) then
 		pUnit:SendChatMessage(14, 0, "Hey, my pockets were picked!")
-	end
-	if(chance == 6) then
+	elseif(chance == 6) then
 		pUnit:SendChatMessage(14, 0, "Hey! Stop that!")
-	end
-	if(chance == 7) then
+	else
 		pUnit:SendChatMessage(14, 0, "Hey! Get away from that!")
 	end
 	pUnit:RegisterEvent("CurseofTongues", 7000, 0)

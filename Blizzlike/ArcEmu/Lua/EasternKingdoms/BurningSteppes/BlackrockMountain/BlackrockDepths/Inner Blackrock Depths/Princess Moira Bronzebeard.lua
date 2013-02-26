@@ -1,24 +1,19 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
---------------------------------------------------------------------
---[[
-----Spells-ID
-Heal-15586
-Mind Blast-15587
-Renew-8362
-Shadow Bolt-15537
-Shadow Word: Pain-15654
-]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-function PMBB_OnCombat(pUnit, event)
-	pUnit:RegisterEvent("Heal", 7000, 0)
-	pUnit:RegisterEvent("MindBlast", 14000, 0)
-	pUnit:RegisterEvent("SWPain", 21000, 0)
-	pUnit:RegisterEvent("Renew", 28000, 0)
-	pUnit:RegisterEvent("ShadowBolt", 35000, 0)
+function PMBB_OnCombat(pUnit, Event)
+	pUnit:RegisterEvent("Heal", 21000, 0)
+	pUnit:RegisterEvent("MindBlast", 7000, 0)
+	pUnit:RegisterEvent("SWPain", 14000, 0)
+	pUnit:RegisterEvent("Renew", 35000, 0)
+	pUnit:RegisterEvent("ShadowBolt", 28000, 0)
 end
  
 function Heal(pUnit, Event)
@@ -41,11 +36,11 @@ function Renew(Unit, Event)
 	pUnit:FullCastSpell(8362)
 end
  
-function PMBB_OnLeaveCombat(pUnit, event)
+function PMBB_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
  
-function PMBB_OnDeath(pUnit, event)
+function PMBB_OnDeath(pUnit, Event)
 	pUnit:RemoveEvents()
 end
  

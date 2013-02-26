@@ -1,3 +1,13 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 local kiljaeden = 25315
 local cn_kiljaeden = nil
 local kiljaedendummy = nil
@@ -14,7 +24,7 @@ spawnpts.x = {1747.962891,1695.568115,1652.105713,1705.071899}
 spawnpts.y = {620.713135,676.063477,635.099670,582.911438 }
 spawnpts.z = {28.050375,28.050201,28.125195,28.141369 }
 spawnpts.o = {2.964534,4.755246,6.129690,1.743238}
---Fill table w/ dummy values
+
 for i = 1, 3 do 
 	handaddtable[i] = 1
 end
@@ -33,6 +43,7 @@ function Kiljaeden_SpawnOrbs(Unit)
 		spawnedorbs = false
 	end
 end
+
 function HandOfKil_OnSpawn(Unit)
 	if(Unit:GetEntry() == 25588) then
 		Unit:DisableRespawn()
@@ -54,7 +65,7 @@ function HandOfKil_OnSpawn(Unit)
 		for k,v in pairs(blueorbs) do
 			if v == 1 then
 				table.remove(blueorbs,k)
-				--Spawn the blue orbs --
+				--Spawn the blue orbs
 				Kiljaeden_SpawnOrbs(Unit)
 				break;
 			end
@@ -279,12 +290,14 @@ function InitializeKilJaeden(Unit)
 	Unit:FullCastSpell(26586)
 	Unit:CastSpell(47115)
 end
+
 function KiljaedenBattleReady(Unit)
 	Unit:RemoveFlag(UnitField.Unit_FIELD_FLAGS, UnitFieldFlags.Unit_FLAG_NOT_SELECTABLE+UnitFieldFlags.Unit_FLAG_NOT_ATTACKABLE_9)
 	Unit:SetCombatCapable(0)
 	local plr = Unit:GetRandomPlayer(0)
 	Unit:AttackReaction(plr, 1)
 end
+
 function KilJaeden_OnCombat(Unit)
 	Unit:RemoveEvents()
 	Unit:RegisterAIUpdateEvent(1000)
@@ -296,6 +309,7 @@ function KilJaeden_OnCombat(Unit)
 	Unit:RegisterEvent("KilJaeden_Gossip", 25000, 1)
 	kalec = Unit:SpawnCreature(25319, 1699.204712, 628.331482, 27.558220+100.000000, Unit:GetO(), 35, 0)
 end
+
 function KilJaeden_OnKill(Unit,event,pMisc)
 	if pMisc:IsPlayer() then
 		if(math.random(2) == 1) then
@@ -307,6 +321,7 @@ function KilJaeden_OnKill(Unit,event,pMisc)
 		end
 	end
 end
+
 function KilJaeden_OnDeath(Unit)
 	Unit:SendChatMessage(ChatField.CHAT_MSG_MONSTER_YELL, LangField.LANG_UNIVERSAL, "Nooooooooooooo!")
 	Unit:RemoveEvents()
@@ -317,6 +332,7 @@ function KilJaeden_OnDeath(Unit)
 		end
 	end
 end
+
 function KilJaeden_OnWipe(Unit)
 	Unit:RemoveAIUpdateEvent()
 	Unit:RemoveEvents()
@@ -862,9 +878,11 @@ function KilJaeden_SinisterReflect(Unit)
 		Unit:PlaySoundToSet(12504)
 	end
 end
+
 function KilJaeden_SinisterReflectdeux(Unit)
 	Unit:Emote(405,0)
 end
+
 function KilJaeden_SoulDarkness(Unit)
 	Unit:FullCastSpell(45657)
 	local rand = math.random(1, 3)
@@ -1115,6 +1133,7 @@ function OrbOfBlue_OnActivate(Unit,event,pActivator)
 		end
 	end
 end
+
 function OrbOfBlue_OnDespawn(Unit,event)
 	for k,v in pairs(blueorbs) do
 		local addy = tostring(v)
@@ -1123,7 +1142,6 @@ function OrbOfBlue_OnDespawn(Unit,event)
 		end
 	end
 end
-	
 
 function OrbTarget_OnSpawn(Unit)
 	Unit:SetUInt32Value(UnitField.Unit_FIELD_FLAGS, UnitFieldFlags.Unit_FLAG_NOT_ATTACKABLE_9+UnitFieldFlags.Unit_FLAG_NOT_SELECTABLE)
@@ -1143,7 +1161,7 @@ RegisterUnitEvent(25640, 18, "OrbTarget_OnSpawn")
 RegisterUnitEvent(25640, 18, "OrbTarget_OnSpawn")
 
 function InitBlueDrake(Unit)
-	-- Execute Query
+	--Execute Query
 	Unit:WorldQuery("DELETE FROM ai_agents WHERE entry ='25653';")
 	Unit:WorldQuery("INSERT INTO ai_agents (entry,type,event,chance,maxcount,spell,spelltype,targettype,cooldown,floatMisc1,Misc2) VALUES('25653','4','0','100','0','45848','0','-1','20000','0','0');")
 	Unit:WorldQuery("INSERT INTO ai_agents (entry,type,event,chance,maxcount,spell,spelltype,targettype,cooldown,floatMisc1,Misc2) VALUES('25653','4','0','100','0','45856','0','-1','10000','0','0');")
@@ -1166,6 +1184,7 @@ function BlueDrakeMasterController(Unit)
 	cn_kiljaeden:AttackReaction(Unit,1)
 	Unit:RegisterEvent("BlueDrakeDies", 119000, 1)
 end
+
 function BlueDrakeDies(Unit)
 	local addy = tostring(Unit)
 	local plr = nil
@@ -1183,22 +1202,18 @@ RegisterGameObjectEvent(188116, 2, "InitializeOrbOfBlue")
 RegisterGameObjectEvent(187869, 2, "InitializeOrbOfBlue")
 RegisterGameObjectEvent(188114, 2, "InitializeOrbOfBlue")
 RegisterGameObjectEvent(188115, 2, "InitializeOrbOfBlue")
---[[
-RegisterGameObjectEvent(188116, 5, "OrbOfBlueUpdate")
+--[[RegisterGameObjectEvent(188116, 5, "OrbOfBlueUpdate")
 RegisterGameObjectEvent(187869, 5, "OrbOfBlueUpdate")
 RegisterGameObjectEvent(188114, 5, "OrbOfBlueUpdate")
-RegisterGameObjectEvent(188115, 5, "OrbOfBlueUpdate")
-]]--
+RegisterGameObjectEvent(188115, 5, "OrbOfBlueUpdate")]]--
 RegisterGameObjectEvent(188116, 4, "OrbOfBlue_OnActivate")
 RegisterGameObjectEvent(187869, 4, "OrbOfBlue_OnActivate")
 RegisterGameObjectEvent(188114, 4, "OrbOfBlue_OnActivate")
 RegisterGameObjectEvent(188115, 4, "OrbOfBlue_OnActivate")
-
 RegisterGameObjectEvent(188116, 6, "OrbOfBlue_OnDespawn")
 RegisterGameObjectEvent(187869, 6, "OrbOfBlue_OnDespawn")
 RegisterGameObjectEvent(188114, 6, "OrbOfBlue_OnDespawn")
 RegisterGameObjectEvent(188115, 6, "OrbOfBlue_OnDespawn")
-
 RegisterUnitEvent(25653, 18, "InitBlueDrake")
 RegisterUnitEvent(25502, 18, "Initialize_ShieldOrb")
 RegisterUnitEvent(25502, 4, "ShieldOrb_OnDeath")

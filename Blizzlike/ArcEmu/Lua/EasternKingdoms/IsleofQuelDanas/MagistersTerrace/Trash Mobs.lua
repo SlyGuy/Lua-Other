@@ -1,20 +1,12 @@
---[[
-*******************************************************
-*          LASP - LUA AREA SCRIPTING PROJECT          *
-*                      License                        *
-*******************************************************
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The Lua Area Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Area - Magister Terrace - Mobs.lua by Yerney
-Report Bugs at www.lasp.forumotion.com
--- ]]
-
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: LASP; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 --SunBlade Magister
 function SunbMag_OnCombat(Unit, Event)

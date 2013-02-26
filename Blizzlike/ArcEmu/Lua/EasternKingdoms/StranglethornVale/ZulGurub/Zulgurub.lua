@@ -1,44 +1,37 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   Original Code by DARKI
-   Version 1
-========================================]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 --Parasitic Serpent AI
-function Serpent_OneTimeBite(pUnit, event)
-     pUnit:FullCastSpellOnTarget(23865, pUnit:GetClosestPlayer())
+function Serpent_OneTimeBite(pUnit, Event)
+    pUnit:FullCastSpellOnTarget(23865, pUnit:GetClosestPlayer())
 end
 
-function Serpent_Bite(pUnit, event)
-     pUnit:FullCastSpellOnTarget(23865, pUnit:GetClosestPlayer())
+function Serpent_Bite(pUnit, Event)
+    pUnit:FullCastSpellOnTarget(23865, pUnit:GetClosestPlayer())
 end
 
-function Serpent_OnEnterCombat(pUnit, event)
-     pUnit:RegisterEvent("Serpent_OneTimeBite", 2000, 1)
-     pUnit:RegisterEvent("Serpent_Bite", 14000, 0)
+function Serpent_OnEnterCombat(pUnit, Event)
+    pUnit:RegisterEvent("Serpent_OneTimeBite", 2000, 1)
+    pUnit:RegisterEvent("Serpent_Bite", 14000, 0)
 end
 
 RegisterUnitEvent(14884, 1, "Serpent_OnEnterCombat")
 
-function Serpent_OnWipe(pUnit, event)
-     pUnit:RemoveEvents()
+function Serpent_OnWipe(pUnit, Event)
+    pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(14884, 2, "Serpent_OnWipe")
 
-function Serpent_OnDie(pUnit, event)
-     pUnit:RemoveEvents()
+function Serpent_OnDie(pUnit, Event)
+    pUnit:RemoveEvents()
 end
 
 RegisterUnitEvent(14884, 4, "Serpent_OnDie")

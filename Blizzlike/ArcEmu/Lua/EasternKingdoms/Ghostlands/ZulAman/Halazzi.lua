@@ -1,86 +1,74 @@
---[[=========================================
- _     _    _
-| |   | |  | |  /\                  /\
-| |   | |  | | /  \   _ __  _ __   /  \   _ __ ___
-| |   | |  | |/ /\ \ | '_ \| '_ \ / /\ \ | '__/ __|
-| |___| |__| / ____ \| |_) | |_) / ____ \| | | (__
-|______\____/_/    \_\ .__/| .__/_/    \_\_|  \___|
-  Scripting Project  | |   | | Improved LUA Engine
-                     |_|   |_|
-   SVN: http://svn.burning-azzinoth.de/LUAppArc
-   LOG: http://luapparc.burning-azzinoth.de/trac/timeline
-   TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
-   Original Code by DARKI
-   Version 1
-========================================]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: DARKI; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 math.randomseed(os.time())
 
 function npc_halazzi_event_combatenter(Unit, Event)
   local vars = getvars(Unit)
-	vars.npc_halazzi.phase         = 1
-	vars.npc_halazzi.shift         = 0
-	vars.npc_halazzi.health.b      = Unit:GetMaxHealth()
-	vars.npc_halazzi.child         = nil
-	vars.npc_halazzi.spells.saber  = math.random(7, 10)
-	vars.npc_halazzi.spells.frenzy = math.random(12, 14)
-	Unit:SendChatMessage( 14, 0, "Get on your knees and bow to da fang and claw!")
+	vars.npc_halazzi.phase = 1
+	vars.npc_halazzi.shift = 0
+	vars.npc_halazzi.health.b = Unit:GetMaxHealth()
+	vars.npc_halazzi.child  = nil
+	vars.npc_halazzi.spells.saber  = math.random(7,10)
+	vars.npc_halazzi.spells.frenzy = math.random(12,14)
+	Unit:SendChatMessage(14, 0, "Get on your knees and bow to da fang and claw!")
 	Unit:PlaySoundToSet(12020)
 	Unit:RegisterEvent("npc_halazzi_event_pulse", 1000, 1)	
-	setvars( Unit, vars )
+	setvars(Unit, vars)
 end
 
--- when leaving combat
 function npc_halazzi_event_combatleave(Unit, Event)
   Unit:RemoveEvents()
 end
 
--- when killing a target
 function npc_halazzi_event_combatkills(Unit, Event)
-  if(math.random(1, 2) == 1) then
-		Unit:SendChatMessage( 14, 0, "You cant fight da power...")
+	if(math.random(1,2) == 1) then
+		Unit:SendChatMessage(14, 0, "You cant fight da power...")
 		Unit:PlaySoundToSet(12026)
-  else
+	else
 		Unit:SendChatMessage(14, 9, "You all gonna fail...")
 		Unit:PlaySoundToSet(12027)
-  end
+	end
 end
 
--- when killed
 function npc_halazzi_event_combatdying(Unit, Event)
-	Unit:SendChatMessage( 14, 0, "Chaga... choka'jinn.")
+	Unit:SendChatMessage(14, 0, "Chaga... choka'jinn.")
 	Unit:PlaySoundToSet(12028)
 end
 
--- when being spawned
 function npc_halazzi_event_spawn(Unit, Event)
 	setvars(Unit, {npc_halazzi = {owner = Unit, child = nil, phase = 0, shift = 0, health = {a = 0, b = 0}, spells = {saber = -1, frenzy = -1, totem = -1, shock = -1}}})
 end
 
--- update pulse, happens every second
+--update pulse, happens every second
 function npc_halazzi_event_pulse(Unit, Event)
 	if(npc_halazzi_phase_checkupdate(Unit, Event) == true) then
-	  Unit:RegisterEvent("npc_halazzi_event_pulse", 1000, 1)
+		Unit:RegisterEvent("npc_halazzi_event_pulse", 1000, 1)
 		return
 	end
 	npc_halazzi_phase_checkspells(Unit, Event)	
 	Unit:RegisterEvent("npc_halazzi_event_pulse", 1000, 1)	
 end
 
-function npc_halazzi_phase_checkspells( Unit, Event )
-  local vars = getvars( Unit )
+function npc_halazzi_phase_checkspells(Unit, Event)
+  local vars = getvars(Unit)
 	local done
 	if(vars.npc_halazzi.phase == 1) then
 		vars.npc_halazzi.spells.saber  = vars.npc_halazzi.spells.saber  - 1
 		if(vars.npc_halazzi.spells.saber == 0) then
 		  Unit:FullCastSpellOnTarget(43267, Unit:GetMainTank())
-			
-			if(math.random(1, 4) <= 2) then
-			  Unit:SendChatMessage(14, 0, "Me gonna carve ya now!")
+			if(math.random(1,4) <= 2) then
+				Unit:SendChatMessage(14, 0, "Me gonna carve ya now!")
 				Unit:PlaySoundToSet(12023)
 			else
-			  Unit:SendChatMessage(14, 0, "You gonna leave in pieces!")
+				Unit:SendChatMessage(14, 0, "You gonna leave in pieces!")
 				Unit:PlaySoundToSet(12024)
 			end
 			done = false
@@ -99,13 +87,12 @@ function npc_halazzi_phase_checkspells( Unit, Event )
 			while done == false do
 			  local rand = math.random(12, 14)
 				if(vars.npc_halazzi.spells.saber ~= rand) then
-				  vars.npc_halazzi.spells.frenzy = rand
+					vars.npc_halazzi.spells.frenzy = rand
 					done = true
 				end
 			end
 		end
 	end
-	
 	if(vars.npc_halazzi.phase == 2) then
 	  vars.npc_halazzi.spells.totem = vars.npc_halazzi.spells.totem - 1
 		if(vars.npc_halazzi.spells.totem == 0) then
@@ -233,10 +220,10 @@ local health2 = 100
 	return false
 end
 
-RegisterUnitEvent(23577,  1, "npc_halazzi_event_combatenter")
-RegisterUnitEvent(23577,  2, "npc_halazzi_event_combatleave")
-RegisterUnitEvent(23577,  3, "npc_halazzi_event_combatkills")
-RegisterUnitEvent(23577,  4, "npc_halazzi_event_combatdying")
+RegisterUnitEvent(23577, 1, "npc_halazzi_event_combatenter")
+RegisterUnitEvent(23577, 2, "npc_halazzi_event_combatleave")
+RegisterUnitEvent(23577, 3, "npc_halazzi_event_combatkills")
+RegisterUnitEvent(23577, 4, "npc_halazzi_event_combatdying")
 RegisterUnitEvent(23577, 18, "npc_halazzi_event_spawn")
 
 function npc_halazzilynxspirit_event_combatenter(Unit, Event)
@@ -264,11 +251,10 @@ function npc_halazzilynxspirit_event_shred(Unit, Event)
 	Unit:RegisterEvent("npc_halazzilynxspirit_event_flurry", math.random(3, 4) * 1000, 1)
 end
 
-RegisterUnitEvent(24143,  1, "npc_halazzilynxspirit_event_combatenter")
-RegisterUnitEvent(24143,  2, "npc_halazzilynxspirit_event_combatleave")
+RegisterUnitEvent(24143, 1, "npc_halazzilynxspirit_event_combatenter")
+RegisterUnitEvent(24143, 2, "npc_halazzilynxspirit_event_combatleave")
 RegisterUnitEvent(24143, 18, "npc_halazzilynxspirit_event_spawn")
 
---[[ CORRUPTED LIGHTNING TOTEM ]]--
 function npc_halazzitotem_event_combatenter(Unit, Event)
 	Unit:RegisterEvent("npc_halazzitotem_event_castlightning", math.random(4, 6) * 1000, 1)
 end
@@ -287,6 +273,6 @@ function npc_halazzitotem_event_castlightning(Unit, Event)
 	Unit:RegisterEvent("npc_halazzitotem_event_castlightning", math.random(4, 6) * 1000, 1)
 end
 
-RegisterUnitEvent(24224,  1, "npc_halazzitotem_event_combatenter")
-RegisterUnitEvent(24224,  2, "npc_halazzitotem_event_combatleave")
+RegisterUnitEvent(24224, 1, "npc_halazzitotem_event_combatenter")
+RegisterUnitEvent(24224, 2, "npc_halazzitotem_event_combatleave")
 RegisterUnitEvent(24224, 18, "npc_halazzitotem_event_spawn")

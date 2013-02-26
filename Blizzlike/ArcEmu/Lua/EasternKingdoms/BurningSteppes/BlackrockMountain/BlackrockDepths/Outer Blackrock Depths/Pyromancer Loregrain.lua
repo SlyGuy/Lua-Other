@@ -1,18 +1,14 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
---[[
-----Spells-ID
-Fire Ward-15041
-Flame Shock-15616
-Molten Blast-15095
-Scorching Totem-15038
-]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-function PMLG_OnCombat(pUnit, event)
+function PMLG_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("SearingTotems", 7000, 0)
 	pUnit:RegisterEvent("FireWard", 14000, 0)
 	pUnit:RegisterEvent("MoltenBlast", 21000, 0)
@@ -35,11 +31,11 @@ function FlameShock(Unit, Event)
 	pUnit:CastSpellOnTarget(15616)
 end
  
-function PMLG_OnLeaveCombat(pUnit, event)
+function PMLG_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
  
-function PMLG_OnDeath(pUnit, event)
+function PMLG_OnDeath(pUnit, Event)
 	pUnit:RemoveEvents()
 end
  

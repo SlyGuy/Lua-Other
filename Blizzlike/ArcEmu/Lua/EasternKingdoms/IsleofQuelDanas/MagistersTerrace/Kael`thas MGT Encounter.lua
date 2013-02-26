@@ -1,4 +1,12 @@
--- No matter what, people are gonna use this script for ArcEmu, for saying that; you lost your rights.
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 --[[ Sound ID's
 Sound\Creature\PrinceKaelthasSunstrider [12413] name=A_MTERRACE_BROKENKAELAGGRO file1=BROKENKAELAGGRO.wav 
 Sound\Creature\PrinceKaelthasSunstrider [12415] name=A_MTERRACE_BROKENKAELPHOENIX 
@@ -50,16 +58,14 @@ function Kael_PhoenixSummon(pUnit,Event)
 	end
 end
 
-
 function Kael_FlameStrike(pUnit,Event)
 	pUnit:SendChatMessage(14, 0,"Felomin ashal!")
 	pUnit:PlaySoundToSet(12417)
 	local plr = pUnit:GetRandomPlayer(3)
 	if(type(plr) == "userdata") then
-		pUnit:SpawnCreature(24666 , plr:GetX(), plr:GetY(), plr:GetZ(), plr:GetO(), 14, 5) -- Should add his insane AI!
+		pUnit:SpawnCreature(24666 , plr:GetX(), plr:GetY(), plr:GetZ(), plr:GetO(), 14, 5)Should add his insane AI!
 	end
 end	
-
 
 function Kael_Gravity(pUnit,Event)
 	pUnit:RemoveEvents()

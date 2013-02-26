@@ -1,22 +1,14 @@
---[[ SM Graveyard
-********************************
-*                                                            *
-* The LUA++ Scripting Project                 *
-*                                                            *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The LUA++ Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: LUA++; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-~~End of License Agreement
--- LUA++ staff, March 26, 2008. ]]
-
--- Haunting Phantasm
+--Haunting Phantasm
 function HauntingPhantasm_Summon(pUnit, Event)
     pUnit:StopMovement(1000)
     pUnit:CastSpell(8986)
@@ -32,7 +24,7 @@ end
 
 RegisterUnitEvent(6427, 1, "HauntingPhantasm_OnCombat")
 RegisterUnitEvent(6427, 2, "HauntingPhantasm_LeaveCombat")
--- Anguished Dead  
+--Anguished Dead  
 function AnguishedDead(pUnit, Event)
     pUnit:StopMovement(0)
     pUnit:FullCastSpellOnTarget(7068, pUnit:GetMainTank())
@@ -49,7 +41,7 @@ end
 RegisterUnitEvent(6426, 1, "AnguishedDead_OnCombat")
 RegisterUnitEvent(6426, 2, "AngusihedDead_LeaveCombat")
 
--- Scarlet Scryer
+--Scarlet Scryer
 function SScryer_Sleep(pUnit, Event)
     local ss_target = pUnit:GetRandomPlayer(7)
 	if (ss_target ~= nil) then
@@ -74,7 +66,7 @@ end
 
 RegisterUnitEvent(4293, 1, "SScryer_OnCombat")
 RegisterUnitEvent(4293, 2, "SScryer_LeaveCombat")
--- Interrogator James Vishas
+--Interrogator James Vishas
 
 function Vishas_SWPain(pUnit, Event)
      local target = pUnit:GetMainTank()
@@ -122,7 +114,7 @@ RegisterUnitEvent(3983, 1, "Vishas_OnCombat")
 RegisterUnitEvent(3983, 2, "Vishas_LeaveCombat")
 RegisterUnitEvent(3983, 3, "Vishas_KillPlayer")
 
--- Bloodmage Thalnos
+--Bloodmage Thalnos
 
 function Thalnos_Shadowbolt(pUnit, Event)
     local target = pUnit:GetMainTank()
@@ -199,7 +191,7 @@ RegisterUnitEvent(4543, 1, "Thalnos_OnCombat")
 RegisterUnitEvent(4543, 2, "Thalnos_LeaveCombat")
 RegisterUnitEvent(4543, 3, "Thalnos_KillPlayer")
 
--- Ironspine
+--Ironspine
 function Ironspine_PosionCloud(pUnit, Event)
 	pUnit:FullCastSpell(3815)
 end
@@ -220,7 +212,7 @@ end
 RegisterUnitEvent(6489, 1, "Ironspine_OnCombat")
 RegisterUnitEvent(6489, 2, "Ironspine_LeaveCombat")
 
--- Azshris 
+--Azshris 
 function Azhris_Call(pUnit, Event)
     local target = pUnit:GetMainTank()
     if (target ~= nil) then

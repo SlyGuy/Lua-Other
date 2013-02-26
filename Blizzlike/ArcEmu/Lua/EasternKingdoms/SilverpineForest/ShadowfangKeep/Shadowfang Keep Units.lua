@@ -1,14 +1,12 @@
---[[ AscendScripting Script - 
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The AscendScripting Team.This script was
-written and is protected by the GPL v2. The following
-script was released by a AscendScripting Staff Member.
-Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-~~End of License Agreement
--- AscendScripting Staff, February 26, 2009. ]]
-
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: AscendScripting Staff; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Rethilgore_OnCombat(pUnit, Event)
 	pUnit:RegisterEvent("Rethilgore_SoulDrain", 1400, 0)
@@ -19,7 +17,7 @@ function Rethilgore_SoulDrain(pUnit, Event)
 end
 
 function Razorclaw_OnCombat(pUnit, Event)
-	-- Nothing for Razorclaw.
+	--Nothing for Razorclaw.
 end
 
 function Baron_Silverlaine_OnCombat(pUnit, Event)
@@ -51,19 +49,19 @@ function Odo_OnCombat(pUnit, Event)
 end
 
 function Odo_Rage1(pUnit, Event)
-	if (pUnit:GetHealthPct() == 45) then
+	if(pUnit:GetHealthPct() == 45) then
 		pUnit:CastSpell(7481) 
 	end
 end
 
 function Odo_Rage2(pUnit, Event)
-	if (pUnit:GetHealthPct() == 30) then
+	if(pUnit:GetHealthPct() == 30) then
 		pUnit:CastSpell(7483) 
 	end
 end
 	
 function Odo_Rage3(pUnit, Event)
-	if (pUnit:GetHealthPct() == 15) then
+	if(pUnit:GetHealthPct() == 15) then
 		pUnit:CastSpell(7484) 
 	end
 end
@@ -83,13 +81,11 @@ end
 
 function Nandos_Worg(pUnit, Event)
 	RandomTimer5 = math.random(1,3)
-	if RandomTimer5 == 1 then
+	if(RandomTimer5 == 1) then
 		pUnit:CastSpell(7487)
-	end
-	if RandomTimer5 == 2 then
+	elseif(RandomTimer5 == 2) then
 		pUnit:CastSpell(7488)
-	end
-	if RandomTimer5 == 3 then
+	elseif(RandomTimer5 == 3) then
 		pUnit:CastSpell(7489)
 	end
 end	
@@ -101,22 +97,17 @@ end
 
 function Arugal_Random(pUnit, Event)
 	RandomTimer7 = math.random(1,6)
-	if RandomTimer7 == 1 then
+	if(RandomTimer7 == 1) then
 		pUnit:FullCastSpellOnTarget(7588, pUnit:GetRandomPlayer(0)) 
-	end
-	if RandomTimer7 == 2 then
+	elseif(RandomTimer7 == 2) then
 		pUnit:FullCastSpellOnTarget(7588, pUnit:GetRandomPlayer(0))
-	end
-	if RandomTimer7 == 3 then
-		pUnit:FullCastSpellOnTarget(7588, pUnit:GetRandomPlayer(0)) 
-	end
-	if RandomTimer7 == 4 then
-		pUnit:FullCastSpellOnTarget(7124, pUnit:GetRandomPlayer(0)) 
-	end
-	if RandomTimer7 == 5 then
-		pUnit:CastSpell(7803) 
-	end
-	if RandomTimer7 == 6 then
+	elseif(RandomTimer7 == 3) then
+		pUnit:FullCastSpellOnTarget(7588, pUnit:GetRandomPlayer(0))
+	elseif(RandomTimer7 == 4) then
+		pUnit:FullCastSpellOnTarget(7124, pUnit:GetRandomPlayer(0))
+	elseif(RandomTimer7 == 5) then
+		pUnit:CastSpell(7803)
+	elseif(RandomTimer7 == 6) then
 		pUnit:FullCastSpellOnTarget(7621, pUnit:GetRandomPlayer(0)) 
 	end
 end

@@ -1,3 +1,18 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Maiden of Virtue yells: Cast out your corrupt thoughts.
+Maiden of Virtue yells: Death comes. Will your conscience be clear?
+Maiden of Virtue yells: This is for the best.
+Maiden of Virtue yells: Your behavior will not be tolerated.
+Maiden of Virtue yells: Your impurity must be cleansed.]]
+
 function Maiden_Holy_Fire(Unit, event, miscUnit, misc)
 	Unit:FullCastSpellOnTarget(29522, Unit:GetRandomPlayer())
 end
@@ -21,10 +36,14 @@ function Maiden(Unit, event, miscUnit, misc)
 	Unit:RegisterEvent("Maiden_Holy_Ground", 30000, 0)
 end
 
-RegisterUnitEvent(16457, 1, "Maiden")
+function Maiden_OnLeaveCombat(pUnit, Event)
+    pUnit:RemoveEvents()
+end
 
---[[Maiden of Virtue yells: Cast out your corrupt thoughts.
-Maiden of Virtue yells: Death comes. Will your conscience be clear?
-Maiden of Virtue yells: This is for the best.
-Maiden of Virtue yells: Your behavior will not be tolerated.
-Maiden of Virtue yells: Your impurity must be cleansed.]]
+function Maiden_OnDeath(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+RegisterUnitEvent(16457, 2, "Maiden_OnLeaveCombat")
+RegisterUnitEvent(16457, 4, "Maiden_OnDeath")
+RegisterUnitEvent(16457, 1, "Maiden")

@@ -1,21 +1,12 @@
---[[
-********************************
-*                              *
-*      The Moon Project        *
-*                              *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The Moon Project, in accordance with 
-the GPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-Staff of Moon Project, Feb 2008
-~~End of License Agreement
---Moon April 2008]]
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Moon Project; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function SunbladeSisterofTorment_OnCombat(Unit, Event)
 	Unit:RegisterEvent("SunbladeSisterofTorment_DeadlyEmbrace", 10000, 0)
@@ -29,9 +20,9 @@ function SunbladeSisterofTorment_DeadlyEmbrace(Unit, Event)
 	end
 end
 
---44640 Lash of Pain
+--Lash of Pain
 function SunbladeSisterofTorment_LashofPain(Unit, Event)
-	local Flip = math.random(1, 2)
+	local Flip = math.random(1,2)
 	if((Flip == 1) and (Unit:GetClosestPlayer())) then
 		Unit:CastSpellOnTarget(44640, Unit:GetClosestPlayer())
 	else

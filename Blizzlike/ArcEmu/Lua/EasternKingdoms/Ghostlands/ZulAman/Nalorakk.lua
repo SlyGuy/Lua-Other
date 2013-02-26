@@ -1,3 +1,13 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
 function Nalorakk_OnSpawn(Unit)
 	local args = getvars(Unit)
 	if((args == nil) or (args.NALORAKK == nil)) then
@@ -212,7 +222,7 @@ function Nalorakk_Transform(Unit)
 		args.NALORAKK.enrage = 0
 		return
 	end
-	args.NALORAKK.enrage = args.NALORAKK.enrage - 45; -- subtract 45 seconds every transform to determine the enrage timer.
+	args.NALORAKK.enrage = args.NALORAKK.enrage - 45; --subtract 45 seconds every transform to determine the enrage timer.
 	if(CurrentForm(Unit) == "BEAR") then
 		Unit:RemoveEvents()
 		Unit:RemoveAura(42594)

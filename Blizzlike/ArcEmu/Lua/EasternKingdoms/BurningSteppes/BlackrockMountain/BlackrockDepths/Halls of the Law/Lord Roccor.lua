@@ -1,17 +1,14 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
---[[
-----Spells-ID
-Earth Shock-13728
-Flame Shock-13729
-Ground Tremor-6524
-]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-function LordRoccor_OnCombat(pUnit, event)
+function LordRoccor_OnCombat(pUnit, Event)
     pUnit:RegisterEvent("EarthShock", 7000, 0)
     pUnit:RegisterEvent("FlameShock", 14000, 0)
 	pUnit:RegisterEvent("GroundTremor", 21000, 0)
@@ -29,11 +26,11 @@ function GroundTremor(pUnit, Event)
     pUnit:CastSpell(6524)
 end
  
-function LordRoccor_OnLeaveCombat(pUnit, event)
+function LordRoccor_OnLeaveCombat(pUnit, Event)
     pUnit:RemoveEvents()
 end
  
-function LordRoccor_OnDeath(pUnit, event)
+function LordRoccor_OnDeath(pUnit, Event)
     pUnit:RemoveEvents()
 end
  

@@ -1,3 +1,20 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: LUA++; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Terestian Illhoof yells: Ah, you're just in time. The rituals are about to begin!
+Terestian Illhoof yells: Come, you dwellers in the dark! Rally to my call!
+Terestian Illhoof yells: Gather, my pets... there is plenty for all!
+Terestian Illhoof yells: Let this sacrifice serve as testament to my fealty.
+Terestian Illhoof yells: My life is yours, oh great one...
+Terestian Illhoof yells: Please accept this humble offering, oh great one...
+Terestian Illhoof yells: Your blood will anoint my circle!]]
+
 function Terestian_Shadow_Bolt(Unit, event, miscUnit, misc)
 	Unit:FullCastSpellOnTarget(36868, Unit:GetClosestPlayer())
 end
@@ -25,12 +42,14 @@ function Terestian(Unit, event, miscUnit, misc)
 	Unit:RegisterEvent("Terestian_Berserk", 60000, 0)
 end
 
-RegisterUnitEvent(15688, 1, "Terestian")
+function Terestian_OnLeaveCombat(pUnit, Event)
+    pUnit:RemoveEvents()
+end
 
---[[Terestian Illhoof yells: Ah, you're just in time. The rituals are about to begin!
-Terestian Illhoof yells: Come, you dwellers in the dark! Rally to my call!
-Terestian Illhoof yells: Gather, my pets... there is plenty for all!
-Terestian Illhoof yells: Let this sacrifice serve as testament to my fealty.
-Terestian Illhoof yells: My life is yours, oh great one...
-Terestian Illhoof yells: Please accept this humble offering, oh great one...
-Terestian Illhoof yells: Your blood will anoint my circle!]]
+function Terestian_OnDeath(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+RegisterUnitEvent(15688, 1, "Terestian")
+RegisterUnitEvent(15688, 2, "Terestian_OnLeaveCombat")
+RegisterUnitEvent(15688, 4, "Terestian_OnDeath")

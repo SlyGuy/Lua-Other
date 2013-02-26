@@ -1,52 +1,57 @@
--- 2D's LUA
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: 2D; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 --[[Baroness Dorothea Millstipe says: Where has the master gone?
 Baroness Dorothea Millstipe says: Why can we not talk to the master?]]
-function BaronessDorotheaMillstipe_OnCombat(Unit, event)
-	Unit:RegisterEvent("BaronessDorotheaMillstipe_Pain", 8000, 0)
-	Unit:RegisterEvent("BaronessDorotheaMillstipe_MindFlay", 15000, 0)
-	Unit:RegisterEvent("BaronessDorotheaMillstipe_ManaBurn", 20000, 0)
-	Unit:RegisterEvent("BaronessDorotheaMillstipe_Repeat", 25000, 0)
+
+function BaronessDorotheaMillstipe_OnCombat(Unit, Event)
+	Unit:RegisterEvent("BaronessDorotheaMillstipe_Pain", 7000, 0)
+	Unit:RegisterEvent("BaronessDorotheaMillstipe_MindFlay", 14000, 0)
+	Unit:RegisterEvent("BaronessDorotheaMillstipe_ManaBurn", 21000, 0)
+	Unit:RegisterEvent("BaronessDorotheaMillstipe_Repeat", 28000, 0)
 end
 
-function BaronessDorotheaMillstipe_Pain(pUnit, event)
+function BaronessDorotheaMillstipe_Pain(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(34441, pUnit:GetMainTank())
 end
 
-function BaronessDorotheaMillstipe_MindFlay(pUnit, event)
-local plr = pUnit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(37276, plr)
+function BaronessDorotheaMillstipe_MindFlay(pUnit, Event)
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
+		pUnit:FullCastSpellOnTarget(37276, pUnit:GetRandomPlayer(0))
 	end
 end
 
-function BaronessDorotheaMillstipe_ManaBurn(pUnit, event)
-local plr = pUnit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(37159, plr)
+function BaronessDorotheaMillstipe_ManaBurn(pUnit, Event)
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
+		pUnit:FullCastSpellOnTarget(37159, pUnit:GetRandomPlayer(0))
 	end
 end
 
-function BaronessDorotheaMillstipe_Repeat(Unit, event)
+function BaronessDorotheaMillstipe_Repeat(Unit, Event)
 	Unit:RegisterEvent("BaronessDorotheaMillstipe_Pain", 8000, 0)
 	Unit:RegisterEvent("BaronessDorotheaMillstipe_MindFlay", 15000, 0)
 	Unit:RegisterEvent("BaronessDorotheaMillstipe_ManaBurn", 20000, 0)
 end
 
-function BaronessDorotheaMillstipe_Pain(pUnit, event)
+function BaronessDorotheaMillstipe_Pain(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(34441, pUnit:GetMainTank())
 end
 
-function BaronessDorotheaMillstipe_MindFlay(pUnit, event)
-local plr = pUnit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(37276, plr)
+function BaronessDorotheaMillstipe_MindFlay(pUnit, Event)
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
+		pUnit:FullCastSpellOnTarget(37276, pUnit:GetRandomPlayer(0))
 	end
 end
 
-function BaronessDorotheaMillstipe_ManaBurn(pUnit, event)
-local plr = pUnit:GetRandomPlayer(0)
-	if(plr ~= nil) then
-		pUnit:FullCastSpellOnTarget(37159, plr)
+function BaronessDorotheaMillstipe_ManaBurn(pUnit, Event)
+	if(pUnit:GetRandomPlayer(0) ~= nil) then
+		pUnit:FullCastSpellOnTarget(37159, pUnit:GetRandomPlayer(0))
 	end
 end
 

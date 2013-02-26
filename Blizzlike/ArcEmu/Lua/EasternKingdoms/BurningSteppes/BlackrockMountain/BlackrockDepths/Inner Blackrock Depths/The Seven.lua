@@ -1,28 +1,17 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
---Suppose to have a timer for each boss, for example while your trying to kill the first boss
---and the boss is not dead you will have 2 bosses that you gotta deal with if the first boss is 
---NOT dead.
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--Suppose to have a timer for a wave of each seven.
 
-
---------------
---			--
--- Hate'rel --
---			--
---------------
---[[
-----Spells-ID
-Flurry-17687
-Shadow Bolt-15232
-Shadow Shield-12040
-Strike-15580
-]]--
+--Hate'rel
 function HREL_OnGossipTalk(pUnit, player, Event)
-	pUnit:SendChatMessage(12, 0, "The death of our flesh marked the birth of our spirit and our sacred task.")
+	pUnit:SendChatMessage(14, 0, "The death of our flesh marked the birth of our spirit and our sacred task.")
 	pUnit:SetFaction(14)
 	player:GossipComplete()
 end
@@ -63,21 +52,9 @@ RegisterUnitEvent(9034, 2, "HREL_OnLeaveCombat")
 RegisterUnitEvent(9034, 4, "HREL_OnDeath")
 RegisterUnitGossipEvent(9034, 1, "HREL_OnGossipTalk")
 
----------------
---			 --
--- Anger'rel --
---			 --
----------------
---[[
-----Spells-ID
-Enrage-15061
-Shield Block-12169
-Shield Wall-15062
-Strike-15580
-Sunder Armor-11971
-]]--
+--Anger'rel
 function AREL_OnGossipTalk(pUnit, player, Event)
-	pUnit:SendChatMessage(11, 0, "Our leader, Doom'rel, has ears for the challenge.")
+	pUnit:SendChatMessage(12, 0, "Our leader, Doom'rel, has ears for the challenge.")
 	pUnit:SetFaction(14)
 	player:GossipComplete()
 end
@@ -123,20 +100,9 @@ RegisterUnitEvent(9035, 2, "AREL_OnLeaveCombat")
 RegisterUnitEvent(9035, 4, "AREL_OnDeath")
 RegisterUnitGossipEvent(9035, 1, "AREL_OnGossipTalk")
 
---------------
---			--
--- Vile'rel --
---			--
---------------
---[[
-----Spells-ID
-Heal-1556
-Mind Blast-15587
-Power Word: Shield-11974
-Prayer of Healing-15585
-]]--
+--Vile'rel
 function VREL_OnGossipTalk(pUnit, player, Event)
-	pUnit:SendChatMessage(11, 0, "Our leader, Doom'rel, has ears for the challenge.")
+	pUnit:SendChatMessage(12, 0, "Our leader, Doom'rel, has ears for the challenge.")
 	pUnit:SetFaction(14)
 	player:GossipComplete()
 end
@@ -177,20 +143,9 @@ RegisterUnitEvent(9036, 2, "VREL_OnLeaveCombat")
 RegisterUnitEvent(9036, 4, "VREL_OnDeath")
 RegisterUnitGossipEvent(9036, 1, "VREL_OnGossipTalk")
 
----------------
---			 --
--- Gloom'rel --
---			 --
----------------
---[[
-----Spells-ID
-Cleave-40504
-Hamstring-9080
-Mortal Strike-13737
-Recklessness-13847
-]]--
+--Gloom'rel
 function GREL_OnGossipTalk(pUnit, player, Event)
-	pUnit:SendChatMessage(11, 0, "I am forever denied the touch of stone. I will never again know the glory of shaped iron...")
+	pUnit:SendChatMessage(12, 0, "I am forever denied the touch of stone. I will never again know the glory of shaped iron...")
 	pUnit:SetFaction(14)
 	player:GossipComplete()
 end
@@ -231,24 +186,9 @@ RegisterUnitEvent(9037, 2, "VREL_OnLeaveCombat")
 RegisterUnitEvent(9037, 4, "VREL_OnDeath")
 RegisterUnitGossipEvent(9037, 1, "VREL_OnGossipTalk")
 
----------------
---			 --
--- Seeth'rel --
---			 --
----------------
---[[
-----Quotes
-----Spells-ID
-Blizzard-8364
-Chilled-6136
-Cone of Cold-15244
-Frost Armor-12544
-Frost Nova-12674
-Frost Ward-15044
-Frostbolt-12675
-]]--
+--Seeth'rel
 function SREL_OnGossipTalk(pUnit, player, Event)
-	pUnit:SendChatMessage(12, 0, "You may not pass. You are not our kin, nor have you issued the challenge.")
+	pUnit:SendChatMessage(14, 0, "You may not pass. You are not our kin, nor have you issued the challenge.")
 	pUnit:SetFaction(14)
 	player:GossipComplete()
 end
@@ -304,37 +244,12 @@ RegisterUnitEvent(9038, 2, "SREL_OnLeaveCombat")
 RegisterUnitEvent(9038, 4, "SREL_OnDeath")
 RegisterUnitGossipEvent(9038, 1, "SREL_OnGossipTalk")
 
---------------
---			--
--- Doom'rel --
---			--
---------------
---[[
-----Quotes
-Doom'rel yells: Your challenge has failed!
-Doom'rel says: You have challenged the Seven, and now you will die!
-----Spells-ID
-Banish-8994
-Curse of Weakness-12493
-Demon Armor-13787
-Immolate-12742
-Shadow Bolt Volley-15245
-Summon Voidwalkers-15092
-]]--
+--Doom'rel
 function DOREL_OnGossipTalk(pUnit, player, Event)
-	player:PlayerSendChatMessage(12, 0, "Your bondage is at the end, Doom'rel. I challenge you!")
+	player:PlayerSendChatMessage(1, 0, "Your bondage is at the end, Doom'rel. I challenge you!")
 	pUnit:SendChatMessage(12, 0, "You have challenged the Seven, and now you will die!")
 	pUnit:SetFaction(14)
 	player:GossipComplete()
-end
-
-function DOREL_OnGossipSelect(pUnit, event, player, id, intid, code, pMisc)
-	if (intid == 1) then
-		pUnit:SetFaction(14)
-		player:PlayerSendChatMessage(5, 0, "Your bondage is at the end, Doom'rel. I challenge you!")
-		pUnit:SendChatMessage(11, 0, "You have challenged the Seven, and now you will die!")
-		pUnit:GossipComplete()
-	end
 end
 
 function DOREL_OnCombat(pUnit, Event)
@@ -371,7 +286,7 @@ function DOREL_SummonVoidwalkers(pUnit, Event)
 end
 
 function DOREL_OnLeaveCombat(pUnit, Event)
-	pUnit:SendChatMessage(12, 0, "Your challenge has failed!")
+	pUnit:SendChatMessage(14, 0, "Your challenge has failed!")
 	pUnit:RemoveEvents()
 end
 
@@ -384,19 +299,7 @@ RegisterUnitEvent(9039, 2, "DOREL_OnLeaveCombat")
 RegisterUnitEvent(9039, 4, "DOREL_OnDeath")
 RegisterUnitGossipEvent(9039, 1, "DOREL_OnGossipTalk")
 
---------------
---			--
--- Dope'rel --
---			--
---------------
---[[
-----Spells-ID
-Backstab-15582
-Evasion-15087
-Gouge-12540
-Rupture-15583
-Sinister Strike-15581
-]]--
+--Dope'rel
 function DREL_OnGossipTalk(pUnit, player, Event)
 	pUnit:SendChatMessage(12, 0, "Our punishment is also our blessing.")
 	pUnit:SetFaction(14)

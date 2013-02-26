@@ -1,17 +1,12 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright © zdroid9770					 --
--------------------------------------------------------------------
---[[
-----Quotes
-Hurley Blackbreath yells: Get away from those kegs!
-Hurley Blackbreath says: You'll pay for that!
-----Spells-ID
-Drunken Rage-14872
-Flame Breath-9573
-]]--
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function HBB_OnCombat(pUnit, Event)
 local chance = math.random(1,2)

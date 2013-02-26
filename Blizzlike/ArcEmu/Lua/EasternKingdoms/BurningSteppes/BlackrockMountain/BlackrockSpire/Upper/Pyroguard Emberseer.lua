@@ -1,9 +1,12 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
--------------------------------------------------------------------
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 math.randomseed(os.time());
 
@@ -21,11 +24,11 @@ local door2 = 175153
 
 function Pyroguard_Event(Unit, Event)
         local go =  Unit:GetGameObjectNearestCoords(114.407143, -258.893585, 91.548134, door2)
-		if (go ~= nil) then
+		if(go ~= nil) then
             go:SetUInt32Value(GAMEOBJECT_FLAGS, GAMEOBJECT_UNCLICKABLE)
         end
         local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
-        if pyro ~= nil then
+        if(pyro ~= nil) then
                 setvars(pyro,{warlocks = {},plrs = {}})
                 local tbl = pyro:GetInRangeFriends()
                 local args = getvars(pyro)
@@ -33,8 +36,8 @@ function Pyroguard_Event(Unit, Event)
                         --args.plrs[i]= 1
                 --end
                 for k,v in pairs(tbl) do
-            if (v~= nil) then
-                if (v:GetEntry() == blackhand) then
+            if(v~= nil) then
+                if(v:GetEntry() == blackhand) then
 					table.insert(args.warlocks, v)
                     v:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, pyro:GetGUID())
                     v:SetUInt32Value(UNIT_CHANNEL_SPELL, encage_pyro)
@@ -52,25 +55,25 @@ function Pyroguard_Event(Unit, Event)
 end
 
 function Altar_Activate(Unit, Event, pMisc) 
-        local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
-        local args = getvars(pyro)
-        table.insert(args.plrs, pMisc)
-        pMisc:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, Unit:GetGUID())
-        pMisc:SetUInt32Value(UNIT_CHANNEL_SPELL, 16532)
-        if table.getn(args.plrs) ~= nil and table.getn(args.plrs) >= 1 then
-        for k,v in pairs(args.warlocks) do
-            v:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, 0)-- stop channeling
-            v:SetUInt32Value(UNIT_CHANNEL_SPELL, 0)
-            v:Unroot()
-            v:SetCombatCapable(0)
-            v:RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_2)
+    local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
+    local args = getvars(pyro)
+    table.insert(args.plrs, pMisc)
+    pMisc:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, Unit:GetGUID())
+    pMisc:SetUInt32Value(UNIT_CHANNEL_SPELL, 16532)
+    if((table.getn(args.plrs) ~= nil) and (table.getn(args.plrs) >= 1)) then
+		for k,v in pairs(args.warlocks) do
+			v:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, 0)-- stop channeling
+			v:SetUInt32Value(UNIT_CHANNEL_SPELL, 0)
+			v:Unroot()
+			v:SetCombatCapable(0)
+			v:RemoveFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_2)
 			v:AttackReaction(args.plrs[math.random(1, table.getn(args.plrs))], 1, 0)
-        end
-        local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
-        if (pyro ~= nil) then
-            pyro:RemoveAura(encaged_pyro)
-        end
-    end
+		end
+		local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
+		if(pyro ~= nil) then
+			pyro:RemoveAura(encaged_pyro)
+		end
+	end
     Unit:RemoveFromWorld()
     pMisc:SetUInt32Value(UNIT_FIELD_CHANNEL_OBJECT, 0)
     pMisc:SetUInt32Value(UNIT_CHANNEL_SPELL, 0)
@@ -82,14 +85,14 @@ function blackhandwarlock_oncombat(Unit, Event)
 end
 
 function blackhandwarlock_spells(Unit, Event)
-        local rand = math.random(1,2)
-        local tank = Unit:GetMainTank()
-    if (Unit:GetCurrentSpellId() ~= nil) then
-        if (rand == 1 and tank ~= nil) then
+	local rand = math.random(1,2)
+	local tank = Unit:GetMainTank()
+    if(Unit:GetCurrentSpellId() ~= nil) then
+        if((rand == 1) and (tank ~= nil)) then
             Unit:FullCastSpellOnTarget(15580, tank)
             Unit:RegisterEvent("blackhandwarlock_spells", 5000, 1)
-        elseif (rand == 2) then
-            if (math.random(1,3) == 1) then
+        elseif(rand == 2) then
+            if(math.random(1,3) == 1) then
                 Unit:FullCastSpell(encage,tank)
                 Unit:RegisterEvent("blackhandwarlock_spells", 10000, 1)
             end
@@ -101,13 +104,13 @@ function blackhandwarlock_ondeath(Unit, Event)
         Unit:RemoveEvents()
         local args = getvars(Unit)
         for k,v in pairs(args.warlocks) do
-        if (v == Unit) then
+        if(v == Unit) then
             table.remove(args.warlocks, k)
         end
     end
-    if (table.getn(args.warlocks) ~= nil and table.getn(args.warlocks) == 0) then
+    if((table.getn(args.warlocks) ~= nil) and (table.getn(args.warlocks) == 0)) then
         local pyro = Unit:GetCreatureNearestCoords(144.401993, -258.036987, 96.323303, pyroguard)
-        if (pyro ~= nil) then
+        if(pyro ~= nil) then
             pyro:SendChatMessage(16, 0, pyro:GetName().." grows stronger!..")
             pyro:AttackReaction(pyro:GetRandomPlayer(0), 1, 0)
         end
@@ -139,7 +142,7 @@ function PyroGuard_OnWipe(Unit, Event)
     Unit:RemoveEvents()
     local args = getvars(Unit)
     for k,v in pairs(args.warlocks) do
-		if (v ~= nil) then
+		if(v ~= nil) then
 			v:RemoveFromWorld()
 		end
     end
@@ -147,13 +150,12 @@ function PyroGuard_OnWipe(Unit, Event)
 end
 
 function PyroGuard_Spells(Unit, Event)
-    local plr = Unit:GetRandomPlayer(0)
     local rand = math.random(1,2)
-    if (plr ~= nil) then
-        if (rand == 1) then
+    if(Unit:GetRandomPlayer(0) ~= nil) then
+        if(rand == 1) then
             Unit:FullCastSpell(16079)
-        elseif (rand == 2) then
-            Unit:FullCastSpellOnTarget(16536, plr)
+        elseif(rand == 2) then
+            Unit:FullCastSpellOnTarget(16536, Unit:GetRandomPlayer(0))
         end
     end
     Unit:RegisterEvent("PyroGuard_Spells", 10000, 1)
@@ -162,7 +164,7 @@ end
 function PyroGuard_Death(Unit, Event)
     local go =  Unit:GetGameObjectNearestCoords(114.407143, -258.893585,91.548134, door2)
     Unit:SpawnCreature(16082, 158.484741, -412.313080, 110.862953, Unit:GetO(), 14, 0)
-    if go ~= nil then
+    if(go ~= nil) then
         go:SetUInt32Value(GAMEOBJECT_STATE, 0)
     end
 end

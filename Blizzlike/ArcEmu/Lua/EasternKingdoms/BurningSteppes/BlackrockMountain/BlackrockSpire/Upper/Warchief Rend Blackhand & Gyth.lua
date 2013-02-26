@@ -1,9 +1,12 @@
--------------------------------------------------------------------
--- This script is created by zdroid9770; please do not edit this --
--- script and claim it as your own, as of All rights are claimed --
--- by me.                                                        --
---                     Copyright (c) zdroid9770                  --
--------------------------------------------------------------------
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: zdroid9770; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 local rend_blackhand = 10429
 local gyth = 10339
@@ -18,7 +21,7 @@ local blackhand_veteran =  10681
 
 function Trigger_OnSpawn(Unit, Event)
 	local gythe = Unit:GetCreatureNearestCoords(177.466003, -419.792999, 110.472000, gyth)
-	if (gythe ~= nil) then
+	if(gythe ~= nil) then
 		gythe:RemoveFromWorld()
 	end
 	Unit:SetCombatCapable(1)
@@ -29,19 +32,19 @@ function Trigger_OnSpawn(Unit, Event)
 end
 
 function Trigger_AIUpdate(Unit, Event)
-	if (Unit:HasInRangePlayers() ~= false) then
+	if(Unit:HasInRangePlayers() ~= false) then
 		local tbl = Unit:GetInRangePlayers()
 		local o = Unit:GetO()
 		for k,v in pairs(tbl) do
 			if (o >= v:GetO()) then
 				local rend = Unit:SpawnCreature(rend_blackhand, 156.610214, -444.813477, 121.976494, Unit:GetO(), 14, 0)
-				if (rend ~= nil) then
+				if(rend ~= nil) then
 					rend:SetCombatCapable(1)
 					rend:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_2)
 					rend:Root()
 				end
 				local nef = Unit:GetCreatureNearestCoords(163.167999, -444.165009, 122.058998, nefarius)
-				if (nef ~= nil) then
+				if(nef ~= nil) then
 					nef:SetCombatCapable(1)
 					nef:Root()
 					nef:SetUInt32Value(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_ATTACKABLE_2)
@@ -68,21 +71,21 @@ end
 function args_spawns(Unit, Event)
 	local args = getvars(Unit)
 	local no = table.getn(args.spawns)
-	if (no ~= nil and no == 0 and args.wavecount <= 7) then
-		if (args.wavecount == 1) then
+	if(no ~= nil and no == 0 and args.wavecount <= 7) then
+		if(args.wavecount == 1) then
 			Unit:SendChatMessage(14, 0, "Foolsss... Kill the one in the dress!")
-		elseif (args.wavecount == 2) then
-			local rend = Unit:GetCreatureNearestCoords(156.610214, -444.813477, 121.976494,rend_blackhand)
-			if (rend ~= nil) then
+		elseif(args.wavecount == 2) then
+			local rend = Unit:GetCreatureNearestCoords(156.610214, -444.813477, 121.976494, rend_blackhand)
+			if(rend ~= nil) then
 				rend:SendChatMessage(14, 0, "Sire, let me join the fray! I shall tear their spines out with my bare hands!")
 			end
-		elseif (args.wavecount == 3) then
+		elseif(args.wavecount == 3) then
 			Unit:SendChatMessage(14, 0, "Inconceivable!")
-		elseif (args.wavecount == 4) then
+		elseif(args.wavecount == 4) then
 			Unit:SendChatMessage(14, 0, "Do not force my hand, children! I shall use your hides to line my boots.")
-		elseif (args.wavecount == 5) then
+		elseif(args.wavecount == 5) then
 			Unit:SendChatMessage(14, 0, "Defilers!")
-		elseif (args.wavecount == 6) then
+		elseif(args.wavecount == 6) then
 			Unit:SendChatMessage(14, 0, "Your efforts will prove fruitless. None shall stand in our way!")
 		end
 		setvars(Unit,{wavecount = wavecount+1})
@@ -93,19 +96,19 @@ function args_spawns(Unit, Event)
 		table.insert(args.spawns,Unit:SpawnCreature(dragonspawn, 202.893417, -416.808899, 110.902893, Unit:GetO(), 14, 0))
 		table.insert(args.spawns,Unit:SpawnCreature(blackhand_veteran,196.845749, -423.030029, 110.891159, Unit:GetO(), 14, 0))
 		local gate = Unit:GetGameObjectNearestCoords(193.743774, -416.726807, 110.892677, door)
-		if (gate ~= nil) then
+		if(gate ~= nil) then
 			gate:SetUInt32Value(GAMEOBJECT_STATE, 0)
 		end
 		RegisterUnitEvent("Rend_GateShut", 3000, 1)
 	else
 		Unit:SendChatMessage(14, 0, "THIS CANNOT BE!!! Rend, deal with these insects.")
 		Unit:SpawnCreature(gyth, 214.0556244, -396.057404, 111.105141, Unit:GetO(), 14, 0)
-		if (gate ~= nil) then
+		if(gate ~= nil) then
 			gate:SetUInt32Value(GAMEOBJECT_STATE, 0)
 		end
 		local rend = Unit:GetCreatureNearestCoords(156.610214, -444.813477, 121.976494, rend_blackhand)
 		rend:SendChatMessage(14, 0, "With pleasure...")
-		if (rend ~= nil) then
+		if(rend ~= nil) then
 			rend:RemoveFromWorld()
 		end
 		RegisterUnitEvent("Rend_GateShut", 5000, 1)
@@ -114,7 +117,7 @@ end
 
 function Rend_GateShut(Unit, Event)
 	local gate = Unit:GetGameObjectNearestCoords(193.743774, -416.726807, 110.892677, door)
-	if (gate ~= nil) then
+	if(gate ~= nil) then
 		gate:SetUInt32Value(GAMEOBJECT_STATE, 1)
 	end
 end
@@ -123,7 +126,7 @@ RegisterUnitEvent(nefarius, 1, "Rend_Blackhand_EventStart")
 RegisterUnitEvent(nefarius, 21, "args_spawns")
 
 function TrashWaveWp(Unit,event)
-	if (Unit:GetEntry() == dragonspawn or blackhand_veteran) then
+	if(Unit:GetEntry() == dragonspawn or blackhand_veteran) then
 		Unit:CreateWaypoint(188.250244, -421.017517, 110.880814, 0, 256,0)
 	else
 		Unit:CreateWaypoint(188.250244,-421.017517, 110.880814, 0, 768,0)
@@ -134,7 +137,7 @@ end
 function Rend_TrashDied(Unit,event)
 	local args = getvars(Unit)
 	for k,v in pairs(args.spawns) do
-		if (v == Unit) then
+		if(v == Unit) then
 			table.remove(args.spawns, k)
 		end
 	end
@@ -149,7 +152,7 @@ RegisterUnitEvent(blackhand_veteran, 18, "TrashWaveWp")
 
 function Gyth_Engaged(Unit,event)
 	local nef = Unit:GetCreatureNearestCoords(163.167999, -444.165009, 122.058998, nefarius)
-	if (nef ~= nil) then
+	if(nef ~= nil) then
 		nef:SendChatMessage(14, 0, "The Warchief shall make quick work of you, mortals. Prepare yourselves!")
 	end
 	Unit:CastSpell(16167)
@@ -168,7 +171,7 @@ function Gyth_OnCombat(Unit,event)
 end
 
 function Gyth_AIUpdate(Unit,event)
-	if (Unit:GetHealthPct() <= 20) then
+	if(Unit:GetHealthPct() <= 20) then
 		Unit:RemoveAura(16167)
 		Unit:FullCastSpell(16328)
 	end

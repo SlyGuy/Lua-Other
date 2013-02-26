@@ -1,31 +1,22 @@
---[[********************************
-*                                                            *
-* The LUA++ Scripting Project        *
-*                                                            *
-********************************
-
+--[[ WoTD License - 
 This software is provided as free and open source by the
-staff of The LUA++ Scripting Project, in accordance with 
-the AGPL license. This means we provide the software we have 
-created freely and it has been thoroughly tested to work for 
-the developers, but NO GUARANTEE is made it will work for you 
-as well. Please give credit where credit is due, if modifying,
-redistributing and/or using this software. Thank you.
-
-~~End of License Agreement
--- LUA++ staff, March 26, 2008. ]]
--- SPIDER DISPLAY 15226
--- NORMAL DISPLAY 15220
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: LUA++; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function HPMarli_OnCombat(Unit,event)
 	Unit:RegisterEvent("HPMarli_SummonSpiders", 200, 4)
-	Unit:RegisterEvent("HPMarli_Normal",1000, 1)
+	Unit:RegisterEvent("HPMarli_Normal", 1000, 1)
 end
 
 function HPMarli_Normal(Unit,event)
 	Unit:SetModel(15220)
 	Unit:RemoveEvents()
-	Unit:RegisterEvent("HPMarli_SummonSpiders",27000, 0)
+	Unit:RegisterEvent("HPMarli_SummonSpiders", 27000, 0)
 	Unit:RegisterEvent("HPMarli_PoisonVolley", 22000, 0)
 	Unit:RegisterEvent("HPMarli_DrainLife", 24000, 0)
 	Unit:RegisterEvent("HPMarli_SpiderForm", 60000, 1)
@@ -44,7 +35,7 @@ function HPMarli_DrainLife(Unit,event)
 end
 
 function HPMarli_SummonSpiders(Unit,event)
-	Unit:SpawnCreature(14880,Unit:GetX(),Unit:GetY(),Unit:GetZ(),Unit:GetO(),Unit:GetFaction(),0)
+	Unit:SpawnCreature(14880, Unit:GetX(), Unit:GetY(), Unit:GetZ(), Unit:GetO(), Unit:GetFaction(), 0)
 end
 
 function HPMarli_OnWipe(Unit,event)
@@ -70,7 +61,7 @@ function HPMarli_SpiderForm(Unit,event)
 	Unit:RegisterEvent("HPMarli_Normal", 60000, 1)
 end
 
-function HPMarli_MovingCheck(Unit, event)
+function HPMarli_MovingCheck(Unit, Event)
     Unit:WipeThreatList()
     Unit:SetCombatTargetingCapable(0)
     Unit:ModifyRunSpeed(8)
@@ -84,7 +75,7 @@ local tbl=Unit:GetInRangePlayers()
             players={}
             table.insert(players, v)
             local player=math.random(1, table.getn(players))
-		    Unit:FullCastSpellOnTarget(22911, players[player])-- Charge if main tank is too far away.
+		    Unit:FullCastSpellOnTarget(22911, players[player])--Charge if main tank is too far away.
             Unit:SetCombatTargetingCapable(1)
             Unit:ModifyRunSpeed(200)
             Unit:MoveTo(v:GetX(), v:GetY(), v:GetZ(), v:GetO())
@@ -98,7 +89,7 @@ function HPMarli_Web(Unit,event)
 	local tbl = Unit:GetInRangePlayers()
 	for k,v in pairs(tbl) do
 		if Unit:GetDistance(v) <= 8 then
-			Unit:FullCastSpellOnTarget(24110,v)-- Enveloping Web
+			Unit:FullCastSpellOnTarget(24110,v)--Enveloping Web
 		end
 	end
 end
@@ -106,7 +97,7 @@ end
 function HPMarli_AOESilence(Unit,event)
 	local tbl = Unit:GetInRangePlayers()
 	for k,v in pairs(tbl) do
-		Unit:FullCastSpellOnTarget(15487, v) -- Iteration for Silence to cast on inrange players.
+		Unit:FullCastSpellOnTarget(15487, v)Iteration for Silence to cast on inrange players.
 	end
 end
 
@@ -118,7 +109,7 @@ RegisterUnitEvent(14510, 4, "HPMarli_OnDied")
 	SPIDERs AI
 	]]
 
-function Spider_OnWipe(Unit, event)
+function Spider_OnWipe(Unit, Event)
     Unit:RemoveEvents()
     Unit:Despawn(100, 0)
 end

@@ -1,16 +1,13 @@
---[[ Boss - args.AKILZON.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Paroxysm; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by Paroxysm of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-~~End of License Agreement
--- Paroxysm, August 27, 2008. ]]
-
- -- 1 table to handle it all muahahah!
 function AkilzonOnSpawn(Unit)
 	local args = getvars(Unit)
 	if((args == nil) or (args.AKILZON == nil)) then
@@ -69,6 +66,7 @@ function AkilzonOnDeath(Unit)
 	Unit:RemoveAIUpdateEvent()
 	Unit:RemoveEvents()
 end
+
 function AkilzonAIUpdate(Unit)
 	local args = getvars(Unit)
 	args.AKILZON.gust_timer = args.AKILZON.gust_timer + 1
@@ -133,16 +131,19 @@ function AkilzonSummonEagles(Unit)
 		Unit:RegisterEvent("Akilzon_SummonEagles", 1000, 1)
 	end
 end
+
 function AkilzonElectricalStorm(Unit,plr)
 	plr:EnableFlight()
 	plr:MonsterMove(plr:GetX(), plr:GetY(), plr:GetZ()+15, 2000, 768)
 	Unit:RegisterEvent("AkilzonElectricalStorm02", 6000, 1)
 	Unit:RegisterEvent("AkilzonElectricalStorm03", 8000, 1)
 end
+
 function AkilzonElectricalStorm02(Unit)
 	local plr = Unit:GetNextTarget()
 	plr:SetPosition(plr:GetX(), plr:GetY(), plr:GetZ()+15)
 end
+
 function AkilzonElectricalStorm03(Unit)
 	local plr = Unit:GetNextTarget()
 	plr:DisableFlight()

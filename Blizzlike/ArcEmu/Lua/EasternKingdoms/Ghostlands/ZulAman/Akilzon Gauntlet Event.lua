@@ -1,14 +1,12 @@
---[[ Akilzon- Gauntlet Event
-This script was written and is protected
-by the GPL v2. This script was released
-by Paroxysm of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-~~End of License Agreement
--- Paroxysm, October 23, 2008. 
-~~End of License Agreement]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: Paroxysm; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 local amani_warrior = 24225
 local amani_eagle = 24159
@@ -68,7 +66,7 @@ function AmaniTempest_Initialize(Unit)
 	local tempest = Unit:GetCreatureNearestCoords(301.122009,1385.599976, 57.853100,amani_tempest)
 	if(type(tempest) == "userdata") then
 		if((tempest:IsAlive() == true) and (tempest:IsInCombat() == false)) then
-			tempest:RemoveFromWorld()-- Need to use onspawn hook and set the tempest as event controller
+			tempest:RemoveFromWorld()
 			Unit:SpawnCreature(amani_tempest, 301.122009, 1385.599976, 57.853100, 3.263770, 1890, 0)
 		end
 	else
@@ -129,7 +127,7 @@ end
 
 function AmaniTempest_AOE(Unit)
 	if Unit:GetRandomPlayer(0)~= nil then
-		Unit:FullCastSpell(44033) -- the aoe nature attack.
+		Unit:FullCastSpell(44033)
 	end
 end
 
@@ -324,7 +322,7 @@ end
 function AmaniEagle_Abilities(Unit)
 	local tank = Unit:GetMainTank()
 	if((Unit:IsAlive() == true) and (type(tank) == "userdata") and (tank:IsAlive()) and (Unit:GetDistance(tank) <= 10)) then
-		Unit:FullCastSpellOnTarget(43517,tank) -- talon
+		Unit:FullCastSpellOnTarget(43517,tank) --talon
 		Unit:RegisterEvent("AmaniEagle_Abilities", 7000, 1)
 	elseif((Unit:IsAlive() == true) and (type(tank) ~= "userdata")) then
 		Unit:RegisterEvent("AmaniEagle_Abilities", 2000, 1)
@@ -412,9 +410,9 @@ function AmaniWindWalker_HealAI(Unit)
 			end
 		end
 	end
-	if(table.getn(healtable) >= 1) then -- more than 1 target needs health!
+	if(table.getn(healtable) >= 1) then
 		local healtar = healtable[math.random(1,table.getn(healtable))]
-		if((type(healtar) == "userdata") and (healtar:IsAlive() == true)) then --Lets cast chain heal
+		if((type(healtar) == "userdata") and (healtar:IsAlive() == true)) then
 			if(healtar == Unit) then
 				Unit:FullCastSpell(43527)
 			else
@@ -431,30 +429,30 @@ function AmaniWindWalker_Abilities(Unit)
 		local movplrs = {}
 		for k,v in pairs(plrs) do
 			if((type(v) == "userdata") and (v:IsAlive() == true) and (v:IsMoving() == true)) then
-				table.insert(movplrs,v)
+				table.insert(movplrs, v)
 			end
 		end
 		if(table.getn(movplrs) ~= 0) then
 			local freezetar = movplrs[math.random(1,table.getn(movplrs))]
 			if((type(freezetar) == "userdata") and (freezetar:IsAlive() == true)) then
-				Unit:FullCastSpellOnTarget(43524, freezetar)-- frost shock
+				Unit:FullCastSpellOnTarget(43524, freezetar)
 				Unit:RegisterEvent("AmaniWindWalker_Abilities", 5000, 1)
 			end
 		else
-			Unit:FullCastSpellOnTarget(43524,tank)
+			Unit:FullCastSpellOnTarget(43524, tank)
 			Unit:RegisterEvent("AmaniWindWalker_Abilities", 2000, 1)
 		end
 	elseif((math.random(2) == 2) and (type(tank) == "userdata") and (tank:IsAlive() == true)) then
 		local plrs = Unit:GetInRangePlayers()
 		local besttar = {}
 		for k,v in pairs(plrs) do
-			if((type(v) == "userdata") and (v:IsAlive()) and (v:GetHealthPct() <= 50)) then -- store this target and try to spike him later
+			if((type(v) == "userdata") and (v:IsAlive()) and (v:GetHealthPct() <= 50)) then
 				table.insert(besttar,v)
 			end
 		end
 		if table.getn(besttar) ~= 0 then
 			local besttarget = besttar[math.random(1,table.getn(besttar))]
-			if((type(besttarget) == "userdata") and (besttarget:IsAlive()) and (besttarget ~= tank)) then -- we attempt to finish off target
+			if((type(besttarget) == "userdata") and (besttarget:IsAlive()) and (besttarget ~= tank)) then
 				Unit:FullCastSpellOnTarget(43526, besttarget)
 				Unit:RegisterEvent("AmaniWindWalker_Abilities", 10000, 1)
 			end

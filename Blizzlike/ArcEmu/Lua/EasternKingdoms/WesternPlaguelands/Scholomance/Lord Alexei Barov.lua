@@ -10,15 +10,15 @@
    SVN: http://svn.burning-azzinoth.de/LUAppArc
    LOG: http://luapparc.burning-azzinoth.de/trac/timeline
    TRAC: http://luapparc.burning-azzinoth.de/trac
-   ----------------------
+  --------------------
    Boss_Darkmaster_Gandling.lua
    Original Code by DARKI
    Version 1
 ========================================]]--
--- % Completed: 100
--- Comments: No Comments
+--% Completed: 100
+--Comments: No Comments
 
--- [[Spells ]] --
+--[[Spells ]]
 local IMMOLATE = 20294
 local VEILOFSHADOW = 17820
 

@@ -1,3 +1,18 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+--[[Nightbane yells: Enough! I shall land and crush you myself!
+Nightbane yells: Insects! Let me show you my strength up close!
+Nightbane yells: Miserable vermin. I shall exterminate you from the air!
+Nightbane yells: What fools! I shall bring a quick end to your suffering!
+Nightbane yells: You cannot hide from me, mortal!]]
+
 function Nightbane_Cleave(Unit, event, miscUnit, misc)
 	Unit:FullCastSpellOnTarget(42587, Unit:GetClosestPlayer())
 end
@@ -36,10 +51,14 @@ function Nightbane(Unit, event, miscUnit, misc)
 	Unit:RegisterEvent("Nightbane_Smoldering_Breath", 43000, 0)
 end
 
-RegisterUnitEvent(17225, 1, "Nightbane")
+function Nightbane_OnLeaveCombat(pUnit, Event)
+    pUnit:RemoveEvents()
+end
 
---[[Nightbane yells: Enough! I shall land and crush you myself!
-Nightbane yells: Insects! Let me show you my strength up close!
-Nightbane yells: Miserable vermin. I shall exterminate you from the air!
-Nightbane yells: What fools! I shall bring a quick end to your suffering!
-Nightbane yells: You cannot hide from me, mortal!]]
+function Nightbane_OnDeath(pUnit, Event)
+    pUnit:RemoveEvents()
+end
+
+RegisterUnitEvent(17225, 2, "Nightbane_OnLeaveCombat")
+RegisterUnitEvent(17225, 4, "Nightbane_OnDeath")
+RegisterUnitEvent(17225, 1, "Nightbane")

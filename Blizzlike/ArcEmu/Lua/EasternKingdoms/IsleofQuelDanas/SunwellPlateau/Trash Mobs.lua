@@ -1,16 +1,14 @@
---[[  Mobs - All-In-One.lua
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BrantX; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
-This script was written and is protected
-by the GPL v2. This script was released
-by BrantX of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-~~End of License Agreement
--- BrantX, November 07 2008. ]]
-
--- Sunblade Arch Mage.
+--Sunblade Arch Mage.
 function SunbladeArchMage_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeArchMage_Arcane", 6000, 0)
 	pUnit:RegisterEvent("SunbladeArchMage_FrostNova", 12000, 0)
@@ -36,7 +34,7 @@ RegisterUnitEvent(25367, 1, "SunbladeArchMage_OnEnterCombat")
 RegisterUnitEvent(25367, 2, "SunbladeArchMage_OnLeaveCombat")
 RegisterUnitEvent(25367, 4, "SunbladeArchMage_OnDied")
 
--- Sunblade Cabalist.
+--Sunblade Cabalist.
 function SunbladeCabalist_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeCabalist_Shadow", 2000, 0)
 	pUnit:RegisterEvent("SunbladeCabalist_Ignite", 7000, 0)
@@ -67,9 +65,9 @@ RegisterUnitEvent(25363, 1, "SunbladeCabalist_OnEnterCombat")
 RegisterUnitEvent(25363, 2, "SunbladeCabalist_OnLeaveCombat")
 RegisterUnitEvent(25363, 4, "SunbladeCabalist_OnDied")
 
--- Sunblade Dawn Priest.
+--Sunblade Dawn Priest.
 function SunbladeDawnPriest_OnEnterCombat(pUnit,Event)
-	pUnit:CastSpell(46565) -- Holy Form
+	pUnit:CastSpell(46565)Holy Form
 	pUnit:RegisterEvent("SunbladeDawnPriest_Holynova", 2000, 0)
 	pUnit:RegisterEvent("SunbladeDawnPriest_Renew", 2000, 0)
 end
@@ -95,7 +93,7 @@ RegisterUnitEvent(25371, 1, "SunbladeDawnPriest_OnEnterCombat")
 RegisterUnitEvent(25371, 2, "SunbladeDawnPriest_OnLeaveCombat")
 RegisterUnitEvent(25371, 4, "SunbladeDawnPriest_OnDied")
 
--- Sunblade Dragonhawk.
+--Sunblade Dragonhawk.
 function SunbladeDragonHawk_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeDragonHawk_Breath", 3500, 0)
 end
@@ -116,7 +114,7 @@ RegisterUnitEvent(25867, 1, "SunbladeDragonHawk_OnEnterCombat")
 RegisterUnitEvent(25867, 2, "SunbladeDragonHawk_OnLeaveCombat")
 RegisterUnitEvent(25867, 4, "SunbladeDragonHawk_OnDied")
 
--- Sunblade Dusk Priest.
+--Sunblade Dusk Priest.
 function SunbladeDuskPriest_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeDuskPriest_SWP", 30000, 0)
 	pUnit:RegisterEvent("SunbladeDuskPriest_MindFlay", 20000, 0)
@@ -147,7 +145,7 @@ RegisterUnitEvent(25370, 1, "SunbladeDuskPriest_OnEnterCombat")
 RegisterUnitEvent(25370, 2, "SunbladeDuskPriest_OnLeaveCombat")
 RegisterUnitEvent(25370, 4, "SunbladeDuskPriest_OnDied")
 
--- Sunblade Protector
+--Sunblade Protector
 function SunbladeProtector_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeProtector_Fel", 3000, 0)
 end
@@ -168,7 +166,7 @@ RegisterUnitEvent(25507, 1, "SunbladeProtector_OnEnterCombat")
 RegisterUnitEvent(25507, 2, "SunbladeProtector_OnLeaveCombat")
 RegisterUnitEvent(25507, 4, "SunbladeProtector_OnDied")
 
--- Sunblade Scout
+--Sunblade Scout
 function SunbladeScout_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeScout_Strike", 6000, 0)
 end
@@ -189,7 +187,7 @@ RegisterUnitEvent(25372, 1, "SunbladeScout_OnEnterCombat")
 RegisterUnitEvent(25372, 2, "SunbladeScout_OnLeaveCombat")
 RegisterUnitEvent(25372, 4, "SunbladeScout_OnDied")
 
--- Sunblade Slayer
+--Sunblade Slayer
 function SunbladeSlayer_OnEnterCombat(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(47001,pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("SunbladeSlayer_SlayShot", 11000, 0)
@@ -211,7 +209,7 @@ RegisterUnitEvent(25368, 1, "SunbladeSlayer_OnEnterCombat")
 RegisterUnitEvent(25368, 2, "SunbladeSlayer_OnLeaveCombat")
 RegisterUnitEvent(25368, 4, "SunbladeSlayer_OnDied")
 
--- Sunblade Vindicator
+--Sunblade Vindicator
 function SunbladeVindicator_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("SunbladeVindicator_Strike", 120000, 0)
 	pUnit:RegisterEvent("SunbladeVindicator_Cleave", 9000, 0)
@@ -237,14 +235,14 @@ RegisterUnitEvent(25369, 1, "SunbladeVindicator_OnEnterCombat")
 RegisterUnitEvent(25369, 2, "SunbladeVindicator_OnLeaveCombat")
 RegisterUnitEvent(25369, 4, "SunbladeVindicator_OnDied")
 
--- Shadowsword Assassin
+--Shadowsword Assassin
 function ShadowswordAssassin_OnEnterCombat(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(46463,pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(25484, 1, "ShadowswordAssassin_OnEnterCombat")
 
--- Shadowsword Lifeshaper
+--Shadowsword Lifeshaper
 function ShadowswordLifeshaper_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ShadowswordLifeshaper_HealthF", 60000, 0)
 	pUnit:RegisterEvent("ShadowswordLifeshaper_Drain", 40000, 0)
@@ -270,7 +268,7 @@ RegisterUnitEvent(25506, 1, "ShadowswordLifeshaper_OnEnterCombat")
 RegisterUnitEvent(25506, 2, "ShadowswordLifeshaper_OnLeaveCombat")
 RegisterUnitEvent(25506, 4, "ShadowswordLifeshaper_OnDied")
 
--- Shadowsword Manafiend
+--Shadowsword Manafiend
 function ShadowswordManafiend_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ShadowswordManafiend_ArcExplosion", 9000, 0)
 	pUnit:RegisterEvent("ShadowswordManafiend_DrainMana", 60000, 0)
@@ -296,7 +294,7 @@ RegisterUnitEvent(25483, 1, "ShadowswordManafiend_OnEnterCombat")
 RegisterUnitEvent(25483, 2, "ShadowswordManafiend_OnLeaveCombat")
 RegisterUnitEvent(25483, 4, "ShadowswordManafiend_OnDied")
 
--- Shadowsword Soulbinder
+--Shadowsword Soulbinder
 function ShadowswordSoulbinder_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ShadowswordSoulbinder_FoD", 11000, 0)
 	pUnit:RegisterEvent("ShadowswordSoulbinder_CoE", 30000, 0)
@@ -323,7 +321,7 @@ RegisterUnitEvent(25373, 2, "ShadowswordSoulbinder_OnLeaveCombat")
 RegisterUnitEvent(25373, 4, "ShadowswordSoulbinder_OnDied")
 
 
--- Shadowsword Vanquisher
+--Shadowsword Vanquisher
 function ShadowswordVanquisher_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ShadowswordVanquisher_Cleave", 15000, 0)
 	pUnit:RegisterEvent("ShadowswordVanquisher_Melt", 60000, 0)
@@ -349,7 +347,7 @@ RegisterUnitEvent(25486, 1, "ShadowswordVanquisher_OnEnterCombat")
 RegisterUnitEvent(25486, 2, "ShadowswordVanquisher_OnLeaveCombat")
 RegisterUnitEvent(25486, 4, "ShadowswordVanquisher_OnDied")
 
--- Apocalypse Guard
+--Apocalypse Guard
 function ApocalypseGuard_OnEnterCombat(pUnit,Event)
     pUnit:RegisterEvent("ApocalypseGuard_Cleave",5000,0)
     pUnit:RegisterEvent("ApocalypseGuard_Strike",3000,0)
@@ -385,7 +383,7 @@ RegisterUnitEvent (25593, 1, "ApocalypseGuard_OnEnterCombat")
 RegisterUnitEvent (25593, 2, "ApocalypseGuard_OnLeaveCombat")
 RegisterUnitEvent (25593, 4, "ApocalypseGuard_OnDied")
 
--- Cataclysm Hound
+--Cataclysm Hound
 function CataclysmHound_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("CataclysmHound_Frenzy", 1000, 0)
 	pUnit:RegisterEvent("CataclysmHound_CataBreath", 8000, 0)
@@ -411,7 +409,7 @@ RegisterUnitEvent(25599, 1, "CataclysmHound_OnEnterCombat")
 RegisterUnitEvent(25599, 2, "CataclysmHound_OnEnterCombat")
 RegisterUnitEvent(25599, 4, "CataclysmHound_OnEnterCombat")
 
--- Chaos Gazer
+--Chaos Gazer
 function ChaosGazer_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ChaosGazer_Petrify", 11000, 0)
 	pUnit:RegisterEvent("ChaosGazer_TentacleSweep", 1000, 0)
@@ -437,14 +435,14 @@ RegisterUnitEvent(25595, 1, "ChaosGazer_OnEnterCombat")
 RegisterUnitEvent(25595, 2, "ChaosGazer_OnLeaveCombat")
 RegisterUnitEvent(25595, 4, "ChaosGazer_OnDied")
 
--- Doomfire Destroyer
+--Doomfire Destroyer
 function DoomfireDestroyer_OnEnterCombat(pUnit,Event)
 	pUnit:CastSpell(25592)
 end
 
 RegisterUnitEvent(25592, 1, "DoomfireDestroyer_OnEnterCombat")
 
--- Oblivion Mage
+--Oblivion Mage
 function OblivionMage_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("OblivionMage_FlameBuffet", 3000, 0)
 	pUnit:RegisterEvent("OblivionMage_Poly", 70000, 0)
@@ -470,7 +468,7 @@ RegisterUnitEvent(25597, 1, "OblivionMage_OnEnterCombat")
 RegisterUnitEvent(25597, 2, "OblivionMage_OnEnterCombat")
 RegisterUnitEvent(25597, 4, "OblivionMage_OnEnterCombat")
 
--- Priestess of Torment
+--Priestess of Torment
 function PriestessOfTorment_OnEnterCombat(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(46271,pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("PriestessOfTorment_Whirlwind", 7000, 0)
@@ -492,7 +490,7 @@ RegisterUnitEvent(25509, 1, "PriestessOfTorment_OnEnterCombat")
 RegisterUnitEvent(25509, 2, "PriestessOfTorment_OnLeaveCombat")
 RegisterUnitEvent(25509, 4, "PriestessOfTorment_OnDied")
 
--- Volatile Fiend
+--Volatile Fiend
 function VolatileFiend_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("VolatileFiend_FelFire", 7000, 0)
 end
@@ -513,7 +511,7 @@ RegisterUnitEvent(25851, 1, "VolatileFiend_OnEnterCombat")
 RegisterUnitEvent(25851, 2, "VolatileFiend_OnLeaveCombat")
 RegisterUnitEvent(25851, 4, "VolatileFiend_OnDied")
 
--- Volatile FelFire Fiend
+--Volatile FelFire Fiend
 function VolatileFelFireFiend_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("VolatileFelFireFiend_FelFire", 7000, 0)
 end
@@ -534,14 +532,14 @@ RegisterUnitEvent(25598, 1, "VolatileFelFireFiend_OnEnterCombat")
 RegisterUnitEvent(25598, 2, "VolatileFelFireFiend_OnLeaveCombat")
 RegisterUnitEvent(25598, 4, "VolatileFelFireFiend_OnDied")
 
--- Shadowsword Berserker
+--Shadowsword Berserker
 function ShadowswordBerserker_OnEnterCombat(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(46160,pUnit:GetClosestPlayer())
 end
 
 RegisterUnitEvent(25798, 1, "ShadowswordBerserker_OnEnterCombat")
 
--- Shadowsword Fury Mage
+--Shadowsword Fury Mage
 function ShadowswordFuryMage_OnEnterCombat(pUnit,Event)
 	pUnit:CastSpell(46102)
 	pUnit:RegisterEvent("ShadowswordFuryMage_FelFireball", 7000, 0)
@@ -563,7 +561,7 @@ RegisterUnitEvent(25799, 1, "ShadowswordFuryMage_OnEnterCombat")
 RegisterUnitEvent(25799, 2, "ShadowswordFuryMage_OnLeaveCombat")
 RegisterUnitEvent(25799, 4, "ShadowswordFuryMage_OnDied")
 
--- Void Sentinel
+--Void Sentinel
 function VoidSentinel_OnEnterCombat(pUnit,Event)
 	pUnit:CastSpell(46087)
 	pUnit:RegisterEvent("VoidSentinel_VoidBlast", 7000, 0)
@@ -585,7 +583,7 @@ RegisterUnitEvent(25772, 1, "VoidSentinel_OnEnterCombat")
 RegisterUnitEvent(25772, 2, "VoidSentinel_OnLeaveCombat")
 RegisterUnitEvent(25772, 4, "VoidSentinel_OnDied")
 
--- Void Spawn
+--Void Spawn
 function VoidSpawn_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("VoidSpawn_ShadowBolt", 4000, 0)
 end
@@ -606,7 +604,7 @@ RegisterUnitEvent(25824, 1, "VoidSpawn_OnEnterCombat")
 RegisterUnitEvent(25824, 2, "VoidSpawn_OnLeaveCombat")
 RegisterUnitEvent(25824, 4, "VoidSpawn_OnDied")
 
--- Shadowsword Commander
+--Shadowsword Commander
 function ShadowswordCommander_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ShadowswordCommander_SheildSlam", 3000, 0)
 	pUnit:RegisterEvent("ShadowswordCommander_BattleShout", 40000, 0)
@@ -632,7 +630,7 @@ RegisterUnitEvent(25837, 1, "ShadowswordCommander_OnEnterCombat")
 RegisterUnitEvent(25837, 2, "ShadowswordCommander_OnLeaveCombat")
 RegisterUnitEvent(25837, 4, "ShadowswordCommander_OnDied")
 
--- Shadowsword Deathbringer
+--Shadowsword Deathbringer
 function ShadowswordDeathbringer_OnEnterCombat(pUnit,Event)
 	pUnit:RegisterEvent("ShadowswordDeathbringer_Spell", 6000, 0)
 end
@@ -653,7 +651,7 @@ RegisterUnitEvent(25485, 1, "ShadowswordDeathbringer_OnEnterCombat")
 RegisterUnitEvent(25485, 2, "ShadowswordDeathbringer_OnLeaveCombat")
 RegisterUnitEvent(25485, 4, "ShadowswordDeathbringer_OnDied")
 
--- Shadowsword Guardian
+--Shadowsword Guardian
 function ShadowswordGuardian_OnEnterCombat(pUnit,Event)
 	pUnit:FullCastSpellOnTarget(46239,pUnit:GetClosestPlayer())
 	pUnit:RegisterEvent("ShadowswordGuardian_Earthquake", 20000, 0)
@@ -676,7 +674,7 @@ RegisterUnitEvent(25508, 2, "ShadowswordGuardian_OnLeaveCombat")
 RegisterUnitEvent(25508, 4, "ShadowswordGuardian_OnDied")
 
 
--- Hand of The Deceiver
+--Hand of The Deceiver
 function HandOfTheDeceiver_OnEnterCombat(pUnit,Event)
 	pUnit:SetUInt32Value(Unit_FIELD_CHANNEL_OBJECT,0)
 	pUnit:SetUInt32Value(Unit_CHANNEL_SPELL,0)

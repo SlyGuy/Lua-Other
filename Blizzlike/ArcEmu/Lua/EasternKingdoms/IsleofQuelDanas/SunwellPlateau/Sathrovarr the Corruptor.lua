@@ -1,14 +1,12 @@
---[[ Boss -- Sathrovarr the Corruptor.lua
-
-This script was written and is protected
-by the GPL v2. This script was released
-by BrantX of the Blua Scripting
-Project. Please give proper accredidations
-when re-releasing or sharing this script
-with others in the emulation commUnity.
-
-~~End of License Agreement
--- BrantX, October 31, 2008. ]]
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: BrantX; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
 
 function Sathrovarr_OnEnterCombat(pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "There will be no reprieve! My work here is nearly finished!")
@@ -19,7 +17,7 @@ function Sathrovarr_OnEnterCombat(pUnit, Event)
 end
 
 function Sathrovarr_Curse(pUnit, Event)
-local Choice = math.random(1, 2)
+local Choice = math.random(1,2)
 	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Your misery is my delight!")
 	elseif(Choice == 2) then
@@ -29,7 +27,7 @@ local Choice = math.random(1, 2)
 end
 
 function Sathrovarr_ShadowBoltVolley(pUnit, Event)
-local Choice = math.random(1, 2)
+local Choice = math.random(1,2)
 	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Your misery is my delight!")
 	elseif(Choice == 2) then
@@ -39,7 +37,7 @@ local Choice = math.random(1, 2)
 end
 
 function Sathrovarr_CorruptingStrike(pUnit, Event)
-local Choice = math.random(1, 2)
+local Choice = math.random(1,2)
 	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Your misery is my delight!")
 	elseif(Choice == 2) then
@@ -54,7 +52,7 @@ function Sathrovarr_Berserk(pUnit,Event)
 end
 
 function Sathrovarr_OnKill(pUnit, Event)
-	local Choice = math.random(1, 2)
+	local Choice = math.random(1,2)
 	if(Choice == 1) then
 		pUnit:SendChatMessage(14, 0, "Piteous mortal!")
 	elseif(Choice == 2) then

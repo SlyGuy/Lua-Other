@@ -8,7 +8,7 @@ Thank: WoTD; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
--- Topper McNabb
+--Topper McNabb
 TOPPERMCNABB = {}
 
 function TOPPERMCNABB_onDied(Unit, event, player)
@@ -16,7 +16,7 @@ function TOPPERMCNABB_onDied(Unit, event, player)
 end
 
 function TOPPERMCNABB_onSpawn(Unit, event, player)
-	Unit:RegisterEvent("TOPPERMCNABB_Say",30000, 0)
+	Unit:RegisterEvent("TOPPERMCNABB_Say", 30000, 0)
 end
 
 function TOPPERMCNABB_Say(Unit, event, player)
