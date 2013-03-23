@@ -1,6 +1,5 @@
 These are the Repacks that are good/looks good.
 
-
 --[[ 2.4.3 ]]--
 --[[ 3.3.5a ]]--
 
@@ -8,7 +7,7 @@ Recommended: World of the Damned Elite
 http://www.ac-web.org/forums/showthread.php?t=143065
 
 ? Jeutie's Blizzlike Repack ?
-www.ac-web.org/forums/showthread.php?t=107225
+http://www.ac-web.org/forums/showthread.php?t=107225
 
 zdroid9770 3.3.5a First Repack!
 http://www.ac-web.org/forums/showthread.php?t=132047
@@ -25,9 +24,7 @@ http://www.ac-web.org/forums/showthread.php?t=112229
 [Release] PaikProductions Blizzlike Repack 3.3.5a
 http://www.ac-web.org/forums/showthread.php?t=135189
 
---[[ 4.0.3 ]]--
 --[[ 4.0.6a ]]--
-
 
 (Updated) Guldemor 4.0.6a Cataclysm Repack
 http://www.ac-web.org/forums/showthread.php?t=131797
@@ -38,13 +35,8 @@ http://www.ac-web.org/forums/showthread.php?t=132141
 [Release] Blackwing Repack Cataclysm V.1 [Release]
 http://www.ac-web.org/forums/showthread.php?t=124058
 
-
---[[ 4.2.0 ]]--
-
-[Monster 4.2.2a] Cataclysm Repack V10.0
-http://www.ac-web.org/forums/showthread.php?t=130718
-
 --[[ 4.3.4 ]]--
+
 [Moster 4.3.4] Cataclysm Repack V15.0
 http://www.ac-web.org/forums/showthread.php?154689
 

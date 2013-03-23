@@ -5,7 +5,7 @@ WoTD Team: (http://zarkmania.allalla.com/), (http://zarkmania.allalla.com/forum)
 | (Administrator/Head Developer) Ronvenal (Bobmaster)
 | (Emulators) TrinityCore | ArcEmu | ArcPro
 | (Database/Events) dev.landofelves.net | https://github.com/DarkAngel39/Events
-| (MVPs) Mathix
+| (MVPs) Mathix | Ascathor | komothoes
 
 Retired WoTD Team:
 | IOwnAPC | xenion64 | ifamous | EternallyMe | Yuki / Mayumi | SlyGuy
