@@ -13,7 +13,7 @@ end
 
 function OnChat(event, player, message, type, language)
 	if(message == MSG_UNSTUCK) then
-		if (player:IsInCombat()==true) then
+		if (player:IsInCombat() == true) then
 			player:SendAreaTriggerMessage("You are in combat!")
 		else
             		if(GetTeam(player) == 1) then
