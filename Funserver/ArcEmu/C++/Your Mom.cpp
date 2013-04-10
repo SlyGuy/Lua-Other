@@ -30,37 +30,32 @@ class yourmomAI : public ArcScriptBossAI
             AddEmote(Event_OnTargetDied, "no no did i beat you to hard", Text_Yell);
             AddEmote(Event_OnDied, "Its your fathers fault", Text_Yell);
         }
-\tab void AIUpdate()
-\tab\{
-if(GetHealthPercent()<=100)  // Phase one
-\tab\{
-\tab      AddSpell(wellfed, Target_RandomPlayer, 100, 0, 30, 0, 0, false, "you look hungary dear here have some food", Text_Yell);
-        \}       
-\tab   if(GetHealthPercent()<=70) // Phase 2
-\tab\
-\tab\tab AddSpell(chockingcloud, Target_SecondMostHated, 100, 0, 100, 0,0, false, "oops dear burned the food", Text_Yell);
-\tab}
-\tab    if(GetHealthPercent()<=40) // Phase 2
-\tab\{
-\tab\tab AddSpell(spiritbolts, Target_ClosestPlayer, 100, 0, 100, 0,0, false, "Ahh now im getting Agrivated its ok you were always a notty child", Text_Yell);
-\tab\}
-\tab     if(GetHealthPercent()<=3) // Phase 2
-\tab\{
-\tab\tab AddSpell(decimate, Target_RandomPlayer, 100, 0, 100, 0,0, false, "I will always love you but you need a spanking", Text_Yell);
-\tab\}
-\tab      ParentClass::AIUpdate();     \par
-             ParentClass::AIUpdate();\par
-             ParentClass::AIUpdate();     \par
-             ParentClass::AIUpdate();\par
-\par
-\tab\}\par
-\};\par
-\par
-\par
-void Setupyourmom(ScriptMgr* pScriptMgr)\par
-\{\par
-\tab pScriptMgr->register_creature_script(yourmom, &yourmomAI::Create);\par
-\tab\par
-\}\par
+            void AIUpdate()
+        {
+            if(GetHealthPercent()<=100)  // Phase one
+        {
+             AddSpell(wellfed, Target_RandomPlayer, 100, 0, 30, 0, 0, false, "you look hungary dear here have some food", Text_Yell);
+        }
+            if(GetHealthPercent()<=70) // Phase 2
+        {
+            AddSpell(chockingcloud, Target_SecondMostHated, 100, 0, 100, 0,0, false, "oops dear burned the food", Text_Yell);
+        }
+            if(GetHealthPercent()<=40) // Phase 2
+        {
+            AddSpell(spiritbolts, Target_ClosestPlayer, 100, 0, 100, 0,0, false, "Ahh now im getting Agrivated its ok you were always a notty child", Text_Yell);
+        }
+            if(GetHealthPercent()<=3) // Phase 2
+        {
+            AddSpell(decimate, Target_RandomPlayer, 100, 0, 100, 0,0, false, "I will always love you but you need a spanking", Text_Yell);
+        }
+            ParentClass::AIUpdate();
+            ParentClass::AIUpdate();
+            ParentClass::AIUpdate();
+            ParentClass::AIUpdate();
+        }
+    };
+    void Setupyourmom(ScriptMgr* pScriptMgr)
+    {
+        pScriptMgr->register_creature_script(yourmom, &yourmomAI::Create);
+    }
 }
-�
