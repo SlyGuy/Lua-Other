@@ -3,6 +3,7 @@ These people get a thanks from me (zdroid9770) who made some of the stuff in thi
 WoTD Team: (http://zarkmania.allalla.com/), (http://zarkmania.allalla.com/forum)
 | (Founder/Owner) zdroid9770 (Zarkmania.allalla.com / Zark / zdroid)
 | (Administrator/Head Developer) Ronvenal (Bobmaster)
+| (Developer(s)) Overtry
 | (Super Moderator(s)) Chibi
 | (Emulators) TrinityCore | ArcEmu | ArcPro
 | (Database/Events) dev.landofelves.net | https://github.com/DarkAngel39/Events
