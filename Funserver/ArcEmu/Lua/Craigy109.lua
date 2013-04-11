@@ -2,30 +2,29 @@ local NPC_ID = 200107
 
 function boss_OnCombat(pUnit, Event)
         pUnit:SendChatMessage(14, 0, " ...Who Dares Touch ME.....")
-		pUnit:RegisterEvent(boss_rend, 20000, 1) -- start phase one
-		pUnit:RegisterEvent(boss_bs, 1000, 1) 
-		pUnit:RegisterEvent(boss_charge, 30000, 20) 
-	        pUnit:RegisterEvent(boss_thunderclap, 32000, 5)
-                pUnit:RegisterEvent(boss_whirlwind, 35000, 20) -- end of phase one 
-		pUnit:RegisterEvent(boss_ds, 60000, 1) -- start phase two
-		pUnit:RegisterEvent(boss_sunder, 62000, 0)
-                pUnit:RegisterEvent(boss_shout, 61000, 0)
-                pUnit:RegisterEvent(boss_shieldwall, 63000, 0)
-                pUnit:RegisterEvent(boss_rend2, 64000, 1) -- end of phase two
-                pUnit:RegisterEvent(boss_berserkst, 67000, 0)
-                pUnit:RegisterEvent(boss_whirlwind2, 69000, 20)
-                pUnit:RegisterEvent(boss_cleave, 73000, 0)
-                pUnit:RegisterEvent(boss_bloodshirt, 75000, 0)
-                pUnit:RegisterEvent(boss_Recklessness, 77000, 0)
-
+        pUnit:RegisterEvent(boss_rend, 20000, 1) -- start phase one
+        pUnit:RegisterEvent(boss_bs, 1000, 1) 
+        pUnit:RegisterEvent(boss_charge, 30000, 20)
+        pUnit:RegisterEvent(boss_thunderclap, 32000, 5)
+        pUnit:RegisterEvent(boss_whirlwind, 35000, 20) -- end of phase one 
+        pUnit:RegisterEvent(boss_ds, 60000, 1) -- start phase two
+	pUnit:RegisterEvent(boss_sunder, 62000, 0)
+        pUnit:RegisterEvent(boss_shout, 61000, 0)
+        pUnit:RegisterEvent(boss_shieldwall, 63000, 0)
+        pUnit:RegisterEvent(boss_rend2, 64000, 1) -- end of phase two
+        pUnit:RegisterEvent(boss_berserkst, 67000, 0)
+        pUnit:RegisterEvent(boss_whirlwind2, 69000, 20)
+        pUnit:RegisterEvent(boss_cleave, 73000, 0)
+       	pUnit:RegisterEvent(boss_bloodshirt, 75000, 0)
+	pUnit:RegisterEvent(boss_Recklessness, 77000, 0)
 end
 
 function boss_rend(pUnit, Event)
-        pUnit:CastSpell(34378)
+	pUnit:CastSpell(34378)
 end
 
 function boss_bs(pUnit, Event)
-        pUnit:CastSpell(2457)
+	pUnit:CastSpell(2457)
 end
 
 function boss_charge(pUnit, Event)
@@ -85,17 +84,17 @@ end
 
 function boss_OnLeaveCombat(pUnit, Event)
         pUnit:RemoveEvents()
-		pUnit:SendChatMessage(14, 0, "...Too much for you? Think about coming back here again....")
+	pUnit:SendChatMessage(14, 0, "...Too much for you? Think about coming back here again....")
 end
 
 function boss_OnKilledTarget(pUnit, Event)
         pUnit:RemoveEvents()
-		pUnit:SendChatMessage(14, 0, "...death is upon you...")
+	pUnit:SendChatMessage(14, 0, "...death is upon you...")
 end
 
 function boss_OnDied(pUnit, Event)
         pUnit:RemoveEvents()
-		pUnit:SendChatMessage(14, 0, "...your too strong for me... I'll Be Back....")
+	pUnit:SendChatMessage(14, 0, "...your too strong for me... I'll Be Back....")
 end
 
 RegisterUnitEvent(200107, 1, "boss_OnCombat")
