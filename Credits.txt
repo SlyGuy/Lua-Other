@@ -25,7 +25,7 @@ Other #1 (People):
 | Yerney | Azolex | Tally/`Angel | nymphx | Rakkorz | Sysmis | Icefreze
 | Paroxysm | Morfeo | Celtus | Faddix | BlackHer0 | MikeBeck | Blua
 | treetree | Katos | Janni | Recon | Nandi | Foereaper | Runemaster
-| HalestormXV | WigSplitta | Hopla | Hanfer | Twilight/Twl | 
+| HalestormXV | WigSplitta | Hopla | Hanfer | Twilight/Twl | Craigy109
 
 Other #2 (Projects):
 | LunarSCR | HHScripts | Skyfire | StrawberryCore | Mangos | LUA++
