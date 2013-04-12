@@ -1,8 +1,10 @@
-These people get a thanks from me (zdroid9770) who made some of the stuff in this repository.
+These people get a thanks from Zarkmania who made some of the stuff in this repository.
 
 WoTD Team: (http://zarkmania.allalla.com/), (http://zarkmania.allalla.com/forum)
 | (Founder/Owner) zdroid9770 (Zarkmania.allalla.com / Zark / zdroid)
 | (Administrator/Head Developer) Ronvenal (Bobmaster)
+| (Developer(s)) Overtry
+| (Super Moderator(s)) Chibi
 | (Emulators) TrinityCore | ArcEmu | ArcPro
 | (Database/Events) dev.landofelves.net | https://github.com/DarkAngel39/Events
 | (MVPs) Mathix | Ascathor | komothoes
@@ -19,12 +21,14 @@ Other #1 (People):
 | yiera | Olabvii | Shady | Ascent | Utsjitimmie | Underseas | Justin
 | RakkorZ | ZxOxZ | 2D | HellSpawn | Grandelf | Double H | Marijnz
 | Alvanaar | BrantX | Shorts | Reflexiz | Laurea| WoW-V | Kibblebit
-| rdn | DragonDev | RaxiCax | Gastricpenguin | Hungary | AC-Web.org
+| rdn | DragonDev | RaxiCax | Gastricpenguin | Hungary | Slade1000
 | Yerney | Azolex | Tally/`Angel | nymphx | Rakkorz | Sysmis | Icefreze
 | Paroxysm | Morfeo | Celtus | Faddix | BlackHer0 | MikeBeck | Blua
 | treetree | Katos | Janni | Recon | Nandi | Foereaper | Runemaster
+| HalestormXV | WigSplitta | Hopla | Hanfer | Twilight/Twl | Craigy109
 
 Other #2 (Projects):
 | LunarSCR | HHScripts | Skyfire | StrawberryCore | Mangos | LUA++
 | Norwegian Elite Team | Holystone Productions | projectsilvermoon.net
-| CNA-WoW | lasp-forumotion.com | Project eXa | InfinityWoW | 
+| CNA-WoW | lasp-forumotion.com | Project eXa | InfinityWoW | AC-Web.org
+| Moon++ | ScriptDev2 | Ascent | Myth Project | ArcScript | 

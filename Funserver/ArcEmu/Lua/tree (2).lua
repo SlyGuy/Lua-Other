@@ -1,5 +1,4 @@
 
-
 logcol(13)
-print("AC-WEB Repack 10")
+print("Scriptland 5000")
 logcol(7)

@@ -196,6 +196,5 @@ function on_theme_delete()
 end	
 
 RegisterTimedEvent("on_theme_delete", 1000, 0)
-
 RegisterUnitGossipEvent(200007, 1, "on_theme_speak")
 RegisterUnitGossipEvent(200007, 2, "on_theme_spawn")
