@@ -2,7 +2,7 @@
 
 	This is created by zdroid9770  :D
 
-	© Copyright 2012
+	ï¿½ Copyright 2012 - 2013
 
 ]]
 
@@ -11,10 +11,10 @@ local MSG_BUFF = ".buff"
 function BuffsOnChat(event, player, message, type, language)
 	if(message == MSG_BUFF) then
 			if (player:HasAura(36035) == true) then
-					player:SendBroadcastMessage("|cFF00FFFF[WoD Message]|cFFFFA500|cFFFFA500You have already been buffed!")
+				player:SendBroadcastMessage("|cFF00FFFF[WoD Message]|cFFFFA500|cFFFFA500You have already been buffed!")
 			else
 			local GMrank = player:GetGmRank()
-			if GMrank == "vp" or GMrank == "vip"  or GMrank == "a" or GMrank == "az" or GMrank == "vg" or GMrank == "vipd" then
+			if ((GMrank == "vp") or (GMrank == "vip")  or (GMrank == "a") or (GMrank == "az") or (GMrank == "vg") or (GMrank == "vipd")) then
 				player:CastSpell(33077)
 				player:CastSpell(33078)
 				player:CastSpell(33079)
