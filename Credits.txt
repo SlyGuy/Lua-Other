@@ -33,4 +33,4 @@ Other #2 (Projects):
 | Norwegian Elite Team | Holystone Productions | projectsilvermoon.net
 | CNA-WoW | lasp-forumotion.com | Project eXa | InfinityWoW | AC-Web.org
 | Moon++ | ScriptDev2 | Ascent | Myth Project | ArcScript | Pwn - Scripts
-| FlameScripts | 
+| FlameScripts | ArkCORE | 
