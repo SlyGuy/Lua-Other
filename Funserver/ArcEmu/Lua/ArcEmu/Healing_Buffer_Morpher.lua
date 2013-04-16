@@ -12,30 +12,30 @@ end
 
 function On_GossipSelect(unit, event, player, id, intid, code)
     if (intid == 1) then
-    unit:GossipCreateMenu(100, player, 0)
-    unit:GossipMenuAddItem(5,"Cast: Holy Light", 10, 0)
-    unit:GossipMenuAddItem(5,"Cast: Healing Wave", 11, 0)
-    unit:GossipMenuAddItem(5,"Cast: Renew", 12, 0)
-    unit:GossipMenuAddItem(5,"Remove Resurrection Sickness", 13, 0)
-    unit:GossipMenuAddItem(4,"[Back to Main Menu]", 999, 0)
-    unit:GossipSendMenu(player)
+        unit:GossipCreateMenu(100, player, 0)
+        unit:GossipMenuAddItem(5,"Cast: Holy Light", 10, 0)
+        unit:GossipMenuAddItem(5,"Cast: Healing Wave", 11, 0)
+        unit:GossipMenuAddItem(5,"Cast: Renew", 12, 0)
+        unit:GossipMenuAddItem(5,"Remove Resurrection Sickness", 13, 0)
+        unit:GossipMenuAddItem(4,"[Back to Main Menu]", 999, 0)
+        unit:GossipSendMenu(player)
     end
     if (intid == 10) then
-    unit:FullCastSpellOnTarget(27136, player)
-    player:GossipComplete()
+        unit:FullCastSpellOnTarget(27136, player)
+        player:GossipComplete()
     end
     if (intid == 11) then
-    unit:FullCastSpellOnTarget(25396, player)
-    player:GossipComplete()
+        unit:FullCastSpellOnTarget(25396, player)
+        player:GossipComplete()
     end
     if (intid == 12) then
-    unit:FullCastSpellOnTarget(25222, player)
-    player:GossipComplete()
+        unit:FullCastSpellOnTarget(25222, player)
+        player:GossipComplete()
     end
     if (intid == 13) then
-    player:LearnSpell(15007)
-    player:UnlearnSpell(15007)
-    player:GossipComplete()
+        player:LearnSpell(15007)
+        player:UnlearnSpell(15007)
+        player:GossipComplete()
     end
     if (intid == 2) then
         unit:GossipCreateMenu(100, player, 0)
