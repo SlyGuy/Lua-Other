@@ -1,14 +1,14 @@
 -----------------------------------------------------------------------------------
 --   Original Code: Kenuvis                                                      --
---                                  			                           --
+--                                  			                         --
 --   This Script is known to have some little                                    --
 --   Bugs but thex can be resolved by Killing the NPC                            --
 --   Dont delete our Credits!!!                                                  --
---   Modified by darkalex									   --
+--   Modified by darkalex							 --
 -----------------------------------------------------------------------------------
---   LUAppArc Scripting Project. 								   --
---   SVN: http://svn.assembla.com/svn/LUAppArc 						   --
---   LOG: http://burning-azzinoth.de/arcemu/new/frontend/?t=2			   --
+--   LUAppArc Scripting Project. 						 --
+--   SVN: http://svn.assembla.com/svn/LUAppArc 					 --
+--   LOG: http://burning-azzinoth.de/arcemu/new/frontend/?t=2			 --
 -----------------------------------------------------------------------------------
 
 
@@ -22,67 +22,6 @@ Start_NPC = 9870123 --This is an NPC which should only exist ONCE on your world.
 Time_between_events = 3600000 --Time in Milliseconds (Seconds*1000) which should pass between two Events. Standard is 1 hour
 
 number_of_questions = 8 --How many questions should I ask in each round
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 -------------Don't do anything below this line!!!----------------
 
@@ -314,4 +253,3 @@ function Quiz_Auswertung(Unit)
    Unit:Despawn(1000, Time_between_events)
    Unit:RemoveEvents()
 end
-

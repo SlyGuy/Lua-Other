@@ -26,7 +26,7 @@ Other #1 (People):
 | Paroxysm | Morfeo | Celtus | Faddix | BlackHer0 | MikeBeck | Blua
 | treetree | Katos | Janni | Recon | Nandi | Foereaper | Runemaster
 | HalestormXV | WigSplitta | Hopla | Hanfer | Twilight/Twl | Craigy109
-| Aylow | 
+| Aylow | Kenuvis | darkalex
 
 Other #2 (Projects):
 | LunarSCR | HHScripts | Skyfire | StrawberryCore | Mangos | LUA++
