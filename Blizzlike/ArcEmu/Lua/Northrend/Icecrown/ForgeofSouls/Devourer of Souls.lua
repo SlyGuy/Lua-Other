@@ -40,7 +40,7 @@ end
 
 function Devourer_Mirrored(pUnit, Event)
 	pUnit:FullCastSpellOnTarget(69051, pUnit:GetRandomPlayer(0))
-	pUnit:SendChatMessage(42, 0, "Devourer of Souls begins to cast Mirrored Soul.")\
+	pUnit:SendChatMessage(42, 0, "Devourer of Souls begins to cast Mirrored Soul.")
 end
 
 function Devourer_Wellsouls(pUnit, Event)

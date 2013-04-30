@@ -13,68 +13,68 @@ local SmallOoze = 43301
 local BigOoze = 36899
 local OozeFlood = 37006
 
-function rf_OnCombat(pUnit, Event)
-local rf = pUnit
-	rf:SendChatMessage(14, 0, "WEEEEEEE!")
-    rf:RegisterEvent("rf_OozeFlood", 20000, 1)
-	rf:RegisterEvent("rf_OozeFlood_InPairs", 22000, 1)
-	rf:RegisterEvent("rf_SlimeSpray", 11000, 0)
-	rf:RegisterEvent("rf_MutatedInfection", 35000, 0) 
+function rotface_OnCombat(pUnit, Event)
+local rotface = pUnit
+	rotface:SendChatMessage(14, 0, "WEEEEEEE!")
+    rotface:RegisterEvent("rotface_OozeFlood", 20000, 1)
+	rotface:RegisterEvent("rotface_OozeFlood_InPairs", 22000, 1)
+	rotface:RegisterEvent("rotface_SlimeSpray", 11000, 0)
+	rotface:RegisterEvent("rotface_MutatedInfection", 35000, 0) 
 end
 
-function rf_OozeFlood(pUnit, Event)
-	rf:SpawnCreature(37006, 4427.700689, 3174.871826, 360.385315, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_Two", 20000, 1)
+function rotface_OozeFlood(pUnit, Event)
+	rotface:SpawnCreature(37006, 4427.700689, 3174.871826, 360.385315, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_Two", 20000, 1)
 end
 
-function rf_OozeFlood_InPairs(pUnit, Event)
-	rf:SpawnCreature(37006, 4409.125000, 3155.542725, 360.385315, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_InPairs_Two", 22000, 1)
+function rotface_OozeFlood_InPairs(pUnit, Event)
+	rotface:SpawnCreature(37006, 4409.125000, 3155.542725, 360.385315, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_InPairs_Two", 22000, 1)
 end
 
-function rf_OozeFlood_Two(pUnit, Event)
-	rf:SpawnCreature(37006, 4406.874512, 3118.262207, 360.385742, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_Tree", 20000, 1)
+function rotface_OozeFlood_Two(pUnit, Event)
+	rotface:SpawnCreature(37006, 4406.874512, 3118.262207, 360.385742, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_Tree", 20000, 1)
 end
 
-function rf_OozeFlood_InPairs_Two(pUnit, Event)
-	rf:SpawnCreature(37006, 4428.574707, 3101.385742, 360.385742, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_InPairs_Tree", 22000, 1)
+function rotface_OozeFlood_InPairs_Two(pUnit, Event)
+	rotface:SpawnCreature(37006, 4428.574707, 3101.385742, 360.385742, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_InPairs_Tree", 22000, 1)
 end
 
-function rf_OozeFlood_Tree(pUnit, Event)
-	rf:SpawnCreature(37006, 4461.988770, 3101.588867, 360.385590, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_For", 20000, 1)
+function rotface_OozeFlood_Tree(pUnit, Event)
+	rotface:SpawnCreature(37006, 4461.988770, 3101.588867, 360.385590, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_For", 20000, 1)
 end
 
-function rf_OozeFlood_InPairs_Tree(pUnit, Event)
-	rf:SpawnCreature(37006, 4481.371094, 3119.097412, 360.385590, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_InPairs_For", 22000, 1)
+function rotface_OozeFlood_InPairs_Tree(pUnit, Event)
+	rotface:SpawnCreature(37006, 4481.371094, 3119.097412, 360.385590, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_InPairs_For", 22000, 1)
 end
 
-function rf_OozeFlood_For(pUnit, Event)
-	rf:SpawnCreature(37006, 4482.102051, 3153.623779, 360.385590, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood", 20000, 1)
+function rotface_OozeFlood_For(pUnit, Event)
+	rotface:SpawnCreature(37006, 4482.102051, 3153.623779, 360.385590, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood", 20000, 1)
 end
 
-function rf_OozeFlood_InPairs_For(pUnit, Event)
-	rf:SpawnCreature(37006, 4463.563965, 3173.374268, 360.385590, 0, 14, 25000)
-	rf:RegisterEvent("rf_OozeFlood_InPairs", 22000, 1)
+function rotface_OozeFlood_InPairs_For(pUnit, Event)
+	rotface:SpawnCreature(37006, 4463.563965, 3173.374268, 360.385590, 0, 14, 25000)
+	rotface:RegisterEvent("rotface_OozeFlood_InPairs", 22000, 1)
 end
 
-function rf_SlimeSpray(pUnit, Event)
-	rf:SendChatMessage(14, 0, "Icky sticky.")
-	rf:FullCastSpell(69508)
-	rf:AddAura(69507, 1000)
+function rotface_SlimeSpray(pUnit, Event)
+	rotface:SendChatMessage(14, 0, "Icky sticky.")
+	rotface:FullCastSpell(69508)
+	rotface:AddAura(69507, 1000)
 end
 
-function rf_MutatedInfection(pUnit, Event)
-	rf:CastSpellOnTarget(69674, rf:GetRandomPlayer(0))
-    rf:RegisterEvent("Small_Ooze_Spawn", 12000, 1)
+function rotface_MutatedInfection(pUnit, Event)
+	rotface:CastSpellOnTarget(69674, rotface:GetRandomPlayer(0))
+    rotface:RegisterEvent("Small_Ooze_Spawn", 12000, 1)
 end
 
 function Small_Ooze_Spawn(pUnit, Event)
-  rf:SpawnCreature(SmallOoze, rf:GetRandomPlayer(0):GetX(), rf:GetRandomPlayer(0):GetY(), rf:GetRandomPlayer(0):GetZ(), rf:GetRandomPlayer(0):GetO(), 14, 360000)
+  rotface:SpawnCreature(SmallOoze, rotface:GetRandomPlayer(0):GetX(), rotface:GetRandomPlayer(0):GetY(), rotface:GetRandomPlayer(0):GetZ(), rotface:GetRandomPlayer(0):GetO(), 14, 360000)
 end
 
 function SmallOoze_OnCombat(pUnit, Event)
@@ -148,15 +148,15 @@ function oozeflod_Aura_Check(pUnit, Event)
 	end
 end
 
-function rf_OnLeaveCombat(pUnit, Event)
+function rotface_OnLeaveCombat(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
-function rf_OnKillPlayer(pUnit, Event)
+function rotface_OnKillPlayer(pUnit, Event)
 	pUnit:SendChatMessage(14, 0, "Daddy make toys out of you!")
 end
 
-function rf_OnDead(pUnit, Event)
+function rotface_OnDead(pUnit, Event)
 	pUnit:RemoveEvents()
 end
 
@@ -164,10 +164,10 @@ function SmallOoze_OnDeath(pUnit, Event)
 	pUnit:Despawn(1, 0)
 end
 
-RegisterUnitEvent(rf, 1, "rf_OnCombat")
-RegisterUnitEvent(rf, 2, "rf_OnLeaveCombat")
-RegisterUnitEvent(rf, 3, "rf_OnKillPlayer")
-RegisterUnitEvent(rf, 4, "rf_OnDead")
+RegisterUnitEvent(rotface, 1, "rotface_OnCombat")
+RegisterUnitEvent(rotface, 2, "rotface_OnLeaveCombat")
+RegisterUnitEvent(rotface, 3, "rotface_OnKillPlayer")
+RegisterUnitEvent(rotface, 4, "rotface_OnDead")
 RegisterUnitEvent(SmallOoze, 1, "SmallOoze_OnCombat")
 RegisterUnitEvent(SmallOoze, 4, "SmallOoze_OnDeath")
 RegisterUnitEvent(BigOoze, 1, "BigOoze_OnCombat")

@@ -6,7 +6,7 @@ Highlord Tirion Fordring yells: Arthas! You are hopelessly outnumbered! Lay down
 Highlord Tirion Fordring yells: Begin!
 Highlord Tirion Fordring yells: Champions, you're alive! Not only have you defeated every challenge of the Trial of the Crusader, but also thwarted Arthas' plans! Your skill and cunning will prove to be a powerful weapon against the Scourge. Well done! Allow one of the Crusade's mages to transport you to the surface!
 Highlord Tirion Fordring yells: Everyone calm down! Compose yourselves! There is no conspiracy at play here! The warlock acted on his own volition, outside of influences from the Alliance. The tournament must go on!
-Highlord Tirion Fordring yells: Go now and rest; you've earned it.
+Highlord Tirion Fordring yells: Go now and rest you've earned it.
 Highlord Tirion Fordring yells: Grand Warlock Wilfred Fizzlebang will summon forth your next challenge. Stand by for his entry.
 Highlord Tirion Fordring yells: Hailing from the deepest, darkest caverns of the Storm Peaks, Gormok the Impaler! Battle on, heroes!
 Highlord Tirion Fordring yells: LIGHT GRANT ME ONE FINAL BLESSING! GIVE ME THE STRENGTH... TO SHATTER THESE BONDS!
@@ -113,7 +113,7 @@ end
 function TirionFordring_OnSpawn_Go(pUnit, Event)
 	if(Lich ~= nil) then
 		if(pUnit:GetClosestPlayer() ~= nil) then
-			if(pUnit:GetDistanceYards(plr) < 7) then
+			if(pUnit:GetDistanceYards(player) < 7) then
 				local PlayersAllAround = pUnit:GetInRangePlayers()
 				for a, players in pairs(PlayersAllAround) do
 					players:CastSpell(69127)
@@ -258,7 +258,7 @@ function Adds_Spawning_Incoming_Shambling_Horror(pUnit, Event)
 end
 
 function Necrotic_Plague_Incoming(pUnit, Event)
-	if(plr ~= nil) then
+	if(player ~= nil) then
 		Lich:FullCastSpellOnTarget(70337, Lich:GetRandomPlayer(0))
 	end
 end
@@ -504,13 +504,13 @@ end
 	for k, v in pairs(pUnit:GetInRangePlayers()) do
 	if v:IsDead() then
 		if npc[v:GetName()] ==  nil then
-			npc[v:GetName()] = {};
+			npc[v:GetName()] = {}
 			npc[v:GetName()].position = {v:GetX(), v:GetY(), v:GetZ(), v:GetO()}
-			npc[v:GetName()].npcSpawned = true;			local x, y, z, o = pos;
+			npc[v:GetName()].npcSpawned = true			local x, y, z, o = pos
 			Lich:SpawnCreature(100001, npc[v:GetName()].position.x, npc[v:GetName()].position.y, npc[v:GetName()].position.z, npc[v:GetName()].position.o, 35, 0)
-			break;
+			break
 		end
-	break;
+	break
 	end
 end
 end
@@ -884,7 +884,6 @@ function now_we_have_loaded_preset_We_can_move_on_two(pUnit, Event)
 		pUnit:GetClosestPlayer():RemoveAura(52241)
 		pUnit:GetClosestPlayer():RemoveAura(53658)
 		pUnit:GetClosestPlayer():SetPlayerLock(0)
-		pUnit:GetClosestPlayer() = nil
 		--pUnit:RemoveFromWorld() -- Causes crash
 		else
 			pUnit:SetMovementFlags(2)
@@ -904,7 +903,6 @@ function zhgzFlying_Dude_OnDead(pUnit, Event)
 	pUnit:GetClosestPlayer():RemoveAura(52241)
 	pUnit:GetClosestPlayer():RemoveAura(53658)
 	pUnit:GetClosestPlayer():SetPlayerLock(0)
-	pUnit:GetClosestPlayer() = nil
 	--pUnit:RemoveFromWorld() -- Causes crash
 end
 
