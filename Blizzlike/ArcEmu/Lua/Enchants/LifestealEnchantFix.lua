@@ -10,12 +10,12 @@ Thank: Mathix, Runemaster; for the Script
 
 function LifestealEnchantFix(effectIndex, spell)
 	local procnumber = math.random(1,10)
-	if(procnumber = 1) then
-		local plr = spell:GetCaster()
-		local maxhealth = plr:GetHealth()
-		local lifestealenemy = plr:GetSelection()
-		plr:SetHealth(maxhealth+30)
-		plr:DealDamage(lifestealenemy, 30, 27104)
+	if(procnumber == 1) then
+		local player = spell:GetCaster()
+		local maxhealth = player:GetHealth()
+		local lifestealenemy = player:GetSelection()
+		player:SetHealth(maxhealth+30)
+		player:DealDamage(lifestealenemy, 30, 27104)
 	end
 end
 

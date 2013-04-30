@@ -10,10 +10,10 @@ Thank: Mathix; for the Script
 
 function FieryWeaponEnchantFix(effectIndex, spell)
 	local procnumber = math.random(1,10)
-	if(procnumber = 1) then
-		local plr = spell:GetCaster()
-		local fieryenemy = plr:GetSelection()
-		plr:DealDamage(fieryenemy, 40, 30183)
+	if(procnumber == 1) then
+		local player = spell:GetCaster()
+		local fieryenemy = player:GetSelection()
+		player:DealDamage(fieryenemy, 40, 30183)
 	end
 end
 

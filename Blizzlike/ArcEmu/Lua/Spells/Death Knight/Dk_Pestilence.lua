@@ -8,19 +8,18 @@ Thank: Holystone Productions; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
-function Dk_Pestilence_Fixe(event, plr, spellid)
+function Dk_Pestilence_Fixe(event, player, spellid)
+local Target = player
 local FriendTarget = Target:GetInRangeFriends()
 	if(spellid == 50842) then
-		Target = plr:GetSelection()
-	end
-	if(Target ~= nil) then
+		Target = player:GetSelection()
+	elseif(Target ~= nil) then
 		Target:AddAura(55078, 21000)
 		Target:AddAura(55095, 21000)
-	end
-	if(FriendTarget:GetDistanceYards(Target) < 10) then
+	elseif(FriendTarget:GetDistanceYards(Target) < 10) then
 		FriendTarget:AddAura(55078, 21000)
 		FriendTarget:AddAura(55095, 21000)
 	end
 end
 
-RegisterServerHook(10, "Dk_Pestilence_Fixe")]]--
+RegisterServerHook(10, "Dk_Pestilence_Fixe")

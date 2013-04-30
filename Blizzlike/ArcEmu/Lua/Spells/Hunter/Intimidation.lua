@@ -8,10 +8,10 @@ Thank: Mathix; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
-function IntimidationFix(event, plr, spellid)
+function IntimidationFix(event, player, spellid)
 	if(spellid == 19577) then
-		local pet = tostring(plr)
-		local pettarget = pet:GetSelection
+		local pet = player:tostring(player)
+		local pettarget = pet:GetSelection()
 		if(pettarget:IsFriendly() == false) then
 			pet:CastSpellOnTarget(19577, pettarget)
 		end
