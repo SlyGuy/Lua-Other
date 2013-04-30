@@ -251,8 +251,6 @@ QUEST_WG_VICTORY_A = 13181
 QUEST_WG_VICTORY_H = 13183
 QUEST_WG_TOPPING_TOWERS = 13539
 QUEST_WG_SOUTHEN_SABOTAGE = 13538
-QUEST_WG_SOUTHEN_SABOTAGE_A = 13538
-QUEST_WG_TOPPING_THE_TOWERS_H = 13539
 QUEST_WG_DEFEND_SIEDGE_A = 13222
 QUEST_WG_DEFEND_SIEDGE_H = 13223
 
@@ -303,7 +301,7 @@ else
 		l:RemoveAura(SPELL_ESSENCE_OF_WINTERGRASP)
 	end
 end
-if(l:GetZoneId() ~= ZONE_WG)then
+if(l:GetZoneId() ~= ZONE_WG and l:GetAreaId() ~= ZONE_WG)then
 	if(l:HasAura(SPELL_RECRUIT))then
 		l:RemoveAura(SPELL_RECRUIT)
 	end
@@ -455,7 +453,6 @@ end
 
 function WGUpdate()
 if(timer_nextbattle <= os.time() and timer_battle == 0)then
-	SendWorldMsg("[PH MESSAGE]Battlefield is starting!", 1)
 	timer_battle = os.time() + BATTLE_TIMER
 	timer_nextbattle = 0
 	battle = 1
@@ -471,6 +468,7 @@ if(timer_nextbattle <= os.time() and timer_battle == 0)then
 		westspark_progress = 100
 	end
 	for k,v in pairs(GetPlayersInZone(ZONE_WG))do
+	v:SendAreaTriggerMessage("Let the battle begin!")
 	local packetssound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
 	packetssound:WriteULong(3439)
 	v:SendPacketToPlayer(packetssound)
@@ -478,9 +476,9 @@ if(timer_nextbattle <= os.time() and timer_battle == 0)then
 elseif(timer_nextbattle == 0 and timer_battle <= os.time())then
 	timer_battle = 0
 	timer_nextbattle = os.time() + TIME_TO_BATTLE
-	SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
 	battle = 0
 	stateuiset = 0
+	states = 0
 	starttimer = 0
 	south_towers = 3
 	for k,v in pairs(GetPlayersInZone(ZONE_WG))do
@@ -488,14 +486,16 @@ elseif(timer_nextbattle == 0 and timer_battle <= os.time())then
 	if(controll == 1)then
 		packetseound:WriteULong(8455)
 		v:SendPacketToPlayer(packetseound)
+		v:SendAreaTriggerMessage("The Alliance has successfully defended the Wintergrasp fortress!")
 	elseif(controll == 2)then
 		packetseound:WriteULong(8454)
 		v:SendPacketToPlayer(packetseound)
+		v:SendAreaTriggerMessage("The Horde has successfully defended the Wintergrasp fortress!")
 	end
 	end
 end
 for k,v in pairs(GetPlayersInMap(MAP_NORTHREND))do
-if(v:GetZoneId() == ZONE_WG)then
+if(v:GetZoneId() == ZONE_WG or v:GetAreaId() == ZONE_WG)then
 if(south_towers == 0)then
 	timer_battle = timer_battle - 600 -- if all southen towers are destroyed, the attackers loose 10 min.
 	v:SetWorldStateForZone(WG_STATE_BATTLE_TIME, timer_battle)
@@ -630,10 +630,12 @@ if(controll == 1)then
 		v:SetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY, 7)
 		v:SetWorldStateForZone(WG_STATE_WS_WORKSHOP, 4)
 		v:SetWorldStateForZone(WG_STATE_ES_WORKSHOP, 4)
-		v:SetWorldStateForZone(WG_STATE_BT_WORKSHOP, 1)
-		v:SetWorldStateForZone(WG_STATE_SR_WORKSHOP, 1)
+		v:SetWorldStateForZone(WG_STATE_BT_WORKSHOP, 4)
+		v:SetWorldStateForZone(WG_STATE_SR_WORKSHOP, 4)
 		eastspark_progress =  0
 		westspark_progress =  0
+		sunkenring_progress = 0
+		brokentemple_progres = 0
 		states = 1
 		ATTACKER = "Horde"
 		DEFENDER = "Alliance"
@@ -676,10 +678,12 @@ elseif(controll == 2)then
 		v:SetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY, 4)
 		v:SetWorldStateForZone(WG_STATE_WS_WORKSHOP, 7)
 		v:SetWorldStateForZone(WG_STATE_ES_WORKSHOP, 7)
-		v:SetWorldStateForZone(WG_STATE_BT_WORKSHOP, 1)
-		v:SetWorldStateForZone(WG_STATE_SR_WORKSHOP, 1)
+		v:SetWorldStateForZone(WG_STATE_BT_WORKSHOP, 7)
+		v:SetWorldStateForZone(WG_STATE_SR_WORKSHOP, 7)
 		eastspark_progress = 100
 		westspark_progress = 100
+		sunkenring_progress = 100
+		brokentemple_progres = 100
 		states = 1
 		ATTACKER = "Alliance"
 		DEFENDER = "Horde"
@@ -722,7 +726,6 @@ if(spawnobjects == 0 and battle == 1)then
 	spawnobjects = 1
 end
 if(battle == 0 and spawnobjects == 1)then
-	SendWorldMsg("Wintergrasp condition: Battle = "..battle.." and objstate = "..spawnobjects..".|r", 1)
 	spawnobjects = 0
 	local relick = pUnit:GetGameObjectNearestCoords(5439.66,2840.83,430.282,GO_WINTERGRASP_TITAN_RELIC)
 	local collision = pUnit:GetGameObjectNearestCoords(5397.11,2841.54,425.901,GO_WINTERGRASP_KEEP_COLLISION_WALL)
@@ -1490,7 +1493,6 @@ local timebattle = os.time() - starttimer
 	if(controll == 1 and pPlayer:GetTeam() == 1 and pGO:GetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY) == 9)then
 		timer_battle = 0
 		timer_nextbattle = os.time() + TIME_TO_BATTLE
-		SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
 		battle = 0
 		controll = 2
 		states = 0
@@ -1499,6 +1501,7 @@ local timebattle = os.time() - starttimer
 		starttimer = 0
 		south_towers = 3
 		for k,v in pairs (GetPlayersInZone(ZONE_WG))do
+		v:SendAreaTriggerMessage("The Wintergrasp fortress has been captured by the Horde!")
 		local packetseound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
 		packetseound:WriteULong(8454)
 		v:SendPacketToPlayer(packetseound)
@@ -1521,7 +1524,6 @@ local timebattle = os.time() - starttimer
 	if(controll == 2 and pPlayer:GetTeam() == 0 and pGO:GetWorldStateForZone(WG_STATE_KEEP_GATE_ANDGY) == 6)then
 		timer_battle = 0
 		timer_nextbattle = os.time() + TIME_TO_BATTLE
-		SendWorldMsg("[PH MESSAGE]The battlefield is over!", 1)
 		battle = 0
 		controll = 1
 		states = 0
@@ -1530,6 +1532,7 @@ local timebattle = os.time() - starttimer
 		starttimer = 0
 		south_towers = 3
 		for k,v in pairs (GetPlayersInZone(ZONE_WG))do
+		v:SendAreaTriggerMessage("The Wintergrasp fortress has been captured by the Alliance!")
 		local packetseound = LuaPacket:CreatePacket(SMSG_PLAY_SOUND, 4)
 		packetseound:WriteULong(8455)
 		v:SendPacketToPlayer(packetseound)
@@ -1556,10 +1559,10 @@ function DebugWG(event, pPlayer, message, type, language)
 if(pPlayer:IsGm() and pPlayer:GetZoneId() == ZONE_WG and battle == 0)then
 	if(message == "#debug WG")then
 		timer_nextbattle = os.time() + 10
-		SendWorldMsg("Wintergrasp starts after 10s. Battlefield started by GM "..pPlayer:GetName()..".|r", 1)
+		for k,v in pairs(GetPlayersInWorld())do
+		v:SendBroadcastMessage("Wintergrasp battle starts after 10 sec. Battlefield started by GM "..pPlayer:GetName()..".|r")
+		end
 		pPlayer:SetWorldStateForZone(WG_STATE_NEXT_BATTLE_TIME, timer_nextbattle)
-	elseif(message == "#st")then
-		SendWorldMsg("The states is "..states..".|r")
 	end
 end
 end
@@ -1826,7 +1829,7 @@ if(battle == 1)then
 end
 end
 
-function GengineerOnGossip(pUnit, event, pPlayer)
+function AGengineerOnGossip(pUnit, event, pPlayer)
 if(pUnit:GetWorldStateForZone(WG_STATE_MAX_A_VEHICLES) > pUnit:GetWorldStateForZone(WG_STATE_CURRENT_A_VEHICLES))then
 	if(pPlayer:HasAura(SPELL_CORPORAL) or pPlayer:HasAura(SPELL_LIEUTENANT) and battle == 1)then
 		if(pPlayer:HasAura(SPELL_CORPORAL))then
@@ -1850,7 +1853,7 @@ else
 end
 end
 
-function OnSelect(pUnit, event, pPlayer, id, intid, code)
+function AOnSelect(pUnit, event, pPlayer, id, intid, code)
 if(pUnit:GetWorldStateForZone(WG_STATE_MAX_A_VEHICLES) > pUnit:GetWorldStateForZone(WG_STATE_CURRENT_A_VEHICLES))then
 	if(intid == 1)then
 		pPlayer:FullCastSpell(SPELL_BUILD_CATAPULT)
@@ -1905,6 +1908,43 @@ end
 end
 
 function OnDestroy(pGO)
+for k,g in pairs(pGO:GetInRangePlayers())do
+	if(pGO:GetEntry() == GO_WINTERGRASP_SS_TOWER or pGO:GetEntry() == GO_WINTERGRASP_WE_TOWER or pGO:GetEntry() == GO_WINTERGRASP_FW_TOWER)then
+		if(DEFENDER == "Alliance")then
+			if(g:GetTeam() == 0)then
+				if not(g:HasAchievement(ACHIEVEMENT_LEANING_T))then
+					g:AddAchievement(ACHIEVEMENT_LEANING_T)
+				end
+				if(g:HasQuest(QUEST_WG_SOUTHEN_SABOTAGE) and g:GetQuestObjectiveCompletion(QUEST_WG_SOUTHEN_SABOTAGE, 0) == 0)then
+					g:AdvanceQuestObjective(QUEST_WG_SOUTHEN_SABOTAGE, 0)
+				end
+			end
+		elseif(DEFENDER == "Horde")then
+			if(g:GetTeam() == 1)then
+				if not(g:HasAchievement(ACHIEVEMENT_LEANING_T))then
+					g:AddAchievement(ACHIEVEMENT_LEANING_T)
+				end
+				if(g:HasQuest(QUEST_WG_TOPPING_TOWERS) and g:GetQuestObjectiveCompletion(QUEST_WG_TOPPING_TOWERS, 0) == 0)then
+					g:AdvanceQuestObjective(QUEST_WG_TOPPING_TOWERS, 0)
+				end
+			end
+		end
+	elseif(pGO:GetEntry() == GO_WINTERGRASP_SE_TOWER or pGO:GetEntry() == GO_WINTERGRASP_NE_TOWER or pGO:GetEntry() == GO_WINTERGRASP_SW_TOWER or pGO:GetEntry() == GO_WINTERGRASP_NW_TOWER)then
+		if(DEFENDER == "Horde")then
+			if(g:GetTeam() == 0)then
+				if not(g:HasAchievement(ACHIEVEMENT_LEANING_T))then
+					g:AddAchievement(ACHIEVEMENT_LEANING_T)
+				end
+			end
+		elseif(DEFENDER == "Alliance")then
+			if(g:GetTeam() == 1)then
+				if not(g:HasAchievement(ACHIEVEMENT_LEANING_T))then
+					g:AddAchievement(ACHIEVEMENT_LEANING_T)
+				end
+			end
+		end
+	end
+end
 for k,v in pairs(GetPlayersInZone(ZONE_WG))do
 	if(pGO:GetEntry() == GO_WINTERGRASP_SS_TOWER)then
 		south_towers = south_towers - 1
@@ -1928,6 +1968,10 @@ for k,v in pairs(GetPlayersInZone(ZONE_WG))do
 end
 end
 
+RegisterGameObjectEvent(GO_WINTERGRASP_SE_TOWER,8,OnDestroy)
+RegisterGameObjectEvent(GO_WINTERGRASP_NE_TOWER,8,OnDestroy)
+RegisterGameObjectEvent(GO_WINTERGRASP_SW_TOWER,8,OnDestroy)
+RegisterGameObjectEvent(GO_WINTERGRASP_NW_TOWER,8,OnDestroy)
 RegisterGameObjectEvent(GO_WINTERGRASP_SS_TOWER,8,OnDestroy)
 RegisterGameObjectEvent(GO_WINTERGRASP_WE_TOWER,8,OnDestroy)
 RegisterGameObjectEvent(GO_WINTERGRASP_FW_TOWER,8,OnDestroy)
