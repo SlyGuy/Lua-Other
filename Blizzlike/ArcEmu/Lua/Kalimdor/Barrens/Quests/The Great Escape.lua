@@ -99,15 +99,12 @@ function Event_part_3_shredder_wreck(Unit)
 	Unit:DestroyCustomWaypointMap()
 	s_count = s_count + 1
 	if(s_count == 1) then
-		Unit:SendChatMessage(11, 0, "Come on, don't break down on me now!")
-	end
-	if(s_count == 2) then
-		Unit:SendChatMessage(11, 0, "That was a close one! Well, let's get going, it's still a ways to Ratchet!")
-	end
-	if(s_count == 3) then
-		Unit:SendChatMessage(11, 0, "Hm... I don't think this blinking red light is a good thing...")
-	end
-	if(s_count > 3) then
+		Unit:SendChatMessage(12, 0, "Come on, don't break down on me now!")
+	elseif(s_count == 2) then
+		Unit:SendChatMessage(12, 0, "That was a close one! Well, let's get going, it's still a ways to Ratchet!")
+	elseif(s_count == 3) then
+		Unit:SendChatMessage(12, 0, "Hm... I don't think this blinking red light is a good thing...")
+	elseif(s_count > 3) then
 		event_part_3_complete_trigger = 1
 		Unit:SpawnCreature(3451, 1086.159, -2990.490, 93.123, 3.255, 69, 0)
 		Unit:RegisterEvent("Event_part_3_destroy_shredder", 100, 1)
@@ -146,7 +143,7 @@ function Wizzlecrank_on_died(Unit)
 	if(part3_complete == 0) then
 		-- player:MarkQuestFailed(863)
 	end
-		Unit:RemoveEvents()
+	Unit:RemoveEvents()
 end
 
 function Wizzlecrank_on_reach_wp(Unit, unk1, unk2, wp_id)

@@ -9,8 +9,8 @@ Thank: zdroid9770; for the Script
 -- WoTD Team, Janurary 19, 2010. ]]
 
 function Akkrilus_OnCombat(Unit, Event)
-	Unit:RegisterEvent("Akkrilus_FireShieldII", 1000, 1)
-	Unit:RegisterEvent("Akkrilus_Immolate", 7000, 0)
+	Unit:RegisterEvent("Akkrilus_FireShieldII", 7000, 0)
+	Unit:RegisterEvent("Akkrilus_Immolate", 14000, 0)
 end
 
 function Akkrilus_FireShieldII(pUnit, Event) 
