@@ -7,6 +7,7 @@ software. Thank you.
 Thank: Shorts; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Brutallus yells: Bagh! Your magic is weak!
 Brutallus yells: Come try your luck!
 Brutallus yells: Puny lizard! Death is the only answer you'll find here!

@@ -7,6 +7,7 @@ software. Thank you.
 Thank: zdroid9770; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Omokk's head, when placed on a [Roughshod Pike], can be used to challenge Urok Doomhowl.]]--
 
 function HO_OnCombat(pUnit, Event)

@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Attumen the Huntsman yells: Another trophy to add to my collection!
 Attumen the Huntsman yells: Come Midnight, let's disperse this petty rabble!
 Attumen the Huntsman yells: Cowards! Wretches!

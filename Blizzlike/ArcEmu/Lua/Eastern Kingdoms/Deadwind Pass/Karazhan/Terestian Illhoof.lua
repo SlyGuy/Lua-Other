@@ -7,6 +7,7 @@ software. Thank you.
 Thank: LUA++; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Terestian Illhoof yells: Ah, you're just in time. The rituals are about to begin!
 Terestian Illhoof yells: Come, you dwellers in the dark! Rally to my call!
 Terestian Illhoof yells: Gather, my pets... there is plenty for all!

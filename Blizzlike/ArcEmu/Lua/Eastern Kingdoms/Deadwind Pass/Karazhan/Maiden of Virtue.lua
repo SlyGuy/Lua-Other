@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Maiden of Virtue yells: Cast out your corrupt thoughts.
 Maiden of Virtue yells: Death comes. Will your conscience be clear?
 Maiden of Virtue yells: This is for the best.

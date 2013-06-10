@@ -7,6 +7,7 @@ software. Thank you.
 Thank: DARKI; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 local SHADOWBOLT = 18164
 local CLEAVE = 15584
 local MORTALSTRIKE = 13737

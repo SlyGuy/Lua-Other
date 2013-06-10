@@ -25,8 +25,6 @@ function BaronVardus_QuestOnAccept (pUnit, Event)
 		elseif(spin == 4) then
 			pUnit:SpawnCreature (2306, 1001.20, -793.93, 108.65, 1.17511, 14, 1800000)
 			AllowSpawn = 0
-		else
-			print ("Error: Wanted Baron Vardus.lua: function block BaronVardus_QuestOnAccept() - invalid number rolled")
 		end
 	end
 end

@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Nightbane yells: Enough! I shall land and crush you myself!
 Nightbane yells: Insects! Let me show you my strength up close!
 Nightbane yells: Miserable vermin. I shall exterminate you from the air!

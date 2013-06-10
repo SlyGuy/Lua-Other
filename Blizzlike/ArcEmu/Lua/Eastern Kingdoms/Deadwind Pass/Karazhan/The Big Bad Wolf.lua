@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[The Big Bad Wolf yells: Mmmm... delicious.
 The Big Bad Wolf yells: Run away little girl, run away!
 The Big Bad Wolf yells: The better to own you with!]]

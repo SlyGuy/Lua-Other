@@ -7,6 +7,7 @@ software. Thank you.
 Thank: 2D; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Baroness Dorothea Millstipe says: Where has the master gone?
 Baroness Dorothea Millstipe says: Why can we not talk to the master?]]
 

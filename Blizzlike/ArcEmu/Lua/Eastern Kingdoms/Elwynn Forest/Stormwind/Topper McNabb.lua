@@ -8,7 +8,6 @@ Thank: WoTD; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
---Topper McNabb
 TOPPERMCNABB = {}
 
 function TOPPERMCNABB_onDied(Unit, event, player)

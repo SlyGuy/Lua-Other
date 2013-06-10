@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Strawman yells: Don't let them make... a mattress outta' me.
 Strawman yells: Now what should I do with you? I simply can't make up my mind.]]
 

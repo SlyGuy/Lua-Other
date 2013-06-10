@@ -7,6 +7,7 @@ software. Thank you.
 Thank: DARKI; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --Arcanist Doan says: The Ashbringer...
 --Arcanist Doan says: What do you propose, Mograine?
 

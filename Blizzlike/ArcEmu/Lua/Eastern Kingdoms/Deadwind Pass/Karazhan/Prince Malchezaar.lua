@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Prince Malchezaar yells: All realities, all dimensions are open to me!
 Prince Malchezaar yells: How can you hope to stand against such overwhelming power?
 Prince Malchezaar yells: I refuse to concede defeat! I am a prince of the Eredar! I... am...

@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[The Crone yells: How could you? What a cruel, cruel world...
 The Crone yells: It will all be over soon!
 The Crone yells: Woe to each and every one of you, my pretties!]]

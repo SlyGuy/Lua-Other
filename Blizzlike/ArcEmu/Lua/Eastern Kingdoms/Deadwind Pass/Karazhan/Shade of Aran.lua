@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Shade of Aran yells: At last the nightmare is over...
 Shade of Aran yells: Back to the cold dark with you!
 Shade of Aran yells: Burn, you hellish fiends!

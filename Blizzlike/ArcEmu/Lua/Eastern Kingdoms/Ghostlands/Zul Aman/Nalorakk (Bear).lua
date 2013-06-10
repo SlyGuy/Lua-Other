@@ -7,6 +7,7 @@ software. Thank you.
 Thank: Performer, GregPohlod; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Nalorakk yells: Da Amani gonna rule again!
 Nalorakk yells: Get da move on, guards! It be killin' time!
 Nalorakk yells: Guards, go already! Who you more afraid of, dem... or me?

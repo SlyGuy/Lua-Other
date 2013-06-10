@@ -7,6 +7,7 @@ software. Thank you.
 Thank: DARKI; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Transform player into a worgen
 Unit:SendChatMessage(14, 0, "Release your rage!")
 ]]

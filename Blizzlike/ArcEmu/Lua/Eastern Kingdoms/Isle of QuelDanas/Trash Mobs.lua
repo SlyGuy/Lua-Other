@@ -34,7 +34,7 @@ RegisterUnitEvent(25060, 1, "DSM_OnCombat")
 RegisterUnitEvent(25060, 2, "DSM_LeaveCombat")
 RegisterUnitEvent(25060, 4, "DSM_Dead")
 
---DarkSpine Siren
+--Darkspine Siren
 function DSS_OnCombat(Unit, Event)
 	Unit:CastSpell(12544)
 	Unit:RegisterEvent("DSS_Scr", 12000, 1)

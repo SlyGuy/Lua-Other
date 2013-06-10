@@ -8,7 +8,6 @@ Thank: zdroid9770; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
--- Mug'Thol
 function mugthol_strike(pUnit, Event)
 local plr = pUnit:GetClosestPlayer()
 	if (plr ~= nil) then

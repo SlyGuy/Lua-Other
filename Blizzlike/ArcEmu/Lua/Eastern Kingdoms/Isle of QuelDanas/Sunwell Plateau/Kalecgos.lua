@@ -7,6 +7,7 @@ software. Thank you.
 Thank: Azolex; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[Kalecgos yells: Agghh!! Help me before I lose my mind!
 Kalecgos yells: Another orb is ready! Make haste!
 Kalecgos yells: Anveena I love you! Focus on my voice! Come back for me now! Only you can cleanse the Sunwell!

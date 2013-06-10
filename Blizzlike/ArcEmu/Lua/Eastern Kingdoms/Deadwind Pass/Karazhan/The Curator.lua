@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[The Curator yells: Curator is no longer operation-a-l.
 The Curator yells: Do not touch the displays.
 The Curator yells: Failure to comply will result in offensive action.

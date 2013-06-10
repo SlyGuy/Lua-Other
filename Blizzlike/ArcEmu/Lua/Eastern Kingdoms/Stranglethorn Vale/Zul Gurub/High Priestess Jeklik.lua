@@ -7,6 +7,7 @@ software. Thank you.
 Thank: LUA++; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --Jeklik begins the encounter in bat form. In this form she has an AoE silence that also damages. 
 --She randomly charges people in the group, and summons 6-8 bloodseeker bats once per minute. (Added the 6-8 Spawns, Please correct the spawn part if wrong (Deathdude)
 --When she drops below 50% HP, she reverts to priest form. 

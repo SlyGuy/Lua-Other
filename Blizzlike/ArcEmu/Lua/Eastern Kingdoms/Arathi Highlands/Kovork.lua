@@ -17,4 +17,14 @@ local choice = math.random(1,2)
 	end
 end
 
+function Kovork_OnLeaveCombat(Unit,Event)
+	Unit:RemoveEvents()
+end
+
+function Kovork_OnDied(Unit,Event)
+	Unit:RemoveEvents()
+end
+
 RegisterUnitEvent(2603, 1, "Kovork_OnEnterCombat")
+RegisterUnitEvent(2603, 2, "Kovork_OnLeaveCombat")
+RegisterUnitEvent(2603, 4, "Kovork_OnDied")

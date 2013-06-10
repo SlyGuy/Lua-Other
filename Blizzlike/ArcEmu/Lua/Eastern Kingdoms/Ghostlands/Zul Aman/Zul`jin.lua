@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --Notes     : Below is a query to insert the column of fire npc into your db if you don't have it, be sure to check and add it if it isn't there.
 --Known Bugs: During Phase 3 (Eagle Phase) Zul'jin should add a debuff on players called energy storm, it seems that spell doesn't work.
 --            Although this debuff should go onto the entire raid, we can use GetInRangePlayers to run through the whole raid group to

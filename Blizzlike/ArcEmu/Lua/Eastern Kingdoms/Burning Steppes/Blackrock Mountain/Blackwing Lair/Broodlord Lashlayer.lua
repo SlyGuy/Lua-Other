@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Staff; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --[[
 Broodlord Lashlayer yells: Clever, mortals - but I am not so easily lured away from my sanctum!
 Broodlord Lashlayer yells: None of your kind should be here! You've doomed only yourselves!

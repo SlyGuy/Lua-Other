@@ -7,6 +7,7 @@ software. Thank you.
 Thank: LUA++; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 math.randomseed(os.time())
 
 function MagistrateBarthilas_OnCombat(pUnit)

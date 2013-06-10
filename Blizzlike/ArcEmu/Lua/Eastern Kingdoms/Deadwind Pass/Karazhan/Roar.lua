@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 --TODO ,  roar movie to set combatcapable and proper blizzlikeness. Done for now.
 
 function Roar_Frightened_Scream(Unit, event, miscUnit, misc)

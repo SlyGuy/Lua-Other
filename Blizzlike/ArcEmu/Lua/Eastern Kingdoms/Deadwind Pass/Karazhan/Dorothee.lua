@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 -- TODO:Timer (3 seconds before goes into combat) ,enrage when tito is killed,check video when tito is summoned.
 
 function Dorothee_Water_Bolt(Unit, event, miscUnit, misc)

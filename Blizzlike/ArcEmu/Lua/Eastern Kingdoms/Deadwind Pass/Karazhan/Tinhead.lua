@@ -7,6 +7,7 @@ software. Thank you.
 Thank: WoTD Team; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
+
 function Tinhead_Rust(Unit, event, miscUnit, misc)
 	if((Unit:GetHealthPct() < 50) and (Didthat == 0)) then
 	    Unit:FullCastSpellOnTarget(31086, Unit:GetClosestPlayer())
