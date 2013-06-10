@@ -19,4 +19,5 @@ function Player_OnEnterWorld(event, plr)
 		end
 	end
 end
+
 RegisterServerHook(4, "Player_OnEnterWorld")

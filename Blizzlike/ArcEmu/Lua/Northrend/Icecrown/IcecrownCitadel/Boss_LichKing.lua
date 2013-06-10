@@ -21,19 +21,6 @@ local Phase = 0
 local Players_Wiped = 0
 local CheatMode = true -- If this is set to true then you can use #startlk and #endlk to to the intro and outro without actually fighting him. :) CAN BE VERY BUGGY!
 
----- Checkers ----------------------------------------------------
-
-if GetLuaEngine() ~= "LuaHypArc" then -- Make sure we are using LuaHypArc
-	print("-------------------------------------------------------------------")
-	print("LuaHypArc is not installed. This script may not function correctly.")
-	print("LuaHypArc comes with ArcEmu by default.")
-	print("-------------------------------------------------------------------")
-	else
-	print("-------------------------------------------------------")
-	print("-- The Lich King - Made by Stoneharry of MMOwned.com --")
-	print("--                     Enjoy                         --")
-	print("-------------------------------------------------------")
-end
 
 ---- Lich King ---------------------------------------------------
 

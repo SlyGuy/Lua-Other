@@ -8,8 +8,6 @@ Thank: Holystone Productions; for the Script
 ~~End of License... Please Stand By...
 -- WoTD Team, Janurary 19, 2010. ]]
 
-local TheDamned = 37011
-
 function TheDamned_OnCombat(pUnit, event)
 	pUnit:RegisterEvent("Bone_Flurry", 10000, 1)
 end
@@ -28,5 +26,5 @@ function TheDamned_OnLeaveCombat(pUnit, event)
 	pUnit:RemoveEvents()
 end
 
-RegisterUnitEvent(TheDamned, 1, "TheDamned_OnCombat")
-RegisterUnitEvent(TheDamned, 2, "TheDamned_OnLeaveCombat")
+RegisterUnitEvent(37011, 1, "TheDamned_OnCombat")
+RegisterUnitEvent(37011, 2, "TheDamned_OnLeaveCombat")

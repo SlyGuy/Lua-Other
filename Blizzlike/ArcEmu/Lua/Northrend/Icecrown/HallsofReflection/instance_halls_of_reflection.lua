@@ -1,7 +1,5 @@
 local Jaina1 = nil
-local Jaina2 = nil
 local Sylvanas1 = nil
-local Sylvanas2 = nil
 local Uther = nil
 local LichKing2 = nil
 local Falric = nil
@@ -11,7 +9,6 @@ local Pmage = nil
 local Smerc = nil
 local Footman = nil
 local Trifle = nil
-local LichKing = nil
 
 function Jaina1_OnSpawn(pUnit, event)
 Jaina1 = pUnit
@@ -23,15 +20,7 @@ end
 RegisterUnitEvent(37221, 18, "Jaina1_OnSpawn")
 
 function OpenDoorWhenPlayerComesA(pUnit, event)
-Jaina1:GetGameObjectNearestCoords(5264.56, 1959.4, 707.696,197341):Activate()
-end
-
-function Jaina2_OnSpawn(pUnit, event)
-Jaina2 = pUnit
-Jaina2:EquipWeapons(2177, 12869, 0)
-Jaina2:GetGameObjectNearestCoords(5520.79, 2229.02, 733.011,197341):Activate()
-Jaina2:GetGameObjectNearestCoords(5582.82, 2230.58, 733.011,197341):Activate()
-Jaina2:FullCastSpell(69787)
+Jaina1:GetGameObjectNearestCoords(5264.583008, 1959.413818, 707.695984,197341):Activate()
 end
 
 RegisterUnitEvent(36955, 18, "Jaina2_OnSpawn")
@@ -46,18 +35,8 @@ end
 RegisterUnitEvent(37223, 18, "Sylvanas1_OnSpawn")
 
 function OpenDoorWhenPlayerComesH(pUnit, event)
-Sylvanas1:GetGameObjectNearestCoords(5264.56, 1959.4, 707.696,197341):Activate()
+Sylvanas1:GetGameObjectNearestCoords(5264.583008, 1959.413818, 707.695984,197341):Activate()
 end
-
-function Sylvanas2_OnSpawn(pUnit, event)
-Sylvanas2 = pUnit
-Sylvanas2:EquipWeapons(49814, 49814, 42775)
-Sylvanas2:GetGameObjectNearestCoords(5520.79, 2229.02, 733.011,197341):Activate()
-Sylvanas2:GetGameObjectNearestCoords(5582.82, 2230.58, 733.011,197341):Activate()
-Sylvanas2:FullCastSpell(70188)
-end
-
-RegisterUnitEvent(37554, 18, "Sylvanas2_OnSpawn")
 
 function Uther_OnSpawn(pUnit, event)
 Uther = pUnit
@@ -68,13 +47,6 @@ RegisterUnitEvent(37225, 18, "Uther_OnSpawn")
 
 function LichKing2_OnSpawn(pUnit, event)
 LichKing2 = pUnit
-end
-
-RegisterUnitEvent(37226, 18, "LichKing2_OnSpawn")
-
-function LichKing2_OnSpawn(pUnit, event)
-LichKing2 = pUnit
-LichKing2:EquipWeapons(36942, 0, 0)
 end
 
 RegisterUnitEvent(36954, 18, "LichKing2_OnSpawn")
@@ -240,13 +212,6 @@ Marwyn:Despawn(1000, 0)
 end
 
 RegisterUnitEvent(38113, 3, "Marwyn_OnLeaveCombat")
-
-function Marwyn_OnDeath(pUnit, event)
-Marwyn:SendChatMessage(14, 0, "Yes... Run... Run to meet your destiny... Its bitter, cold embrace, awaits you.")
-Marwyn:PlaySoundToSet(16737)
-end
-
-RegisterUnitEvent(38113, 4, "Marwyn_OnDeath")
 
 function Gpriest_OnSpawn(pUnit, event)
 Gpriest = pUnit
@@ -591,7 +556,7 @@ Uther:SendChatMessage(12, 0, "Aye. ARRRRRRGHHHH... He... He is coming. You... Yo
 Uther:Emote(5, 0)
 Uther:PlaySoundToSet(16665)
 LichKing2:SetMovementFlags(0)
-LichKing2:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate()
+LichKing2:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate()
 LichKing2:MoveTo(5314.177734, 2011.578247, 709.341736, 3.955590)
 Uther:RegisterEvent(Uther_Final_Emote_H, 2300, 1)
 end
@@ -621,7 +586,7 @@ LichKing2:SendChatMessage(14, 0, "SILENCE, PALADIN!")
 LichKing2:PlaySoundToSet(17225)
 Uther:CastSpell(70693)
 LichKing2:SetFacing(3.955590)
-LichKing2:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate() -- Close the door.
+LichKing2:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate()
 LichKing2:RegisterEvent(LichKing_Sylvanas1, 11000, 1)
 LichKing2:RegisterEvent(MoveAgainH, 3000, 1)
 end
@@ -660,7 +625,7 @@ Uther:SendChatMessage(12, 0, "No, Jaina! Aargh! He... He is coming! You... You m
 Uther:Emote(5, 0)
 Uther:PlaySoundToSet(16674)
 LichKing1:SetMovementFlags(0)
-LichKing1:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate()
+LichKing1:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate()
 LichKing1:MoveTo(5314.177734, 2011.578247, 709.341736, 3.955590)
 Uther:RegisterEvent(Uther_Final_Emote_A, 2300, 1)
 end
@@ -690,13 +655,13 @@ LichKing1:SendChatMessage(14, 0, "SILENCE, PALADIN!")
 LichKing1:PlaySoundToSet(17225)
 Uther:CastSpell(70693)
 LichKing1:SetFacing(3.955590)
-LichKing1:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate() -- Close the door.
+LichKing1:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate() -- Close the door.
 LichKing1:RegisterEvent(LichKing_Jaina1, 11000, 1)
 LichKing1:RegisterEvent(MoveAgainA, 3000, 1)
 end
 
 function VisualEffectOfEmoteH(pUnit, event)
-LichKing2:Emote(468, 2000)
+LichKing2:Emote(468, 1000)
 LichKing2:RegisterEvent(VisualEffectOfFrostmourneH, 1000, 1)
 end
 
@@ -729,7 +694,7 @@ LichKing1:RegisterEvent(LichKing1_GetFrostmourne_Jaina, 10000, 1)
 end
 
 function Falric_Marwyn_BeholdH(pUnit, event)
-LichKing2:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate()
+LichKing2:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate()
 LichKing2:MoveTo(5404.604980, 2106.833984, 707.695007, 0.806143)
 LichKing2:RegisterEvent(Falric_Marwyn_Real_EmergeH, 3000, 1)
 end
@@ -740,7 +705,7 @@ LichKing1:RegisterEvent(VisualEffectOfEmoteA, 800, 1)
 end
 
 function VisualEffectOfEmoteA(pUnit, event)
-LichKing1:Emote(468, 2000)
+LichKing1:Emote(468, 1000)
 LichKing1:RegisterEvent(VisualEffectOfFrostmourneA, 1000, 1)
 end
 
@@ -782,7 +747,7 @@ Sylvanas1:RegisterEvent(LastMessageOfSylvanas1, 8000, 1)
 end
 
 function Falric_Marwyn_BeholdA(pUnit, event)
-LichKing1:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate()
+LichKing1:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate()
 LichKing1:MoveTo(5404.604980, 2106.833984, 707.695007, 0.806143)
 LichKing1:RegisterEvent(Falric_Marwyn_Real_EmergeA, 3000, 1)
 end
@@ -832,7 +797,7 @@ end
 function BothDisappear_Second_Stage_ApproachesA(pUnit, event)
 LichKing1:Despawn(1000, 0)
 Jaina1:Despawn(1000, 0)
-Jaina1:GetGameObjectNearestCoords(5359.003418, 2058.747803, 707.695496,197341):Activate()
+Jaina1:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate()
 Falric:RegisterEvent(WavesSpawn_1_A, 5000, 1)
 end
 
@@ -1107,116 +1072,20 @@ end
 function If_Marwyn_Is_Dead_Quest_Appears(pUnit, event)
 if (Marwyn:IsDead() == true) then
 Marwyn:RemoveEvents()
+Marwyn:SendChatMessage(14, 0, "Yes... Run... Run to meet your destiny... Its bitter, cold embrace, awaits you.")
+Marwyn:PlaySoundToSet(16737)
 Marwyn:SpawnCreature(3722226, 5551.226074, 2261.002441, 733.011230, 3.950000, 168, 0, 33475, 0, 0, 1, 0)
-Marwyn:GetGameObjectNearestCoords(5359.02, 2058.73, 707.695,197341):Activate()
+Marwyn:GetGameObjectNearestCoords(5358.983887, 2058.809570, 707.695068,197341):Activate()
 local PlayersAllAround = Marwyn:GetInRangePlayers()
 for k, players in pairs (PlayersAllAround) do
 if (players:GetTeam() == 0) then
 Marwyn:SpawnCreature(36955, 5548.177246, 2257.809570, 733.011230, 0.808419, 1, 0, 2177, 12869, 0, 1, 0)
 players:StartQuest(24500)
-Marwyn:RegisterEvent(TheLichKingAggro_A, 1, 0)
 end
 if (players:GetTeam() == 1) then
 Marwyn:SpawnCreature(37554, 5548.177246, 2257.809570, 733.011230, 0.808419, 2, 0, 49814, 49814, 42775, 1, 0)
 players:StartQuest(24802)
-Marwyn:RegisterEvent(TheLichKingAggro_H, 1, 0)
 end
 end
 end
-end
-
-local LichKing = nil
-
-function LichKing_OnSpawn(pUnit, event)
-LichKing = pUnit
-end
-
-RegisterUnitEvent(3722226, 18, "LichKing_OnSpawn")
-
-function TheLichKingAggro_A(pUnit, event)
-local Player = LichKing:GetClosestPlayer()
-if (LichKing:GetDistanceYards(Player) <= 40) then
-Marwyn:RemoveEvents()
-LichKing:SendChatMessage(14, 0, "Your allies have arrived, Jaina, just as you promised. You will all become powerful agents of the Scourge.")
-LichKing:PlaySoundToSet(17212)
-LichKing:RegisterEvent(JainaAggro_Flee_A, 12000, 1)
-end
-end
-
-function TheLichKingAggro_H(pUnit, event)
-local Player = LichKing:GetClosestPlayer()
-if (LichKing:GetDistanceYards(Player) <= 40) then
-Marwyn:RemoveEvents()
-LichKing:SendChatMessage(14, 0, "I will not make the same mistake again, Sylvanas. This time there will be no escape. You will all serve me in death!")
-LichKing:PlaySoundToSet(17213)
-LichKing:RegisterEvent(SylvanasAggro_Flee_H, 12000, 1)
-end
-end
-
-function JainaAggro_Flee_A(pUnit, event)
-Jaina2:SetHealthPct(10)
-Jaina2:SendChatMessage(14, 0, "He is too powerful. We must leave this place at once! My magic can hold him in place for only a short time. Come quickly, heroes!")
-Jaina2:PlaySoundToSet(16643)
-Jaina2:MoveTo(5578.430176, 2234.797119, 733.012573, 5.522379)
-Jaina2:SetMovementFlags(1)
-Jaina2:FullCastSpellOnTarget(69708, LichKing)
-Jaina2:RemoveAllAuras()
-end
-
-function SylvanasAggro_Flee_H(pUnit, event)
-Sylvanas2:SetHealthPct(10)
-Sylvanas2:SendChatMessage(14, 0, "He's... too powerful. Heroes, quickly... come to me! We must leave this place at once! I will do what I can to hold him in place while we flee.")
-Sylvanas2:PlaySoundToSet(17058)
-Sylvanas2:MoveTo(5578.430176, 2234.797119, 733.012573, 5.522379)
-Sylvanas2:SetMovementFlags(1)
-Sylvanas2:FullCastSpellOnTarget(70194, LichKing)
-Sylvanas2:RemoveAllAuras()
-end
-
-function Jaina2_OnGossipHello(Jaina2, event, player)
-Jaina2:GossipCreateMenu(1, player, 0)
-Jaina2:GossipMenuAddItem(0, "Let's go!", 1, 0)
-Jaina2:GossipSendMenu(player)
-end
-
-function Jaina2_OnGossipSelect(Jaina2, event, player, id, intid, code)
-if (intid == 1) then
-Jaina2:RegisterEvent(Jaina2_Flee_With_Players, 1, 1)
-Jaina2:SetNPCFlags(4)
-LichKing:RemoveAllAuras()
-player:GossipComplete()
-end
-end
-
-RegisterUnitGossipEvent(36955, 1, "Jaina2_OnGossipHello")
-RegisterUnitGossipEvent(36955, 2, "Jaina2_OnGossipSelect")
-
-function Sylvanas2_OnGossipHello(Sylvanas2, event, player)
-Sylvanas2:GossipCreateMenu(15215, player, 0)
-Sylvanas2:GossipMenuAddItem(0, "Let's go!", 1, 0)
-Sylvanas2:GossipSendMenu(player)
-end
-
-function Sylvanas2_OnGossipSelect(Sylvanas2, event, player, id, intid, code)
-if (intid == 1) then
-Sylvanas2:RegisterEvent(Sylvanas2_Flee_With_Players, 1, 1)
-Sylvanas2:SetNPCFlags(4)
-LichKing:RemoveAllAuras()
-player:GossipComplete()
-end
-end
-
-RegisterUnitGossipEvent(37554, 1, "Sylvanas2_OnGossipHello")
-RegisterUnitGossipEvent(37554, 2, "Sylvanas2_OnGossipSelect")
-
-function Jaina2_Flee_With_Players(pUnit, event)
-Jaina2:MoveTo(5607.638184, 2203.091309, 731.373779, 4.283809)
-LichKing:SetUnitToFollow(Jaina2, 1, 0)
-Jaina2:RegisterEvent(Jaina2_Flee_With_Players1, 8000, 1)
-end
-
-function Sylvanas2_Flee_With_Players(pUnit, event)
-Sylvanas2:MoveTo(5607.638184, 2203.091309, 731.373779, 4.283809)
-LichKing:SetUnitToFollow(Sylvanas2, 1, 0)
-Sylvanas2:RegisterEvent(Sylvanas2_Flee_With_Players1, 8000, 1)
 end
