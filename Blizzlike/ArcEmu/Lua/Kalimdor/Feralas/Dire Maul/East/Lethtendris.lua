@@ -1,3 +1,14 @@
+--[[ WoTD License - 
+This software is provided as free and open source by the
+team of The WoTD Team. This script was written and is
+protected by the GPL v2. Please give credit where credit
+is due, if modifying, redistributing and/or using this 
+software. Thank you.
+Thank: WoTD Team; for the Script
+~~End of License... Please Stand By...
+-- WoTD Team, Janurary 19, 2010. ]]
+
+print ("Failed: Feralas - Dire Maul - Lethtendris")
 --[[  
 (SPELL|22709)Void Bolt  — Sends a bolt of dark magic at an enemy, inflicting 925 to 1075 Shadow damage.
 (SPELL|14887)Shadow Bolt Volley   — Hurls missiles of dark magic, inflicting 128 to 172 Shadow damage to nearby enemies.
