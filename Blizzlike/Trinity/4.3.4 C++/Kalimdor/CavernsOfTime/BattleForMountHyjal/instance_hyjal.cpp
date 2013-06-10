@@ -222,7 +222,8 @@ public:
                                             i->getSource()->GetSession()->SendPacket(&packet);
 
                                             WorldPacket data2(SMSG_PLAY_SOUND, 4);
-                                            data2 << 10986;
+                                            data2 << uint32(10986);
+                                            data2 << uint64(unit->GetGUID());
                                             i->getSource()->GetSession()->SendPacket(&data2);
                                          }
                                     }
@@ -277,7 +278,7 @@ public:
                     break;
             }
 
-             sLog->outDebug(LOG_FILTER_TSCR, "Instance Hyjal: Instance data updated for event %u (Data=%u)", type, data);
+             TC_LOG_DEBUG(LOG_FILTER_TSCR, "Instance Hyjal: Instance data updated for event %u (Data=%u)", type, data);
 
             if (data == DONE)
             {
